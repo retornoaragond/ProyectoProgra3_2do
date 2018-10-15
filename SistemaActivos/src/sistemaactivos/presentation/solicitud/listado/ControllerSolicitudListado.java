@@ -11,4 +11,13 @@ package sistemaactivos.presentation.solicitud.listado;
  */
 public class ControllerSolicitudListado {
     
+    //Model
+    //Session session
+    ModelSolicitudListado model;
+    ViewSolicitudListado view;
+    
+    
+    
+    
+    
 }
