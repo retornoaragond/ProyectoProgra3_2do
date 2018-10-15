@@ -8,50 +8,42 @@ package sistemaactivos.presentation.solicitud.listado;
 import java.util.Observable;
 import javafx.application.Application;
 import sistemaactivos.SistemaActivos;
+
 /**
  *
  * @author ExtremeTech
  */
-public class ViewSolicitudListado extends javax.swing.JInternalFrame implements java.util.Observer{
+public class ViewSolicitudListado extends javax.swing.JInternalFrame implements java.util.Observer {
 
-    
     ControllerSolicitudListado controller;
     ModelSolicitudListado model;
-    
-    public void setController(ControllerSolicitudListado controller){
-        this.controller=controller;
+
+    public void setController(ControllerSolicitudListado controller) {
+        this.controller = controller;
     }
 
     public ControllerSolicitudListado getController() {
         return controller;
     }
-    
-    public void setModel(ModelSolicitudListado model){
-        this.model=model;
-         model.addObserver(this);
+
+    public void setModel(ModelSolicitudListado model) {
+        this.model = model;
+        model.addObserver(this);
     }
 
     public ModelSolicitudListado getModel() {
         return model;
     }
-    
-
 
     public ViewSolicitudListado() {
-         super("",false,true);
-         initComponents();
+        super("", false, true);
+        initComponents();
     }
 
-    
-      public void limpiarErrores(){
-       this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK); 
-   }
- 
-    
-    
-    
-    
-    
+    public void limpiarErrores() {
+        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,17 +100,19 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(etiquetaNumerodeSolicitud)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldNumSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(textFieldNumSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buscar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                         .addComponent(Agregar)
                         .addGap(18, 18, 18)
-                        .addComponent(Eliminar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(Eliminar)
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,11 +122,11 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                     .addComponent(etiquetaNumerodeSolicitud)
                     .addComponent(textFieldNumSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscar)
-                    .addComponent(Eliminar)
-                    .addComponent(Agregar))
+                    .addComponent(Agregar)
+                    .addComponent(Eliminar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -158,10 +152,10 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void update(java.util.Observable updatedModel,Object parametros) {
+    public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
         //Solicitud soli= model.getSolicitud();
-        
+
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

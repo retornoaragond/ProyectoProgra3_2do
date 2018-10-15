@@ -15,41 +15,40 @@ import sistemaactivos.logic.Solicitud;
  * @author ExtremeTech
  */
 public class ModelSolicitudListado extends java.util.Observable {
-   Solicitud solicitud;
-   SolicitudTableModel solicitudTable;  
-   Solicitud solicitudSeleccionada;
-    
-    
-   public ModelSolicitudListado() {
-     this.reset();
-   }
-   
-   public void reset(){ 
-     solicitud = new Solicitud();
-     List<Solicitud> rows = new ArrayList<>();        
-     solicitudSeleccionada=null;  
-     this.setSolicitud(rows);
-     this.commit();  
+
+    Solicitud solicitud;
+    SolicitudTableModel solicitudTable;
+    Solicitud solicitudSeleccionada;
+
+    public ModelSolicitudListado() {
+        this.reset();
     }
-   
-   public void setSolicitud(List<Solicitud> solicitudes){
-       int[] cols={SolicitudTableModel.NUMSOLICITUD,SolicitudTableModel.DEPENDENCIA,SolicitudTableModel.FUNCIONARIO,SolicitudTableModel.NUMCOMPROBANTE,SolicitudTableModel.FECHA,SolicitudTableModel.TIPOADQUISICION,SolicitudTableModel.CANTIDADBIENES,SolicitudTableModel.MONTOTOTAL,SolicitudTableModel.RAZONRECHAZO,SolicitudTableModel.ESTADO};
-        this.solicitudTable =new SolicitudTableModel(cols,solicitudes);    
+
+    public void reset() {
+        solicitud = new Solicitud();
+        List<Solicitud> rows = new ArrayList<>();
+        solicitudSeleccionada = null;
+        this.setSolicitud(rows);
+        this.commit();
     }
-    
+
+    public void setSolicitud(List<Solicitud> solicitudes) {
+        int[] cols = {SolicitudTableModel.NUMSOLICITUD, SolicitudTableModel.DEPENDENCIA, SolicitudTableModel.FUNCIONARIO, SolicitudTableModel.NUMCOMPROBANTE, SolicitudTableModel.FECHA, SolicitudTableModel.TIPOADQUISICION, SolicitudTableModel.CANTIDADBIENES, SolicitudTableModel.MONTOTOTAL, SolicitudTableModel.RAZONRECHAZO, SolicitudTableModel.ESTADO};
+        this.solicitudTable = new SolicitudTableModel(cols, solicitudes);
+    }
+
     public Solicitud getSolicitud() {
         return solicitud;
     }
-    
+
     public void setSolicitud(Solicitud solicitud) {
-       this.solicitud= solicitud; 
+        this.solicitud = solicitud;
     }
-    
-     public SolicitudTableModel getPersonas() {
+
+    public SolicitudTableModel getPersonas() {
         return solicitudTable;
     }
 
-   
     public Solicitud getSeleccionado() {
         return solicitudSeleccionada;
     }
@@ -57,19 +56,16 @@ public class ModelSolicitudListado extends java.util.Observable {
     public void setSeleccionado(Solicitud seleccionado) {
         this.solicitudSeleccionada = seleccionado;
     }
-  
-   
-   @Override
+
+    @Override
     public void addObserver(Observer o) {
         super.addObserver(o);
-        this.commit();   
-    }
-   
-   
-   public void commit(){
-        setChanged();
-        notifyObservers();       
+        this.commit();
     }
 
-   
+    public void commit() {
+        setChanged();
+        notifyObservers();
+    }
+
 }
