@@ -5,6 +5,8 @@
  */
 package sistemaactivos;
 
+import java.awt.Color;
+
 /**
  *
  * @author ExtremeTech
@@ -17,5 +19,5 @@ public class SistemaActivos {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+    public static final Color COLOR_OK=Color.black;
 }
