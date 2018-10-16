@@ -9,35 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Solicitud;
 
 /**
  *
  * @author ExtremeTech
  */
 public class ModelSolicitudEdicion extends java.util.Observable {
-
-    Bien bien;
+    Solicitud current;
     BienTableModel bientable;
     Bien bienselecionado;
+    int modo;
 
     public ModelSolicitudEdicion() {
         this.reset();
     }
 
-    public void reset() {
-        bien = new Bien();
+    public void reset(int modo, Solicitud current) {
+        this.setModo(modo);
+        this.setCurrent(current);
         List<Bien> rows = new ArrayList<>();
-        bienselecionado = null;
+        this.bienselecionado = null;
         this.setBientable(rows);
         this.commit();
     }
-
-    public Bien getBien() {
-        return bien;
-    }
-
-    public void setBien(Bien bien) {
-        this.bien = bien;
+    
+    public void reset(){
+        //this.reset(Application.MODO_AGREGAR,new Solicitud());
     }
 
     public BienTableModel getBientable() {
@@ -56,6 +54,24 @@ public class ModelSolicitudEdicion extends java.util.Observable {
     public void setBienselecionado(Bien bienselecionado) {
         this.bienselecionado = bienselecionado;
     }
+
+    public Solicitud getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Solicitud current) {
+        this.current = current;
+    }
+
+    public int getModo() {
+        return modo;
+    }
+
+    public void setModo(int modo) {
+        this.modo = modo;
+    }
+    
+    
 
     @Override
     public void addObserver(Observer o) {

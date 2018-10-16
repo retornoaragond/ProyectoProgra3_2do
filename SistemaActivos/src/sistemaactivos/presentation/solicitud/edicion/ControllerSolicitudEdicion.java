@@ -9,6 +9,6 @@ package sistemaactivos.presentation.solicitud.edicion;
  *
  * @author ExtremeTech
  */
-public class CotrollerSolicitudlEdicion {
+public class ControllerSolicitudEdicion {
     
 }

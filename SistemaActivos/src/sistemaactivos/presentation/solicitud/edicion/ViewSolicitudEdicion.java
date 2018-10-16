@@ -5,17 +5,43 @@
  */
 package sistemaactivos.presentation.solicitud.edicion;
 
+import java.util.Arrays;
+import java.util.Observable;
+import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Solicitud;
+
 /**
  *
  * @author ExtremeTech
  */
-public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
+public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.util.Observer {
+
+    ControllerSolicitudEdicion controller;
+    ModelSolicitudEdicion model;
 
     /**
      * Creates new form viewSolicitudEdicion
      */
-    public ViewSolicitudEdicion() {
+    public ViewSolicitudEdicion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+    }
+
+    public ModelSolicitudEdicion getModel() {
+        return model;
+    }
+
+    public void setModel(ModelSolicitudEdicion model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+
+    public ControllerSolicitudEdicion getController() {
+        return controller;
+    }
+
+    public void setController(ControllerSolicitudEdicion controller) {
+        this.controller = controller;
     }
 
     /**
@@ -27,9 +53,9 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        numcomp = new javax.swing.JLabel();
+        fec = new javax.swing.JLabel();
+        tipadq = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         numcomprobante = new javax.swing.JTextField();
@@ -39,33 +65,30 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
         agregarbien = new javax.swing.JButton();
         tipoadq = new javax.swing.JTextField();
         cantidadbienes = new javax.swing.JTextField();
-        montotoral = new javax.swing.JTextField();
+        montototal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         estadoactual = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         razon = new javax.swing.JTextArea();
-        jLabel8 = new javax.swing.JLabel();
+        bient = new javax.swing.JLabel();
         fecha = new com.toedter.calendar.JDateChooser();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        snumsol = new javax.swing.JLabel();
+        numSolicitud = new javax.swing.JTextField();
+        rechazo = new javax.swing.JLabel();
+        Aceptar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setText("Número de comprobante ");
+        numcomp.setText("Número de comprobante ");
 
-        jLabel2.setText("Fecha de adquisición");
+        fec.setText("Fecha de adquisición");
 
-        jLabel3.setText("Tipo de adquisición");
+        tipadq.setText("Tipo de adquisición");
 
         jLabel4.setText("Cantidad de bienes");
 
         jLabel5.setText("Monto total");
-
-        numcomprobante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numcomprobanteActionPerformed(evt);
-            }
-        });
 
         tablabienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,6 +104,11 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablabienes);
 
         eliminarbien.setText("Eliminar");
+        eliminarbien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarbienActionPerformed(evt);
+            }
+        });
 
         agregarbien.setText("Agergar");
         agregarbien.addActionListener(new java.awt.event.ActionListener() {
@@ -97,11 +125,27 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
         razon.setRows(5);
         jScrollPane2.setViewportView(razon);
 
-        jLabel8.setText("Bienes inmuebles");
+        bient.setText("Bienes inmuebles");
 
         fecha.setToolTipText("");
 
-        jLabel7.setText("Número de solicitud ");
+        snumsol.setText("Número de solicitud ");
+
+        rechazo.setText("Razon de Rechazo");
+
+        Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,16 +162,17 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(montotoral, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(rechazo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bient)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -136,98 +181,192 @@ public class ViewSolicitudEdicion extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7))
+                                    .addComponent(numcomp)
+                                    .addComponent(fec)
+                                    .addComponent(tipadq)
+                                    .addComponent(snumsol))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(numcomprobante)
                                     .addComponent(tipoadq, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1))))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                    .addComponent(numSolicitud)
+                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(Aceptar)
+                .addGap(27, 27, 27)
+                .addComponent(Cancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(snumsol)
+                    .addComponent(numSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(numcomp, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
+                    .addComponent(fec)
                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(tipadq)
                     .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(eliminarbien)
                         .addComponent(agregarbien))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(bient, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(estadoactual))
-                        .addGap(1, 1, 1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(montotoral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(estadoactual, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rechazo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Aceptar)
+                    .addComponent(Cancelar))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void numcomprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numcomprobanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numcomprobanteActionPerformed
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        //aceptar y guardar
+    }//GEN-LAST:event_AceptarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        //cancelar
+    }//GEN-LAST:event_CancelarActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
-        // TODO add your handling code here:
+        //Agregar un bien
     }//GEN-LAST:event_agregarbienActionPerformed
 
+    private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
+        //Eliminar un bien selecionado
+    }//GEN-LAST:event_eliminarbienActionPerformed
+
+    Solicitud toSolicitud() {
+        Solicitud result = new Solicitud();
+        result.setNumComprobante(Integer.getInteger(numcomprobante.getText()));
+        result.setFecha(fecha.getDate());
+        result.setTipoAdquisicion(tipoadq.getText());
+        result.setBiens(model.bientable.rows);
+        result.setCantidadBienes(Integer.getInteger(cantidadbienes.getText()));
+        result.setMontoTotal(Integer.getInteger(montototal.getText()));
+        result.setEstado(estadoactual.getText());
+        result.setRazonRechazo(razon.getText());
+        return result;
+    }
+
+    public void limpiarErrores() {
+        this.numcomp.setForeground(SistemaActivos.COLOR_OK);
+        this.fec.setForeground(SistemaActivos.COLOR_OK);
+        this.tipadq.setForeground(SistemaActivos.COLOR_OK);
+        this.bient.setForeground(SistemaActivos.COLOR_OK);
+        this.rechazo.setForeground(SistemaActivos.COLOR_OK);
+    }
+
+    boolean validar() {
+        boolean error = false;
+        this.numcomp.setForeground(SistemaActivos.COLOR_OK);
+        if (this.numcomprobante.getText().isEmpty()) {
+            this.numcomp.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.fec.setForeground(SistemaActivos.COLOR_OK);
+        if (this.fecha.getDate() == null) {
+            this.fec.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.tipadq.setForeground(SistemaActivos.COLOR_OK);
+        if (this.tipoadq.getText().isEmpty()) {
+            this.tipadq.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.bient.setForeground(SistemaActivos.COLOR_OK);
+        if (model.bientable.rows.isEmpty()) {
+            this.bient.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.rechazo.setForeground(SistemaActivos.COLOR_OK);
+        if (this.razon.getText().isEmpty()&& "PROCESADA".equals(estadoactual.getText())) {
+            this.rechazo.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+        return !error;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JButton agregarbien;
+    private javax.swing.JLabel bient;
     private javax.swing.JTextField cantidadbienes;
     private javax.swing.JButton eliminarbien;
     private javax.swing.JLabel estadoactual;
+    private javax.swing.JLabel fec;
     private com.toedter.calendar.JDateChooser fecha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField montotoral;
+    private javax.swing.JTextField montototal;
+    private javax.swing.JTextField numSolicitud;
+    private javax.swing.JLabel numcomp;
     private javax.swing.JTextField numcomprobante;
     private javax.swing.JTextArea razon;
+    private javax.swing.JLabel rechazo;
+    private javax.swing.JLabel snumsol;
     private javax.swing.JTable tablabienes;
+    private javax.swing.JLabel tipadq;
     private javax.swing.JTextField tipoadq;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.limpiarErrores();
+        Solicitud actual = model.getCurrent();
+        this.fromSolicitud(actual);
+    }
+    
+    public void fromSolicitud(Solicitud actual){
+        this.numSolicitud.setEnabled(false);
+        this.numSolicitud.setText(actual.getNumSolicitud().toString());
+        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+        
+        this.numcomprobante.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
+        numcomprobante.setText(Integer.toString(actual.getNumComprobante()));
+        
+        
+    }
 }

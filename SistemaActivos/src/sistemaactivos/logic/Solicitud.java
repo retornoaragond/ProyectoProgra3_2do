@@ -2,8 +2,9 @@ package sistemaactivos.logic;
 // Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
 
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ public class Solicitud  implements java.io.Serializable {
      private double montoTotal;
      private String razonRechazo;
      private String estado;
-     private Set biens = new HashSet(0);
+     private List biens = new ArrayList<>();
 
     public Solicitud() {
     }
@@ -39,7 +40,7 @@ public class Solicitud  implements java.io.Serializable {
         this.razonRechazo = razonRechazo;
         this.estado = estado;
     }
-    public Solicitud(Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, Set biens) {
+    public Solicitud(Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, List biens) {
        this.dependencia = dependencia;
        this.funcionario = funcionario;
        this.numComprobante = numComprobante;
@@ -122,11 +123,11 @@ public class Solicitud  implements java.io.Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public Set getBiens() {
+    public List getBiens() {
         return this.biens;
     }
     
-    public void setBiens(Set biens) {
+    public void setBiens(List biens) {
         this.biens = biens;
     }
 

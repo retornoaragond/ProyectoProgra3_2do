@@ -86,4 +86,14 @@ public class BienTableModel extends AbstractTableModel {
         colNames[MODELO] = "Modelo";
         colNames[PRECIOUNITARIO] = "Precio Unitario";
     }
+
+    public List<Bien> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<Bien> rows) {
+        this.rows = rows;
+    }
+    
+    
 }
