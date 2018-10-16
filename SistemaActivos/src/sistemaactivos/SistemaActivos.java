@@ -19,5 +19,7 @@ public class SistemaActivos {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    public static final Color COLOR_OK=Color.black;
+    
+     public static final Color COLOR_ERROR = Color.red;
+     public static final Color COLOR_OK=Color.black;
 }
