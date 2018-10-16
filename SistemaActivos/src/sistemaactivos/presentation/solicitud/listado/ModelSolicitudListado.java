@@ -28,11 +28,11 @@ public class ModelSolicitudListado extends java.util.Observable {
         solicitud = new Solicitud();
         List<Solicitud> rows = new ArrayList<>();
         solicitudSeleccionada = null;
-        this.setSolicitud(rows);
+        this.setSolicitudes(rows);
         this.commit();
     }
 
-    public void setSolicitud(List<Solicitud> solicitudes) {
+    public void setSolicitudes(List<Solicitud> solicitudes) {
         int[] cols = {SolicitudTableModel.NUMSOLICITUD, SolicitudTableModel.DEPENDENCIA, SolicitudTableModel.FUNCIONARIO, SolicitudTableModel.NUMCOMPROBANTE, SolicitudTableModel.FECHA, SolicitudTableModel.TIPOADQUISICION, SolicitudTableModel.CANTIDADBIENES, SolicitudTableModel.MONTOTOTAL, SolicitudTableModel.RAZONRECHAZO, SolicitudTableModel.ESTADO};
         this.solicitudTable = new SolicitudTableModel(cols, solicitudes);
     }
@@ -45,7 +45,7 @@ public class ModelSolicitudListado extends java.util.Observable {
         this.solicitud = solicitud;
     }
 
-    public SolicitudTableModel getPersonas() {
+    public SolicitudTableModel getSolicitudes() {
         return solicitudTable;
     }
 

@@ -14,10 +14,10 @@ public class Solicitud  implements java.io.Serializable {
 
 
      private Integer numSolicitud;
-     private Dependencia dependencia;
-     private Funcionario funcionario;
+     private Dependencia dependencia= new Dependencia();
+     private Funcionario funcionario= new Funcionario();
      private int numComprobante;
-     private Date fecha;
+     private Date fecha= new Date();
      private String tipoAdquisicion;
      private int cantidadBienes;
      private double montoTotal;

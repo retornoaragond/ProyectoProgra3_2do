@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="title" type="java.lang.String" value="Bien"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -19,13 +22,107 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="394" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="serial" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="Modelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="precio" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="marca" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="descripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="descripcionjTextField" pref="81" max="32767" attributes="0"/>
+                  <Component id="serialTextField1" max="32767" attributes="0"/>
+                  <Component id="marcajTextField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="modelojTextField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="preciojTextField" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="274" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="serialTextField1" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="serial" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="marcajTextField" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="marca" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="modelojTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="preciojTextField" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="precio" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="descripcionjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="serial">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Serial"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="serialTextField1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="marca">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Marca"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Modelo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modelo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="precio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Precio "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="descripcion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="marcajTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marcajTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="modelojTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelojTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="preciojTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="preciojTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="descripcionjTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descripcionjTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
 </Form>

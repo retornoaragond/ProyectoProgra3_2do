@@ -27,21 +27,130 @@ public class ViewBienEdicion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        serial = new javax.swing.JLabel();
+        serialTextField1 = new javax.swing.JTextField();
+        marca = new javax.swing.JLabel();
+        Modelo = new javax.swing.JLabel();
+        precio = new javax.swing.JLabel();
+        descripcion = new javax.swing.JLabel();
+        marcajTextField = new javax.swing.JTextField();
+        modelojTextField = new javax.swing.JTextField();
+        preciojTextField = new javax.swing.JTextField();
+        descripcionjTextField = new javax.swing.JTextField();
+
+        setTitle("Bien");
+
+        serial.setText("Serial");
+
+        marca.setText("Marca");
+
+        Modelo.setText("Modelo");
+
+        precio.setText("Precio ");
+
+        descripcion.setText("Descripción");
+
+        marcajTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marcajTextFieldActionPerformed(evt);
+            }
+        });
+
+        modelojTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelojTextFieldActionPerformed(evt);
+            }
+        });
+
+        preciojTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preciojTextFieldActionPerformed(evt);
+            }
+        });
+
+        descripcionjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descripcionjTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Modelo)
+                    .addComponent(precio)
+                    .addComponent(marca)
+                    .addComponent(descripcion))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(descripcionjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(serialTextField1)
+                    .addComponent(marcajTextField)
+                    .addComponent(modelojTextField)
+                    .addComponent(preciojTextField))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serialTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(serial))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(marcajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marca))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modelojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Modelo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(preciojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descripcionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcion))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void modelojTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelojTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modelojTextFieldActionPerformed
+
+    private void descripcionjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcionjTextFieldActionPerformed
+
+    private void preciojTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preciojTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preciojTextFieldActionPerformed
+
+    private void marcajTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcajTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcajTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Modelo;
+    private javax.swing.JLabel descripcion;
+    private javax.swing.JTextField descripcionjTextField;
+    private javax.swing.JLabel marca;
+    private javax.swing.JTextField marcajTextField;
+    private javax.swing.JTextField modelojTextField;
+    private javax.swing.JLabel precio;
+    private javax.swing.JTextField preciojTextField;
+    private javax.swing.JLabel serial;
+    private javax.swing.JTextField serialTextField1;
     // End of variables declaration//GEN-END:variables
 }
