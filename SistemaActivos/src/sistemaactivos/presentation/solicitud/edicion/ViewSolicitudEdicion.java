@@ -67,7 +67,6 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         cantidadbienes = new javax.swing.JTextField();
         montototal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        estadoactual = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         razon = new javax.swing.JTextArea();
         bient = new javax.swing.JLabel();
@@ -75,10 +74,12 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         snumsol = new javax.swing.JLabel();
         numSolicitud = new javax.swing.JTextField();
         rechazo = new javax.swing.JLabel();
-        Aceptar = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        estadoactual = new javax.swing.JComboBox<>();
 
         setForeground(new java.awt.Color(0, 0, 0));
+        setTitle("SOLICITUD");
 
         numcomp.setText("Número de comprobante ");
 
@@ -119,8 +120,6 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         jLabel6.setText("Estado: ");
 
-        estadoactual.setText("Provicional");
-
         razon.setColumns(20);
         razon.setRows(5);
         jScrollPane2.setViewportView(razon);
@@ -133,19 +132,21 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         rechazo.setText("Razon de Rechazo");
 
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                guardarActionPerformed(evt);
             }
         });
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
+
+        estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitando", "Recibida", "Por Verificar", "Rechazada", "Aceptada", "Incorporacion", "En espera de rotulación", "Asignacion responsable y dependencia", "Procesada" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,50 +155,48 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estadoactual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(212, 212, 212)
+                        .addComponent(guardar)
+                        .addGap(26, 26, 26)
+                        .addComponent(salir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rechazo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bient)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(numcomp)
-                                    .addComponent(fec)
                                     .addComponent(tipadq)
+                                    .addComponent(fec)
+                                    .addComponent(numcomp)
                                     .addComponent(snumsol))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(numcomprobante)
-                                    .addComponent(tipoadq, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                                    .addComponent(numSolicitud)
-                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(Aceptar)
-                .addGap(27, 27, 27)
-                .addComponent(Cancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(bient)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(29, 29, 29)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rechazo))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,67 +206,70 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                     .addComponent(snumsol)
                     .addComponent(numSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(numcomp, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(numcomp, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fec)
                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tipadq)
-                    .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipadq))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(eliminarbien)
-                        .addComponent(agregarbien))
-                    .addComponent(bient, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eliminarbien)
+                    .addComponent(agregarbien)
+                    .addComponent(bient))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(estadoactual, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rechazo, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addComponent(rechazo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Aceptar)
-                    .addComponent(Cancelar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(guardar)
+                    .addComponent(salir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         //aceptar y guardar
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_guardarActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         //cancelar
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_salirActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
-        //Agregar un bien
+        if (model.getModo() == SistemaActivos.MODO_AGREGAR) {
+            //Agregar un bien 
+        } else {
+            //genere una excepcion
+        }
     }//GEN-LAST:event_agregarbienActionPerformed
 
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
-        //Eliminar un bien selecionado
+        if (model.getModo() == SistemaActivos.MODO_AGREGAR) {
+            //Eliminar un bien selecionado
+        } else {
+            //genere una excepcion
+        }
     }//GEN-LAST:event_eliminarbienActionPerformed
 
     Solicitud toSolicitud() {
@@ -278,7 +280,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setBiens(model.bientable.rows);
         result.setCantidadBienes(Integer.getInteger(cantidadbienes.getText()));
         result.setMontoTotal(Integer.getInteger(montototal.getText()));
-        result.setEstado(estadoactual.getText());
+        result.setEstado(estadoactual.getSelectedItem().toString());
         result.setRazonRechazo(razon.getText());
         return result;
     }
@@ -318,7 +320,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         }
 
         this.rechazo.setForeground(SistemaActivos.COLOR_OK);
-        if (this.razon.getText().isEmpty()&& "PROCESADA".equals(estadoactual.getText())) {
+        if (this.razon.getText().isEmpty() && "Procesada".equals(estadoactual.getSelectedItem().toString())) {
             this.rechazo.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
@@ -326,15 +328,14 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Cancelar;
     private javax.swing.JButton agregarbien;
     private javax.swing.JLabel bient;
     private javax.swing.JTextField cantidadbienes;
     private javax.swing.JButton eliminarbien;
-    private javax.swing.JLabel estadoactual;
+    private javax.swing.JComboBox<String> estadoactual;
     private javax.swing.JLabel fec;
     private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -346,6 +347,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private javax.swing.JTextField numcomprobante;
     private javax.swing.JTextArea razon;
     private javax.swing.JLabel rechazo;
+    private javax.swing.JButton salir;
     private javax.swing.JLabel snumsol;
     private javax.swing.JTable tablabienes;
     private javax.swing.JLabel tipadq;
@@ -358,15 +360,75 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         Solicitud actual = model.getCurrent();
         this.fromSolicitud(actual);
     }
-    
-    public void fromSolicitud(Solicitud actual){
+
+    public void fromSolicitud(Solicitud actual) {
         this.numSolicitud.setEnabled(false);
         this.numSolicitud.setText(actual.getNumSolicitud().toString());
-        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-        
-        this.numcomprobante.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
+        Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
+        Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+
+        this.numcomprobante.setEnabled(add);
         numcomprobante.setText(Integer.toString(actual.getNumComprobante()));
+
+        this.fecha.setEnabled(add);
+        fecha.setDate(actual.getFecha());
+
+        this.tipoadq.setEnabled(add);
+        tipoadq.setText(actual.getTipoAdquisicion());
+
+        this.cantidadbienes.setEditable(false);
+        cantidadbienes.setText(Integer.toString(actual.getCantidadBienes()));
+
+        this.montototal.setEditable(false);
+        montototal.setText(Double.toString(actual.getMontoTotal()));
+
+        this.estadoactual.setEnabled(modify);
+        switch (actual.getEstado()) {
+            case "Recibida":
+                estadoactual.setSelectedIndex(1);
+                break;
+            case "Por Verificar":
+                estadoactual.setSelectedIndex(2);
+                break;
+            case "Rechazada":
+                estadoactual.setSelectedIndex(3);
+                break;
+            case "Aceptada":
+                estadoactual.setSelectedIndex(4);
+                break;
+            case "Incorporacion":
+                estadoactual.setSelectedIndex(5);
+                break;
+            case "En espera de rotulación":
+                estadoactual.setSelectedIndex(6);
+                break;
+            case "Asignacion responsable y dependencia":
+                estadoactual.setSelectedIndex(7);
+                break;
+            case "Procesada":
+                estadoactual.setSelectedIndex(8);
+                break;
+            default:
+                estadoactual.setSelectedIndex(0);
+                break;
+        }
         
+        this.razon.setEnabled(modify);
+        razon.setText(actual.getRazonRechazo());
         
+        if (!add) {
+            this.agregarbien.setVisible(false);
+        } else {
+            this.agregarbien.setVisible(true);
+        }
+        
+        if (!add) {
+            this.eliminarbien.setVisible(false);
+        } else {
+            this.eliminarbien.setVisible(true);
+        }
+        
+        guardar.setVisible(add);
+        this.validate();
     }
 }
