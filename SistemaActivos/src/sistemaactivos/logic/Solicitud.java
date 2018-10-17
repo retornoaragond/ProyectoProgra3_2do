@@ -1,10 +1,9 @@
 package sistemaactivos.logic;
-// Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
+// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
 
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,16 +13,16 @@ public class Solicitud  implements java.io.Serializable {
 
 
      private Integer numSolicitud;
-     private Dependencia dependencia= new Dependencia();
-     private Funcionario funcionario= new Funcionario();
+     private Dependencia dependencia;
+     private Funcionario funcionario;
      private int numComprobante;
-     private Date fecha= new Date();
+     private Date fecha;
      private String tipoAdquisicion;
      private int cantidadBienes;
      private double montoTotal;
      private String razonRechazo;
      private String estado;
-     private List biens = new ArrayList<>();
+     private Set biens = new HashSet(0);
 
     public Solicitud() {
     }
@@ -40,7 +39,7 @@ public class Solicitud  implements java.io.Serializable {
         this.razonRechazo = razonRechazo;
         this.estado = estado;
     }
-    public Solicitud(Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, List biens) {
+    public Solicitud(Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, Set biens) {
        this.dependencia = dependencia;
        this.funcionario = funcionario;
        this.numComprobante = numComprobante;
@@ -123,11 +122,11 @@ public class Solicitud  implements java.io.Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public List getBiens() {
+    public Set getBiens() {
         return this.biens;
     }
     
-    public void setBiens(List biens) {
+    public void setBiens(Set biens) {
         this.biens = biens;
     }
 

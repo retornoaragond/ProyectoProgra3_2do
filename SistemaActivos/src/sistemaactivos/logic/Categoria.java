@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
+// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,44 +11,52 @@ import java.util.Set;
 public class Categoria  implements java.io.Serializable {
 
 
-     private int id;
-     private String catergoria;
-     private Set activos = new HashSet(0);
+     private Integer id;
+     private int incremento;
+     private String descripcion;
+     private Set biens = new HashSet(0);
 
     public Categoria() {
     }
 
 	
-    public Categoria(int id, String catergoria) {
-        this.id = id;
-        this.catergoria = catergoria;
+    public Categoria(int incremento, String descripcion) {
+        this.incremento = incremento;
+        this.descripcion = descripcion;
     }
-    public Categoria(int id, String catergoria, Set activos) {
-       this.id = id;
-       this.catergoria = catergoria;
-       this.activos = activos;
+    public Categoria(int incremento, String descripcion, Set biens) {
+       this.incremento = incremento;
+       this.descripcion = descripcion;
+       this.biens = biens;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-    public String getCatergoria() {
-        return this.catergoria;
+    public int getIncremento() {
+        return this.incremento;
     }
     
-    public void setCatergoria(String catergoria) {
-        this.catergoria = catergoria;
+    public void setIncremento(int incremento) {
+        this.incremento = incremento;
     }
-    public Set getActivos() {
-        return this.activos;
+    public String getDescripcion() {
+        return this.descripcion;
     }
     
-    public void setActivos(Set activos) {
-        this.activos = activos;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    public Set getBiens() {
+        return this.biens;
+    }
+    
+    public void setBiens(Set biens) {
+        this.biens = biens;
     }
 
 

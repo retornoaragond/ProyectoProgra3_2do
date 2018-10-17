@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
+// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,7 +14,6 @@ public class Puesto  implements java.io.Serializable {
      private int codigo;
      private String puesto;
      private Set labors = new HashSet(0);
-     private Set usuarios = new HashSet(0);
 
     public Puesto() {
     }
@@ -24,11 +23,10 @@ public class Puesto  implements java.io.Serializable {
         this.codigo = codigo;
         this.puesto = puesto;
     }
-    public Puesto(int codigo, String puesto, Set labors, Set usuarios) {
+    public Puesto(int codigo, String puesto, Set labors) {
        this.codigo = codigo;
        this.puesto = puesto;
        this.labors = labors;
-       this.usuarios = usuarios;
     }
    
     public int getCodigo() {
@@ -51,13 +49,6 @@ public class Puesto  implements java.io.Serializable {
     
     public void setLabors(Set labors) {
         this.labors = labors;
-    }
-    public Set getUsuarios() {
-        return this.usuarios;
-    }
-    
-    public void setUsuarios(Set usuarios) {
-        this.usuarios = usuarios;
     }
 
 

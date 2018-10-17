@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
+// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

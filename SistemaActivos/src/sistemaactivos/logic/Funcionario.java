@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 14/10/2018 01:50:32 AM by Hibernate Tools 4.3.1
+// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,6 +14,7 @@ public class Funcionario  implements java.io.Serializable {
      private String id;
      private String nombre;
      private Set solicituds = new HashSet(0);
+     private Set usuarios = new HashSet(0);
      private Set labors = new HashSet(0);
 
     public Funcionario() {
@@ -24,10 +25,11 @@ public class Funcionario  implements java.io.Serializable {
         this.id = id;
         this.nombre = nombre;
     }
-    public Funcionario(String id, String nombre, Set solicituds, Set labors) {
+    public Funcionario(String id, String nombre, Set solicituds, Set usuarios, Set labors) {
        this.id = id;
        this.nombre = nombre;
        this.solicituds = solicituds;
+       this.usuarios = usuarios;
        this.labors = labors;
     }
    
@@ -51,6 +53,13 @@ public class Funcionario  implements java.io.Serializable {
     
     public void setSolicituds(Set solicituds) {
         this.solicituds = solicituds;
+    }
+    public Set getUsuarios() {
+        return this.usuarios;
+    }
+    
+    public void setUsuarios(Set usuarios) {
+        this.usuarios = usuarios;
     }
     public Set getLabors() {
         return this.labors;
