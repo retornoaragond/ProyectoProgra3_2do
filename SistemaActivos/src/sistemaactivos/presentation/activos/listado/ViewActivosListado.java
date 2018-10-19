@@ -5,21 +5,71 @@
  */
 package sistemaactivos.presentation.activos.listado;
 
-import sistemaactivos.presentation.activos.edicion.*;
+import java.util.Observable;
+import sistemaactivos.logic.Activo;
+
 
 /**
  *
  * @author ExtremeTech
  */
-public class ViewActivosListado extends javax.swing.JInternalFrame {
+public class ViewActivosListado extends javax.swing.JInternalFrame implements java.util.Observer {
 
-    /**
-     * Creates new form ViewActivosEdicion
-     */
+    ControllerActivosListado controller;
+    ModelActivosListado model;
+
+    
+    public void setController(ControllerActivosListado controller) {
+        this.controller = controller;
+    }
+
+    public ControllerActivosListado getController() {
+        return controller;
+    }
+
+    public void setModel(ModelActivosListado model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+
+    public ModelActivosListado getModel() {
+        return model;
+    }
+    
+    
     public ViewActivosListado() {
+         super("", false, true);
         initComponents();
     }
 
+    /*
+    public void limpiarErrores() {
+        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK);
+    }
+    */
+    
+    /*
+    boolean validar(){
+        boolean error=false;
+        
+        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK); 
+        if (this.etiquetaNumerodeSolicitud.getText().isEmpty()){
+            this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_ERROR);
+            error=true;
+        }
+        return !error;
+    }
+    
+    */
+
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,21 +79,82 @@ public class ViewActivosListado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Categoria", "Descripcion", "Dependencia", "Responsable", " " }));
+        jComboBox1.setRequestFocusEnabled(false);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+      public void fromSolicitud(Solicitud s){
+      textFieldNumSolicitud.setText(s.getNumSolicitud().toString());
+    }
+    */
+    
+    /*
+    Activo toActivo(){
+     Activo result= new Activo();
+     result.setNumSolicitud(Integer.parseInt(textFieldNumSolicitud.getText()));
+     return result;
+    }
+  */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        //this.limpiarErrores();
+        Activo acti= model.getFilter();
+       // this.fromSolicitud(acti);
+        //solicitudesFld.setModel(model.getSolicitudes());
+            
+    }
 }

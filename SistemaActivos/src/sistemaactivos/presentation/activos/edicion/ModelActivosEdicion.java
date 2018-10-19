@@ -18,7 +18,6 @@ import sistemaactivos.logic.Solicitud;
  */
 public class ModelActivosEdicion extends java.util.Observable {
     Activo current;
-    //ActivoTableModel activoTable;
     Activo activoSeleccionado;
     int modo;
             
@@ -26,13 +25,20 @@ public class ModelActivosEdicion extends java.util.Observable {
     public ModelActivosEdicion(){
     this.reset();
      }
-   
+  
+    /*
+    public void reset(List<Bien> bienes){      
+        setEstadosCiviles(estadosCiviles);
+        setCurrent(new Persona());
+    }
+    
+    
+    */
+    
+    
     public void reset(int modo, Activo current) {
         this.setModo(modo);
         this.setCurrent(current);
-        List<Activo> rows = new ArrayList<>();
-        this.activoSeleccionado = null;
-        //this.setActivoTable(rows);
         this.commit();
     }
    
@@ -40,13 +46,7 @@ public class ModelActivosEdicion extends java.util.Observable {
         //this.reset(Application.MODO_AGREGAR,new Activo());
     }
 
-    
-    
-    //public activoTableModel getActivotable() {
-     //   return activotable;
-   // }
-
-    public void setBientable(List<Activo> activos) {
+        public void setBientable(List<Activo> activos) {
       //  int[] cols = {ActivoTableModel.SERIAL, BienTableModel.DESCRIPCION, BienTableModel.MARCA, BienTableModel.MODELO, BienTableModel.PRECIOUNITARIO};
         //this.activoTable = new activoTableModel(activos, cols);
         
@@ -77,6 +77,21 @@ public class ModelActivosEdicion extends java.util.Observable {
         this.modo = modo;
     }
     
+   
+    // creo que no se ocupa
+    /*  
+     public ComboBoxModel<EstadoCivil> getEstadosCiviles() {
+        return estadosCiviles;
+    }
+    */
+    
+    // creo que no se ocupa
+      public void setEstadosCiviles(List<Bien> bienes) {
+        List<Bien> es;
+      //  this.bienes = new DefaultComboBoxModel(estadosCiviles.toArray());
+        this.commit();    
+    }
+
     
      @Override
     public void addObserver(Observer o) {

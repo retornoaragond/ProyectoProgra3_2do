@@ -79,7 +79,7 @@ public class ControllerSolicitudListado {
         Application.Solicitud_CONTROLLER.reset(modo, seleccionada);
         Application.Solicitud_CONTROLLER.show(at);
     }
-
+                       
    */
    public void borrar(int row){  
         Solicitud seleccionada = model.getSolicitudes().getRowAt(row); 
