@@ -24,6 +24,7 @@ public class BienTableModel extends AbstractTableModel {
     public static final int MARCA = 2;
     public static final int MODELO = 3;
     public static final int PRECIOUNITARIO = 4;
+    public static final int CANTIDAD = 5;
 
     public BienTableModel(List<Bien> rows, int[] cols) {
         this.rows = rows;
@@ -55,6 +56,8 @@ public class BienTableModel extends AbstractTableModel {
                 return bien.getModelo();
             case PRECIOUNITARIO:
                 return bien.getPrecioUnitario();
+            case CANTIDAD:
+                return bien.getCantidad();
             default:
                 return "";
         }
@@ -85,6 +88,7 @@ public class BienTableModel extends AbstractTableModel {
         colNames[MARCA] = "Marca";
         colNames[MODELO] = "Modelo";
         colNames[PRECIOUNITARIO] = "Precio Unitario";
+        colNames[CANTIDAD]="Cantidad";
     }
 
     public List<Bien> getRows() {
@@ -94,6 +98,5 @@ public class BienTableModel extends AbstractTableModel {
     public void setRows(List<Bien> rows) {
         this.rows = rows;
     }
-    
-    
+
 }

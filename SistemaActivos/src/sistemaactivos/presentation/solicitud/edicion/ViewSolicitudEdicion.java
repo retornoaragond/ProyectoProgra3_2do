@@ -5,9 +5,9 @@
  */
 package sistemaactivos.presentation.solicitud.edicion;
 
-import java.util.Arrays;
 import java.util.Observable;
 import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Solicitud;
 
 /**
@@ -77,6 +77,20 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         guardar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         estadoactual = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        Lserial = new javax.swing.JLabel();
+        Ldescripcion = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        Lmarca = new javax.swing.JLabel();
+        Lmodelo = new javax.swing.JLabel();
+        LprecioU = new javax.swing.JLabel();
+        Lcantidad = new javax.swing.JLabel();
+        serial = new javax.swing.JTextField();
+        descripcion = new javax.swing.JTextField();
+        marca = new javax.swing.JTextField();
+        modelo = new javax.swing.JTextField();
+        precioUnidad = new javax.swing.JTextField();
+        cantbien = new javax.swing.JTextField();
 
         setTitle("SOLICITUD");
 
@@ -123,7 +137,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         razon.setRows(5);
         jScrollPane2.setViewportView(razon);
 
-        bient.setText("Bienes inmuebles");
+        bient.setText("Bienes Inmuebles");
 
         fecha.setToolTipText("");
 
@@ -147,55 +161,103 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitando", "Recibida", "Por Verificar", "Rechazada", "Aceptada", "Incorporacion", "En espera de rotulación", "Asignacion responsable y dependencia", "Procesada" }));
 
+        Lserial.setText("Serial");
+
+        Ldescripcion.setText("Descripcion");
+
+        Lmarca.setText("Marca");
+
+        Lmodelo.setText("Modelo");
+
+        LprecioU.setText("Precio Unitario");
+
+        Lcantidad.setText("Cantidad");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(guardar)
-                        .addGap(26, 26, 26)
-                        .addComponent(salir))
+                        .addComponent(bient)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tipadq)
-                                    .addComponent(fec)
-                                    .addComponent(numcomp)
-                                    .addComponent(snumsol))
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(numSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(bient)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(29, 29, 29)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel5)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                                         .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jScrollPane1)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(rechazo))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(rechazo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Lserial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Lmarca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Ldescripcion)
+                                    .addComponent(Lmodelo)
+                                    .addComponent(Lcantidad))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(descripcion)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cantbien, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(LprecioU)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(precioUnidad))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(32, 32, 32))))))
+                            .addComponent(jSeparator1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tipadq)
+                                            .addComponent(fec)
+                                            .addComponent(numcomp)
+                                            .addComponent(snumsol))
+                                        .addGap(9, 9, 9)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(numcomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(numSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(34, 34, 34))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(guardar)
+                .addGap(18, 18, 18)
+                .addComponent(salir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,40 +278,66 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipadq))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(agregarbien)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(eliminarbien)
-                        .addComponent(bient)))
+                .addComponent(bient)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cantidadbienes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(Lserial)
+                    .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lmarca)
+                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addComponent(rechazo)
+                    .addComponent(Ldescripcion)
+                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lmodelo)
+                    .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LprecioU)
+                    .addComponent(precioUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lcantidad)
+                    .addComponent(cantbien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarbien)
+                    .addComponent(eliminarbien))
+                .addGap(13, 13, 13)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(estadoactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidadbienes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(montototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addComponent(rechazo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
-                    .addComponent(salir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        //aceptar y guardar
+        if(validar()){
+            
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -257,19 +345,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }//GEN-LAST:event_salirActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
-        if (model.getModo() == SistemaActivos.MODO_AGREGAR) {
-            //Agregar un bien 
-        } else {
-            //genere una excepcion
-        }
+        //Agregar un bien 
     }//GEN-LAST:event_agregarbienActionPerformed
 
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
-        if (model.getModo() == SistemaActivos.MODO_AGREGAR) {
-            //Eliminar un bien selecionado
-        } else {
-            //genere una excepcion
-        }
+//Eliminar un bien selecionado
     }//GEN-LAST:event_eliminarbienActionPerformed
 
     Solicitud toSolicitud() {
@@ -277,11 +357,22 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setNumComprobante(Integer.getInteger(numcomprobante.getText()));
         result.setFecha(fecha.getDate());
         result.setTipoAdquisicion(tipoadq.getText());
-        result.setBiens(model.bientable.rows);
+        result.setBiens(model.bientable.getRows());
         result.setCantidadBienes(Integer.getInteger(cantidadbienes.getText()));
         result.setMontoTotal(Integer.getInteger(montototal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
         result.setRazonRechazo(razon.getText());
+        return result;
+    }
+
+    Bien toBien() {
+        Bien result = new Bien();
+        result.setSerial(Integer.getInteger(this.serial.getText()));
+        result.setMarca(this.marca.getText());
+        result.setDecripcion(this.descripcion.getText());
+        result.setModelo(this.modelo.getText());
+        result.setPrecioUnitario(Integer.getInteger(this.precioUnidad.getText()));
+        result.setCantidad(Integer.getInteger(this.cantbien.getText()));
         return result;
     }
 
@@ -291,6 +382,12 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.tipadq.setForeground(SistemaActivos.COLOR_OK);
         this.bient.setForeground(SistemaActivos.COLOR_OK);
         this.rechazo.setForeground(SistemaActivos.COLOR_OK);
+        this.Lcantidad.setForeground(SistemaActivos.COLOR_OK);
+        this.Ldescripcion.setForeground(SistemaActivos.COLOR_OK);
+        this.Lmarca.setForeground(SistemaActivos.COLOR_OK);
+        this.Lmodelo.setForeground(SistemaActivos.COLOR_OK);
+        this.LprecioU.setForeground(SistemaActivos.COLOR_OK);
+        this.Lserial.setForeground(SistemaActivos.COLOR_OK);
     }
 
     boolean validar() {
@@ -327,10 +424,76 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         return !error;
     }
 
+    boolean validarBien() {
+        boolean error = false;
+        this.Lcantidad.setForeground(SistemaActivos.COLOR_OK);
+        if (this.cantbien.getText().isEmpty()) {
+            this.Lcantidad.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+        try {
+            Integer.parseInt(this.cantbien.getText());
+        } catch (NumberFormatException e) {
+            this.Lcantidad.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.Ldescripcion.setForeground(SistemaActivos.COLOR_OK);
+        if (this.descripcion.getText().isEmpty()) {
+            this.Ldescripcion.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.Lmarca.setForeground(SistemaActivos.COLOR_OK);
+        if (this.marca.getText().isEmpty()) {
+            this.Lmarca.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.Lmodelo.setForeground(SistemaActivos.COLOR_OK);
+        if (this.modelo.getText().isEmpty()) {
+            this.Lmodelo.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.LprecioU.setForeground(SistemaActivos.COLOR_OK);
+        if (this.precioUnidad.getText().isEmpty()) {
+            this.LprecioU.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+        try {
+            Double.parseDouble(this.precioUnidad.getText());
+        } catch (NumberFormatException e) {
+            this.LprecioU.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.Lserial.setForeground(SistemaActivos.COLOR_OK);
+        if (this.serial.getText().isEmpty()) {
+            this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+        try {
+            Integer.parseInt(this.serial.getText());
+        } catch (NumberFormatException e) {
+            this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+        return !error;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lcantidad;
+    private javax.swing.JLabel Ldescripcion;
+    private javax.swing.JLabel Lmarca;
+    private javax.swing.JLabel Lmodelo;
+    private javax.swing.JLabel LprecioU;
+    private javax.swing.JLabel Lserial;
     private javax.swing.JButton agregarbien;
     private javax.swing.JLabel bient;
+    private javax.swing.JTextField cantbien;
     private javax.swing.JTextField cantidadbienes;
+    private javax.swing.JTextField descripcion;
     private javax.swing.JButton eliminarbien;
     private javax.swing.JComboBox<String> estadoactual;
     private javax.swing.JLabel fec;
@@ -341,13 +504,19 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField marca;
+    private javax.swing.JTextField modelo;
     private javax.swing.JTextField montototal;
     private javax.swing.JTextField numSolicitud;
     private javax.swing.JLabel numcomp;
     private javax.swing.JTextField numcomprobante;
+    private javax.swing.JTextField precioUnidad;
     private javax.swing.JTextArea razon;
     private javax.swing.JLabel rechazo;
     private javax.swing.JButton salir;
+    private javax.swing.JTextField serial;
     private javax.swing.JLabel snumsol;
     private javax.swing.JTable tablabienes;
     private javax.swing.JLabel tipadq;
@@ -359,6 +528,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.limpiarErrores();
         Solicitud actual = model.getCurrent();
         this.fromSolicitud(actual);
+        tablabienes.setModel(model.getBientable());
     }
 
     public void fromSolicitud(Solicitud actual) {
@@ -412,21 +582,28 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 estadoactual.setSelectedIndex(0);
                 break;
         }
-        
+
         this.razon.setEnabled(modify);
         razon.setText(actual.getRazonRechazo());
-        
+
         if (!add) {
             this.agregarbien.setVisible(false);
         } else {
             this.agregarbien.setVisible(true);
         }
-        
+
         if (!add) {
             this.eliminarbien.setVisible(false);
         } else {
             this.eliminarbien.setVisible(true);
         }
+        
+        this.cantbien.setEnabled(add);
+        this.descripcion.setEnabled(add);
+        this.marca.setEnabled(add);
+        this.modelo.setEnabled(add);
+        this.precioUnidad.setEnabled(add);
+        this.serial.setEnabled(add);
         
         guardar.setVisible(add);
         this.validate();

@@ -1,0 +1,17 @@
+recibida//automatico
+por verificar//secretaria
+rechazada//secretaria el por que?
+aceptad//secretaria
+incorporacion//registrador
+en espera de rotulacion //registrador
+asignacion responsable y dependencia//registrador
+procesada//registrador
+
+"Recibida",
+"Por Verificar",
+"Rechazada",
+"Aceptad",
+"Incorporacion",
+"En espera de rotulación",
+"Asignacion responsable y dependencia",
+"Procesada"
