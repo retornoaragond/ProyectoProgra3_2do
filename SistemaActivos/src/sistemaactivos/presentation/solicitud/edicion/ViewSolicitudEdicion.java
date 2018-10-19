@@ -78,7 +78,6 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         salir = new javax.swing.JButton();
         estadoactual = new javax.swing.JComboBox<>();
 
-        setForeground(new java.awt.Color(0, 0, 0));
         setTitle("SOLICITUD");
 
         numcomp.setText("Número de comprobante ");
@@ -218,10 +217,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                     .addComponent(tipoadq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipadq))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eliminarbien)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(agregarbien)
-                    .addComponent(bient))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(eliminarbien)
+                        .addComponent(bient)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
