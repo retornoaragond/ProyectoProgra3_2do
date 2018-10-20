@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
+// Generated 19/10/2018 08:41:42 PM by Hibernate Tools 4.3.1
 
 
 
@@ -11,14 +11,16 @@ public class Activo  implements java.io.Serializable {
 
      private String codigoId;
      private Bien bien;
+     private Labor labor;
      private int laborActivo;
 
     public Activo() {
     }
 
-    public Activo(String codigoId, Bien bien, int laborActivo) {
+    public Activo(String codigoId, Bien bien, Labor labor, int laborActivo) {
        this.codigoId = codigoId;
        this.bien = bien;
+       this.labor = labor;
        this.laborActivo = laborActivo;
     }
    
@@ -35,6 +37,13 @@ public class Activo  implements java.io.Serializable {
     
     public void setBien(Bien bien) {
         this.bien = bien;
+    }
+    public Labor getLabor() {
+        return this.labor;
+    }
+    
+    public void setLabor(Labor labor) {
+        this.labor = labor;
     }
     public int getLaborActivo() {
         return this.laborActivo;

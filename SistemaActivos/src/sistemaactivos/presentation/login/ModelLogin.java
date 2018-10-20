@@ -5,10 +5,42 @@
  */
 package sistemaactivos.presentation.login;
 
+import sistemaactivos.logic.Usuario;
+
 /**
  *
  * @author ExtremeTech
  */
-public class ModelLogin {
+public class ModelLogin extends java.util.Observable{
+    Usuario current;
+
+    public ModelLogin() {
+        this.reset();
+    }
+    
+    public void reset(){
+        setCurrent(new Usuario());        
+    }
+    
+    public Usuario getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Usuario current) {
+        this.current = current;
+        this.commit();
+    }
+
+    @Override
+    public void addObserver(java.util.Observer o) {
+        super.addObserver(o);
+        setChanged();
+        notifyObservers();
+    }
+
+    public void commit(){
+        setChanged();
+        notifyObservers();       
+    }     
     
 }

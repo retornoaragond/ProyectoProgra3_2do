@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.solicitud.edicion;
 
+import java.util.HashSet;
 import java.util.Observable;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
@@ -357,7 +358,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setNumComprobante(Integer.getInteger(numcomprobante.getText()));
         result.setFecha(fecha.getDate());
         result.setTipoAdquisicion(tipoadq.getText());
-        result.setBiens(model.bientable.getRows());
+        result.setBiens(new HashSet<>(model.bientable.getRows()));
         result.setCantidadBienes(Integer.getInteger(cantidadbienes.getText()));
         result.setMontoTotal(Integer.getInteger(montototal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());

@@ -5,6 +5,13 @@
  */
 package sistemaactivos.presentation.funcionarios.edicion;
 
+import java.awt.Color;
+import java.util.Arrays;
+import javafx.application.Application;
+import javax.swing.JOptionPane;
+import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Funcionario;
+
 /**
  *
  * @author ExtremeTech
@@ -27,21 +34,211 @@ public class ViewFuncionariosEdicion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        guardarFld = new javax.swing.JButton();
+        IDLabel = new javax.swing.JLabel();
+        IDTextField = new javax.swing.JTextField();
+        NombreLabel = new javax.swing.JLabel();
+        NombreTextField = new javax.swing.JTextField();
+        SolicitudesLabel = new javax.swing.JLabel();
+        LaborsComboBox = new javax.swing.JComboBox<>();
+        LaborsLabel = new javax.swing.JLabel();
+        SolicitudesComboBox = new javax.swing.JComboBox<>();
+        Guadar = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
+
+        guardarFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarFldActionPerformed(evt);
+            }
+        });
+
+        IDLabel.setText("ID");
+
+        NombreLabel.setText("Nombre");
+
+        SolicitudesLabel.setText("Solicitudes");
+
+        LaborsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LaborsLabel.setText("Labors");
+
+        SolicitudesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Guadar.setText("Guardar");
+        Guadar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuadarActionPerformed(evt);
+            }
+        });
+
+        Atras.setText("Atras");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(IDLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(NombreLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SolicitudesLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(SolicitudesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LaborsLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Guadar)
+                                .addGap(18, 18, 18)
+                                .addComponent(Atras))
+                            .addComponent(LaborsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IDLabel)
+                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NombreLabel)
+                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SolicitudesLabel)
+                    .addComponent(SolicitudesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LaborsLabel)
+                    .addComponent(LaborsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Guadar)
+                    .addComponent(Atras))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void guardarFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarFldActionPerformed
+     
+    }//GEN-LAST:event_guardarFldActionPerformed
+
+    private void GuadarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarActionPerformed
+         if(this.validar()){
+            try {
+                //this.controller.guardar(this.toPersona());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }    
+    }//GEN-LAST:event_GuadarActionPerformed
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    boolean validar(){
+        boolean error=false;
+        
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
+        if (this.IDLabel.getText().isEmpty()){
+            this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
+             error=true;
+        }
+        
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);        
+        if (this.NombreTextField.getText().isEmpty()){
+            this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error=true;
+        }
+        
+        return !error; 
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton Guadar;
+    private javax.swing.JLabel IDLabel;
+    private javax.swing.JTextField IDTextField;
+    private javax.swing.JComboBox<String> LaborsComboBox;
+    private javax.swing.JLabel LaborsLabel;
+    private javax.swing.JLabel NombreLabel;
+    private javax.swing.JTextField NombreTextField;
+    private javax.swing.JComboBox<String> SolicitudesComboBox;
+    private javax.swing.JLabel SolicitudesLabel;
+    public javax.swing.JButton guardarFld;
     // End of variables declaration//GEN-END:variables
+
+
+    Funcionario toFuncionario(){
+        Funcionario result = new Funcionario();
+        result.setId(this.IDTextField.getText());
+        result.setNombre(this.NombreTextField.getText());
+        //result.setLabors(new set(this.LaborsComboBox));
+        //result.setSolicituds(new set(this.SolicitudesComboBox));
+        
+        return result;
+    }
+    
+    public void limpiarErrores(){
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+   }  
+    ControllerFuncionariosEdicion controller;
+    ModelFuncionariosEdicion model;
+    
+    public void setController(sistemaactivos.presentation.funcionarios.edicion.ControllerFuncionariosEdicion controller){
+        this.controller=controller;
+    }
+
+    public ControllerFuncionariosEdicion getController() {
+        return controller;
+    }
+    
+    
+    public void setModel(sistemaactivos.presentation.funcionarios.edicion.ModelFuncionariosEdicion model){
+        this.model=model;
+         //model.addObserver(this);
+    }
+
+    public ModelFuncionariosEdicion getModel() {
+        return model;
+    }
+    public void update(java.util.Observable updatedModel,Object parametros){
+       this.limpiarErrores();
+       //Funcionario actual = model.getCurrent();
+       //this.fromPersona(actual);
+   }
+   public void fromFuncionario(Funcionario actual){
+       
+       this.IDTextField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
+       this.IDTextField.setText(actual.getId());
+       Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+        
+        //this.NombreTextField.setEnabled(editable);
+        this.NombreTextField.setText(actual.getNombre());
+}
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/10/2018 08:41:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="paquete.Solicitud" table="solicitud" catalog="sistemaactivos" optimistic-lock="version">
+        <id name="numSolicitud" type="java.lang.Integer">
+            <column name="numSolicitud" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dependencia" class="paquete.Dependencia" fetch="select">
+            <column name="dependenciaSolicitud" not-null="true" />
+        </many-to-one>
+        <many-to-one name="funcionario" class="paquete.Funcionario" fetch="select">
+            <column name="funcionarioSolicitud" length="42" />
+        </many-to-one>
+        <property name="numComprobante" type="int">
+            <column name="numComprobante" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true" />
+        </property>
+        <property name="tipoAdquisicion" type="string">
+            <column name="tipoAdquisicion" length="45" not-null="true" />
+        </property>
+        <property name="cantidadBienes" type="int">
+            <column name="cantidadBienes" not-null="true" />
+        </property>
+        <property name="montoTotal" type="double">
+            <column name="montoTotal" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="razonRechazo" type="string">
+            <column name="razonRechazo" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="biens" table="bien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="solicitudBien" not-null="true" />
+            </key>
+            <one-to-many class="paquete.Bien" />
+        </set>
+    </class>
+</hibernate-mapping>

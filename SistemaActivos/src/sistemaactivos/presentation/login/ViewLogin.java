@@ -5,6 +5,9 @@
  */
 package sistemaactivos.presentation.login;
 
+import javax.swing.JOptionPane;
+import sistemaactivos.logic.Usuario;
+
 /**
  *
  * @author ExtremeTech
@@ -29,21 +32,29 @@ public class ViewLogin extends javax.swing.JInternalFrame {
 
         IDLabel = new javax.swing.JLabel();
         IDTXTField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        ClaveLabel = new javax.swing.JLabel();
+        LoginButon = new javax.swing.JButton();
+        JclaveField = new javax.swing.JPasswordField();
+        Exit = new javax.swing.JButton();
 
         IDLabel.setText("ID");
         IDLabel.setToolTipText("");
 
-        IDTXTField.addActionListener(new java.awt.event.ActionListener() {
+        ClaveLabel.setText("Clave");
+
+        LoginButon.setText("Login");
+        LoginButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDTXTFieldActionPerformed(evt);
+                LoginButonActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Clave");
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,18 +62,18 @@ public class ViewLogin extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ClaveLabel)
                     .addComponent(IDLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                        .addComponent(LoginButon)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Exit))
                     .addComponent(IDTXTField)
-                    .addComponent(jTextField1))
-                .addContainerGap(64, Short.MAX_VALUE))
+                    .addComponent(JclaveField, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,29 +84,102 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                     .addComponent(IDTXTField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(ClaveLabel)
+                    .addComponent(JclaveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginButon)
+                    .addComponent(Exit))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDTXTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTXTFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IDTXTFieldActionPerformed
+    private void LoginButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButonActionPerformed
+          if(this.validar()){
+            try {
+                //this.controller.login(this.toUsuario());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_LoginButonActionPerformed
 
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        //this.controller.exit();
+    }//GEN-LAST:event_ExitActionPerformed
 
+    public boolean validar(){
+        boolean error=false;
+        
+        //this.IDLabel.setForeground(Application.COLOR_OK); 
+        if (this.IDTXTField.getText().isEmpty()){
+            //this.IDLabel.setForeground(Application.COLOR_ERROR);
+             error=true;
+        }
+        
+        //this.IDLabel.setForeground(Application.COLOR_OK); 
+        if ( (new String(this.JclaveField.getPassword())).isEmpty()){
+            //this.ClaveLabel.setForeground(Application.COLOR_ERROR);
+             error=true;
+        }
+        return !error;
+    }
+    
+     Usuario toUsuario(){
+        Usuario result = new Usuario();
+        result.setId(Integer.parseInt(this.IDTXTField.getText()));
+        result.setPass(new String(this.JclaveField.getPassword()));
+        return result;
+   }
+
+    public void fromUsuario(Usuario current){ 
+       this.IDTXTField.setText(String.valueOf(current.getId()));
+       this.JclaveField.setText(current.getPass());
+   }
+    
+ public void limpiarErrores(){
+       //this.IDLabel.setForeground(Application.COLOR_OK); 
+       //this.ClaveLabel.setForeground(Application.COLOR_OK); 
+   }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ClaveLabel;
+    private javax.swing.JButton Exit;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTXTField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JPasswordField JclaveField;
+    private javax.swing.JButton LoginButon;
     // End of variables declaration//GEN-END:variables
+
+    ControllerLogin controller;
+    ModelLogin model;
+    
+    public void setController(ControllerLogin controller){
+        this.controller=controller;
+    }
+
+    public ControllerLogin getController() {
+        return controller;
+    }
+    
+    public void setModel(ModelLogin model){
+        this.model=model;
+        //model.addObserver(this);
+    }
+
+    public ModelLogin getModel() {
+        return model;
+    }
+    
+   public void update(java.util.Observable updatedModel,Object parametros){
+       this.limpiarErrores();
+       //Usuario current = model.getCurrent();
+       //this.fromUsuario(current);
+    } 
 }

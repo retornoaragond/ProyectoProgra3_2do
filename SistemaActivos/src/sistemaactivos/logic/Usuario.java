@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 17/10/2018 12:42:31 AM by Hibernate Tools 4.3.1
+// Generated 19/10/2018 08:41:42 PM by Hibernate Tools 4.3.1
 
 
 
