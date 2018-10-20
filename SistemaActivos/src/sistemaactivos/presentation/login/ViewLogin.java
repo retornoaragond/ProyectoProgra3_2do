@@ -33,28 +33,20 @@ public class ViewLogin extends javax.swing.JInternalFrame {
         IDLabel = new javax.swing.JLabel();
         IDTXTField = new javax.swing.JTextField();
         ClaveLabel = new javax.swing.JLabel();
-        LoginButon = new javax.swing.JButton();
         JclaveField = new javax.swing.JPasswordField();
-        Exit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         IDLabel.setText("ID");
         IDLabel.setToolTipText("");
 
         ClaveLabel.setText("Clave");
 
-        LoginButon.setText("Login");
-        LoginButon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButonActionPerformed(evt);
-            }
-        });
+        JclaveField.setText("jPasswordField1");
 
-        Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitActionPerformed(evt);
-            }
-        });
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,12 +60,12 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LoginButon)
-                        .addGap(18, 18, 18)
-                        .addComponent(Exit))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
                     .addComponent(IDTXTField)
-                    .addComponent(JclaveField, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                    .addComponent(JclaveField))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,32 +78,15 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClaveLabel)
                     .addComponent(JclaveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginButon)
-                    .addComponent(Exit))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LoginButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButonActionPerformed
-          if(this.validar()){
-            try {
-                //this.controller.login(this.toUsuario());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_LoginButonActionPerformed
-
-    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        //this.controller.exit();
-    }//GEN-LAST:event_ExitActionPerformed
 
     public boolean validar(){
         boolean error=false;
@@ -150,11 +125,11 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClaveLabel;
-    private javax.swing.JButton Exit;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTXTField;
     private javax.swing.JPasswordField JclaveField;
-    private javax.swing.JButton LoginButon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 
     ControllerLogin controller;
