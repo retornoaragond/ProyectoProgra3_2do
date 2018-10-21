@@ -17,9 +17,11 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     /**
      * Creates new form viewLogin
      */
-    public ViewLogin() {
+     public ViewLogin() {
         initComponents();
+        this.getRootPane().setDefaultButton(loginFld);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +36,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
         IDTXTField = new javax.swing.JTextField();
         ClaveLabel = new javax.swing.JLabel();
         JclaveField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        loginFld = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         IDLabel.setText("ID");
@@ -44,7 +46,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
 
         JclaveField.setText("jPasswordField1");
 
-        jButton1.setText("jButton1");
+        loginFld.setText("jButton1");
 
         jButton2.setText("jButton2");
 
@@ -60,7 +62,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(loginFld)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addComponent(IDTXTField)
@@ -80,7 +82,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                     .addComponent(JclaveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(loginFld)
                     .addComponent(jButton2))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -128,8 +130,8 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTXTField;
     private javax.swing.JPasswordField JclaveField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton loginFld;
     // End of variables declaration//GEN-END:variables
 
     ControllerLogin controller;
