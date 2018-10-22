@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/10/2018 08:41:43 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/10/2018 02:31:40 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="paquete.Bien" table="bien" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="serial" type="int">
-            <column name="serial" />
+    <class name="sistemaactivos.logic.Bien" table="bien" catalog="sistemaactivos" optimistic-lock="version">
+        <id name="serial" type="string">
+            <column name="serial" length="25" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="categoria" class="paquete.Categoria" fetch="select">
+        <many-to-one name="categoria" class="generador.Categoria" fetch="select">
             <column name="categoriaBien" />
         </many-to-one>
-        <many-to-one name="solicitud" class="paquete.Solicitud" fetch="select">
-            <column name="solicitudBien" not-null="true" />
+        <many-to-one name="solicitud" class="generador.Solicitud" fetch="select">
+            <column name="solicitudBien" length="45" not-null="true" />
         </many-to-one>
         <property name="decripcion" type="string">
             <column name="decripcion" length="45" not-null="true" />
@@ -31,9 +31,9 @@
         </property>
         <set name="activos" table="activo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="bienActivo" not-null="true" />
+                <column name="bienActivo" length="25" not-null="true" />
             </key>
-            <one-to-many class="paquete.Activo" />
+            <one-to-many class="generador.Activo" />
         </set>
     </class>
 </hibernate-mapping>

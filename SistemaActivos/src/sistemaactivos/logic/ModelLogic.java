@@ -26,6 +26,16 @@ public class ModelLogic {
         dao = new Dao();
     }
     
+    public  Usuario getUsuario(String id, String clave) throws Exception{
+        Usuario u= dao.usuarioGet(id);
+        if (u.getPass().equals(clave)){
+            return u;
+        }
+        else{
+            throw new Exception ("Clave incorrecta");
+        }
+    }
+    
     public void close(){
         dao.close();
     }

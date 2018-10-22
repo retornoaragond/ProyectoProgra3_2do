@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/10/2018 08:41:43 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/10/2018 02:31:40 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="paquete.Solicitud" table="solicitud" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="numSolicitud" type="java.lang.Integer">
-            <column name="numSolicitud" />
-            <generator class="identity" />
+    <class name="sistemaactivos.logic.Solicitud" table="solicitud" catalog="sistemaactivos" optimistic-lock="version">
+        <id name="numSolicitud" type="string">
+            <column name="numSolicitud" length="45" />
+            <generator class="assigned" />
         </id>
-        <many-to-one name="dependencia" class="paquete.Dependencia" fetch="select">
+        <many-to-one name="dependencia" class="generador.Dependencia" fetch="select">
             <column name="dependenciaSolicitud" not-null="true" />
         </many-to-one>
-        <many-to-one name="funcionario" class="paquete.Funcionario" fetch="select">
+        <many-to-one name="funcionario" class="generador.Funcionario" fetch="select">
             <column name="funcionarioSolicitud" length="42" />
         </many-to-one>
         <property name="numComprobante" type="int">
@@ -37,9 +37,9 @@
         </property>
         <set name="biens" table="bien" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="solicitudBien" not-null="true" />
+                <column name="solicitudBien" length="45" not-null="true" />
             </key>
-            <one-to-many class="paquete.Bien" />
+            <one-to-many class="generador.Bien" />
         </set>
     </class>
 </hibernate-mapping>

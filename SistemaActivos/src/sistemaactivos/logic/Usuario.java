@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 19/10/2018 08:41:42 PM by Hibernate Tools 4.3.1
+// Generated 22/10/2018 02:31:39 AM by Hibernate Tools 4.3.1
 
 
 
@@ -9,24 +9,24 @@ package sistemaactivos.logic;
 public class Usuario  implements java.io.Serializable {
 
 
-     private int id;
+     private String id;
      private Funcionario funcionario;
      private String pass;
 
     public Usuario() {
     }
 
-    public Usuario(int id, Funcionario funcionario, String pass) {
+    public Usuario(String id, Funcionario funcionario, String pass) {
        this.id = id;
        this.funcionario = funcionario;
        this.pass = pass;
     }
    
-    public int getId() {
+    public String getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public Funcionario getFuncionario() {

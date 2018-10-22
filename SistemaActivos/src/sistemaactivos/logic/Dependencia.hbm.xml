@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/10/2018 08:41:43 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/10/2018 02:31:40 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="paquete.Dependencia" table="dependencia" catalog="sistemaactivos" optimistic-lock="version">
+    <class name="sistemaactivos.logic.Dependencia" table="dependencia" catalog="sistemaactivos" optimistic-lock="version">
         <id name="codigo" type="java.lang.Integer">
             <column name="codigo" />
             <generator class="identity" />
@@ -15,13 +15,13 @@
             <key>
                 <column name="dependenciaLabor" not-null="true" />
             </key>
-            <one-to-many class="paquete.Labor" />
+            <one-to-many class="generador.Labor" />
         </set>
         <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="dependenciaSolicitud" not-null="true" />
             </key>
-            <one-to-many class="paquete.Solicitud" />
+            <one-to-many class="generador.Solicitud" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/10/2018 08:41:43 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/10/2018 02:31:40 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="paquete.Usuario" table="usuario" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="id" />
+    <class name="sistemaactivos.logic.Usuario" table="usuario" catalog="sistemaactivos" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="45" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="funcionario" class="paquete.Funcionario" fetch="select">
+        <many-to-one name="funcionario" class="generador.Funcionario" fetch="select">
             <column name="funcionarioUsuario" length="42" not-null="true" />
         </many-to-one>
         <property name="pass" type="string">

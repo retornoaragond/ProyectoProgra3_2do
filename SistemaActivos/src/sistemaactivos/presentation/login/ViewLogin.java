@@ -5,7 +5,7 @@
  */
 package sistemaactivos.presentation.login;
 
-import javax.swing.JOptionPane;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Usuario;
 
 /**
@@ -93,15 +93,15 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     public boolean validar(){
         boolean error=false;
         
-        //this.IDLabel.setForeground(Application.COLOR_OK); 
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
         if (this.IDTXTField.getText().isEmpty()){
-            //this.IDLabel.setForeground(Application.COLOR_ERROR);
+            this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
              error=true;
         }
         
-        //this.IDLabel.setForeground(Application.COLOR_OK); 
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
         if ( (new String(this.JclaveField.getPassword())).isEmpty()){
-            //this.ClaveLabel.setForeground(Application.COLOR_ERROR);
+            this.ClaveLabel.setForeground(SistemaActivos.COLOR_ERROR);
              error=true;
         }
         return !error;
@@ -109,7 +109,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     
      Usuario toUsuario(){
         Usuario result = new Usuario();
-        result.setId(Integer.parseInt(this.IDTXTField.getText()));
+        result.setId(this.IDTXTField.getText());
         result.setPass(new String(this.JclaveField.getPassword()));
         return result;
    }
@@ -120,8 +120,8 @@ public class ViewLogin extends javax.swing.JInternalFrame {
    }
     
  public void limpiarErrores(){
-       //this.IDLabel.setForeground(Application.COLOR_OK); 
-       //this.ClaveLabel.setForeground(Application.COLOR_OK); 
+       this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
+       this.ClaveLabel.setForeground(SistemaActivos.COLOR_OK); 
    }
     
     
@@ -156,7 +156,7 @@ public class ViewLogin extends javax.swing.JInternalFrame {
     
    public void update(java.util.Observable updatedModel,Object parametros){
        this.limpiarErrores();
-       //Usuario current = model.getCurrent();
-       //this.fromUsuario(current);
+       Usuario current = model.getCurrent();
+       this.fromUsuario(current);
     } 
 }

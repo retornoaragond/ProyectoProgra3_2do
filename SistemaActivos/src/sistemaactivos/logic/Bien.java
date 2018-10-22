@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 19/10/2018 08:41:42 PM by Hibernate Tools 4.3.1
+// Generated 22/10/2018 02:31:39 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Bien  implements java.io.Serializable {
 
 
-     private int serial;
+     private String serial;
      private Categoria categoria;
      private Solicitud solicitud;
      private String decripcion;
@@ -25,7 +25,7 @@ public class Bien  implements java.io.Serializable {
     }
 
 	
-    public Bien(int serial, Solicitud solicitud, String decripcion, String marca, String modelo, double precioUnitario, int cantidad) {
+    public Bien(String serial, Solicitud solicitud, String decripcion, String marca, String modelo, double precioUnitario, int cantidad) {
         this.serial = serial;
         this.solicitud = solicitud;
         this.decripcion = decripcion;
@@ -34,7 +34,7 @@ public class Bien  implements java.io.Serializable {
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
     }
-    public Bien(int serial, Categoria categoria, Solicitud solicitud, String decripcion, String marca, String modelo, double precioUnitario, int cantidad, Set activos) {
+    public Bien(String serial, Categoria categoria, Solicitud solicitud, String decripcion, String marca, String modelo, double precioUnitario, int cantidad, Set activos) {
        this.serial = serial;
        this.categoria = categoria;
        this.solicitud = solicitud;
@@ -46,11 +46,11 @@ public class Bien  implements java.io.Serializable {
        this.activos = activos;
     }
    
-    public int getSerial() {
+    public String getSerial() {
         return this.serial;
     }
     
-    public void setSerial(int serial) {
+    public void setSerial(String serial) {
         this.serial = serial;
     }
     public Categoria getCategoria() {

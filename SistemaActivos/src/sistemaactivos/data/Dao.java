@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.logic.Activo;
+import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -24,7 +26,7 @@ public class Dao {
     }
 
     public Activo getActivo(String codigoId) throws Exception {
-        String sql = "select * from `sistemaactivos`.`activo`inner where codigoId='%s'";
+        String sql = "select * from activo inner where codigoId='%s'";
         sql = String.format(sql, codigoId);
         ResultSet rs = db.executeQuery(sql);
         if (rs.next()) {
@@ -73,6 +75,33 @@ public class Dao {
         } catch (SQLException ex) {
         }
         return estados;
+    }
+    
+    public Usuario usuarioGet(String id) throws Exception{
+        String sql="select * from Usuario where id='%s'";
+        sql = String.format(sql,id);
+        ResultSet rs =  db.executeQuery(sql);
+        if (rs.next()) {
+            return usuario(rs);
+        }
+        else{
+            throw new Exception ("Usurio no Existe");
+        }
+    }
+    
+    private Usuario usuario(ResultSet rs){
+        try {
+            Usuario u= new Usuario();
+            u.setId(rs.getString("id"));
+            u.setPass(rs.getString("clave"));
+            Funcionario f = new Funcionario();
+            f.setId(rs.getString("id"));
+            f.setNombre(rs.getString("nombre"));
+            u.setFuncionario(f);
+            return u;
+        } catch (SQLException ex) {
+            return null;
+        }
     }
     
     public  void close(){

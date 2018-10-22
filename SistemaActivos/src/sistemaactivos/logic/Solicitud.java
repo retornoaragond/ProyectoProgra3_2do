@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 19/10/2018 08:41:42 PM by Hibernate Tools 4.3.1
+// Generated 22/10/2018 02:31:39 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Solicitud  implements java.io.Serializable {
 
 
-     private Integer numSolicitud;
+     private String numSolicitud;
      private Dependencia dependencia;
      private Funcionario funcionario;
      private int numComprobante;
@@ -28,7 +28,8 @@ public class Solicitud  implements java.io.Serializable {
     }
 
 	
-    public Solicitud(Dependencia dependencia, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado) {
+    public Solicitud(String numSolicitud, Dependencia dependencia, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado) {
+        this.numSolicitud = numSolicitud;
         this.dependencia = dependencia;
         this.numComprobante = numComprobante;
         this.fecha = fecha;
@@ -38,7 +39,8 @@ public class Solicitud  implements java.io.Serializable {
         this.razonRechazo = razonRechazo;
         this.estado = estado;
     }
-    public Solicitud(Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, Set biens) {
+    public Solicitud(String numSolicitud, Dependencia dependencia, Funcionario funcionario, int numComprobante, Date fecha, String tipoAdquisicion, int cantidadBienes, double montoTotal, String razonRechazo, String estado, Set biens) {
+       this.numSolicitud = numSolicitud;
        this.dependencia = dependencia;
        this.funcionario = funcionario;
        this.numComprobante = numComprobante;
@@ -51,11 +53,11 @@ public class Solicitud  implements java.io.Serializable {
        this.biens = biens;
     }
    
-    public Integer getNumSolicitud() {
+    public String getNumSolicitud() {
         return this.numSolicitud;
     }
     
-    public void setNumSolicitud(Integer numSolicitud) {
+    public void setNumSolicitud(String numSolicitud) {
         this.numSolicitud = numSolicitud;
     }
     public Dependencia getDependencia() {

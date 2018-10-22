@@ -199,7 +199,7 @@ if(this.validar()){
     
     Solicitud toSolicitud(){
      Solicitud result= new Solicitud();
-     result.setNumSolicitud(Integer.parseInt(textFieldNumSolicitud.getText()));
+     result.setNumSolicitud(textFieldNumSolicitud.getText());
      return result;
     }
     
