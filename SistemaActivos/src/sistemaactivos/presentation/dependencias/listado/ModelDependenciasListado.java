@@ -5,12 +5,95 @@
  */
 package sistemaactivos.presentation.dependencias.listado;
 
-import sistemaactivos.presentation.dependencias.edicion.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+import sistemaactivos.logic.Dependencia;
+
 
 /**
  *
  * @author ExtremeTech
  */
-public class ModelDependenciasListado {
+public class ModelDependenciasListado  extends java.util.Observable {
+    Dependencia filter; 
+    DependenciaTableModel dependenciasTable;
+    Dependencia seleccionado;
+
+    
+    
+    
+  public ModelDependenciasListado(){
+     this.reset();
+   }
+
+  public void reset(){ 
+        filter = new Dependencia();
+        List<Dependencia> rows = new ArrayList<>();        
+        seleccionado=null;  
+        this.setDependencia(rows);
+        this.commit();  
+    }
+   
+  
+  public void setDependencia(List<Dependencia> dependencias){
+        int[] cols={DependenciaTableModel.CODIGO,DependenciaTableModel.NOMBRE,DependenciaTableModel.LABORS,DependenciaTableModel.SOLICITUDS};
+        this.dependenciasTable =new DependenciaTableModel(cols,dependencias);    
+    }
+    
+    public Dependencia getFilter() {
+        return filter;
+    }
+    
+    public void setFilter(Dependencia filter) {
+        this.filter = filter;
+    }
+    
+     public DependenciaTableModel getPersonas() {
+        return dependenciasTable;
+    }
+
+    public Dependencia getSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(Dependencia seleccionado) {
+        this.seleccionado = seleccionado;
+    }
+  
+    @Override
+    public void addObserver(Observer o) {
+        super.addObserver(o);
+        this.commit();   
+    }
+
+    public void commit(){
+        setChanged();
+        notifyObservers();       
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
+

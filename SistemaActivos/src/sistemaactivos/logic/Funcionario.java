@@ -31,6 +31,7 @@ public class Funcionario  implements java.io.Serializable {
        this.solicituds = solicituds;
        this.usuarios = usuarios;
        this.labors = labors;
+       
     }
    
     public String getId() {
