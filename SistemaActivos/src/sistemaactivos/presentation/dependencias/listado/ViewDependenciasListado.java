@@ -5,21 +5,24 @@
  */
 package sistemaactivos.presentation.dependencias.listado;
 
+import javax.swing.JOptionPane;
+import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Dependencia;
 import sistemaactivos.presentation.dependencias.edicion.*;
 
 /**
  *
  * @author ExtremeTech
  */
-public class ViewDependenciasListado extends javax.swing.JInternalFrame {
+public class ViewDependenciasListado extends javax.swing.JInternalFrame implements java.util.Observer {
+
+    ControllerDependenciasListado controller;
+    ModelDependenciasListado model;
 
     /**
      * Creates new form viewDependencias
      */
-    public ViewDependenciasListado() {
-        initComponents();
-    }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,21 +32,176 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DependenciaTable = new javax.swing.JTable();
+        CodigoLabel = new javax.swing.JLabel();
+        CodigoTEXT = new javax.swing.JTextField();
+        BuscarButton = new javax.swing.JButton();
+        AgregarButton = new javax.swing.JButton();
+        EliminarButton = new javax.swing.JButton();
+
+        DependenciaTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(DependenciaTable);
+
+        CodigoLabel.setText("Codigo");
+
+        BuscarButton.setText("Buscar");
+        BuscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarButtonActionPerformed(evt);
+            }
+        });
+
+        AgregarButton.setText("Agregar");
+        AgregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarButtonActionPerformed(evt);
+            }
+        });
+
+        EliminarButton.setText("Eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(CodigoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(CodigoTEXT, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BuscarButton)
+                .addGap(38, 38, 38)
+                .addComponent(AgregarButton)
+                .addGap(18, 18, 18)
+                .addComponent(EliminarButton)
+                .addGap(0, 87, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoLabel)
+                    .addComponent(CodigoTEXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarButton)
+                    .addComponent(AgregarButton)
+                    .addComponent(EliminarButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
+         try {
+         //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+        } 
+    }//GEN-LAST:event_AgregarButtonActionPerformed
 
+    private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
+if(this.validar()){
+            try {
+                controller.buscar(this.toDependencia());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
+        }
+
+    }//GEN-LAST:event_BuscarButtonActionPerformed
+
+     public void setController(ControllerDependenciasListado controller) {
+        this.controller = controller;
+    }
+
+    public ControllerDependenciasListado getController() {
+        return controller;
+    }
+
+    public void setModel(ModelDependenciasListado model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+
+    public ModelDependenciasListado getModel() {
+        return model;
+    }
+    
+    public ViewDependenciasListado() {
+        super("", false, true);
+        initComponents();
+    }
+
+    public void limpiarErrores() {
+        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK);
+    }
+    
+    boolean validar(){
+        boolean error=false;
+        
+        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK); 
+        if (this.CodigoLabel.getText().isEmpty()){
+            this.CodigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error=true;
+        }
+        return !error;
+    }
+    
+    
+    public void fromDependencia(Dependencia dependencia){
+      this.CodigoTEXT.setText(dependencia.getCodigo().toString());
+    }
+    
+     Dependencia toDependencia(){
+     Dependencia result= new Dependencia();
+     result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
+     return result;
+    }
+     
+      @Override
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        this.limpiarErrores();
+        Dependencia dependencia= model.getFilter();
+        this.fromDependencia(dependencia);
+        this.DependenciaTable.setModel(model.getDependenciaTablemodel());
+        }
+    
+    
+
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarButton;
+    private javax.swing.JButton BuscarButton;
+    private javax.swing.JLabel CodigoLabel;
+    private javax.swing.JTextField CodigoTEXT;
+    private javax.swing.JTable DependenciaTable;
+    private javax.swing.JButton EliminarButton;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

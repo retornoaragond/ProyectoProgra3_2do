@@ -49,7 +49,7 @@ public class ModelDependenciasListado  extends java.util.Observable {
         this.filter = filter;
     }
     
-     public DependenciaTableModel getPersonas() {
+     public DependenciaTableModel getDependenciaTablemodel() {
         return dependenciasTable;
     }
 

@@ -44,14 +44,6 @@ public class DependenciaTableModel extends AbstractTableModel {
         }
     }    
 
-    
-    
-    
-    
-    
-    
-    
-    
     @Override
     public int getColumnCount() {
            return colNames.length;

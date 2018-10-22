@@ -26,7 +26,7 @@ public class ControllerFuncionariosListado {
         this.session = session;
         this.view = view;
         this.model = model;
-        //view.setController(this);
+        view.setController(this);
         //view.setModel(model);
     }
 
