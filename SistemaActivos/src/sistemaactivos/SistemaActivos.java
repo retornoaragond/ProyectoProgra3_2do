@@ -11,7 +11,6 @@ import javax.swing.border.Border;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.presentation.activos.edicion.ControllerActivosEdicion;
 import sistemaactivos.presentation.activos.edicion.ModelActivosEdicion;
-import sistemaactivos.presentation.activos.edicion.ViewActivosEdicion;
 import sistemaactivos.presentation.activos.listado.ControllerActivosListado;
 import sistemaactivos.presentation.activos.listado.ModelActivosListado;
 import sistemaactivos.presentation.activos.listado.ViewActivosListado;
@@ -53,13 +52,13 @@ public class SistemaActivos {
         APLICATION_CONTROLLER = new ControllerAplication(aplicationView, aplicationModel, domainModel, session);
 
         ModelActivosEdicion activosedicionModel = new ModelActivosEdicion();
-       // ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
-      //  ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
+        // ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
+        //  ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
 
         ModelActivosListado activoslistadoModel = new ModelActivosListado();
         ViewActivosListado activoslistadoView = new ViewActivosListado();
         aplicationView.addInternalFrame(activoslistadoView);
-       ACTIVOS_LISTADO_CONTROLLER = new ControllerActivosListado(activoslistadoView,activoslistadoModel,domainModel,session);
+        ACTIVOS_LISTADO_CONTROLLER = new ControllerActivosListado(activoslistadoView, activoslistadoModel, domainModel, session);
 
         ModelDependenciasEdicion dependenciasedicionModel = new ModelDependenciasEdicion();
 //        ViewDependenciasEdicion dependenciasedicionView = new ViewDependenciasEdicion(aplicationView,true);
@@ -114,27 +113,16 @@ public class SistemaActivos {
     public static ControllerSolicitudListado SOLICITUD_LISTADO_CONTROLLLER;
 
     public static final String USER_ATTRIBUTE = "User";
-    
-    
+
     //---------------------------------------------------------------
     //ZONA DE  USUARIOS(ROLES) SE PUEDE CAMBIAR NOMBRES
-    
-    
-    
-    public static  final String  ROL_ADMINISTRADOR_DE_LA_DEPENDENCIA="Administrador";
-    public static  final String  ROL_SECRETARIA_DE_LA_OCCB="Secretaria";
-    public static  final String  ROL_JEFE_DE_LA_OCCB="Jefe_OCCB";
-    public static  final String  ROL_REGISTRADOR_DE_BIENES="Registrador";
-    public static  final String  ROL_JEFE_DE_RRHH="Jefe_RRHH";
-    public static  final String  ROL_NOTAUTHORIZED="No Autorizado!";
-
-    
-    
+//    public static  final String  ROL_ADMINISTRADOR_DE_LA_DEPENDENCIA="Administrador";
+//    public static  final String  ROL_SECRETARIA_DE_LA_OCCB="Secretaria";
+//    public static  final String  ROL_JEFE_DE_LA_OCCB="Jefe_OCCB";
+//    public static  final String  ROL_REGISTRADOR_DE_BIENES="Registrador";
+//    public static  final String  ROL_JEFE_DE_RRHH="Jefe_RRHH";
+//    public static  final String  ROL_NOTAUTHORIZED="No Autorizado!";
     //-----------------------------------------------
-    
-    
-    
-
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
