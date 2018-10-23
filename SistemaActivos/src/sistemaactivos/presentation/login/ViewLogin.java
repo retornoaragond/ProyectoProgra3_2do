@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.login;
 
+import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Usuario;
 
@@ -12,16 +13,15 @@ import sistemaactivos.logic.Usuario;
  *
  * @author ExtremeTech
  */
-public class ViewLogin extends javax.swing.JInternalFrame {
+public class ViewLogin extends javax.swing.JFrame implements java.util.Observer {
 
     /**
      * Creates new form viewLogin
      */
-     public ViewLogin() {
+    public ViewLogin() {
         initComponents();
         this.getRootPane().setDefaultButton(loginFld);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,18 +37,26 @@ public class ViewLogin extends javax.swing.JInternalFrame {
         ClaveLabel = new javax.swing.JLabel();
         JclaveField = new javax.swing.JPasswordField();
         loginFld = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
 
         IDLabel.setText("ID");
         IDLabel.setToolTipText("");
 
         ClaveLabel.setText("Clave");
 
-        JclaveField.setText("jPasswordField1");
+        loginFld.setText("Login");
+        loginFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginFldActionPerformed(evt);
+            }
+        });
 
-        loginFld.setText("jButton1");
-
-        jButton2.setText("jButton2");
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,10 +72,10 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(loginFld)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(salir))
                     .addComponent(IDTXTField)
                     .addComponent(JclaveField))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,80 +91,97 @@ public class ViewLogin extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginFld)
-                    .addComponent(jButton2))
+                    .addComponent(salir))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean validar(){
-        boolean error=false;
-        
-        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.IDTXTField.getText().isEmpty()){
-            this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
-             error=true;
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void loginFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFldActionPerformed
+        if (this.validar()) {
+            try {
+                this.controller.login(this.toUsuario());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        
-        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if ( (new String(this.JclaveField.getPassword())).isEmpty()){
+    }//GEN-LAST:event_loginFldActionPerformed
+
+    public boolean validar() {
+        boolean error = false;
+
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.IDTXTField.getText().isEmpty()) {
+            this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        if ((new String(this.JclaveField.getPassword())).isEmpty()) {
             this.ClaveLabel.setForeground(SistemaActivos.COLOR_ERROR);
-             error=true;
+            error = true;
         }
         return !error;
     }
-    
-     Usuario toUsuario(){
+
+    Usuario toUsuario() {
         Usuario result = new Usuario();
         result.setId(this.IDTXTField.getText());
         result.setPass(new String(this.JclaveField.getPassword()));
         return result;
-   }
+    }
 
-    public void fromUsuario(Usuario current){ 
-       this.IDTXTField.setText(String.valueOf(current.getId()));
-       this.JclaveField.setText(current.getPass());
-   }
-    
- public void limpiarErrores(){
-       this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
-       this.ClaveLabel.setForeground(SistemaActivos.COLOR_OK); 
-   }
-    
-    
+    public void fromUsuario(Usuario current) {
+        this.IDTXTField.setText(String.valueOf(current.getId()));
+        this.JclaveField.setText(current.getPass());
+    }
+
+    public void limpiarErrores() {
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.ClaveLabel.setForeground(SistemaActivos.COLOR_OK);
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClaveLabel;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTXTField;
     private javax.swing.JPasswordField JclaveField;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton loginFld;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 
     ControllerLogin controller;
     ModelLogin model;
-    
-    public void setController(ControllerLogin controller){
-        this.controller=controller;
+
+    public void setController(ControllerLogin controller) {
+        this.controller = controller;
     }
 
     public ControllerLogin getController() {
         return controller;
     }
-    
-    public void setModel(ModelLogin model){
-        this.model=model;
-        //model.addObserver(this);
+
+    public void setModel(ModelLogin model) {
+        this.model = model;
+        model.addObserver(this);
     }
 
     public ModelLogin getModel() {
         return model;
     }
-    
-   public void update(java.util.Observable updatedModel,Object parametros){
-       this.limpiarErrores();
-       Usuario current = model.getCurrent();
-       this.fromUsuario(current);
-    } 
+
+    @Override
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        this.limpiarErrores();
+        Usuario current = model.getCurrent();
+        this.fromUsuario(current);
+    }
 }

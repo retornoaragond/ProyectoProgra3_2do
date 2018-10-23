@@ -31,14 +31,14 @@ public class ControllerLogin {
 
     public void login(Usuario typed) throws Exception{
         model.setCurrent(typed);
-        //Usuario real = domainModel.getUsuario(typed.getId(),typed.getPass());
-        //session.setAttibute(SistemaActivos.USER_ATTRIBUTE, real);
+        Usuario real = domainModel.getUsuario(typed.getId(),typed.getPass());
+        session.setAttibute(SistemaActivos.USER_ATTRIBUTE, real);
         view.setVisible(false);
-        //SistemaActivos.APPLICATION_CONTROLLER.enter();
+        SistemaActivos.APLICATION_CONTROLLER.enter();
     }   
 
     public void logout(){
-        //session.removeAttribute(SistemaActivos.USER_ATTRIBUTE);
+        session.removeAttribute(SistemaActivos.USER_ATTRIBUTE);
         model.setCurrent(new Usuario());
         view.setVisible(true);
     }

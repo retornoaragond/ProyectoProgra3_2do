@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.presentation.activos.edicion.ControllerActivosEdicion;
 import sistemaactivos.presentation.activos.edicion.ModelActivosEdicion;
+import sistemaactivos.presentation.activos.edicion.ViewActivosEdicion;
 import sistemaactivos.presentation.activos.listado.ControllerActivosListado;
 import sistemaactivos.presentation.activos.listado.ModelActivosListado;
 import sistemaactivos.presentation.activos.listado.ViewActivosListado;
@@ -19,11 +20,13 @@ import sistemaactivos.presentation.aplication.ModelAplication;
 import sistemaactivos.presentation.aplication.ViewAplication;
 import sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion;
 import sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion;
+import sistemaactivos.presentation.dependencias.edicion.ViewDependenciasEdicion;
 import sistemaactivos.presentation.dependencias.listado.ControllerDependenciasListado;
 import sistemaactivos.presentation.dependencias.listado.ModelDependenciasListado;
 import sistemaactivos.presentation.dependencias.listado.ViewDependenciasListado;
 import sistemaactivos.presentation.funcionarios.edicion.ControllerFuncionariosEdicion;
 import sistemaactivos.presentation.funcionarios.edicion.ModelFuncionariosEdicion;
+import sistemaactivos.presentation.funcionarios.edicion.ViewFuncionariosEdicion;
 import sistemaactivos.presentation.funcionarios.listado.ControllerFuncionariosListado;
 import sistemaactivos.presentation.funcionarios.listado.ModelFuncionariosListado;
 import sistemaactivos.presentation.funcionarios.listado.ViewFuncionariosListado;
@@ -52,8 +55,8 @@ public class SistemaActivos {
         APLICATION_CONTROLLER = new ControllerAplication(aplicationView, aplicationModel, domainModel, session);
 
         ModelActivosEdicion activosedicionModel = new ModelActivosEdicion();
-        // ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
-        //  ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
+        ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
+        ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
 
         ModelActivosListado activoslistadoModel = new ModelActivosListado();
         ViewActivosListado activoslistadoView = new ViewActivosListado();
@@ -61,35 +64,31 @@ public class SistemaActivos {
         ACTIVOS_LISTADO_CONTROLLER = new ControllerActivosListado(activoslistadoView, activoslistadoModel, domainModel, session);
 
         ModelDependenciasEdicion dependenciasedicionModel = new ModelDependenciasEdicion();
-//        ViewDependenciasEdicion dependenciasedicionView = new ViewDependenciasEdicion(aplicationView,true);
-//        DEPENDENCIA_EDICION_CONTROLLER = new ControllerDependenciasEdicion(dependenciasedicionView,dependenciasedicionModel, domainModel, session);
+        //ViewDependenciasEdicion dependenciasedicionView = new ViewDependenciasEdicion(aplicationView,true);
+        //DEPENDENCIA_EDICION_CONTROLLER = new ControllerDependenciasEdicion(dependenciasedicionView,dependenciasedicionModel, domainModel, session);
 
         ModelDependenciasListado dependenciaslistadoModel = new ModelDependenciasListado();
         ViewDependenciasListado dependenciaslistadoView = new ViewDependenciasListado();
         aplicationView.addInternalFrame(dependenciaslistadoView);
-//        DEPENDENCIA_LISTADO_CONTROLLER = new ControllerDependenciasListado(dependenciaslistadoView,dependenciaslistadoModel, domainModel, session);
+        DEPENDENCIA_LISTADO_CONTROLLER = new ControllerDependenciasListado(dependenciaslistadoView,dependenciaslistadoModel, domainModel, session);
 
         ModelFuncionariosEdicion funcionariosedicionModel = new ModelFuncionariosEdicion();
-//        ViewFuncionariosEdicion funcionariosedicionView = new ViewFuncionariosEdicion(aplicationView,true);
-//        FUNCIONARIO_EDICION_CONTROLLER =
-//                new ControllerFuncionariosEdicion(funcionariosedicionView, funcionariosedicionModel, domainModel, session);
+        //ViewFuncionariosEdicion funcionariosedicionView = new ViewFuncionariosEdicion(aplicationView,true);
+        //FUNCIONARIO_EDICION_CONTROLLER = new ControllerFuncionariosEdicion(funcionariosedicionView, funcionariosedicionModel, domainModel, session);
 
         ModelFuncionariosListado funcionarioslistadoModel = new ModelFuncionariosListado();
         ViewFuncionariosListado funcionarioslistadoView = new ViewFuncionariosListado();
         aplicationView.addInternalFrame(funcionarioslistadoView);
-        FUNCIONARIO_LISTADO_CONTROLLER
-                = new ControllerFuncionariosListado(funcionarioslistadoView, funcionarioslistadoModel, domainModel, session);
+        FUNCIONARIO_LISTADO_CONTROLLER = new ControllerFuncionariosListado(funcionarioslistadoView, funcionarioslistadoModel, domainModel, session);
 
         ModelSolicitudEdicion solicitudedicionModel = new ModelSolicitudEdicion();
         ViewSolicitudEdicion solicitudedicionView = new ViewSolicitudEdicion(aplicationView, true);
-        SOLICITUD_EDICION_CONTROLLLER
-                = new ControllerSolicitudEdicion(solicitudedicionView, solicitudedicionModel, domainModel, session);
+        SOLICITUD_EDICION_CONTROLLLER = new ControllerSolicitudEdicion(solicitudedicionView, solicitudedicionModel, domainModel, session);
 
         ModelSolicitudListado solicitudlistadoModel = new ModelSolicitudListado();
         ViewSolicitudListado solicitudlistadoView = new ViewSolicitudListado();
         aplicationView.addInternalFrame(solicitudlistadoView);
-        SOLICITUD_LISTADO_CONTROLLLER
-                = new ControllerSolicitudListado(solicitudlistadoView, solicitudlistadoModel, domainModel, session);
+        SOLICITUD_LISTADO_CONTROLLLER = new ControllerSolicitudListado(solicitudlistadoView, solicitudlistadoModel, domainModel, session);
 
         ModelLogin loginModel = new ModelLogin();
         ViewLogin loginView = new ViewLogin();
@@ -114,15 +113,6 @@ public class SistemaActivos {
 
     public static final String USER_ATTRIBUTE = "User";
 
-    //---------------------------------------------------------------
-    //ZONA DE  USUARIOS(ROLES) SE PUEDE CAMBIAR NOMBRES
-//    public static  final String  ROL_ADMINISTRADOR_DE_LA_DEPENDENCIA="Administrador";
-//    public static  final String  ROL_SECRETARIA_DE_LA_OCCB="Secretaria";
-//    public static  final String  ROL_JEFE_DE_LA_OCCB="Jefe_OCCB";
-//    public static  final String  ROL_REGISTRADOR_DE_BIENES="Registrador";
-//    public static  final String  ROL_JEFE_DE_RRHH="Jefe_RRHH";
-//    public static  final String  ROL_NOTAUTHORIZED="No Autorizado!";
-    //-----------------------------------------------
     public static final int MODO_AGREGAR = 0;
     public static final int MODO_EDITAR = 1;
     public static final int MODO_CONSULTAR = 2;
