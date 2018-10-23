@@ -51,7 +51,7 @@ public class ActivoTableModel extends AbstractTableModel {
         switch (cols[col]) {
             case CODIGOID: return activo.getCodigoId();
             case BIEN: return activo.getBien();
-            case LABORACTIVO: return activo.getLaborActivo();
+            //case LABORACTIVO: return activo.getLaborActivo();
             default:
                 return "";
         }

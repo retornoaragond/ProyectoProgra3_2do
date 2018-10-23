@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 02:31:40 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Labor" table="labor" catalog="sistemaactivos" optimistic-lock="version">
-        <composite-id name="id" class="generador.LaborId">
+        <composite-id name="id" class="si.LaborId">
             <key-property name="dependenciaLabor" type="int">
                 <column name="dependenciaLabor" />
             </key-property>
@@ -15,22 +15,22 @@
                 <column name="PuestoLabor" />
             </key-property>
         </composite-id>
-        <many-to-one name="dependencia" class="generador.Dependencia" update="false" insert="false" fetch="select">
+        <many-to-one name="dependencia" class="si.Dependencia" update="false" insert="false" fetch="select">
             <column name="dependenciaLabor" not-null="true" />
         </many-to-one>
-        <many-to-one name="funcionario" class="generador.Funcionario" update="false" insert="false" fetch="select">
+        <many-to-one name="funcionario" class="si.Funcionario" update="false" insert="false" fetch="select">
             <column name="FuncionarioLabor" length="42" not-null="true" />
         </many-to-one>
-        <many-to-one name="puesto" class="generador.Puesto" update="false" insert="false" fetch="select">
+        <many-to-one name="puesto" class="si.Puesto" update="false" insert="false" fetch="select">
             <column name="PuestoLabor" not-null="true" />
         </many-to-one>
         <set name="activos" table="activo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="dependenciaActivo" not-null="true" />
+                <column name="dependenciaActivo" />
                 <column name="FuncionarioActivo" length="42" />
                 <column name="PuestoActivo" />
             </key>
-            <one-to-many class="generador.Activo" />
+            <one-to-many class="si.Activo" />
         </set>
     </class>
 </hibernate-mapping>
