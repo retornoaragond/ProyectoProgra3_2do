@@ -5,8 +5,6 @@
  */
 package sistemaactivos.presentation.solicitud.listado;
 
-import java.util.Observable;
-import javafx.application.Application;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Solicitud;
@@ -45,21 +43,17 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     public void limpiarErrores() {
         this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK);
     }
-    
-    boolean validar(){
-        boolean error=false;
-        
-        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.etiquetaNumerodeSolicitud.getText().isEmpty()){
+
+    boolean validar() {
+        boolean error = false;
+
+        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK);
+        if (this.etiquetaNumerodeSolicitud.getText().isEmpty()) {
             this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
+            error = true;
         }
         return !error;
     }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,11 +161,11 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-       try {
-         //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
+        try {
+            //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
-        } 
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void textFieldNumSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumSolicitudActionPerformed
@@ -179,31 +173,28 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_textFieldNumSolicitudActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-if(this.validar()){
+        if (this.validar()) {
             try {
                 controller.buscar(this.toSolicitud());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
-        }        
     }//GEN-LAST:event_buscarActionPerformed
 
+    public void fromSolicitud(Solicitud s) {
+        textFieldNumSolicitud.setText(s.getNumSolicitud().toString());
+    }
 
-    
-    public void fromSolicitud(Solicitud s){
-      textFieldNumSolicitud.setText(s.getNumSolicitud().toString());
+    Solicitud toSolicitud() {
+        Solicitud result = new Solicitud();
+        result.setNumSolicitud(Integer.getInteger(textFieldNumSolicitud.getText()));
+        return result;
     }
-    
-    Solicitud toSolicitud(){
-     Solicitud result= new Solicitud();
-     result.setNumSolicitud(Integer.getInteger(textFieldNumSolicitud.getText()));
-     return result;
-    }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Eliminar;
@@ -217,8 +208,8 @@ if(this.validar()){
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
-        Solicitud soli= model.getSolicitud();
+        Solicitud soli = model.getSolicitud();
         this.fromSolicitud(soli);
         solicitudesFld.setModel(model.getSolicitudes());
-        }
+    }
 }

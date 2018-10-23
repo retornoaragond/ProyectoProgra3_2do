@@ -21,9 +21,9 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
      */
     ControllerFuncionariosListado controller;
     ModelFuncionariosListado model;
-    
+
     public ViewFuncionariosListado() {
-         super("", false, true);
+        super("", false, true);
         initComponents();
     }
 
@@ -114,23 +114,22 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-      try {
-          //controller.preAgregar(this.agregarFld.getLocationOnScreen());
+        try {
+            //controller.preAgregar(this.agregarFld.getLocationOnScreen());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
-        } 
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-   if(this.validar()){
+        if (this.validar()) {
             try {
                 controller.buscar(this.toFuncionario());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BuscarActionPerformed
 
@@ -150,49 +149,41 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     public ModelFuncionariosListado getModel() {
         return model;
     }
-    
-    
 
     public void limpiarErrores() {
         this.IdentificacionLabel.setForeground(SistemaActivos.COLOR_OK);
     }
 
-    boolean validar(){
-        boolean error=false;
-        
-        this.IdentificacionLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.IdentificacionText.getText().isEmpty()){
+    boolean validar() {
+        boolean error = false;
+
+        this.IdentificacionLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.IdentificacionText.getText().isEmpty()) {
             this.IdentificacionLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
+            error = true;
         }
         return !error;
     }
-    
-    
-    public void fromFuncionarios(Funcionario funcionario){
-      this.IdentificacionText.setText(funcionario.getId().toString());
+
+    public void fromFuncionarios(Funcionario funcionario) {
+        this.IdentificacionText.setText(funcionario.getId().toString());
     }
-    
-     Funcionario toFuncionario(){
-     Funcionario result= new Funcionario();
-     result.setId(this.IdentificacionText.getText());
-     return result;
+
+    Funcionario toFuncionario() {
+        Funcionario result = new Funcionario();
+        result.setId(this.IdentificacionText.getText());
+        return result;
     }
-     
-      @Override
+
+    @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
-        Funcionario funcionario= model.getFuncionario();
+        Funcionario funcionario = model.getFuncionario();
         this.fromFuncionarios(funcionario);
         this.FuncionarioTable.setModel(model.getFuncionarios());
-        }
-    
-    
-    
-    
-    
-    
-    
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Buscar;
@@ -203,5 +194,4 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-   
 }
