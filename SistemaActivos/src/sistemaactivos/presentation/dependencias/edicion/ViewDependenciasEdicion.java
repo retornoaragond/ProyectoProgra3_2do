@@ -12,8 +12,12 @@ import sistemaactivos.logic.Dependencia;
  *
  * @author ExtremeTech
  */
-public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
-
+ public class ViewDependenciasEdicion extends javax.swing.JDialog implements java.util.Observer {
+    ControllerDependenciasEdicion controller;
+    ModelDependenciasEdicion model;
+    
+    
+    
     /**
      * Creates new form viewDependencias
      */
@@ -21,6 +25,11 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    
+    public ViewDependenciasEdicion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,8 +180,6 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
         } 
         
-        ControllerDependenciasEdicion controller;
-        ModelDependenciasEdicion model;
         
         public void setController(
                 sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion controller){
