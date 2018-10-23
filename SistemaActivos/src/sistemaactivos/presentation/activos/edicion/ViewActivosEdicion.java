@@ -222,15 +222,14 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
       }
     
     
-    public void fromActivo(Activo actual){
+     public void fromActivo(Activo actual){
      this.identificacionTextField.setEnabled(false);
      this.categoriaTextField.setEnabled(false);
      this.DescripcionTextField.setEnabled(false);
      Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
      Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
      //agregar  dependencia  y responsable desde la base de datos 
-    
-    }
+   }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
