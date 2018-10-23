@@ -8,6 +8,7 @@ package sistemaactivos.presentation.activos.listado;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import sistemaactivos.logic.Activo;
+import sistemaactivos.presentation.solicitud.edicion.BienTableModel;
 
 /**
  *

@@ -70,7 +70,5 @@ public class ModelActivosListado extends java.util.Observable {
         setChanged();
         notifyObservers();       
     }
-
-  
   
 }

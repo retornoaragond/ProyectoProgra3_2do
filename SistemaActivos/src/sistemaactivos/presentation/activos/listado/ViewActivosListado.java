@@ -5,11 +5,11 @@
  */
 package sistemaactivos.presentation.activos.listado;
 
+import java.util.HashSet;
 import java.util.Observable;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
-
 
 /**
  *
@@ -269,6 +269,8 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     Activo toActivo(){
      Activo result= new Activo();
      result.setCodigoId(codigoLabel.getText());
+    // result.setBiens(new HashSet<>(model.activosTable));
+        
      return result;
     }
   
