@@ -6,6 +6,8 @@
 package sistemaactivos.presentation.activos.listado;
 
 import java.util.Observable;
+import javax.swing.JOptionPane;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 
 
@@ -42,26 +44,25 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         initComponents();
     }
 
-    /*
-    public void limpiarErrores() {
-        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK);
-    }
-    */
     
-    /*
+    public void limpiarErrores() {
+        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
+         }
+    
+    
+    
     boolean validar(){
         boolean error=false;
         
-        this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.etiquetaNumerodeSolicitud.getText().isEmpty()){
-            this.etiquetaNumerodeSolicitud.setForeground(SistemaActivos.COLOR_ERROR);
+        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK); 
+        if (this.codigoLabel.getText().isEmpty()){
+            this.codigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
             error=true;
         }
         return !error;
     }
     
-    */
-
+    
     
     
     
@@ -79,13 +80,70 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        codigoLabel = new javax.swing.JLabel();
+        categoriaLabel = new javax.swing.JLabel();
+        DescripcionLabel = new javax.swing.JLabel();
+        DependenciaLabel = new javax.swing.JLabel();
+        ResponsableLabel = new javax.swing.JLabel();
+        ResponsableTextField = new javax.swing.JTextField();
+        CodigoTextField = new javax.swing.JTextField();
+        categoriaTextField = new javax.swing.JTextField();
+        descripcionTextField = new javax.swing.JTextField();
+        dependenciaTextField = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        activosTable = new javax.swing.JTable();
+        buscarjButton = new javax.swing.JButton();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Categoria", "Descripcion", "Dependencia", "Responsable", " " }));
-        jComboBox1.setRequestFocusEnabled(false);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        setTitle(" Activos");
+
+        codigoLabel.setText("Codigo");
+
+        categoriaLabel.setText("Categoria");
+
+        DescripcionLabel.setText("Descripción");
+
+        DependenciaLabel.setText("Dependencia");
+
+        ResponsableLabel.setText("Responsable");
+
+        categoriaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                categoriaTextFieldActionPerformed(evt);
+            }
+        });
+
+        activosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(activosTable);
+
+        buscarjButton.setText("Buscar");
+        buscarjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarjButtonActionPerformed(evt);
             }
         });
 
@@ -94,28 +152,103 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DescripcionLabel)
+                                    .addComponent(categoriaLabel))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(descripcionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                    .addComponent(categoriaTextField)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codigoLabel)
+                                .addGap(46, 46, 46)
+                                .addComponent(CodigoTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(DependenciaLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(dependenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ResponsableLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(ResponsableTextField)))
+                        .addGap(44, 44, 44)
+                        .addComponent(buscarjButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoLabel)
+                    .addComponent(CodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(categoriaLabel)
+                    .addComponent(categoriaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DescripcionLabel)
+                    .addComponent(buscarjButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DependenciaLabel)
+                    .addComponent(dependenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ResponsableLabel)
+                    .addComponent(ResponsableTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void categoriaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_categoriaTextFieldActionPerformed
+
+    private void buscarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarjButtonActionPerformed
+     if(this.validar()){
+            try {
+                controller.buscar(this.toActivo());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
+        } 
+    }//GEN-LAST:event_buscarjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField CodigoTextField;
+    private javax.swing.JLabel DependenciaLabel;
+    private javax.swing.JLabel DescripcionLabel;
+    private javax.swing.JLabel ResponsableLabel;
+    private javax.swing.JTextField ResponsableTextField;
+    private javax.swing.JTable activosTable;
+    private javax.swing.JButton buscarjButton;
+    private javax.swing.JLabel categoriaLabel;
+    private javax.swing.JTextField categoriaTextField;
+    private javax.swing.JLabel codigoLabel;
+    private javax.swing.JTextField dependenciaTextField;
+    private javax.swing.JTextField descripcionTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     
@@ -126,35 +259,25 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     
     
     
-    /*
-      public void fromSolicitud(Solicitud s){
-      textFieldNumSolicitud.setText(s.getNumSolicitud().toString());
-    }
-    */
     
-    /*
+      public void fromActivo(Activo s){
+      codigoLabel.setText(s.getCodigoId().toString());
+    }
+    
+    
+    
     Activo toActivo(){
      Activo result= new Activo();
-     result.setNumSolicitud(Integer.parseInt(textFieldNumSolicitud.getText()));
+     result.setCodigoId(codigoLabel.getText());
      return result;
     }
-  */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     @Override
     public void update(Observable o, Object arg) {
-        //this.limpiarErrores();
+        this.limpiarErrores();
         Activo acti= model.getFilter();
-       // this.fromSolicitud(acti);
-        //solicitudesFld.setModel(model.getSolicitudes());
+       this.fromActivo(acti);
+        activosTable.setModel(model.getActivos());
             
     }
 }
