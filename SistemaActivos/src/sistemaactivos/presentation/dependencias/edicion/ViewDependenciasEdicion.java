@@ -41,7 +41,7 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
         Guardar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
 
-        Codigo.setText("CodigoLabel");
+        Codigo.setText("Codigo");
 
         NombreLabel.setText("Nombre");
 
@@ -89,7 +89,7 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
                         .addComponent(CodigoField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                         .addComponent(NombreTextField))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +114,7 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
                     .addComponent(Salir))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,7 +186,7 @@ public class ViewDependenciasEdicion extends javax.swing.JInternalFrame {
     
     public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model){
         this.model=model;
-         //model.addObserver(this);
+        //model.addObserver(this);
     }
 
     public ModelDependenciasEdicion getModel() {
