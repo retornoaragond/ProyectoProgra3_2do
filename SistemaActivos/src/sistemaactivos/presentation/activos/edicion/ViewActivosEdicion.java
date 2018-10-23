@@ -6,6 +6,7 @@
 package sistemaactivos.presentation.activos.edicion;
 
 import java.util.Observable;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 
 /**
@@ -46,8 +47,18 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.controller = controller;
     }
     
+   public void limpiarErrores(){
+     this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
+     this.responsableLabel.setForeground(SistemaActivos.COLOR_OK);
    
+   }
     
+   boolean validar(){
+     boolean error= false;
+     this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
+     //  if(!this.dependenciaComboBox.getSelectedIndex())
+   return !error;
+   }
     
     
     
@@ -65,13 +76,15 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         CategoriaLabel = new javax.swing.JLabel();
         DescripcionLabel = new javax.swing.JLabel();
         DependenciaLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        responsableLabel = new javax.swing.JLabel();
         dependenciaComboBox = new javax.swing.JComboBox<>();
         responsableComboBox = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        identificacionTextField = new javax.swing.JTextField();
+        categoriaTextField = new javax.swing.JTextField();
+        DescripcionTextField = new javax.swing.JTextField();
+        identificacionLabel = new javax.swing.JLabel();
+        GuardarButton = new javax.swing.JButton();
+        SalirButton = new javax.swing.JButton();
 
         CategoriaLabel.setText("Categoria");
 
@@ -79,19 +92,38 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
 
         DependenciaLabel.setText("Dependencia");
 
-        jLabel2.setText("Responsable");
+        responsableLabel.setText("Responsable");
 
         dependenciaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        responsableComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dependenciaComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                dependenciaComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Identificacion");
+        responsableComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        responsableComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                responsableComboBoxActionPerformed(evt);
+            }
+        });
+
+        identificacionTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identificacionTextFieldActionPerformed(evt);
+            }
+        });
+
+        identificacionLabel.setText("Identificacion");
+
+        GuardarButton.setText("Guardar");
+        GuardarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarButtonActionPerformed(evt);
+            }
+        });
+
+        SalirButton.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,32 +131,36 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(DependenciaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dependenciaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(responsableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CategoriaLabel)
-                            .addComponent(DescripcionLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addComponent(GuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(SalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(DependenciaLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(dependenciaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(responsableLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(responsableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CategoriaLabel)
+                                .addComponent(DescripcionLabel))
+                            .addGap(14, 14, 14)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(categoriaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                .addComponent(DescripcionTextField)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(121, 121, 121)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(identificacionLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(identificacionTextField))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,38 +168,68 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
+                        .addComponent(identificacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(identificacionLabel))
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CategoriaLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CategoriaLabel)
+                    .addComponent(categoriaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DescripcionLabel)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DescripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DependenciaLabel)
                     .addComponent(dependenciaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(responsableLabel)
                     .addComponent(responsableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GuardarButton)
+                    .addComponent(SalirButton))
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void identificacionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificacionTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_identificacionTextFieldActionPerformed
+
+    private void GuardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GuardarButtonActionPerformed
+
+    private void dependenciaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciaComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dependenciaComboBoxActionPerformed
+
+    private void responsableComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responsableComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_responsableComboBoxActionPerformed
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.limpiarErrores();
+       Activo actual = model.getCurrent();
+       this.fromActivo(actual);
+       
+      }
+    
+    
+    public void fromActivo(Activo actual){
+     this.identificacionTextField.setEnabled(false);
+     this.categoriaTextField.setEnabled(false);
+     this.DescripcionTextField.setEnabled(false);
+     Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
+     Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+     //agregar  dependencia  y responsable desde la base de datos 
+    
     }
 
 
@@ -171,13 +237,15 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     private javax.swing.JLabel CategoriaLabel;
     private javax.swing.JLabel DependenciaLabel;
     private javax.swing.JLabel DescripcionLabel;
+    private javax.swing.JTextField DescripcionTextField;
+    private javax.swing.JButton GuardarButton;
+    private javax.swing.JButton SalirButton;
+    private javax.swing.JTextField categoriaTextField;
     private javax.swing.JComboBox<String> dependenciaComboBox;
+    private javax.swing.JLabel identificacionLabel;
+    private javax.swing.JTextField identificacionTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> responsableComboBox;
+    private javax.swing.JLabel responsableLabel;
     // End of variables declaration//GEN-END:variables
 }

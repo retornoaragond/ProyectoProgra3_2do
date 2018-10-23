@@ -617,7 +617,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private javax.swing.JTextField tipoadq;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+    @ Override
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
         Solicitud actual = model.getCurrent();
