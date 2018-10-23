@@ -86,6 +86,8 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         GuardarButton = new javax.swing.JButton();
         SalirButton = new javax.swing.JButton();
 
+        setTitle("Activo");
+
         CategoriaLabel.setText("Categoria");
 
         DescripcionLabel.setText("Descripcion");
@@ -219,7 +221,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
        Activo actual = model.getCurrent();
        this.fromActivo(actual);
        
-      }
+     }
     
     
      public void fromActivo(Activo actual){

@@ -242,7 +242,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         Lcantidad.setText("Cantidad");
 
-        agregarbien.setText("Agergar");
+        agregarbien.setText("Agregar");
         agregarbien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarbienActionPerformed(evt);
