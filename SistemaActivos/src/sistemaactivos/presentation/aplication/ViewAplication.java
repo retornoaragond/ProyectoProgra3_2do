@@ -125,9 +125,9 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     @Override
     public void update(Observable o, Object arg) {
         if (model.getCurrent() != null) {
-            this.setTitle("PERSONAS (" + model.getCurrent().getId() + ")");
+            this.setTitle("SISTEMA ACTIVOS (" + model.getCurrent().getId() + ")");
         } else {
-            this.setTitle("PERSONAS");
+            this.setTitle("SISTEMA ACTIVOS");
         }
     }
 }
