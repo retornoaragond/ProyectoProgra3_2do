@@ -5,14 +5,22 @@
  */
 package sistemaactivos.logic;
 
-import sistemaactivos.data.Dao;
+import java.util.List;
+import sistemaactivos.data.DaoActivos;
+import sistemaactivos.data.DaoAdministracion;
+import sistemaactivos.data.DaoSolicitudes;
 
 /**
  *
  * @author ExtremeTech
  */
 public class ModelLogic {
-    private Dao dao;
+    private DaoSolicitudes dao;
+    private DaoActivos daoActivos;
+    private DaoAdministracion daoAdministracion;
+    
+    
+   
     private static ModelLogic uniqueInstance;
     
     public static ModelLogic instance(){
@@ -23,7 +31,7 @@ public class ModelLogic {
     }
     
     private ModelLogic(){
-        dao = new Dao();
+        dao = new DaoSolicitudes();
     }
     
     public  Usuario getUsuario(String id, String clave) throws Exception{
@@ -36,7 +44,65 @@ public class ModelLogic {
         }
     }
     
-    public void close(){
+    
+    
+    /////////parte de solicitudes//////////
+   
+    
+    /*
+    public List<Bien> getBienes(){
+      return dao.BienesGetAll()  
+    
+    }
+    */
+    
+    /*
+    public Bien getBien(String serial) throws Exception{
+    return dao.BienGet(serial);
+     }
+    */
+    
+    
+    
+    /*
+    public List<Bien> searchEstados(Bien filtro){
+        return dao.BienSearch(filtro);
+    }
+    */
+    
+    
+    
+    /*
+     public Solicitud getSolicitud(String id) throws Exception{
+        return dao.SolicitudGet(id);
+    }
+    
+    public void deleteSolicitud(Solicitud p) throws Exception{
+        dao.SolicitudDelete(p);
+    }
+
+    public void addSolicitud(Solicitud solicitud) throws Exception{
+        dao.SolicitudAdd(solicitud);
+    }
+
+    public void updatePersona(Solicitud solicitud) throws Exception{
+        dao.SolicitudUpdate(solicitud);
+    }
+    
+    public List<Solicitud> searchPersonas(Solicitud filtro){
+        return dao.SolicitudSearch(filtro);
+    }
+
+//    */
+    
+    ///fin de la seccion de solicitudes
+    
+    
+    
+    
+    
+    
+public void close(){
         dao.close();
     }
 }

@@ -17,11 +17,11 @@ import sistemaactivos.logic.Usuario;
  *
  * @author ExtremeTech
  */
-public class Dao {
+public class DaoSolicitudes {
 
     RelDatabase db;
 
-    public Dao() {
+    public DaoSolicitudes() {
         db = new RelDatabase();
     }
 
