@@ -16,12 +16,13 @@ import sistemaactivos.logic.Funcionario;
  *
  * @author ExtremeTech
  */
-public class ViewFuncionariosEdicion extends javax.swing.JInternalFrame {
+public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java.util.Observer{
 
     /**
      * Creates new form viewFuncionarios
      */
-    public ViewFuncionariosEdicion() {
+    public ViewFuncionariosEdicion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -229,12 +230,15 @@ public class ViewFuncionariosEdicion extends javax.swing.JInternalFrame {
     public ModelFuncionariosEdicion getModel() {
         return model;
     }
+   
+    @Override
     public void update(java.util.Observable updatedModel,Object parametros){
        this.limpiarErrores();
        //Funcionario actual = model.getCurrent();
        //this.fromPersona(actual);
    }
-   public void fromFuncionario(Funcionario actual){
+  
+    public void fromFuncionario(Funcionario actual){
        
        this.IDTextField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
        this.IDTextField.setText(actual.getId());

@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.dependencias.listado;
 
+import java.util.Observable;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
@@ -14,11 +15,49 @@ import sistemaactivos.presentation.dependencias.edicion.*;
  *
  * @author ExtremeTech
  */
+
 public class ViewDependenciasListado extends javax.swing.JInternalFrame implements java.util.Observer {
 
     ControllerDependenciasListado controller;
     ModelDependenciasListado model;
+ 
+    public void setController(ControllerDependenciasListado controller) {
+        this.controller = controller;
+    }
 
+    public ControllerDependenciasListado getController() {
+        return controller;
+    }
+
+    public void setModel(ModelDependenciasListado model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+
+    public ModelDependenciasListado getModel() {
+        return model;
+    }
+     
+    public ViewDependenciasListado() {
+        super("", false, true);
+        initComponents();
+    }
+
+    public void limpiarErrores() {
+        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK);
+    }
+    
+    boolean validar(){
+        boolean error=false;
+        
+        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK); 
+        if (this.CodigoLabel.getText().isEmpty()){
+            this.CodigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error=true;
+        }
+        return !error;
+    }
+    
     /**
      * Creates new form viewDependencias
      */
@@ -112,7 +151,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
          try {
-         //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
+            //controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
         } 
@@ -132,67 +171,8 @@ if(this.validar()){
 
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
-     public void setController(ControllerDependenciasListado controller) {
-        this.controller = controller;
-    }
-
-    public ControllerDependenciasListado getController() {
-        return controller;
-    }
-
-    public void setModel(ModelDependenciasListado model) {
-        this.model = model;
-        model.addObserver(this);
-    }
-
-    public ModelDependenciasListado getModel() {
-        return model;
-    }
     
-    public ViewDependenciasListado() {
-        super("", false, true);
-        initComponents();
-    }
-
-    public void limpiarErrores() {
-        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK);
-    }
-    
-    boolean validar(){
-        boolean error=false;
-        
-        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.CodigoLabel.getText().isEmpty()){
-            this.CodigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
-        }
-        return !error;
-    }
-    
-    
-    public void fromDependencia(Dependencia dependencia){
-      this.CodigoTEXT.setText(dependencia.getCodigo().toString());
-    }
-    
-     Dependencia toDependencia(){
-     Dependencia result= new Dependencia();
-     result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
-     return result;
-    }
-     
-      @Override
-    public void update(java.util.Observable updatedModel, Object parametros) {
-        this.limpiarErrores();
-        Dependencia dependencia= model.getFilter();
-        this.fromDependencia(dependencia);
-        this.DependenciaTable.setModel(model.getDependenciaTablemodel());
-        }
-    
-    
-
-    
-    
-    
+   
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -204,4 +184,23 @@ if(this.validar()){
     private javax.swing.JButton EliminarButton;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public void fromDependencia(Dependencia dependencia){
+      this.CodigoTEXT.setText(dependencia.getCodigo().toString());
+    }
+    
+     Dependencia toDependencia(){
+     Dependencia result= new Dependencia();
+     result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
+     return result;
+    }
+     
+      @Override
+    public void update(Observable o, Object arg) {
+        this.limpiarErrores();
+        Dependencia dependencia= model.getFilter();
+        this.fromDependencia(dependencia);
+        this.DependenciaTable.setModel(model.getDependenciaTablemodel());
+        }
+
 }

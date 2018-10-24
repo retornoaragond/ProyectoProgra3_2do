@@ -57,8 +57,8 @@ public class ControllerDependenciasListado {
         SistemaActivos.DEPENDENCIA_CONTROLLER.reset(SistemaActivos.MODO_AGREGAR, new Dependencia());
         SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
     }
-    
-     */
+    */
+     
      /*
     public void editar(int row, Point at){       
        // Dependencia seleccionada = model.getDependencias().getRowAt(row); 
