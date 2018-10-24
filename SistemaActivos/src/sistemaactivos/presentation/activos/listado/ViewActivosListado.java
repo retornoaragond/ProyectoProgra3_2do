@@ -48,10 +48,19 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
 
     boolean validar() {
         boolean error = false;
-
+        boolean flag = false;
+        
+        //repetitivo
         this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.codigoLabel.getText().isEmpty()) {
+        if (this.codigoLabel.getText().isEmpty() && !flag) {
             this.codigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            flag = true;
+        }
+        
+        //si almenos un espacio no esta en blanco
+        if (flag) {
             error = true;
         }
         return !error;
@@ -106,12 +115,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         DependenciaLabel.setText("Dependencia");
 
         ResponsableLabel.setText("Responsable");
-
-        categoriaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaTextFieldActionPerformed(evt);
-            }
-        });
 
         activosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,10 +204,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void categoriaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoriaTextFieldActionPerformed
-
     private void buscarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarjButtonActionPerformed
         if (this.validar()) {
             try {
@@ -237,12 +236,12 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     // End of variables declaration//GEN-END:variables
 
     public void fromActivo(Activo s) {
-        if(s.getCodigoId()!=null){
-           CodigoTextField.setText(s.getCodigoId()); 
-        }else{
+        if (s.getCodigoId() != null) {
+            CodigoTextField.setText(s.getCodigoId());
+        } else {
             CodigoTextField.setText("");
         }
-        
+
         if (s.getBien() != null) {
             if (s.getBien().getCategoria() != null) {
                 categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
