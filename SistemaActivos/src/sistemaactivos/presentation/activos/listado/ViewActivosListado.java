@@ -20,7 +20,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     ControllerActivosListado controller;
     ModelActivosListado model;
 
-    
     public void setController(ControllerActivosListado controller) {
         this.controller = controller;
     }
@@ -37,40 +36,27 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     public ModelActivosListado getModel() {
         return model;
     }
-    
-    
+
     public ViewActivosListado() {
-         super("", false, true);
+        super("", false, true);
         initComponents();
     }
 
-    
     public void limpiarErrores() {
         this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
-         }
-    
-    
-    
-    boolean validar(){
-        boolean error=false;
-        
-        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.codigoLabel.getText().isEmpty()){
+    }
+
+    boolean validar() {
+        boolean error = false;
+
+        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.codigoLabel.getText().isEmpty()) {
             this.codigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
+            error = true;
         }
         return !error;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -220,16 +206,15 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     }//GEN-LAST:event_categoriaTextFieldActionPerformed
 
     private void buscarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarjButtonActionPerformed
-     if(this.validar()){
+        if (this.validar()) {
             try {
                 controller.buscar(this.toActivo());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
-        } 
     }//GEN-LAST:event_buscarjButtonActionPerformed
 
 
@@ -251,35 +236,60 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      public void fromActivo(Activo s){
-      codigoLabel.setText(s.getCodigoId().toString());
-    }
-    
-    
-    
-    Activo toActivo(){
-     Activo result= new Activo();
-     result.setCodigoId(codigoLabel.getText());
-    // result.setBiens(new HashSet<>(model.activosTable));
+    public void fromActivo(Activo s) {
+        if(s.getCodigoId()!=null){
+           CodigoTextField.setText(s.getCodigoId()); 
+        }else{
+            CodigoTextField.setText("");
+        }
         
-     return result;
+        if (s.getBien() != null) {
+            if (s.getBien().getCategoria() != null) {
+                categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
+            } else {
+                categoriaTextField.setText("");
+            }
+            if (s.getBien().getDecripcion() != null) {
+                descripcionTextField.setText(s.getBien().getDecripcion());
+            } else {
+                descripcionTextField.setText("");
+            }
+        } else {
+            categoriaTextField.setText("");
+            descripcionTextField.setText("");
+        }
+
+        if (s.getLabor() != null) {
+            if (s.getLabor().getDependencia() != null) {
+                dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
+            } else {
+                dependenciaTextField.setText("");
+            }
+            if (s.getLabor().getFuncionario().getNombre() != null) {
+                ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
+            } else {
+                ResponsableTextField.setText("");
+            }
+        } else {
+            dependenciaTextField.setText("");
+            ResponsableTextField.setText("");
+        }
     }
-  
+
+    Activo toActivo() {
+        Activo result = new Activo();
+        result.setCodigoId(codigoLabel.getText());
+        // result.setBiens(new HashSet<>(model.activosTable));
+
+        return result;
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
-        Activo acti= model.getFilter();
-       this.fromActivo(acti);
+        Activo acti = model.getFilter();
+        this.fromActivo(acti);
         activosTable.setModel(model.getActivos());
-            
+
     }
 }
