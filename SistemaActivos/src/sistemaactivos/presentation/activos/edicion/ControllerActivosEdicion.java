@@ -23,14 +23,14 @@ public class ControllerActivosEdicion {
     
     
     public ControllerActivosEdicion(ViewActivosEdicion view, ModelActivosEdicion model, ModelLogic domainModel, Session session) {
-//        //model.reset(domainModel.getEstadosCiviles());
+//        model.reset(domainModel.getEstadosCiviles());
        this.domainModel= domainModel;
         this.session=session;
         
         this.view = view;
         this.model = model;
-      //  view.setController(this);
-       // view.setModel(model);
+        view.setController(this);
+        view.setModel(model);
     }
 
 
@@ -38,7 +38,7 @@ public class ControllerActivosEdicion {
     public void guardar(Activo activo) throws Exception{  
         switch(model.getModo()){
             case SistemaActivos.MODO_AGREGAR:
-//               domainModel.addActivo(activo);
+//            domainModel.addActivo(activo);
 //                SistemaActivos.ACTIVO_CONTROLLER.refrescarBusqueda();                   
 //                model.setCurrent(new Activo());
 //                model.commit();   

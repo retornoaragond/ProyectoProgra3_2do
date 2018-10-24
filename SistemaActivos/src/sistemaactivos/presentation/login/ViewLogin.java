@@ -99,7 +99,7 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
+    controller.exit();
     }//GEN-LAST:event_salirActionPerformed
 
     private void loginFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFldActionPerformed
@@ -139,7 +139,13 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public void fromUsuario(Usuario current) {
-        this.IDTXTField.setText(String.valueOf(current.getId()));
+        if(String.valueOf(current.getId()).equals(null)){        
+            this.IDTXTField.setText(null);                
+        }        
+        else{
+            String.valueOf(current.getId());
+            }
+        
         this.JclaveField.setText(current.getPass());
     }
 

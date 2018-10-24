@@ -7,6 +7,7 @@ package sistemaactivos.presentation.funcionarios.edicion;
 
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Set;
 import javafx.application.Application;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
@@ -147,7 +148,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     private void GuadarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarActionPerformed
          if(this.validar()){
             try {
-                //this.controller.guardar(this.toPersona());
+                this.controller.guardar(this.toFuncionario());
                 JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
@@ -200,8 +201,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         Funcionario result = new Funcionario();
         result.setId(this.IDTextField.getText());
         result.setNombre(this.NombreTextField.getText());
-        //result.setLabors(new set(this.LaborsComboBox));
-        //result.setSolicituds(new set(this.SolicitudesComboBox));
+        //result.setLabors(new Set(this.LaborsComboBox));
+        //result.setSolicituds(new Set(this.SolicitudesComboBox));
         
         return result;
     }
@@ -224,7 +225,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     
     public void setModel(sistemaactivos.presentation.funcionarios.edicion.ModelFuncionariosEdicion model){
         this.model=model;
-         //model.addObserver(this);
+        model.addObserver(this);
     }
 
     public ModelFuncionariosEdicion getModel() {
@@ -234,8 +235,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     @Override
     public void update(java.util.Observable updatedModel,Object parametros){
        this.limpiarErrores();
-       //Funcionario actual = model.getCurrent();
-       //this.fromPersona(actual);
+       Funcionario actual = model.getCurrent();
+       this.fromFuncionario(actual);
    }
   
     public void fromFuncionario(Funcionario actual){
@@ -244,7 +245,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
        this.IDTextField.setText(actual.getId());
        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
         
-        //this.NombreTextField.setEnabled(editable);
+        this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
 }
 }

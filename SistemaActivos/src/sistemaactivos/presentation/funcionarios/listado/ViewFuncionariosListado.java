@@ -143,7 +143,7 @@ public void setController(ControllerFuncionariosListado controller) {
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         try {
-            //controller.preAgregar(this.agregarFld.getLocationOnScreen());
+            //controller.preAgregar(this.Agregar.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }

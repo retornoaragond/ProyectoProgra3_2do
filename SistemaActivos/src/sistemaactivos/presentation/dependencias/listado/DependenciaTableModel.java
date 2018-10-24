@@ -24,10 +24,6 @@ public class DependenciaTableModel extends AbstractTableModel {
         initColNames();
     }
 
-
-    
-    
-    
     @Override
     public int getRowCount() {
        return rows.size();

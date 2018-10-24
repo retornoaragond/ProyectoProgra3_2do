@@ -6,9 +6,13 @@
 package sistemaactivos.presentation.funcionarios.listado;
 
 import java.awt.Point;
+import java.util.Arrays;
+import java.util.List;
 import sistemaactivos.Session;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -42,40 +46,41 @@ public class ControllerFuncionariosListado {
         model.commit();
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }
-     */
+   */
+     
  /*
     public void preAgregar(Point at)throws Exception{      
-        //Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
-        if ( !Arrays.asList(Application.ROL_MANAGER).contains(principal.getRol())){
-           throw new Exception(Application.ROL_NOTAUTHORIZED);
+        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+        if ( !Arrays.asList(SistemaActivos.ROL_MANAGER).contains(principal.getRol())){
+           throw new Exception(SistemaActivos.ROL_NOTAUTHORIZED);
         }
-        Application.PERSONA_CONTROLLER.reset(Application.MODO_AGREGAR, new Solicitud());
-        Application.PERSONA_CONTROLLER.show(at);
+        SistemaActivos.PERSONA_CONTROLLER.reset(Application.MODO_AGREGAR, new Solicitud());
+        SistemaActivos.PERSONA_CONTROLLER.show(at);
     }
-     */
+   */  
  /*
    public void editar(int row, Point at){       
-        Solicitud seleccionada = model.getSolicitudes().getRowAt(row); 
-        Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
+        Funcionario seleccionada = model.getFuncionarios().getRowAt(row); 
+        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         int modo;
-        if ( Arrays.asList(Application.ROL_MANAGER, Application.ROL_SUPERVISOR).contains(principal.getRol())){
-           modo=Application.MODO_EDITAR;
+        if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
+           modo=SistemaActivos.MODO_EDITAR;
         }
         else{
-            modo=Application.MODO_CONSULTAR;            
+            modo=SistemaActivos.MODO_CONSULTAR;            
         }
-        Application.Solicitud_CONTROLLER.reset(modo, seleccionada);
-        Application.Solicitud_CONTROLLER.show(at);
+        SistemaActivos.Solicitud_CONTROLLER.reset(modo, seleccionada);
+        SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(at);
     }
-                       
-     */
+   */                    
+     
     public void borrar(int row) {
         Funcionario seleccionada = model.getFuncionarios().getRowAt(row);
         try {
-            //  domainModel.deletePersona(seleccionada);
+              //domainModel.deletePersona(seleccionada);
         } catch (Exception ex) {
         }
-        // List<Solicitud> rowsMod = domainModel.searchPersonas(model.getSolicitud());
+        //List<Funcionario> rowsMod = domainModel.searchPersonas(model.getFuncionario());
         //model.setSolicitudes(rowsMod);
         model.commit();
     }

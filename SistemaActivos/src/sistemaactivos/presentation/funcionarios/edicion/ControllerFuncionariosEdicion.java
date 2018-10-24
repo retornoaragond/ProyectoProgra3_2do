@@ -33,16 +33,16 @@ public class ControllerFuncionariosEdicion {
         view.setModel(model);
     }
 
-    public void guardar(Funcionario Funcionario) throws Exception {
+    public void guardar(Funcionario funcionario) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
-                //domainModel.addPersona(persona);
+                //domainModel.addFuncionario(funcionario);
                 //SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();                   
                 model.setCurrent(new Funcionario());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-                //    domainModel.updatePersona(persona);
+                //    domainModel.updateFuncionario(funcionario);
                 //  SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();               
                 break;
         }
@@ -52,11 +52,11 @@ public class ControllerFuncionariosEdicion {
         model.reset();
     }
 
-    /*
-    public void reset(int modo, Persona current){
+    
+    public void reset(int modo, Funcionario current){
         model.reset(modo, current);
     }    
-     */
+     
     public void show() {
         view.setVisible(true);
     }

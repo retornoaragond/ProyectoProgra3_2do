@@ -35,14 +35,14 @@ public class ActivoTableModel extends AbstractTableModel {
     /*
     public Class<?> getColumnClass(int col){
         switch (cols[col]){
-           // case SEXO: return Icon.class;
-           // case PASATIEMPO_CINE: return Boolean.class;
-           // case ESTADO_CIVIL: return Icon.class;
+            case CODIGOID: return ;
+            case BIEN: return Boolean.class;
+            case ESTADO_CIVIL: return Icon.class;
             default: return super.getColumnClass(col);
         }    
     }    
      */
-   
+  
      public int getRowCount() {
         return rows.size();
     }
@@ -52,7 +52,7 @@ public class ActivoTableModel extends AbstractTableModel {
         switch (cols[col]) {
             case CODIGOID: return activo.getCodigoId();
             case BIEN: return activo.getBien();
-            //case LABORACTIVO: return activo.getLaborActivo();
+            case LABORACTIVO: return activo.getLabor();
             default:
                 return "";
         }

@@ -31,8 +31,8 @@ public class ControllerDependenciasListado {
         
         this.view = view;
         this.model = model;
-        //view.setController(this);
-        //view.setModel(model);
+        view.setController(this);
+        view.setModel(model);
     }
     
     public void buscar(Dependencia filter) throws Exception{       
@@ -41,7 +41,7 @@ public class ControllerDependenciasListado {
     }
     
     public void refrescarBusqueda() throws Exception{
-       // List<Dependencia> rows = domainModel.searchDependencias(model.getFilter());
+        //List<Dependencia> rows = domainModel.searchDependencias(model.getFilter());
         //model.setDependencia(rows);
         model.commit();
       //  if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
@@ -59,45 +59,45 @@ public class ControllerDependenciasListado {
     }
     */
      
-     /*
+    
     public void editar(int row, Point at){       
-       // Dependencia seleccionada = model.getDependencias().getRowAt(row); 
-       // Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
+        Dependencia seleccionada = model.dependenciasTable.getRowAt(row); 
+        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         int modo;
-     //   if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
-       //     modo=SistemaActivos.MODO_EDITAR;
-        }
+        /*if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
+            modo=SistemaActivos.MODO_EDITAR;
+        }*/
+        /*
         else{
             modo=SistemaActivos.MODO_CONSULTAR;            
-        }
-        SistemaActivos.DEPENDENCIA_CONTROLLER.reset(modo, seleccionada);
-        SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
+        }*/
+        //SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, seleccionada);
+        //SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
     }
 
-    */
+    
 
     
-    /*
     public void borrar(int row){  
-        Dependencia seleccionada = model.getDependencias().getRowAt(row); 
+        Dependencia seleccionada = model.dependenciasTable.getRowAt(row); 
         try {
-            domainModel.deleteDependencia(seleccionada);
+            //domainModel.deleteDependencia(seleccionada);
         } catch (Exception ex) { }
-        List<Dependencia> rowsMod = domainModel.searchDependencias(model.getFilter());
-        model.setDependencia(rowsMod);
+        //List<Dependencia> rowsMod = domainModel.searchDependencias(model.getFilter());
+        //model.setDependencia(rowsMod);
         model.commit();
     }
 
-    */
+    
 
     
     
-    /*
-    public void searchEstado(int row, Point position){
-        model.setSeleccionado(model.getPersonas().getRowAt(row));
-        Application.ESTADOS_SEARCH_CONTROLLER.show(position);
-    }
     
+    public void searchEstado(int row, Point position){
+        model.setSeleccionado(model.dependenciasTable.getRowAt(row));
+        //SistemaActivos.ESTADOS_SEARCH_CONTROLLER.show(position);
+    }
+  /*  
     public void changeEstado(EstadoCivil nuevoEstado){
         if (model.getSeleccionado()!=null){
             model.getSeleccionado().setEstadoCivil(nuevoEstado);
@@ -107,8 +107,8 @@ public class ControllerDependenciasListado {
             } catch (Exception ex) { }
         }
     }
-
- */
+*/
+ 
 
 
 
