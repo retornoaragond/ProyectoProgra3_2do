@@ -24,7 +24,7 @@ public class ControllerSolicitudEdicion {
     ModelSolicitudEdicion model;
 
     public ControllerSolicitudEdicion(ViewSolicitudEdicion view, ModelSolicitudEdicion model, ModelLogic domainModel, Session session) {
-        //model.reset(domainModel.getEstadosCiviles());
+        //model.reset(domainModel.getBien());
         this.domainModel = domainModel;
         this.session = session;
 

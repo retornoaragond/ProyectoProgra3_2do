@@ -15,7 +15,7 @@ import sistemaactivos.data.DaoSolicitudes;
  * @author ExtremeTech
  */
 public class ModelLogic {
-    private DaoSolicitudes dao;
+    private DaoSolicitudes daoSolicitud;
     private DaoActivos daoActivos;
     private DaoAdministracion daoAdministracion;
     
@@ -31,11 +31,13 @@ public class ModelLogic {
     }
     
     private ModelLogic(){
-        dao = new DaoSolicitudes();
+        daoSolicitud = new DaoSolicitudes();
+        daoActivos = new DaoActivos();
+        daoAdministracion= new DaoAdministracion(); 
     }
     
     public  Usuario getUsuario(String id, String clave) throws Exception{
-        Usuario u= dao.usuarioGet(id);
+        Usuario u= daoAdministracion.usuarioGet(id);
         if (u.getPass().equals(clave)){
             return u;
         }
@@ -51,22 +53,22 @@ public class ModelLogic {
     
     /*
     public List<Bien> getBienes(){
-      return dao.BienesGetAll()  
+      return daoSolicitudes.BienesGetAll()  
     
     }
     */
     
     /*
     public Bien getBien(String serial) throws Exception{
-    return dao.BienGet(serial);
+    return daoSolicitudes.BienGet(serial);
      }
     */
     
     
     
     /*
-    public List<Bien> searchEstados(Bien filtro){
-        return dao.BienSearch(filtro);
+    public List<Bien> searchBienes(Bien filtro){
+        return daoSolicitudes.BienSearch(filtro);
     }
     */
     
@@ -74,23 +76,23 @@ public class ModelLogic {
     
     /*
      public Solicitud getSolicitud(String id) throws Exception{
-        return dao.SolicitudGet(id);
+        return daoSolicitudes.SolicitudGet(id);
     }
     
     public void deleteSolicitud(Solicitud p) throws Exception{
-        dao.SolicitudDelete(p);
+        daoSolicitudes.SolicitudDelete(p);
     }
 
     public void addSolicitud(Solicitud solicitud) throws Exception{
-        dao.SolicitudAdd(solicitud);
+        daoSolicitudes.SolicitudAdd(solicitud);
     }
 
-    public void updatePersona(Solicitud solicitud) throws Exception{
-        dao.SolicitudUpdate(solicitud);
+    public void updateSolicitud(Solicitud solicitud) throws Exception{
+        daoSolicitudes.SolicitudUpdate(solicitud);
     }
     
-    public List<Solicitud> searchPersonas(Solicitud filtro){
-        return dao.SolicitudSearch(filtro);
+    public List<Solicitud> searchSolicitud(Solicitud filtro){
+        return daoSolicitudes.SolicitudSearch(filtro);
     }
 
 //    */
@@ -98,11 +100,118 @@ public class ModelLogic {
     ///fin de la seccion de solicitudes
     
     
+    /// area de Funcionario
+    /*
+    public List<Funcionario> getFuncionarios(){
+        return daoAdministracion.FuncionariosGetAll();
+    }
+    
+    public  Funcionario getFuncionario(Integer codigo) throws Exception{
+        return daoAdministracion.FuncionarioGet(codigo);
+    }
+    
+    public List<Funcionario> searchFuncionario(Funcionario filtro){
+        return daoAdministracion.FuncionarioSearch(filtro);
+    }
+
+    
+    public void deleteFuncionario(Funcionario p) throws Exception{
+        daoAdministracion.FuncionarioDelete(p);
+    }
+
+    public void addFuncionario(Funcionario funcionario) throws Exception{
+        daoAdministracion.FuncionarioAdd(funcionario);
+    }
+
+    public void updateFuncionario(Funcionario funcionario) throws Exception{
+        daoAdministracion.FuncionarioUpdate(funcionario);
+    }
+    */
+    //fin de area de funcionarios
+    
+    
+
+
+/// area de dependencias
+    
+    /*
+    public List<Dependencia> getDependencias(){
+        return daoAdministracion.DependenciasGetAll();
+    }
+    
+    public  Dependencia getDependencia(Integer codigo) throws Exception{
+        return daoAdministracion.DependenciaGet(codigo);
+    }
+    
+    public List<Dependencia> searchDependencia(Dependencia filtro){
+        return daoAdministracion.DependenciaSearch(filtro);
+    }
+
+    
+    public void deleteDependencia(Dependencia p) throws Exception{
+        daoAdministracion.DependenciaDelete(p);
+    }
+
+    public void addDependencia(Dependencia dependencia) throws Exception{
+        daoAdministracion.DependenciaAdd(dependencia);
+    }
+
+    public void updateDependencia(Dependencia dependencia) throws Exception{
+        daoAdministracion.DependenciaUpdate(dependencia);
+    }
+    
+  */
+    //fin de area de dependencias
+    
+   
     
     
     
+    
+    
+    
+     /// area de activos
+    
+    /*
+    public List<Activo> getActivos(){
+      return daoActivos.ActivosGetAll()  
+    
+    }
+    */
+    
+     /*
+     public Activo getActivo(String codigoId) throws Exception{
+        return daoActivos.ActivoGet(codigoId);
+    }
+    
+    public void deleteActivo(Activo a) throws Exception{
+        daoActivos.ActivoDelete(a);
+    }
+
+    public void addActivo(Activo activo) throws Exception{
+        daoActivos.ActivoAdd(activo);
+    }
+
+    public void updateActivo(Activo activo) throws Exception{
+        daoActivos.ActivoUpdate(solicitud);
+    }
+    
+    public List<Activo> searchActivo(Activo filtro){
+        return daoActivos.ActivoSearch(filtro);
+    }
+    */
+    
+    
+    
+    
+    
+    //fin de area de activos
+       
     
 public void close(){
-        dao.close();
+    daoSolicitud.close();
+    daoActivos.close();
+    daoAdministracion.close();
+    
     }
 }

@@ -39,7 +39,7 @@ public class ControllerSolicitudListado {
 
     /*
    public void refrescarBusqueda() throws Exception{
-        List<Solicitud> rows = domainModel.searchPersonas(model.getSolicitud());
+        List<Solicitud> rows = domainModel.searchSolicitud(model.getSolicitud());
         model.setSolicitud(rows);
         model.commit();
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
@@ -74,10 +74,10 @@ public class ControllerSolicitudListado {
     public void borrar(int row) {
         Solicitud seleccionada = model.getSolicitudes().getRowAt(row);
         try {
-            //  domainModel.deletePersona(seleccionada);
+            //  domainModel.deleteSolicitud(seleccionada);
         } catch (Exception ex) {
         }
-        // List<Solicitud> rowsMod = domainModel.searchPersonas(model.getSolicitud());
+        // List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getSolicitud());
         //model.setSolicitudes(rowsMod);
         model.commit();
     }
@@ -92,7 +92,7 @@ public class ControllerSolicitudListado {
             model.getSeleccionado().setFuncionario(nuevoFuncionario);
 
             try {
-                // domainModel.updateSolicitud(model.getSeleccionado());
+                // domainModel.updateFuncionario(model.getSeleccionado());
                 //  this.refrescarBusqueda();                
             } catch (Exception ex) {
             }
@@ -104,7 +104,7 @@ public class ControllerSolicitudListado {
             model.getSeleccionado().setDependencia(nuevaDependencia);
 
             try {
-                // domainModel.updateSolicitud(model.getSeleccionado());
+                // domainModel.updateDependencia(model.getSeleccionado());
                 //  this.refrescarBusqueda();                
             } catch (Exception ex) {
             }

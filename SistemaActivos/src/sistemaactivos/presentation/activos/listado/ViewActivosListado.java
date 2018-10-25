@@ -59,6 +59,37 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             flag = true;
         }
         
+        this.categoriaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if(this.categoriaLabel.getText().isEmpty()&& !flag){
+           this.categoriaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+           error=true;
+        }else{
+            flag=true;
+         }
+        
+        this.DescripcionLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.DescripcionLabel.getText().isEmpty() && !flag) {
+            this.DescripcionLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            flag = true;
+        }
+        
+        this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.DependenciaLabel.getText().isEmpty() && !flag) {
+            this.DependenciaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            flag = true;
+        }
+        
+        this.ResponsableLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.ResponsableLabel.getText().isEmpty() && !flag) {
+            this.ResponsableLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            flag = true;
+        }
         //si almenos un espacio no esta en blanco
         if (flag) {
             error = true;

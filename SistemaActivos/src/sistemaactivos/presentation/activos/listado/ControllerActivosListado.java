@@ -106,7 +106,7 @@ public class ControllerActivosListado {
             model.getSeleccionado().setFuncionario(nuevoFuncionario);
                    
             try {
-               // domainModel.updateSolicitud(model.getSeleccionado());
+               // domainModel.updateActivo(model.getSeleccionado());
               //  this.refrescarBusqueda();                
             } catch (Exception ex) { }
         }
@@ -119,7 +119,7 @@ public class ControllerActivosListado {
             model.getSeleccionado().setDependencia(nuevaDependencia);
                    
             try {
-               // domainModel.updateSolicitud(model.getSeleccionado());
+               // domainModel.updateActivo(model.getSeleccionado());
               //  this.refrescarBusqueda();                
             } catch (Exception ex) { }
         }
