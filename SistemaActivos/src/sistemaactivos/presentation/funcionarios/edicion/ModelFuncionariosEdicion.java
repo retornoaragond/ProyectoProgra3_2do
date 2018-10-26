@@ -5,7 +5,11 @@
  */
 package sistemaactivos.presentation.funcionarios.edicion;
 
+import javax.swing.ComboBoxModel;
+import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Puesto;
 
 /**
  *
@@ -13,27 +17,34 @@ import sistemaactivos.logic.Funcionario;
  */
 public class ModelFuncionariosEdicion extends java.util.Observable {
     Funcionario current;
-    
+    ComboBoxModel<Puesto> puestos;
     int modo;    
+    ComboBoxModel<Dependencia> dependencia;
+    
+    public ComboBoxModel<Dependencia> getDependencia(){
+    return dependencia;
+    }
 
+    public ComboBoxModel<Puesto> getPuestos(){
+    return puestos;
+    }
+    
     public ModelFuncionariosEdicion() {
         this.reset();
     }
 
-    public void reset(){      
-       
-    }
+   
     
     public void reset(int modo, Funcionario current){
         this.setModo(modo);
         this.setCurrent(current);
         this.commit();
     }
-    /*
+    
     public void reset(){
-        //this.reset(Application.MODO_AGREGAR,new Persona());     
+        this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());     
     }    
-*/
+
     public int getModo() {
         return modo;
     }

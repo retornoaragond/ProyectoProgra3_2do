@@ -41,12 +41,24 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         IDTextField = new javax.swing.JTextField();
         NombreLabel = new javax.swing.JLabel();
         NombreTextField = new javax.swing.JTextField();
-        SolicitudesLabel = new javax.swing.JLabel();
-        LaborsComboBox = new javax.swing.JComboBox<>();
-        LaborsLabel = new javax.swing.JLabel();
-        SolicitudesComboBox = new javax.swing.JComboBox<>();
         Guadar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
+        SolicitudLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        SolicitudTable = new javax.swing.JTable();
+        PuestoLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        Agregar = new javax.swing.JButton();
+        Dependencia = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        LaborTable = new javax.swing.JTable();
+        EliminarButon = new javax.swing.JToggleButton();
+        Laborlabel = new javax.swing.JLabel();
+        NombreUsuarioLabel = new javax.swing.JLabel();
+        contraseñaLabel = new javax.swing.JLabel();
+        Contraseñatext = new javax.swing.JTextField();
+        OperadorText = new javax.swing.JTextField();
 
         guardarFld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,17 +68,9 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         setTitle("Funcionarios");
 
-        IDLabel.setText("ID");
+        IDLabel.setText("Identificacion");
 
         NombreLabel.setText("Nombre");
-
-        SolicitudesLabel.setText("Solicitudes");
-
-        LaborsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        LaborsLabel.setText("Labor");
-
-        SolicitudesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         Guadar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconguardar.png"))); // NOI18N
         Guadar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,60 +86,137 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
             }
         });
 
+        SolicitudLabel.setText("Solicitudes");
+
+        SolicitudTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(SolicitudTable);
+
+        PuestoLabel.setText("Puesto");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Agregar.setText("Agregar");
+
+        Dependencia.setText("Dependencia");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LaborTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(LaborTable);
+
+        EliminarButon.setText("Eliminar");
+
+        Laborlabel.setText("Labor");
+        Laborlabel.setToolTipText("");
+
+        NombreUsuarioLabel.setText("Operador");
+
+        contraseñaLabel.setText("Contraseña");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(NombreLabel)
                             .addComponent(IDLabel))
-                        .addGap(31, 31, 31)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IDTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(NombreTextField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(Guadar)
-                        .addGap(34, 34, 34)
-                        .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SolicitudesLabel)
-                            .addComponent(LaborsLabel))
+                            .addComponent(IDTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(NombreTextField))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SolicitudesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LaborsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NombreUsuarioLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(OperadorText, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(contraseñaLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(Contraseñatext))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Dependencia)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PuestoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Agregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(EliminarButon))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SolicitudLabel)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Guadar)
+                        .addGap(18, 18, 18)
+                        .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Laborlabel))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreLabel)
+                    .addComponent(NombreUsuarioLabel)
+                    .addComponent(OperadorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDLabel)
-                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contraseñaLabel)
+                    .addComponent(Contraseñatext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreLabel)
-                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Dependencia)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PuestoLabel)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SolicitudesLabel)
-                    .addComponent(SolicitudesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LaborsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LaborsLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(Agregar)
+                    .addComponent(EliminarButon))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Laborlabel)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(SolicitudLabel)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Guadar))
-                .addGap(24, 24, 24))
+                    .addComponent(Guadar)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -183,27 +264,36 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregar;
     private javax.swing.JButton Atras;
+    private javax.swing.JTextField Contraseñatext;
+    private javax.swing.JLabel Dependencia;
+    private javax.swing.JToggleButton EliminarButon;
     private javax.swing.JButton Guadar;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTextField;
-    private javax.swing.JComboBox<String> LaborsComboBox;
-    private javax.swing.JLabel LaborsLabel;
+    private javax.swing.JTable LaborTable;
+    private javax.swing.JLabel Laborlabel;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JTextField NombreTextField;
-    private javax.swing.JComboBox<String> SolicitudesComboBox;
-    private javax.swing.JLabel SolicitudesLabel;
+    private javax.swing.JLabel NombreUsuarioLabel;
+    private javax.swing.JTextField OperadorText;
+    private javax.swing.JLabel PuestoLabel;
+    private javax.swing.JLabel SolicitudLabel;
+    private javax.swing.JTable SolicitudTable;
+    private javax.swing.JLabel contraseñaLabel;
     public javax.swing.JButton guardarFld;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 
 
     Funcionario toFuncionario(){
         Funcionario result = new Funcionario();
         result.setId(this.IDTextField.getText());
-        result.setNombre(this.NombreTextField.getText());
-        //result.setLabors(new Set(this.LaborsComboBox));
-        //result.setSolicituds(new Set(this.SolicitudesComboBox));
-        
+        result.setNombre(this.NombreTextField.getText());               
         return result;
     }
     

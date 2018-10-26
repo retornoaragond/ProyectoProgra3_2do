@@ -23,7 +23,7 @@ public class ControllerFuncionariosEdicion {
     ModelFuncionariosEdicion model;
 
     public ControllerFuncionariosEdicion(ViewFuncionariosEdicion view, ModelFuncionariosEdicion model, ModelLogic domainModel, Session session) {
-        //model.reset(domainModel.getEstadosCiviles());
+        //model.reset(domainModel.getUsuario(id, clave)getEstadosCiviles());
         this.domainModel = domainModel;
         this.session = session;
 
