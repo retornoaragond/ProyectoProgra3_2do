@@ -14,6 +14,9 @@ public class Activo  implements java.io.Serializable {
      private Labor labor;
 
     public Activo() {
+        codigoId="";
+        bien= new Bien();
+        labor= new Labor();        
     }
 
 	

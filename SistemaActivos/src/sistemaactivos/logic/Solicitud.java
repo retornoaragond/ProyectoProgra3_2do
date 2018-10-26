@@ -25,6 +25,16 @@ public class Solicitud  implements java.io.Serializable {
      private Set biens = new HashSet(0);
 
     public Solicitud() {
+        numSolicitud=0;
+        dependencia= new Dependencia();
+        funcionario= new Funcionario();
+        numComprobante=0;
+        fecha= new Date();
+        tipoAdquisicion="";
+        cantidadBienes=0;
+        montoTotal=0;
+        razonRechazo="";
+        estado="";
     }
 
 	

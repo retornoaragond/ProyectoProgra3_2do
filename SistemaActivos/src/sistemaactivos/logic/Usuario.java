@@ -14,6 +14,9 @@ public class Usuario  implements java.io.Serializable {
      private String pass;
 
     public Usuario() {
+        id="";
+        funcionario=new Funcionario();
+        pass="";
     }
 
     public Usuario(String id, Funcionario funcionario, String pass) {

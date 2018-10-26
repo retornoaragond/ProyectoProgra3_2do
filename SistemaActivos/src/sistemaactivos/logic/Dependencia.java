@@ -17,6 +17,9 @@ public class Dependencia  implements java.io.Serializable {
      private Set solicituds = new HashSet(0);
 
     public Dependencia() {
+        codigo=-1;
+        nombre="";
+        
     }
 
 	

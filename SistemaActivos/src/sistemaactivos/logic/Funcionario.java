@@ -18,6 +18,8 @@ public class Funcionario  implements java.io.Serializable {
      private Set labors = new HashSet(0);
 
     public Funcionario() {
+        id="";
+        nombre="";
     }
 
 	

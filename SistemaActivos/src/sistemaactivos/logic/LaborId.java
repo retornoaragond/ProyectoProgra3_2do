@@ -14,6 +14,9 @@ public class LaborId  implements java.io.Serializable {
      private int puestoLabor;
 
     public LaborId() {
+        dependenciaLabor=0;
+        funcionarioLabor="";
+        puestoLabor=0;
     }
 
     public LaborId(int dependenciaLabor, String funcionarioLabor, int puestoLabor) {
