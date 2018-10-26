@@ -15,66 +15,53 @@ import sistemaactivos.data.DaoSolicitudes;
  * @author ExtremeTech
  */
 public class ModelLogic {
-    private DaoSolicitudes daoSolicitud;
-    private DaoActivos daoActivos;
-    private DaoAdministracion daoAdministracion;
-    
-    
-   
+
+    private final DaoSolicitudes daoSolicitud;
+    private final DaoActivos daoActivos;
+    private final DaoAdministracion daoAdministracion;
+
     private static ModelLogic uniqueInstance;
-    
-    public static ModelLogic instance(){
-        if (uniqueInstance == null){
+
+    public static ModelLogic instance() {
+        if (uniqueInstance == null) {
             uniqueInstance = new ModelLogic();
         }
-        return uniqueInstance; 
+        return uniqueInstance;
     }
-    
-    private ModelLogic(){
+
+    private ModelLogic() {
         daoSolicitud = new DaoSolicitudes();
         daoActivos = new DaoActivos();
-        daoAdministracion= new DaoAdministracion(); 
+        daoAdministracion = new DaoAdministracion();
     }
-    
-    public  Usuario getUsuario(String id, String clave) throws Exception{
-        Usuario u= daoAdministracion.usuarioGet(id);
-        if (u.getPass().equals(clave)){
+
+    public Usuario getUsuario(String id, String clave) throws Exception {
+        Usuario u = daoAdministracion.usuarioGet(id);
+        if (u.getPass().equals(clave)) {
             return u;
-        }
-        else{
-            throw new Exception ("Clave incorrecta");
+        } else {
+            throw new Exception("Clave incorrecta");
         }
     }
-    
-    
-    
+
     /////////parte de solicitudes//////////
-   
-    
     /*
     public List<Bien> getBienes(){
       return daoSolicitudes.BienesGetAll()  
     
     }
-    */
-    
-    /*
+     */
+ /*
     public Bien getBien(String serial) throws Exception{
     return daoSolicitudes.BienGet(serial);
      }
-    */
-    
-    
-    
-    /*
+     */
+ /*
     public List<Bien> searchBienes(Bien filtro){
         return daoSolicitudes.BienSearch(filtro);
     }
-    */
-    
-    
-    
-    /*
+     */
+ /*
      public Solicitud getSolicitud(String id) throws Exception{
         return daoSolicitudes.SolicitudGet(id);
     }
@@ -96,10 +83,7 @@ public class ModelLogic {
     }
 
 //    */
-    
     ///fin de la seccion de solicitudes
-    
-    
     /// area de Funcionario
     /*
     public List<Funcionario> getFuncionarios(){
@@ -126,14 +110,9 @@ public class ModelLogic {
     public void updateFuncionario(Funcionario funcionario) throws Exception{
         daoAdministracion.FuncionarioUpdate(funcionario);
     }
-    */
+     */
     //fin de area de funcionarios
-    
-    
-
-
 /// area de dependencias
-    
     /*
     public List<Dependencia> getDependencias(){
         return daoAdministracion.DependenciasGetAll();
@@ -160,26 +139,16 @@ public class ModelLogic {
         daoAdministracion.DependenciaUpdate(dependencia);
     }
     
-  */
+     */
     //fin de area de dependencias
-    
-   
-    
-    
-    
-    
-    
-    
-     /// area de activos
-    
+    /// area de activos
     /*
     public List<Activo> getActivos(){
       return daoActivos.ActivosGetAll()  
     
     }
-    */
-    
-     /*
+     */
+ /*
      public Activo getActivo(String codigoId) throws Exception{
         return daoActivos.ActivoGet(codigoId);
     }
@@ -199,19 +168,12 @@ public class ModelLogic {
     public List<Activo> searchActivo(Activo filtro){
         return daoActivos.ActivoSearch(filtro);
     }
-    */
-    
-    
-    
-    
-    
+     */
     //fin de area de activos
-       
-    
-public void close(){
-    daoSolicitud.close();
-    daoActivos.close();
-    daoAdministracion.close();
-    
+    public void close() {
+        daoSolicitud.close();
+        daoActivos.close();
+        daoAdministracion.close();
+
     }
 }
