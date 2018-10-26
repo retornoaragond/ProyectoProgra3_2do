@@ -15,12 +15,11 @@ import sistemaactivos.presentation.dependencias.edicion.*;
  *
  * @author ExtremeTech
  */
-
 public class ViewDependenciasListado extends javax.swing.JInternalFrame implements java.util.Observer {
 
     ControllerDependenciasListado controller;
     ModelDependenciasListado model;
- 
+
     public void setController(ControllerDependenciasListado controller) {
         this.controller = controller;
     }
@@ -37,7 +36,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     public ModelDependenciasListado getModel() {
         return model;
     }
-     
+
     public ViewDependenciasListado() {
         super("", false, true);
         initComponents();
@@ -46,22 +45,21 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     public void limpiarErrores() {
         this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK);
     }
-    
-    boolean validar(){
-        boolean error=false;
-        
-        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.CodigoLabel.getText().isEmpty()){
+
+    boolean validar() {
+        boolean error = false;
+
+        this.CodigoLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.CodigoLabel.getText().isEmpty()) {
             this.CodigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
+            error = true;
         }
         return !error;
     }
-    
+
     /**
      * Creates new form viewDependencias
      */
-  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +76,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
         BuscarButton = new javax.swing.JButton();
         AgregarButton = new javax.swing.JButton();
         EliminarButton = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         DependenciaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +109,13 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
 
         EliminarButton.setText("Eliminar");
 
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,9 +132,13 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
                 .addGap(18, 18, 18)
                 .addComponent(EliminarButton)
                 .addGap(0, 87, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Salir))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -143,38 +153,40 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
                     .addComponent(EliminarButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-         try {
+        try {
             //controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
-        } 
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-if(this.validar()){
+        if (this.validar()) {
             try {
                 controller.buscar(this.toDependencia());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
-    
-   
-    
-    
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SalirActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarButton;
     private javax.swing.JButton BuscarButton;
@@ -182,25 +194,26 @@ if(this.validar()){
     private javax.swing.JTextField CodigoTEXT;
     private javax.swing.JTable DependenciaTable;
     private javax.swing.JButton EliminarButton;
+    private javax.swing.JButton Salir;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void fromDependencia(Dependencia dependencia){
-      this.CodigoTEXT.setText(dependencia.getCodigo().toString());
+    public void fromDependencia(Dependencia dependencia) {
+        this.CodigoTEXT.setText(dependencia.getCodigo().toString());
     }
-    
-     Dependencia toDependencia(){
-     Dependencia result= new Dependencia();
-     result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
-     return result;
+
+    Dependencia toDependencia() {
+        Dependencia result = new Dependencia();
+        result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
+        return result;
     }
-     
-      @Override
+
+    @Override
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
-        Dependencia dependencia= model.getFilter();
+        Dependencia dependencia = model.getFilter();
         this.fromDependencia(dependencia);
         this.DependenciaTable.setModel(model.getDependenciaTablemodel());
-        }
+    }
 
 }
