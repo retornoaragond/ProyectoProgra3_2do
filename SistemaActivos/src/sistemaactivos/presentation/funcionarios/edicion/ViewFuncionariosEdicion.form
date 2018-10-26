@@ -48,10 +48,10 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="Guadar" min="-2" pref="71" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Atras" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="Guadar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="Atras" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -65,7 +65,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,10 +92,10 @@
                   <Component id="LaborsComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="LaborsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Guadar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Atras" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Atras" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="Guadar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -159,7 +159,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Guadar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sistemaactivos/presentation/icons/iconguardar.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuadarActionPerformed"/>
@@ -167,7 +169,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Atras">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Atras"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sistemaactivos/presentation/icons/iconsatras.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasActionPerformed"/>

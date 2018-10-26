@@ -58,9 +58,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" pref="189" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="guardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="salir" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="guardar" max="32767" attributes="0"/>
+                  <Component id="salir" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -70,7 +70,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="guardar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sistemaactivos/presentation/icons/iconguardar.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarActionPerformed"/>
@@ -78,7 +80,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="salir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salir"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sistemaactivos/presentation/icons/iconsalir.png"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
@@ -337,10 +341,10 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                                  <Component id="agregarbien" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="eliminarbien" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="agregarbien" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="eliminarbien" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -468,7 +472,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="agregarbien">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/sistemaactivos/presentation/icons/iconagregararchivo.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarbienActionPerformed"/>
@@ -476,7 +482,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="eliminarbien">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/sistemaactivos/presentation/icons/iconeliminar.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarbienActionPerformed"/>

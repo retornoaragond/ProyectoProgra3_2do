@@ -72,6 +72,8 @@ public void setController(ControllerFuncionariosListado controller) {
         Eliminar = new javax.swing.JButton();
         Agregar = new javax.swing.JButton();
 
+        setTitle("Funcionarios");
+
         FuncionarioTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -87,16 +89,21 @@ public void setController(ControllerFuncionariosListado controller) {
 
         IdentificacionLabel.setText("Identificacion");
 
-        Buscar.setText("Buscar");
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconbuscar.png"))); // NOI18N
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
             }
         });
 
-        Eliminar.setText("Eliminar");
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconeliminar.png"))); // NOI18N
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
 
-        Agregar.setText("Agregar");
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagragarFuncionario.png"))); // NOI18N
         Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarActionPerformed(evt);
@@ -115,27 +122,30 @@ public void setController(ControllerFuncionariosListado controller) {
                         .addGap(18, 18, 18)
                         .addComponent(IdentificacionText)
                         .addGap(18, 18, 18)
-                        .addComponent(Buscar)
-                        .addGap(80, 80, 80)
-                        .addComponent(Agregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(Eliminar))
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdentificacionLabel)
-                    .addComponent(IdentificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar)
-                    .addComponent(Eliminar)
-                    .addComponent(Agregar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IdentificacionLabel)
+                            .addComponent(IdentificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Eliminar))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,6 +170,10 @@ public void setController(ControllerFuncionariosListado controller) {
             JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;

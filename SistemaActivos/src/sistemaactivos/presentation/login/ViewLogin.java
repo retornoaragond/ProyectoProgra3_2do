@@ -39,19 +39,21 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
         loginFld = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
+        setTitle("Log In");
+
         IDLabel.setText("ID");
         IDLabel.setToolTipText("");
 
         ClaveLabel.setText("Clave");
 
-        loginFld.setText("Login");
+        loginFld.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/icons8-llave-32.png"))); // NOI18N
         loginFld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginFldActionPerformed(evt);
             }
         });
 
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
@@ -68,14 +70,16 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
                     .addComponent(ClaveLabel)
                     .addComponent(IDLabel))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(loginFld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(salir))
-                    .addComponent(IDTXTField)
-                    .addComponent(JclaveField))
-                .addContainerGap(109, Short.MAX_VALUE))
+                        .addComponent(loginFld, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(IDTXTField, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                        .addComponent(JclaveField)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,10 +93,10 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
                     .addComponent(ClaveLabel)
                     .addComponent(JclaveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginFld)
-                    .addComponent(salir))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginFld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();

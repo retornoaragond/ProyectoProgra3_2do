@@ -98,14 +98,14 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         setTitle("SOLICITUD");
 
-        guardar.setText("Guardar");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconguardar.png"))); // NOI18N
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
             }
         });
 
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
@@ -242,14 +242,14 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         Lcantidad.setText("Cantidad");
 
-        agregarbien.setText("Agregar");
+        agregarbien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagregararchivo.png"))); // NOI18N
         agregarbien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarbienActionPerformed(evt);
             }
         });
 
-        eliminarbien.setText("Eliminar");
+        eliminarbien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconeliminar.png"))); // NOI18N
         eliminarbien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarbienActionPerformed(evt);
@@ -278,10 +278,10 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(92, 92, 92)
+                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -416,9 +416,9 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardar)
-                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

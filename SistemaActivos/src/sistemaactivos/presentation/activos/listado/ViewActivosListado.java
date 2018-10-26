@@ -160,7 +160,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         ));
         jScrollPane2.setViewportView(activosTable);
 
-        buscarjButton.setText("Buscar");
+        buscarjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconbuscar.png"))); // NOI18N
         buscarjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarjButtonActionPerformed(evt);
@@ -197,7 +197,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                                 .addGap(18, 18, 18)
                                 .addComponent(ResponsableTextField)))
                         .addGap(44, 44, 44)
-                        .addComponent(buscarjButton))
+                        .addComponent(buscarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -218,7 +218,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DescripcionLabel)
-                    .addComponent(buscarjButton))
+                    .addComponent(buscarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DependenciaLabel)
@@ -229,7 +229,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                     .addComponent(ResponsableTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();

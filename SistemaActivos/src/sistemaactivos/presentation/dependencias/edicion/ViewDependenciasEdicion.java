@@ -62,14 +62,14 @@ import sistemaactivos.logic.Dependencia;
 
         LaborCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        Guardar.setText("Guardar");
+        Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconguardar.png"))); // NOI18N
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GuardarActionPerformed(evt);
             }
         });
 
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
@@ -89,15 +89,16 @@ import sistemaactivos.logic.Dependencia;
                     .addComponent(LaborLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Guardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(Salir))
-                    .addComponent(LaborCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(CodigoField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                         .addComponent(NombreTextField))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(LaborCombobox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,8 +123,8 @@ import sistemaactivos.logic.Dependencia;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
-                    .addComponent(Salir))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
