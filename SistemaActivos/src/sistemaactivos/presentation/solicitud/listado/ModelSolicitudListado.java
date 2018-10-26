@@ -37,7 +37,7 @@ public class ModelSolicitudListado extends java.util.Observable {
         this.solicitudTable = new SolicitudTableModel(cols, solicitudes);
     }
 
-    public Solicitud getSolicitud() {
+    public Solicitud getFilter() {
         return solicitud;
     }
 

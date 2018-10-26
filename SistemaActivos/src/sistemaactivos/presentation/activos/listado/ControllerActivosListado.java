@@ -46,10 +46,10 @@ public class ControllerActivosListado {
     
    
    public void refrescarBusqueda() throws Exception{
-     //  List<Activo> rows = domainModel.searchActivo(model.getActivos());//hacer en el modelLogic delete activo
-       // model.setActivos(rows); 
+       List<Activo> rows = domainModel.searchActivo(model.getFilter());//hacer en el modelLogic delete activo
+        model.setActivos(rows); 
         model.commit();
-       // if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
+        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }
     
    
@@ -63,8 +63,9 @@ public class ControllerActivosListado {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.show(at);
     }
    
+   */
    
-   
+   /*
    public void editar(int row, Point at){       
         Activo seleccionada = model.getActivos().getRowAt(row); 
         Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
@@ -80,25 +81,25 @@ public class ControllerActivosListado {
         SistemaActivos.ACTIVOS_EDICION_CONTROLLER.reset(modo, seleccionada);
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.show(at);
     }
-
+*/
    
    public void borrar(int row){  
         Activo seleccionada = model.getActivos().getRowAt(row); 
         try {
-         //domainModel.deleteActivo(seleccionada); hacer en el modelLogic deleteActivo
+         domainModel.deleteActivo(seleccionada);
         } catch (Exception ex) { }
-        //List<Activo> rowsMod = domainModel.searchActivos(model.getActivo()); hacer en el modelLogic search activo
-      //  model.setActivos(rowsMod);hacer en el modelLogic setActivos activo
+        List<Activo> rowsMod = domainModel.searchActivo(model.getFilter()); 
+        model.setActivos(rowsMod);
         model.commit();
     }
 
    
-   /*
+   
    public void searchEstado(int row, Point position){
         model.setSeleccionado(model.getActivos().getRowAt(row));
        // SistemaActivos.ESTADOS_SEARCH_CONTROLLER.show(position);
     }
-    */
+    
    
    /*   preguntar si desde un activo puedo cambiar el funcionario
    public void changeFuncionario(Funcionario nuevoFuncionario){

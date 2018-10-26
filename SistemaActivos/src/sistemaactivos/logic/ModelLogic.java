@@ -44,47 +44,51 @@ public class ModelLogic {
         }
     }
 
-    /////////parte de solicitudes//////////
-    /*
+    
+    
+    //  <editor-fold desc="Solicitudes y Bienes" defaultstate="collapsed">
+     
     public List<Bien> getBienes(){
-      return daoSolicitudes.BienesGetAll()  
+      return daoSolicitud.BienGetAll();  
     
     }
-     */
- /*
+    
+ 
     public Bien getBien(String serial) throws Exception{
-    return daoSolicitudes.BienGet(serial);
+    return daoSolicitud.BienGet(serial);
      }
-     */
- /*
+     
     public List<Bien> searchBienes(Bien filtro){
-        return daoSolicitudes.BienSearch(filtro);
+        return daoSolicitud.BienSearch(filtro);
     }
-     */
- /*
-     public Solicitud getSolicitud(String id) throws Exception{
-        return daoSolicitudes.SolicitudGet(id);
+    
+     public Solicitud getSolicitud(String serial) throws Exception{
+        return daoSolicitud.SolicitudGet(Integer.parseInt(serial));
     }
     
     public void deleteSolicitud(Solicitud p) throws Exception{
-        daoSolicitudes.SolicitudDelete(p);
+        daoSolicitud.SolicitudDelete(p);
     }
 
     public void addSolicitud(Solicitud solicitud) throws Exception{
-        daoSolicitudes.SolicitudAdd(solicitud);
+        daoSolicitud.SolicitudAdd(solicitud);
     }
 
     public void updateSolicitud(Solicitud solicitud) throws Exception{
-        daoSolicitudes.SolicitudUpdate(solicitud);
+        daoSolicitud.SolicitudUpdate(solicitud);
     }
     
     public List<Solicitud> searchSolicitud(Solicitud filtro){
-        return daoSolicitudes.SolicitudSearch(filtro);
+        return daoSolicitud.SolicitudSearch(filtro);
     }
 
-//    */
-    ///fin de la seccion de solicitudes
-    /// area de Funcionario
+
+   
+    //</editor-fold>
+
+
+    //  <editor-fold desc="Funcionario" defaultstate="collapsed">
+   
     /*
     public List<Funcionario> getFuncionarios(){
         return daoAdministracion.FuncionariosGetAll();
@@ -111,8 +115,11 @@ public class ModelLogic {
         daoAdministracion.FuncionarioUpdate(funcionario);
     }
      */
-    //fin de area de funcionarios
-/// area de dependencias
+     //</editor-fold>
+
+   
+    //  <editor-fold desc="Dependencia" defaultstate="collapsed">
+   
     /*
     public List<Dependencia> getDependencias(){
         return daoAdministracion.DependenciasGetAll();
@@ -140,15 +147,20 @@ public class ModelLogic {
     }
     
      */
-    //fin de area de dependencias
-    /// area de activos
-    /*
+    //</editor-fold>
+   
+    
+    
+
+    //  <editor-fold desc="Activos" defaultstate="collapsed">
+
+    
     public List<Activo> getActivos(){
-      return daoActivos.ActivosGetAll()  
+      return daoActivos.ActivosGetAll(); 
     
     }
-     */
- /*
+     
+ 
      public Activo getActivo(String codigoId) throws Exception{
         return daoActivos.ActivoGet(codigoId);
     }
@@ -162,14 +174,18 @@ public class ModelLogic {
     }
 
     public void updateActivo(Activo activo) throws Exception{
-        daoActivos.ActivoUpdate(solicitud);
+        daoActivos.ActivoUpdate(activo);
     }
     
-    public List<Activo> searchActivo(Activo filtro){
+    public List<Activo> searchActivo(Activo filtro) {
         return daoActivos.ActivoSearch(filtro);
     }
-     */
-    //fin de area de activos
+     
+    //</editor-fold>
+    
+    
+    
+    
     public void close() {
         daoSolicitud.close();
         daoActivos.close();

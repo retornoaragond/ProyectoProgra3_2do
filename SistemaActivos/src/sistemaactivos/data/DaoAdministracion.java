@@ -49,6 +49,69 @@ public class DaoAdministracion {
             return null;
         }
     }
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    public EstadoCivil EstadoCivilGet(String codigo) throws Exception{
+        
+    }
+    private EstadoCivil estadoCivil(ResultSet rs){
+        
+    }
+
+    public List<EstadoCivil> EstadoSearch(EstadoCivil filtro){
+        
+    }
+    
+    public List<EstadoCivil> EstadoCivilGetAll(){
+                
+    }
+
+    
+    public Usuario usuarioGet(String id) throws Exception{
+        
+    }
+    
+    private Usuario usuario(ResultSet rs){
+        
+    }
+
+    
+    public Persona PersonaGet(String id) throws Exception{
+        
+    }
+    
+    public void PersonaDelete(Persona p) throws Exception{
+        
+    }
+
+    public void PersonaAdd(Persona p) throws Exception{
+        
+    }
+
+    public void PersonaUpdate(Persona p) throws Exception{
+        
+    }
+    
+    public List<Persona> PersonaSearch(Persona filtro){
+        
+    }
+    
+    
+    private Persona persona(ResultSet rs){
+        
+    }
+    
+    */
+    
+    
     
     
     public  void close(){

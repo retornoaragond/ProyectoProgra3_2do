@@ -32,7 +32,11 @@ public class DaoActivos {
             throw new Exception("Activo no Existe");
         }
     }
-
+    
+    
+    
+    
+    
     private Activo activo(ResultSet rs) {
         try {
             Activo ec = new Activo();
@@ -43,7 +47,7 @@ public class DaoActivos {
         }
     }
 
-    public List<Activo> ActivoSearch(Activo filtro) throws Exception{
+    public List<Activo> ActivoSearch(Activo filtro){
         List<Activo> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -54,13 +58,12 @@ public class DaoActivos {
             while (rs.next()) {
                 resultado.add(activo(rs));
             }
-        } catch (SQLException ex) {
-            throw new Exception ("Estado Civil no Existe");
-        }
+        } catch (SQLException ex) {}
+          
         return resultado;
     }
 
-    public List<Activo> ActivoGetAll() {
+    public List<Activo> ActivosGetAll() {
         List<Activo> estados = new ArrayList<>();
         try {
             String sql = "select * from EstadoCivil";
@@ -72,6 +75,27 @@ public class DaoActivos {
         }
         return estados;
     }
+   
+     
+    public Activo ActivoGet(String codigo) throws Exception{
+       return new Activo();    
+    }
+    
+    public void ActivoDelete(Activo a) throws Exception{
+        
+    }
+
+    public void ActivoAdd(Activo a) throws Exception{
+        
+    }
+
+    public void ActivoUpdate(Activo a) throws Exception{
+       
+    }
+    
+    
+    
+    
     
     
     public  void close(){

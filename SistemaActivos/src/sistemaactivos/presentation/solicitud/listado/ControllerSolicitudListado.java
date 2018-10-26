@@ -6,6 +6,7 @@
 package sistemaactivos.presentation.solicitud.listado;
 
 import java.awt.Point;
+import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
@@ -34,17 +35,17 @@ public class ControllerSolicitudListado {
 
     public void buscar(Solicitud filter) throws Exception {
         model.setSolicitud(filter);
-        //  this.refrescarBusqueda();
+         this.refrescarBusqueda();
     }
 
-    /*
+    
    public void refrescarBusqueda() throws Exception{
-        List<Solicitud> rows = domainModel.searchSolicitud(model.getSolicitud());
-        model.setSolicitud(rows);
+        List<Solicitud> rows = domainModel.searchSolicitud(model.getFilter());
+        model.setSolicitudes(rows);
         model.commit();
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }
-     */
+     
  /*
     public void preAgregar(Point at)throws Exception{      
         //Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
@@ -77,8 +78,8 @@ public class ControllerSolicitudListado {
             //  domainModel.deleteSolicitud(seleccionada);
         } catch (Exception ex) {
         }
-        // List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getSolicitud());
-        //model.setSolicitudes(rowsMod);
+         List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter());
+        model.setSolicitudes(rowsMod);
         model.commit();
     }
 

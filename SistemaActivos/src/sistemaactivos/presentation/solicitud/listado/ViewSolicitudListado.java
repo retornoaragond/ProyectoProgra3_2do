@@ -215,7 +215,7 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
-        Solicitud soli = model.getSolicitud();
+        Solicitud soli = model.getFilter();
         this.fromSolicitud(soli);
         solicitudesFld.setModel(model.getSolicitudes());
     }
