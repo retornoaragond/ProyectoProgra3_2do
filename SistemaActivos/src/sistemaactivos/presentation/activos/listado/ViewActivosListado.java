@@ -49,7 +49,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     boolean validar() {
         boolean error = false;
         boolean flag = false;
-        
+
         //repetitivo
         this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.codigoLabel.getText().isEmpty() && !flag) {
@@ -58,15 +58,15 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         } else {
             flag = true;
         }
-        
+
         this.categoriaLabel.setForeground(SistemaActivos.COLOR_OK);
-        if(this.categoriaLabel.getText().isEmpty()&& !flag){
-           this.categoriaLabel.setForeground(SistemaActivos.COLOR_ERROR);
-           error=true;
-        }else{
-            flag=true;
-         }
-        
+        if (this.categoriaLabel.getText().isEmpty() && !flag) {
+            this.categoriaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            flag = true;
+        }
+
         this.DescripcionLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.DescripcionLabel.getText().isEmpty() && !flag) {
             this.DescripcionLabel.setForeground(SistemaActivos.COLOR_ERROR);
@@ -74,7 +74,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         } else {
             flag = true;
         }
-        
+
         this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.DependenciaLabel.getText().isEmpty() && !flag) {
             this.DependenciaLabel.setForeground(SistemaActivos.COLOR_ERROR);
@@ -82,7 +82,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         } else {
             flag = true;
         }
-        
+
         this.ResponsableLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.ResponsableLabel.getText().isEmpty() && !flag) {
             this.ResponsableLabel.setForeground(SistemaActivos.COLOR_ERROR);
@@ -267,43 +267,11 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     // End of variables declaration//GEN-END:variables
 
     public void fromActivo(Activo s) {
-        if (s.getCodigoId() != null) {
-            CodigoTextField.setText(s.getCodigoId());
-        } else {
-            CodigoTextField.setText("");
-        }
-
-        if (s.getBien() != null) {
-            if (s.getBien().getCategoria() != null) {
-                categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
-            } else {
-                categoriaTextField.setText("");
-            }
-            if (s.getBien().getDecripcion() != null) {
-                descripcionTextField.setText(s.getBien().getDecripcion());
-            } else {
-                descripcionTextField.setText("");
-            }
-        } else {
-            categoriaTextField.setText("");
-            descripcionTextField.setText("");
-        }
-
-        if (s.getLabor() != null) {
-            if (s.getLabor().getDependencia() != null) {
-                dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
-            } else {
-                dependenciaTextField.setText("");
-            }
-            if (s.getLabor().getFuncionario().getNombre() != null) {
-                ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
-            } else {
-                ResponsableTextField.setText("");
-            }
-        } else {
-            dependenciaTextField.setText("");
-            ResponsableTextField.setText("");
-        }
+        CodigoTextField.setText(s.getCodigoId());
+        categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
+        descripcionTextField.setText(s.getBien().getDecripcion());
+        dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
+        ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
     }
 
     Activo toActivo() {

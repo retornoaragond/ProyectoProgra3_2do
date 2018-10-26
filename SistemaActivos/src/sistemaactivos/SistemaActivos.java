@@ -59,57 +59,57 @@ public class SistemaActivos {
         APLICATION_CONTROLLER = new ControllerAplication(aplicationView, aplicationModel, domainModel, session);
         // </editor-fold>
 
-//        // <editor-fold desc="Activos_Edicion" defaultstate="collapsed">
-//        ModelActivosEdicion activosedicionModel = new ModelActivosEdicion();
-//        ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
-//        ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
-//        // </editor-fold>
-//        
-//        // <editor-fold desc="Activos_Listado" defaultstate="collapsed">
-//        ModelActivosListado activoslistadoModel = new ModelActivosListado();
-//        ViewActivosListado activoslistadoView = new ViewActivosListado();
-//        aplicationView.addInternalFrame(activoslistadoView);
-//        ACTIVOS_LISTADO_CONTROLLER = new ControllerActivosListado(activoslistadoView, activoslistadoModel, domainModel, session);
-//        // </editor-fold>
-//
-//        // <editor-fold desc="Dependencia_Edicion" defaultstate="collapsed">
-//        ModelDependenciasEdicion dependenciasedicionModel = new ModelDependenciasEdicion();
-//        ViewDependenciasEdicion dependenciasedicionView = new ViewDependenciasEdicion(aplicationView,true);
-//        DEPENDENCIA_EDICION_CONTROLLER = new ControllerDependenciasEdicion(dependenciasedicionView,dependenciasedicionModel, domainModel, session);
-//        // </editor-fold>
-//        
-//        // <editor-fold desc="Dependencias_Listado" defaultstate="collapsed">
-//        ModelDependenciasListado dependenciaslistadoModel = new ModelDependenciasListado();
-//        ViewDependenciasListado dependenciaslistadoView = new ViewDependenciasListado();
-//        aplicationView.addInternalFrame(dependenciaslistadoView);
-//        DEPENDENCIA_LISTADO_CONTROLLER = new ControllerDependenciasListado(dependenciaslistadoView,dependenciaslistadoModel, domainModel, session);
-//        // </editor-fold>
-//        
+        // <editor-fold desc="Activos_Edicion" defaultstate="collapsed">
+        ModelActivosEdicion activosedicionModel = new ModelActivosEdicion();
+        ViewActivosEdicion activosedicionView = new ViewActivosEdicion(aplicationView,true);
+        ACTIVOS_EDICION_CONTROLLER = new ControllerActivosEdicion(activosedicionView,activosedicionModel,domainModel,session);
+        // </editor-fold>
+        
+        // <editor-fold desc="Activos_Listado" defaultstate="collapsed">
+        ModelActivosListado activoslistadoModel = new ModelActivosListado();
+        ViewActivosListado activoslistadoView = new ViewActivosListado();
+        aplicationView.addInternalFrame(activoslistadoView);
+        ACTIVOS_LISTADO_CONTROLLER = new ControllerActivosListado(activoslistadoView, activoslistadoModel, domainModel, session);
+        // </editor-fold>
+
+        // <editor-fold desc="Dependencia_Edicion" defaultstate="collapsed">
+        ModelDependenciasEdicion dependenciasedicionModel = new ModelDependenciasEdicion();
+        ViewDependenciasEdicion dependenciasedicionView = new ViewDependenciasEdicion(aplicationView,true);
+        DEPENDENCIA_EDICION_CONTROLLER = new ControllerDependenciasEdicion(dependenciasedicionView,dependenciasedicionModel, domainModel, session);
+        // </editor-fold>
+        
+        // <editor-fold desc="Dependencias_Listado" defaultstate="collapsed">
+        ModelDependenciasListado dependenciaslistadoModel = new ModelDependenciasListado();
+        ViewDependenciasListado dependenciaslistadoView = new ViewDependenciasListado();
+        aplicationView.addInternalFrame(dependenciaslistadoView);
+        DEPENDENCIA_LISTADO_CONTROLLER = new ControllerDependenciasListado(dependenciaslistadoView,dependenciaslistadoModel, domainModel, session);
+        // </editor-fold>
+        
 //        // <editor-fold desc="Funcionarios_Edicion" defaultstate="collapsed">
 //        ModelFuncionariosEdicion funcionariosedicionModel = new ModelFuncionariosEdicion();
 //        ViewFuncionariosEdicion funcionariosedicionView = new ViewFuncionariosEdicion(aplicationView,true);
 //        FUNCIONARIO_EDICION_CONTROLLER = new ControllerFuncionariosEdicion(funcionariosedicionView, funcionariosedicionModel, domainModel, session);
 //        // </editor-fold>
-//        
-//        // <editor-fold desc="Funcionarios_Listado" defaultstate="collapsed">
-//        ModelFuncionariosListado funcionarioslistadoModel = new ModelFuncionariosListado();
-//        ViewFuncionariosListado funcionarioslistadoView = new ViewFuncionariosListado();
-//        aplicationView.addInternalFrame(funcionarioslistadoView);
-//        FUNCIONARIO_LISTADO_CONTROLLER = new ControllerFuncionariosListado(funcionarioslistadoView, funcionarioslistadoModel, domainModel, session);
-//        // </editor-fold>
-//        
-//        // <editor-fold desc="Solicitudes_Edicion" defaultstate="collapsed">
-//        ModelSolicitudEdicion solicitudedicionModel = new ModelSolicitudEdicion();
-//        ViewSolicitudEdicion solicitudedicionView = new ViewSolicitudEdicion(aplicationView, true);
-//        SOLICITUD_EDICION_CONTROLLLER = new ControllerSolicitudEdicion(solicitudedicionView, solicitudedicionModel, domainModel, session);
-//        // </editor-fold>
-//        
-//        // <editor-fold desc="Solicitudes_Listado" defaultstate="collapsed">
-//        ModelSolicitudListado solicitudlistadoModel = new ModelSolicitudListado();
-//        ViewSolicitudListado solicitudlistadoView = new ViewSolicitudListado();
-//        aplicationView.addInternalFrame(solicitudlistadoView);
-//        SOLICITUD_LISTADO_CONTROLLLER = new ControllerSolicitudListado(solicitudlistadoView, solicitudlistadoModel, domainModel, session);
-//        // </editor-fold>
+        
+        // <editor-fold desc="Funcionarios_Listado" defaultstate="collapsed">
+        ModelFuncionariosListado funcionarioslistadoModel = new ModelFuncionariosListado();
+        ViewFuncionariosListado funcionarioslistadoView = new ViewFuncionariosListado();
+        aplicationView.addInternalFrame(funcionarioslistadoView);
+        FUNCIONARIO_LISTADO_CONTROLLER = new ControllerFuncionariosListado(funcionarioslistadoView, funcionarioslistadoModel, domainModel, session);
+        // </editor-fold>
+        
+        // <editor-fold desc="Solicitudes_Edicion" defaultstate="collapsed">
+        ModelSolicitudEdicion solicitudedicionModel = new ModelSolicitudEdicion();
+        ViewSolicitudEdicion solicitudedicionView = new ViewSolicitudEdicion(aplicationView, true);
+        SOLICITUD_EDICION_CONTROLLLER = new ControllerSolicitudEdicion(solicitudedicionView, solicitudedicionModel, domainModel, session);
+        // </editor-fold>
+        
+        // <editor-fold desc="Solicitudes_Listado" defaultstate="collapsed">
+        ModelSolicitudListado solicitudlistadoModel = new ModelSolicitudListado();
+        ViewSolicitudListado solicitudlistadoView = new ViewSolicitudListado();
+        aplicationView.addInternalFrame(solicitudlistadoView);
+        SOLICITUD_LISTADO_CONTROLLLER = new ControllerSolicitudListado(solicitudlistadoView, solicitudlistadoModel, domainModel, session);
+        // </editor-fold>
 
         // <editor-fold desc="Login" defaultstate="collapsed">
         ModelLogin loginModel = new ModelLogin();

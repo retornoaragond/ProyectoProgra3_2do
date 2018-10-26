@@ -16,7 +16,7 @@ import sistemaactivos.logic.Solicitud;
  * @author ExtremeTech
  */
 public class ModelSolicitudEdicion extends java.util.Observable {
-    Solicitud current;
+    Solicitud current = new Solicitud();
     BienTableModel bientable;
     Bien bienselecionado;
     int modo;

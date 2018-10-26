@@ -63,16 +63,6 @@ public class BienTableModel extends AbstractTableModel {
         }
     }
 
-    /*
-    public Class<?> getColumnClass(int col){
-        switch (cols[col]){
-           // case SEXO: return Icon.class;
-           // case PASATIEMPO_CINE: return Boolean.class;
-           // case ESTADO_CIVIL: return Icon.class;
-            default: return super.getColumnClass(col);
-        }    
-    }    
-     */
     @Override
     public String getColumnName(int col) {
         return colNames[cols[col]];

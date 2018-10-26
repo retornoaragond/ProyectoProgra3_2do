@@ -626,8 +626,9 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }
 
     public void fromSolicitud(Solicitud actual) {
-        this.numSolicitud.setEnabled(false);
+        
         this.numSolicitud.setText(actual.getNumSolicitud().toString());
+        this.numSolicitud.setEnabled(false);
         Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
         Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
 

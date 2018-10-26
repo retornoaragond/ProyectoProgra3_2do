@@ -143,13 +143,7 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public void fromUsuario(Usuario current) {
-        if(String.valueOf(current.getId()).equals(null)){        
-            this.IDTXTField.setText(null);                
-        }        
-        else{
-            String.valueOf(current.getId());
-            }
-        
+        this.IDTXTField.setText(current.getId());                
         this.JclaveField.setText(current.getPass());
     }
 
