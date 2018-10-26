@@ -119,10 +119,8 @@ public class ModelLogic {
 
    
     //  <editor-fold desc="Dependencia" defaultstate="collapsed">
-   
-    /*
     public List<Dependencia> getDependencias(){
-        return daoAdministracion.DependenciasGetAll();
+        return daoAdministracion.DependenciaGetAll();
     }
     
     public  Dependencia getDependencia(Integer codigo) throws Exception{
@@ -146,7 +144,7 @@ public class ModelLogic {
         daoAdministracion.DependenciaUpdate(dependencia);
     }
     
-     */
+     
     //</editor-fold>
    
     

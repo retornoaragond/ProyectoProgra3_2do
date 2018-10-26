@@ -7,6 +7,9 @@ package sistemaactivos.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Usuario;
 
@@ -53,68 +56,156 @@ public class DaoAdministracion {
     
     
     
+    //  <editor-fold desc="Funcionarios" defaultstate="collapsed">
     
-    
-    
-    
-    
-    /*
-    public EstadoCivil EstadoCivilGet(String codigo) throws Exception{
-        
+     public Funcionario getFuncionario(String id) throws Exception {
+        String sql = "select * from funcionario inner where codigoId='%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = dbb.executeQuery(sql);
+        if (rs.next()) {
+            return funcionario(rs);
+        } else {
+            throw new Exception("Funcionario no Existe");
+        }
     }
-    private EstadoCivil estadoCivil(ResultSet rs){
+    
+    
+    
+    
+    
+    private Funcionario funcionario(ResultSet rs) {
+        try {
+            Funcionario ec = new Funcionario();
+            ec.setId(rs.getString("id"));
+            return ec;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    public List<Funcionario> ActivoSearch(Funcionario filtro){
+        List<Funcionario> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from "
+                    + "Funcionario "
+                    + "where descripcion like '%%%s%%'";
+            sql = String.format(sql, filtro.getId());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {}
+          
+        return resultado;
+    }
+
+    public List<Funcionario> FuncionarioGetAll() {
+        List<Funcionario> estados = new ArrayList<>();
+        try {
+            String sql = "select * from EstadoCivil";
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                estados.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return estados;
+    }
+   
+     
+    public Funcionario FuncionarioGet(String id) throws Exception{
+       return new Funcionario();    
+    }
+    
+    public void FuncionarioDelete(Funcionario a) throws Exception{
         
     }
 
-    public List<EstadoCivil> EstadoSearch(EstadoCivil filtro){
-        
-    }
-    
-    public List<EstadoCivil> EstadoCivilGetAll(){
-                
-    }
-
-    
-    public Usuario usuarioGet(String id) throws Exception{
-        
-    }
-    
-    private Usuario usuario(ResultSet rs){
+    public void FuncionarioAdd(Funcionario a) throws Exception{
         
     }
 
+    public void FuncionarioUpdate(Funcionario a) throws Exception{
+       
+    }
+     //</editor-fold>
+
     
-    public Persona PersonaGet(String id) throws Exception{
-        
+   
+    //  <editor-fold desc="Dependencias" defaultstate="collapsed">
+    public Dependencia getDependencia(Integer codigo) throws Exception {
+        String sql = "select * from dependencia inner where codigo='%s'";
+        sql = String.format(sql, codigo);
+        ResultSet rs = dbb.executeQuery(sql);
+        if (rs.next()) {
+            return dependencia(rs);
+        } else {
+            throw new Exception("Funcionario no Existe");
+        }
     }
     
-    public void PersonaDelete(Persona p) throws Exception{
+    private Dependencia dependencia(ResultSet rs) {
+        try {
+            Dependencia ec = new Dependencia();
+            ec.setCodigo(Integer.getInteger(rs.getString("numSolicitud")));
+            return ec;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    public List<Dependencia> DependenciaSearch(Dependencia filtro){
+        List<Dependencia> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from "
+                    + "Dependencia "
+                    + "where descripcion like '%%%s%%'";
+            sql = String.format(sql, filtro.getCodigo());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(dependencia(rs));
+            }
+        } catch (SQLException ex) {}
+          
+        return resultado;
+    }
+
+    public List<Dependencia> DependenciaGetAll() {
+        List<Dependencia> estados = new ArrayList<>();
+        try {
+            String sql = "select * from Dependencia";
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                estados.add(dependencia(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return estados;
+    }
+   
+     
+    public Dependencia DependenciaGet(Integer codigo) throws Exception{
+       return new Dependencia();    
+    }
+    
+    public void DependenciaDelete(Dependencia a) throws Exception{
         
     }
 
-    public void PersonaAdd(Persona p) throws Exception{
+    public void DependenciaAdd(Dependencia a) throws Exception{
         
     }
 
-    public void PersonaUpdate(Persona p) throws Exception{
-        
-    }
-    
-    public List<Persona> PersonaSearch(Persona filtro){
-        
+    public void DependenciaUpdate(Dependencia a) throws Exception{
+       
     }
     
     
-    private Persona persona(ResultSet rs){
-        
-    }
-    
-    */
+     //</editor-fold>
+
     
     
-    
-    
-    public  void close(){
+     public  void close(){
     }
     
 }

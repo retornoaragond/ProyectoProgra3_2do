@@ -41,10 +41,10 @@ public class ControllerDependenciasListado {
     }
     
     public void refrescarBusqueda() throws Exception{
-        //List<Dependencia> rows = domainModel.searchDependencias(model.getFilter());
-        //model.setDependencia(rows);
+        List<Dependencia> rows = domainModel.searchDependencia(model.getFilter());
+        model.setDependencia(rows);
         model.commit();
-      //  if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
+        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }    
 
     
@@ -81,10 +81,10 @@ public class ControllerDependenciasListado {
     public void borrar(int row){  
         Dependencia seleccionada = model.dependenciasTable.getRowAt(row); 
         try {
-            //domainModel.deleteDependencia(seleccionada);
+            domainModel.deleteDependencia(seleccionada);
         } catch (Exception ex) { }
-        //List<Dependencia> rowsMod = domainModel.searchDependencias(model.getFilter());
-        //model.setDependencia(rowsMod);
+        List<Dependencia> rowsMod = domainModel.searchDependencia(model.getFilter());
+        model.setDependencia(rowsMod);
         model.commit();
     }
 
@@ -93,7 +93,7 @@ public class ControllerDependenciasListado {
     
     
     
-    public void searchEstado(int row, Point position){
+    public void searchDependencia(int row, Point position){
         model.setSeleccionado(model.dependenciasTable.getRowAt(row));
         //SistemaActivos.ESTADOS_SEARCH_CONTROLLER.show(position);
     }

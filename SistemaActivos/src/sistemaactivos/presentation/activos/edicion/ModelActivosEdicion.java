@@ -8,9 +8,11 @@ package sistemaactivos.presentation.activos.edicion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Solicitud;
+import sistemaactivos.presentation.activos.listado.ActivoTableModel;
 
 /**
  *
@@ -19,6 +21,7 @@ import sistemaactivos.logic.Solicitud;
 public class ModelActivosEdicion extends java.util.Observable {
     Activo current;
     Activo activoSeleccionado;
+    ActivoTableModel activotable;
     int modo;
             
     
@@ -26,24 +29,27 @@ public class ModelActivosEdicion extends java.util.Observable {
     this.reset();
      }
   
-    /*
-    public void reset(List<Bien> bienes){      
-        setEstadosCiviles(estadosCiviles);
-        setCurrent(new Persona());
+   /* 
+    public void reset(List<Activo> activos){      
+        setActivos(estadosCiviles);
+        setCurrent(new Activo());
     }
-    
-    
     */
     
     
-    public void reset(int modo, Activo current) {
+    
+    
+   public void reset(int modo,Activo current){      
         this.setModo(modo);
         this.setCurrent(current);
+        List<Activo>rows = new ArrayList<>();
+        this.activoSeleccionado=null;
+        this.setActivos(rows);
         this.commit();
-    }
-   
+        }
+    
      public void reset(){
-        //this.reset(Application.MODO_AGREGAR,new Activo());
+        this.reset(SistemaActivos.MODO_AGREGAR,new Activo());
     }
 
         public void setBientable(List<Activo> activos) {
@@ -56,7 +62,7 @@ public class ModelActivosEdicion extends java.util.Observable {
         return this.activoSeleccionado;
     }
 
-    public void setBienselecionado(Activo activoselecionado) {
+    public void setActivoselecionado(Activo activoselecionado) {
          this.activoSeleccionado= activoselecionado;
     }
 
@@ -86,7 +92,7 @@ public class ModelActivosEdicion extends java.util.Observable {
     */
     
     // creo que no se ocupa
-      public void setEstadosCiviles(List<Bien> bienes) {
+      public void setActivos(List<Activo> bienes) {
         List<Bien> es;
       //  this.bienes = new DefaultComboBoxModel(estadosCiviles.toArray());
         this.commit();    

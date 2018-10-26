@@ -32,8 +32,6 @@ public class DaoSolicitudes {
     
     
     //  <editor-fold desc="Solicitud" defaultstate="collapsed">
-
-    
     public Solicitud getSolicitud(Integer numSolicitud) throws Exception {
         String sql = "select * from solicitud inner where codigoId='%s'";
         sql = String.format(sql, numSolicitud);
@@ -104,15 +102,11 @@ public class DaoSolicitudes {
     public void SolicitudUpdate(Solicitud a) throws Exception{
        
     }
-    
-    
-    
-  
-     //</editor-fold>
+    //</editor-fold>
 
     
     
-      //  <editor-fold desc="Bien" defaultstate="collapsed">
+    //  <editor-fold desc="Bien" defaultstate="collapsed">
 
       public Bien getBien(String serial) throws Exception {
         String sql = "select * from solicitud inner where serial='%s'";
@@ -190,6 +184,8 @@ public class DaoSolicitudes {
     //</editor-fold>
 
      
+    
+    
 
 
 
