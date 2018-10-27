@@ -15,6 +15,9 @@ import sistemaactivos.logic.Usuario;
  */
 public class ViewLogin extends javax.swing.JFrame implements java.util.Observer {
 
+    ControllerLogin controller;
+    ModelLogin model;
+
     /**
      * Creates new form viewLogin
      */
@@ -103,7 +106,7 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-    controller.exit();
+        controller.exit();
     }//GEN-LAST:event_salirActionPerformed
 
     private void loginFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFldActionPerformed
@@ -120,13 +123,11 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
 
     public boolean validar() {
         boolean error = false;
-
         this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.IDTXTField.getText().isEmpty()) {
             this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
         this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
         if ((new String(this.JclaveField.getPassword())).isEmpty()) {
             this.ClaveLabel.setForeground(SistemaActivos.COLOR_ERROR);
@@ -143,7 +144,7 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
     }
 
     public void fromUsuario(Usuario current) {
-        this.IDTXTField.setText(current.getId());                
+        this.IDTXTField.setText(current.getId());
         this.JclaveField.setText(current.getPass());
     }
 
@@ -151,19 +152,6 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
         this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
         this.ClaveLabel.setForeground(SistemaActivos.COLOR_OK);
     }
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ClaveLabel;
-    private javax.swing.JLabel IDLabel;
-    private javax.swing.JTextField IDTXTField;
-    private javax.swing.JPasswordField JclaveField;
-    private javax.swing.JButton loginFld;
-    private javax.swing.JButton salir;
-    // End of variables declaration//GEN-END:variables
-
-    ControllerLogin controller;
-    ModelLogin model;
 
     public void setController(ControllerLogin controller) {
         this.controller = controller;
@@ -188,4 +176,15 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
         Usuario current = model.getCurrent();
         this.fromUsuario(current);
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ClaveLabel;
+    private javax.swing.JLabel IDLabel;
+    private javax.swing.JTextField IDTXTField;
+    private javax.swing.JPasswordField JclaveField;
+    private javax.swing.JButton loginFld;
+    private javax.swing.JButton salir;
+    // End of variables declaration//GEN-END:variables
+
 }

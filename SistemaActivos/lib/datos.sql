@@ -1,6 +1,6 @@
 -- ---------------------------- Dependencias ---------------------------------
 
-INSERT INTO dependencia (codigo, nombre) VALUES ('000', 'OCCB');
+
 INSERT INTO dependencia (codigo, nombre) VALUES ('001', 'Esc.Informatica');
 INSERT INTO dependencia (codigo, nombre) VALUES ('002', 'Esc.Administracion');
 INSERT INTO dependencia (codigo, nombre) VALUES ('003', 'Esc.Biologia');
@@ -9,7 +9,7 @@ INSERT INTO dependencia (codigo, nombre) VALUES ('005', 'Esc.Matematica');
 INSERT INTO dependencia (codigo, nombre) VALUES ('006', 'Esc.Quimica');
 INSERT INTO dependencia (codigo, nombre) VALUES ('007', 'Esc.Artes');
 INSERT INTO dependencia (codigo, nombre) VALUES ('008', 'RRHH');
-
+INSERT INTO dependencia (codigo, nombre) VALUES ('009', 'OCCB');
 
 
 -- ----------------------------  Funcionarios --------------------------------
@@ -64,11 +64,11 @@ INSERT INTO puesto (codigo, puesto) VALUES ('005', 'Jefe RRHH');
 
 -- ----------------------------  Labores -------------------------------------
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('000', '011', '004'); -- Administrador Jefe OCCB
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('000', '008', '002'); -- Secretaria OCCB
+INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '011', '004'); -- Administrador Jefe OCCB
+INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '008', '002'); -- Secretaria OCCB
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('000', '009', '003'); -- Registrador
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('000', '010', '003'); -- Registrador
+INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '009', '003'); -- Registrador
+INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '010', '003'); -- Registrador
 
 
 INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('001', '001', '001'); -- Administrador Esc.Informatica
@@ -84,7 +84,6 @@ INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('008
 
 -- ----------------------------  Categorias -------------------------------------
 
-INSERT INTO categoria (id, incremento, descripcion) VALUES ('0', '0', 'mesas');
 INSERT INTO categoria (id, incremento, descripcion) VALUES ('1', '0', 'escritorios');
 INSERT INTO categoria (id, incremento, descripcion) VALUES ('2', '0', 'monitor computadora');
 INSERT INTO categoria (id, incremento, descripcion) VALUES ('3', '0', 'computadora');

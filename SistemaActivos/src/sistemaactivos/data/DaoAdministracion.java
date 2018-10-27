@@ -27,7 +27,7 @@ public class DaoAdministracion {
     
     
     public Usuario usuarioGet(String id) throws Exception{
-        String sql="select * from Usuario where id='%s'";
+        String sql="SELECT * FROM Usuario WHERE id='%s'";
         sql = String.format(sql,id);
         ResultSet rs =  dbb.executeQuery(sql);
         if (rs.next()) {
