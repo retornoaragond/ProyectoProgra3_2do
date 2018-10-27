@@ -39,7 +39,7 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
         loginFld = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
-        setTitle("Log In");
+        setTitle("LOGIN");
 
         IDLabel.setText("ID");
         IDLabel.setToolTipText("");
@@ -70,16 +70,16 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
                     .addComponent(ClaveLabel)
                     .addComponent(IDLabel))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(loginFld, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(IDTXTField, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                        .addComponent(JclaveField)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(loginFld)
+                        .addGap(32, 32, 32)
+                        .addComponent(salir))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(IDTXTField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                        .addComponent(JclaveField, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
