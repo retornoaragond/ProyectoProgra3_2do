@@ -83,7 +83,7 @@ public class DaoAdministracion {
         }
     }
 
-    public List<Funcionario> ActivoSearch(Funcionario filtro){
+    public List<Funcionario> FuncionarioSearch(Funcionario filtro){
         List<Funcionario> resultado = new ArrayList<>();
         try {
             String sql = "select * from "

@@ -31,7 +31,7 @@ public class ControllerFuncionariosListado {
         this.view = view;
         this.model = model;
         view.setController(this);
-        //view.setModel(model);
+        view.setModel(model);
     }
 
     public void buscar(Funcionario filter) throws Exception {
@@ -77,7 +77,7 @@ public class ControllerFuncionariosListado {
     public void borrar(int row) {
         Funcionario seleccionada = model.getFuncionarios().getRowAt(row);
         try {
-              //domainModel.deletePersona(seleccionada);
+              //domainModel.(seleccionada);
         } catch (Exception ex) {
         }
         //List<Funcionario> rowsMod = domainModel.searchPersonas(model.getFuncionario());

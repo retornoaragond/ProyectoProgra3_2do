@@ -37,13 +37,13 @@ public class ControllerSolicitudEdicion {
     public void guardar(Solicitud solicitud) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
-//                domainModel.addSolicitud(solicitud);
+                domainModel.addSolicitud(solicitud);
 //                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();                   
                 model.setCurrent(new Solicitud());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-//                domainModel.updateSolicitud(solicitud);
+                domainModel.updateSolicitud(solicitud);
 //                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();               
                 break;
         }

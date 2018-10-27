@@ -27,20 +27,20 @@ public class ControllerBien {
         this.session = session;
         this.view = view;
         this.model = model;
-       // view.setController(this);
-       // view.setModel(model);
+        view.setController(this);
+        view.setModel(model);
     } 
     
     public void guardar(Bien bien) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
-//                domainModel.addSolicitud(solicitud);
-//                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();                   
+                domainModel.addBien(bien);
+         //       SistemaActivos.BIEN_CONTROLLER.refrescarBusqueda();                   
                 model.setCurrent(new Bien());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-//                domainModel.updateSolicitud(solicitud);
+                domainModel.updateBien(bien);
 //                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();               
                 break;
         }

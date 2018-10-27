@@ -42,26 +42,52 @@ public class ModelLogic {
         } else {
             throw new Exception("Clave incorrecta");
         }
-    }
+      }
 
     
     
-    //  <editor-fold desc="Solicitudes y Bienes" defaultstate="collapsed">
-     
-    public List<Bien> getBienes(){
-      return daoSolicitud.BienGetAll();  
     
+    
+    //<editor-fold desc="Bien" defaultstate="collapsed">
+     public List<Bien> getBienes(){
+        return daoSolicitud.BienGetAll();
     }
     
- 
-    public Bien getBien(String serial) throws Exception{
-    return daoSolicitud.BienGet(serial);
-     }
-     
-    public List<Bien> searchBienes(Bien filtro){
+    public  Bien getBien(String serial) throws Exception{
+        return daoSolicitud.BienGet(serial);
+    }
+    
+    public List<Bien> searchBien(Bien filtro){
         return daoSolicitud.BienSearch(filtro);
     }
+
     
+    public void deleteBien(Bien p) throws Exception{
+        daoSolicitud.BienDelete(p);
+    }
+
+    public void addBien(Bien bien) throws Exception{
+        daoSolicitud.BienAdd(bien);
+    }
+
+    public void updateBien(Bien bien) throws Exception{
+        daoSolicitud.BienUpdate(bien);
+    }
+    //</editor-fold>
+    
+    
+    
+    
+    
+    
+    
+    
+    //  <editor-fold desc="Solicitudes" defaultstate="collapsed">
+      public List<Solicitud> getSolicitud(){
+      return daoSolicitud.SolicitudGetAll();  
+    }
+  
+   
      public Solicitud getSolicitud(String serial) throws Exception{
         return daoSolicitud.SolicitudGet(Integer.parseInt(serial));
     }
@@ -82,20 +108,18 @@ public class ModelLogic {
         return daoSolicitud.SolicitudSearch(filtro);
     }
 
-
-   
-    //</editor-fold>
+//</editor-fold>
 
 
     //  <editor-fold desc="Funcionario" defaultstate="collapsed">
    
-    /*
+    
     public List<Funcionario> getFuncionarios(){
-        return daoAdministracion.FuncionariosGetAll();
+        return daoAdministracion.FuncionarioGetAll();
     }
     
     public  Funcionario getFuncionario(Integer codigo) throws Exception{
-        return daoAdministracion.FuncionarioGet(codigo);
+        return daoAdministracion.FuncionarioGet(codigo.toString());
     }
     
     public List<Funcionario> searchFuncionario(Funcionario filtro){
@@ -114,7 +138,7 @@ public class ModelLogic {
     public void updateFuncionario(Funcionario funcionario) throws Exception{
         daoAdministracion.FuncionarioUpdate(funcionario);
     }
-     */
+     
      //</editor-fold>
 
    
@@ -149,7 +173,6 @@ public class ModelLogic {
     //  <editor-fold desc="Activos" defaultstate="collapsed">
      public List<Activo> getActivos(){
       return daoActivos.ActivosGetAll(); 
-    
     }
      
  

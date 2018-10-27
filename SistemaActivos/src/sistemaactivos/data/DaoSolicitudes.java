@@ -5,12 +5,13 @@
  */
 package sistemaactivos.data;
 
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.logic.Bien;
-
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 import sistemaactivos.logic.Usuario;
@@ -184,19 +185,6 @@ public class DaoSolicitudes {
     //</editor-fold>
 
      
-    
-    
-
-
-
-
-
-
-
-
-
-    
-    
-    public  void close(){
+   public  void close(){
     }
 }
