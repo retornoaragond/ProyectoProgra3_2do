@@ -109,7 +109,7 @@ public class DaoSolicitudes {
     //  <editor-fold desc="Bien" defaultstate="collapsed">
 
       public Bien getBien(String serial) throws Exception {
-        String sql = "select * from solicitud inner where serial='%s'";
+        String sql = "select * from Bien inner where serial='%s'";
         sql = String.format(sql, serial);
         ResultSet rs = db.executeQuery(sql);
         if (rs.next()) {

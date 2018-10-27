@@ -143,17 +143,11 @@ public class ModelLogic {
     public void updateDependencia(Dependencia dependencia) throws Exception{
         daoAdministracion.DependenciaUpdate(dependencia);
     }
-    
-     
     //</editor-fold>
    
     
-    
-
     //  <editor-fold desc="Activos" defaultstate="collapsed">
-
-    
-    public List<Activo> getActivos(){
+     public List<Activo> getActivos(){
       return daoActivos.ActivosGetAll(); 
     
     }
