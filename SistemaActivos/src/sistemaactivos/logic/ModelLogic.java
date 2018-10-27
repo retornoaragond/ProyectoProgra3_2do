@@ -42,165 +42,140 @@ public class ModelLogic {
         } else {
             throw new Exception("Clave incorrecta");
         }
-      }
+    }
 
-    
-    
-    
-    
     //<editor-fold desc="Bien" defaultstate="collapsed">
-     public List<Bien> getBienes(){
+    public List<Bien> getBienes() {
         return daoSolicitud.BienGetAll();
     }
-    
-    public  Bien getBien(String serial) throws Exception{
+
+    public Bien getBien(String serial) throws Exception {
         return daoSolicitud.BienGet(serial);
     }
-    
-    public List<Bien> searchBien(Bien filtro){
+
+    public List<Bien> searchBien(Bien filtro) {
         return daoSolicitud.BienSearch(filtro);
     }
 
-    
-    public void deleteBien(Bien p) throws Exception{
+    public void deleteBien(Bien p) throws Exception {
         daoSolicitud.BienDelete(p);
     }
 
-    public void addBien(Bien bien) throws Exception{
+    public void addBien(Bien bien) throws Exception {
         daoSolicitud.BienAdd(bien);
     }
 
-    public void updateBien(Bien bien) throws Exception{
+    public void updateBien(Bien bien) throws Exception {
         daoSolicitud.BienUpdate(bien);
     }
     //</editor-fold>
-    
-    
-    
-    
-    
-    
-    
-    
+
     //  <editor-fold desc="Solicitudes" defaultstate="collapsed">
-      public List<Solicitud> getSolicitud(){
-      return daoSolicitud.SolicitudGetAll();  
+    public List<Solicitud> getSolicitud() {
+        return daoSolicitud.SolicitudGetAll();
     }
-  
-   
-     public Solicitud getSolicitud(String serial) throws Exception{
+
+    public Solicitud getSolicitud(String serial) throws Exception {
         return daoSolicitud.SolicitudGet(Integer.parseInt(serial));
     }
-    
-    public void deleteSolicitud(Solicitud p) throws Exception{
+
+    public void deleteSolicitud(Solicitud p) throws Exception {
         daoSolicitud.SolicitudDelete(p);
     }
 
-    public void addSolicitud(Solicitud solicitud) throws Exception{
+    public void addSolicitud(Solicitud solicitud) throws Exception {
         daoSolicitud.SolicitudAdd(solicitud);
     }
 
-    public void updateSolicitud(Solicitud solicitud) throws Exception{
+    public void updateSolicitud(Solicitud solicitud) throws Exception {
         daoSolicitud.SolicitudUpdate(solicitud);
     }
-    
-    public List<Solicitud> searchSolicitud(Solicitud filtro){
+
+    public List<Solicitud> searchSolicitud(Solicitud filtro) {
         return daoSolicitud.SolicitudSearch(filtro);
     }
 
-//</editor-fold>
-
-
-    //  <editor-fold desc="Funcionario" defaultstate="collapsed">
-   
+    //</editor-fold>
     
-    public List<Funcionario> getFuncionarios(){
+    //  <editor-fold desc="Funcionario" defaultstate="collapsed">
+    public List<Funcionario> getFuncionarios() {
         return daoAdministracion.FuncionarioGetAll();
     }
-    
-    public  Funcionario getFuncionario(Integer codigo) throws Exception{
+
+    public Funcionario getFuncionario(Integer codigo) throws Exception {
         return daoAdministracion.FuncionarioGet(codigo.toString());
     }
-    
-    public List<Funcionario> searchFuncionario(Funcionario filtro){
+
+    public List<Funcionario> searchFuncionario(Funcionario filtro) {
         return daoAdministracion.FuncionarioSearch(filtro);
     }
 
-    
-    public void deleteFuncionario(Funcionario p) throws Exception{
+    public void deleteFuncionario(Funcionario p) throws Exception {
         daoAdministracion.FuncionarioDelete(p);
     }
 
-    public void addFuncionario(Funcionario funcionario) throws Exception{
+    public void addFuncionario(Funcionario funcionario) throws Exception {
         daoAdministracion.FuncionarioAdd(funcionario);
     }
 
-    public void updateFuncionario(Funcionario funcionario) throws Exception{
+    public void updateFuncionario(Funcionario funcionario) throws Exception {
         daoAdministracion.FuncionarioUpdate(funcionario);
     }
-     
-     //</editor-fold>
 
-   
+    //</editor-fold>
+    
     //  <editor-fold desc="Dependencia" defaultstate="collapsed">
-    public List<Dependencia> getDependencias(){
+    public List<Dependencia> getDependencias() {
         return daoAdministracion.DependenciaGetAll();
     }
-    
-    public  Dependencia getDependencia(Integer codigo) throws Exception{
+
+    public Dependencia getDependencia(Integer codigo) throws Exception {
         return daoAdministracion.DependenciaGet(codigo);
     }
-    
-    public List<Dependencia> searchDependencia(Dependencia filtro){
+
+    public List<Dependencia> searchDependencia(Dependencia filtro) {
         return daoAdministracion.DependenciaSearch(filtro);
     }
 
-    
-    public void deleteDependencia(Dependencia p) throws Exception{
+    public void deleteDependencia(Dependencia p) throws Exception {
         daoAdministracion.DependenciaDelete(p);
     }
 
-    public void addDependencia(Dependencia dependencia) throws Exception{
+    public void addDependencia(Dependencia dependencia) throws Exception {
         daoAdministracion.DependenciaAdd(dependencia);
     }
 
-    public void updateDependencia(Dependencia dependencia) throws Exception{
+    public void updateDependencia(Dependencia dependencia) throws Exception {
         daoAdministracion.DependenciaUpdate(dependencia);
     }
     //</editor-fold>
-   
-    
+
     //  <editor-fold desc="Activos" defaultstate="collapsed">
-     public List<Activo> getActivos(){
-      return daoActivos.ActivosGetAll(); 
+    public List<Activo> getActivos() {
+        return daoActivos.ActivosGetAll();
     }
-     
- 
-     public Activo getActivo(String codigoId) throws Exception{
+
+    public Activo getActivo(String codigoId) throws Exception {
         return daoActivos.ActivoGet(codigoId);
     }
-    
-    public void deleteActivo(Activo a) throws Exception{
+
+    public void deleteActivo(Activo a) throws Exception {
         daoActivos.ActivoDelete(a);
     }
 
-    public void addActivo(Activo activo) throws Exception{
+    public void addActivo(Activo activo) throws Exception {
         daoActivos.ActivoAdd(activo);
     }
 
-    public void updateActivo(Activo activo) throws Exception{
+    public void updateActivo(Activo activo) throws Exception {
         daoActivos.ActivoUpdate(activo);
     }
-    
+
     public List<Activo> searchActivo(Activo filtro) {
         return daoActivos.ActivoSearch(filtro);
     }
-     
+
     //</editor-fold>
-    
-    
-    
-    
     public void close() {
         daoSolicitud.close();
         daoActivos.close();
