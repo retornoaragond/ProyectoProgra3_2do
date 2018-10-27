@@ -8,6 +8,7 @@ package sistemaactivos.presentation.solicitud.edicion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Solicitud;
 
@@ -16,6 +17,7 @@ import sistemaactivos.logic.Solicitud;
  * @author ExtremeTech
  */
 public class ModelSolicitudEdicion extends java.util.Observable {
+
     Solicitud current = new Solicitud();
     BienTableModel bientable;
     Bien bienselecionado;
@@ -33,9 +35,9 @@ public class ModelSolicitudEdicion extends java.util.Observable {
         this.setBientable(rows);
         this.commit();
     }
-    
-    public void reset(){
-        //this.reset(Application.MODO_AGREGAR,new Solicitud());
+
+    public void reset() {
+        this.reset(SistemaActivos.MODO_AGREGAR, new Solicitud());
     }
 
     public BienTableModel getBientable() {
@@ -70,8 +72,6 @@ public class ModelSolicitudEdicion extends java.util.Observable {
     public void setModo(int modo) {
         this.modo = modo;
     }
-    
-    
 
     @Override
     public void addObserver(Observer o) {
