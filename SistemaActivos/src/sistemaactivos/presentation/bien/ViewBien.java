@@ -108,6 +108,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         CantidadjTextField = new javax.swing.JTextField();
         categoriajComboBox1 = new javax.swing.JComboBox<>();
         salirjButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Bien");
 
@@ -147,6 +148,9 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Información del Bien");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,77 +158,84 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(procesarjButton)
+                        .addGap(34, 34, 34)
+                        .addComponent(salirjButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MarcajLabel)
+                                    .addComponent(DescripciónjLabel)
+                                    .addComponent(SerialjLabel))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(descripcionjTextField)
+                                    .addComponent(serialjTextField)
+                                    .addComponent(MarcajTextField)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ModelojLabel)
+                                .addGap(56, 56, 56)
+                                .addComponent(ModelojTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(PrecioUnitariojLabel)
+                                .addGap(21, 21, 21)
+                                .addComponent(PrecioUnitariojTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(CantidadjLabel1)
+                                .addGap(48, 48, 48)
+                                .addComponent(CantidadjTextField))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CategoriajLabel)
-                                .addGap(40, 40, 40)
-                                .addComponent(categoriajComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(86, 86, 86))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(MarcajLabel)
-                                        .addComponent(DescripciónjLabel)
-                                        .addComponent(SerialjLabel)
-                                        .addComponent(ModelojLabel))
-                                    .addGap(33, 33, 33)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(descripcionjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                        .addComponent(serialjTextField)
-                                        .addComponent(MarcajTextField)
-                                        .addComponent(ModelojTextField)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(PrecioUnitariojLabel)
-                                        .addComponent(CantidadjLabel1))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(PrecioUnitariojTextField)
-                                        .addComponent(CantidadjTextField))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(procesarjButton)
-                        .addGap(48, 48, 48)
-                        .addComponent(salirjButton)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                                .addGap(44, 44, 44)
+                                .addComponent(categoriajComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel1)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SerialjLabel)
                     .addComponent(serialjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DescripciónjLabel)
                     .addComponent(descripcionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MarcajLabel)
                     .addComponent(MarcajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ModelojLabel)
                     .addComponent(ModelojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrecioUnitariojLabel)
                     .addComponent(PrecioUnitariojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CantidadjLabel1)
                     .addComponent(CantidadjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CategoriajLabel)
                     .addComponent(categoriajComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(procesarjButton)
-                    .addComponent(salirjButton))
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salirjButton)
+                    .addComponent(procesarjButton))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,6 +268,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
     private javax.swing.JLabel SerialjLabel;
     private javax.swing.JComboBox<String> categoriajComboBox1;
     private javax.swing.JTextField descripcionjTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton procesarjButton;
     private javax.swing.JButton salirjButton;
     private javax.swing.JTextField serialjTextField;
