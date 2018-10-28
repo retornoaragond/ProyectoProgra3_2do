@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Usuario;
@@ -18,48 +20,42 @@ import sistemaactivos.logic.Usuario;
  * @author Estudiante
  */
 public class DaoAdministracion {
-    
+
     RelDatabase dbb;
 
     public DaoAdministracion() {
         dbb = new RelDatabase();
     }
-    
-    
-    public Usuario usuarioGet(String id) throws Exception{
-        String sql="SELECT * FROM Usuario WHERE id='%s'";
-        sql = String.format(sql,id);
-        ResultSet rs =  dbb.executeQuery(sql);
+
+    public Usuario usuarioGet(String id) throws Exception {
+        String sql = "SELECT * FROM usuario WHERE id='%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
             return usuario(rs);
-        }
-        else{
-            throw new Exception ("Usuario no Existe");
+        } else {
+            throw new Exception("Usuario no Existe");
         }
     }
-    
-    private Usuario usuario(ResultSet rs){
+
+    private Usuario usuario(ResultSet rs) {
         try {
-            Usuario u= new Usuario();
+            Usuario u = new Usuario();
             u.setId(rs.getString("id"));
             u.setPass(rs.getString("clave"));
-            Funcionario f = new Funcionario();
-            f.setId(rs.getString("id"));
-            f.setNombre(rs.getString("nombre"));
+            Funcionario f = getFuncionario(rs.getString("id"));
             u.setFuncionario(f);
             return u;
         } catch (SQLException ex) {
             return null;
+        } catch (Exception ex) {
+            return null;
         }
     }
-   
-    
-    
-    
+
     //  <editor-fold desc="Funcionarios" defaultstate="collapsed">
-    
-     public Funcionario getFuncionario(String id) throws Exception {
-        String sql = "select * from funcionario inner where codigoId='%s'";
+    public Funcionario getFuncionario(String id) throws Exception {
+        String sql = "SELECT * FROM funcionario WHERE codigoId='%s'";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -68,22 +64,19 @@ public class DaoAdministracion {
             throw new Exception("Funcionario no Existe");
         }
     }
-    
-    
-    
-    
-    
+
     private Funcionario funcionario(ResultSet rs) {
         try {
             Funcionario ec = new Funcionario();
             ec.setId(rs.getString("id"));
+            ec.setNombre(rs.getString("nombre"));
             return ec;
         } catch (SQLException ex) {
             return null;
         }
     }
 
-    public List<Funcionario> FuncionarioSearch(Funcionario filtro){
+    public List<Funcionario> FuncionarioSearch(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -94,8 +87,9 @@ public class DaoAdministracion {
             while (rs.next()) {
                 resultado.add(funcionario(rs));
             }
-        } catch (SQLException ex) {}
-          
+        } catch (SQLException ex) {
+        }
+
         return resultado;
     }
 
@@ -111,27 +105,24 @@ public class DaoAdministracion {
         }
         return estados;
     }
-   
-     
-    public Funcionario FuncionarioGet(String id) throws Exception{
-       return new Funcionario();    
-    }
-    
-    public void FuncionarioDelete(Funcionario a) throws Exception{
-        
+
+    public Funcionario FuncionarioGet(String id) throws Exception {
+        return new Funcionario();
     }
 
-    public void FuncionarioAdd(Funcionario a) throws Exception{
-        
+    public void FuncionarioDelete(Funcionario a) throws Exception {
+
     }
 
-    public void FuncionarioUpdate(Funcionario a) throws Exception{
-       
-    }
-     //</editor-fold>
+    public void FuncionarioAdd(Funcionario a) throws Exception {
 
-    
-   
+    }
+
+    public void FuncionarioUpdate(Funcionario a) throws Exception {
+
+    }
+    //</editor-fold>
+
     //  <editor-fold desc="Dependencias" defaultstate="collapsed">
     public Dependencia getDependencia(Integer codigo) throws Exception {
         String sql = "select * from dependencia inner where codigo='%s'";
@@ -143,7 +134,7 @@ public class DaoAdministracion {
             throw new Exception("Funcionario no Existe");
         }
     }
-    
+
     private Dependencia dependencia(ResultSet rs) {
         try {
             Dependencia ec = new Dependencia();
@@ -154,7 +145,7 @@ public class DaoAdministracion {
         }
     }
 
-    public List<Dependencia> DependenciaSearch(Dependencia filtro){
+    public List<Dependencia> DependenciaSearch(Dependencia filtro) {
         List<Dependencia> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -165,8 +156,9 @@ public class DaoAdministracion {
             while (rs.next()) {
                 resultado.add(dependencia(rs));
             }
-        } catch (SQLException ex) {}
-          
+        } catch (SQLException ex) {
+        }
+
         return resultado;
     }
 
@@ -182,30 +174,25 @@ public class DaoAdministracion {
         }
         return estados;
     }
-   
-     
-    public Dependencia DependenciaGet(Integer codigo) throws Exception{
-       return new Dependencia();    
-    }
-    
-    public void DependenciaDelete(Dependencia a) throws Exception{
-        
+
+    public Dependencia DependenciaGet(Integer codigo) throws Exception {
+        return new Dependencia();
     }
 
-    public void DependenciaAdd(Dependencia a) throws Exception{
-        
+    public void DependenciaDelete(Dependencia a) throws Exception {
+
     }
 
-    public void DependenciaUpdate(Dependencia a) throws Exception{
-       
-    }
-    
-    
-     //</editor-fold>
+    public void DependenciaAdd(Dependencia a) throws Exception {
 
-    
-    
-     public  void close(){
     }
-    
+
+    public void DependenciaUpdate(Dependencia a) throws Exception {
+
+    }
+
+    //</editor-fold>
+    public void close() {
+    }
+
 }
