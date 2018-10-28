@@ -69,5 +69,12 @@ public class ControllerFuncionariosEdicion {
     public void hide() {
         view.setVisible(false);
     }
+    
+    public void preAgregar(){
+    }
+
+    void borrar(int row) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

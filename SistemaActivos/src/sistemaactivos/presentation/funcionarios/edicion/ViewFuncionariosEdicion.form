@@ -376,6 +376,9 @@
               <Image iconType="3" name="/sistemaactivos/presentation/icons/iconagragarFuncionario.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="EliminarButon">
           <Properties>
