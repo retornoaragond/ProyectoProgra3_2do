@@ -200,6 +200,11 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         });
 
         EliminarButon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconeliminar.png"))); // NOI18N
+        EliminarButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarButonActionPerformed(evt);
+            }
+        });
 
         LaborTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,13 +372,16 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        // TODO add your handling code here:
-        
+       controller.preAgregar();
         
         
         
         
     }//GEN-LAST:event_AgregarActionPerformed
+
+    private void EliminarButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButonActionPerformed
+controller.borrar(0);
+    }//GEN-LAST:event_EliminarButonActionPerformed
 
     boolean validar(){
         boolean error=false;
