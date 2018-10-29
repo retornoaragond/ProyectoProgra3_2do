@@ -129,8 +129,8 @@ public class ModelLogic {
         return daoAdministracion.DependenciaGetAll();
     }
 
-    public Dependencia getDependencia(Integer codigo) throws Exception {
-        return daoAdministracion.DependenciaGet(codigo);
+    public Dependencia getDependencia(Dependencia filter) throws Exception {
+        return daoAdministracion.dependenciaGet(filter.getCodigo());
     }
 
     public List<Dependencia> searchDependencia(Dependencia filtro) {

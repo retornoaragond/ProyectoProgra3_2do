@@ -96,13 +96,10 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
 -- ----------------------------  Solicitudes -------------------------------------
 
 
-
-
-
-
-
-
+SELECT usuario.id id_user, pass clave, funcionario.id id_func, nombre, dependenciaLabor dependencia, PuestoLabor puesto FROM usuario  INNER JOIN Funcionario  ON usuario.funcionarioUsuario = Funcionario.id INNER JOIN Labor ON Funcionario.id = Labor.FuncionarioLabor WHERE usuario.id= '001' AND usuario.pass='001';
 
 -- SELECT * FROM solicitud INNER JOIN bien ON solicitud.numSolicitud = bien.solicitudBien;
 
 -- SELECT * FROM usuario INNER JOIN funcionario ON usuario.funcionarioUsuario = funcionario.id; 
+
+SELECT * FROM puesto WHERE codigo = '001'; 
