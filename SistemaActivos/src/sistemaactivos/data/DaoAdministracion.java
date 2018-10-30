@@ -29,10 +29,7 @@ public class DaoAdministracion {
 
     //  <editor-fold desc="Usuarios" defaultstate="collapsed">
     public Usuario usuarioGet(String id) throws Exception {
-        String sql = "SELECT usuario.id id_user,"
-                + " pass clave,"
-                + " funcionarioUsuario id_func "
-                + "FROM usuario WHERE usuario.id = '%s'";
+        String sql = "SELECT * FROM usuario WHERE usuario.id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -45,10 +42,10 @@ public class DaoAdministracion {
     private Usuario usuario(ResultSet rs) {
         try {
             Usuario u = new Usuario();
-            u.setId(rs.getString("id_user"));
-            u.setPass(rs.getString("clave"));
-            Funcionario f = getFuncionario(rs.getString("id_func"));
-            //u.setFuncionario(f);
+            u.setId(rs.getString("id"));
+            u.setPass(rs.getString("pass"));
+            Labor l = laborGet(Integer.parseInt(rs.getString("labUsu")));
+            u.setLabor(l);
             return u;
         } catch (SQLException ex) {
             return null;
@@ -213,7 +210,7 @@ public class DaoAdministracion {
     private Puesto puesto(ResultSet rs) {
         try {
             Puesto p = new Puesto();
-            p.setCodgo(rs.getString("codigo"));
+            p.setCodgo(rs.getString("codgo"));
             p.setPuesto(rs.getString("puesto"));
             return p;
         } catch (SQLException ex) {
@@ -238,6 +235,16 @@ public class DaoAdministracion {
     //</editor-fold>
     
     //  <editor-fold desc="Labores" defaultstate="collapsed">
+    public Labor laborGet(Integer id) throws Exception {
+        String sql = "SELECT * FROM labor WHERE id = '%i'";
+        sql = String.format(sql, id);
+        ResultSet rs = dbb.executeQuery(sql);
+        if (rs.next()) {
+            return labor(rs);
+        } else {
+            throw new Exception("Labor no Existe");
+        }
+    }
     public Labor laborGetbyFuncionario(String id) throws Exception {
         String sql = "SELECT * FROM labor WHERE FuncionarioLabor = '%s'";
         sql = String.format(sql, id);
@@ -281,9 +288,10 @@ public class DaoAdministracion {
     private Labor labor(ResultSet rs) {
         try {
             Labor p = new Labor();
-            p.setDependencia(dependenciaGet(rs.getString("dependenciaLabor")));
-            p.setPuesto(puestoGet(Integer.getInteger(rs.getString("PuestoLabor"))));
-            p.setFuncionario(FuncionarioGet(rs.getString("FuncionarioLabor")));
+            p.setId(Integer.parseInt(rs.getString("id")));
+            p.setDependencia(dependenciaGet(rs.getString("depLab")));
+            p.setPuesto(puestoGet(Integer.getInteger(rs.getString("pueLab"))));
+            p.setFuncionario(FuncionarioGet(rs.getString("funcLab")));
             return p;
         } catch (SQLException ex) {
             return null;
