@@ -35,51 +35,52 @@ INSERT INTO funcionario (id, nombre) VALUES ('012', 'Karina Arguedas Salgado'); 
 
 -- ----------------------------  Puestos -------------------------------------
 
-INSERT INTO puesto (codigo, puesto) VALUES ('001', 'Administrador');
-INSERT INTO puesto (codigo, puesto) VALUES ('002', 'Secretariado');
-INSERT INTO puesto (codigo, puesto) VALUES ('003', 'Registrador');
-INSERT INTO puesto (codigo, puesto) VALUES ('004', 'Jefe OCCB');
-INSERT INTO puesto (codigo, puesto) VALUES ('005', 'Jefe RRHH');
-
-
--- ------------------------------  Usuarios -----------------------------------
-
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('001', '001', '001', '001','001'); -- Administrador Esc.Informatica
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('002', '002', '002', '002','001'); -- Administrador Esc.Administracion
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('003', '003', '003', '003','001'); -- Administrador Esc.Biologia
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('004', '004', '004', '004','001'); -- Administrador Esc.Med.Veterinaria
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('005', '005', '005', '005','001'); -- Administrador Esc.Matematica
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('006', '006', '006', '006','001'); -- Administrador Esc.Quimica
-INSERT INTO usuario (id, pass, depLabor, funcLabor, puesLabor) VALUES ('007', '007', '007', '007','001'); -- Administrador Esc.Artes
-
-INSERT INTO usuario (id, pass, funcionarioUsuario) VALUES ('008', '008', '008','008', '002'); -- Secretaria OCCB
-
-INSERT INTO usuario (id, pass, funcionarioUsuario) VALUES ('009', '009', '009', '009', '003'); -- Registrador
-INSERT INTO usuario (id, pass, funcionarioUsuario) VALUES ('010', '010', '010', '010', '003'); -- Registrador
-
-INSERT INTO usuario (id, pass, funcionarioUsuario) VALUES ('011', '011', '011', '011','004'); -- Jefe OCCB
-
-INSERT INTO usuario (id, pass, funcionarioUsuario) VALUES ('012', '012', '012', '012', '005'); -- Jefe RRHH
+INSERT INTO puesto (codgo, puesto) VALUES ('001', 'Administrador');
+INSERT INTO puesto (codgo, puesto) VALUES ('002', 'Secretariado');
+INSERT INTO puesto (codgo, puesto) VALUES ('003', 'Registrador');
+INSERT INTO puesto (codgo, puesto) VALUES ('004', 'Jefe OCCB');
+INSERT INTO puesto (codgo, puesto) VALUES ('005', 'Jefe RRHH');
 
 
 -- ----------------------------  Labores -------------------------------------
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '011', '004'); -- Administrador Jefe OCCB
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '008', '002'); -- Secretaria OCCB
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '009', '003'); -- Registrador
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('009', '010', '003'); -- Registrador
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('001', '001', '001'); -- Administrador Esc.Informatica
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('002', '002', '001'); -- Administrador Esc.Administracion
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('003', '003', '001'); -- Administrador Esc.Biologia
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('004', '004', '001'); -- Administrador Esc.Med.Veterinaria
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('005', '005', '001'); -- Administrador Esc.Matematica
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('006', '006', '001'); -- Administrador Esc.Quimica
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('007', '007', '001'); -- Administrador Esc.Artes
+
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('008', '009', '002'); -- Secretaria OCCB
+
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('009', '009', '003'); -- Registrador
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('010', '009', '003'); -- Registrador
+
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('011', '009', '004'); -- Administrador Jefe OCCB
+
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('012', '008', '005'); -- Jefe RRHH
 
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('001', '001', '001'); -- Administrador Esc.Informatica
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('002', '002', '001'); -- Administrador Esc.Administracion
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('003', '003', '001'); -- Administrador Esc.Biologia
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('004', '004', '001'); -- Administrador Esc.Med.Veterinaria
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('005', '005', '001'); -- Administrador Esc.Matematica
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('006', '006', '001'); -- Administrador Esc.Quimica
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('007', '007', '001'); -- Administrador Esc.Artes
+-- ------------------------------  Usuarios -----------------------------------
 
-INSERT INTO labor (dependenciaLabor, FuncionarioLabor, PuestoLabor) VALUES ('008', '012', '005'); -- Jefe RRHH
+INSERT INTO usuario (id, pass, labUsu) VALUES ('001', '001', '1'); -- Administrador Esc.Informatica
+INSERT INTO usuario (id, pass, labUsu) VALUES ('002', '002', '2'); -- Administrador Esc.Administracion
+INSERT INTO usuario (id, pass, labUsu) VALUES ('003', '003', '3'); -- Administrador Esc.Biologia
+INSERT INTO usuario (id, pass, labUsu) VALUES ('004', '004', '4'); -- Administrador Esc.Med.Veterinaria
+INSERT INTO usuario (id, pass, labUsu) VALUES ('005', '005', '5'); -- Administrador Esc.Matematica
+INSERT INTO usuario (id, pass, labUsu) VALUES ('006', '006', '6'); -- Administrador Esc.Quimica 
+INSERT INTO usuario (id, pass, labUsu) VALUES ('007', '007', '7'); -- Administrador Esc.Artes
+
+INSERT INTO usuario (id, pass, labUsu) VALUES ('008', '008', '8'); -- Secretaria OCCB
+
+INSERT INTO usuario (id, pass, labUsu) VALUES ('009', '009', '9'); -- Registrador
+INSERT INTO usuario (id, pass, labUsu) VALUES ('010', '010', '10'); -- Registrador
+
+INSERT INTO usuario (id, pass, labUsu) VALUES ('011', '011', '11'); -- Jefe OCCB
+
+INSERT INTO usuario (id, pass, labUsu) VALUES ('012', '012', '12'); -- Jefe RRHH
 
 
 -- ----------------------------  Categorias -------------------------------------
@@ -107,5 +108,7 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
 -- SELECT usuario.id id_user, pass clave, funcionarioUsuario id_func FROM usuario WHERE usuario.id= '001';
 
 -- SELECT * FROM usuario WHERE id='001';
- SELECT * FROM sistemaactivos.usuario;
-Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`sistemaactivos`.`usuario`, CONSTRAINT `usuarioLabor` FOREIGN KEY (`depLabor`, `funcLabor`, `puesLabor`) REFERENCES `labor` (`dependenciaLabor`, `FuncionarioLabor`, `PuestoLabor`) ON DELETE NO)
+-- SELECT * FROM sistemaactivos.usuario;
+-- SELECT * FROM sistemaactivos.labor;
+-- SELECT * FROM sistemaactivos.labor;
+-- SELECT * FROM sistemaactivos.usuario;

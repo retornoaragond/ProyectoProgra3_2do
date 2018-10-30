@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1
+// Generated 30/10/2018 04:12:49 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,7 +12,7 @@ public class Categoria  implements java.io.Serializable {
 
 
      private String id;
-     private String incremento;
+     private int incremento;
      private String descripcion;
      private Set biens = new HashSet(0);
 
@@ -20,12 +20,12 @@ public class Categoria  implements java.io.Serializable {
     }
 
 	
-    public Categoria(String id, String incremento, String descripcion) {
+    public Categoria(String id, int incremento, String descripcion) {
         this.id = id;
         this.incremento = incremento;
         this.descripcion = descripcion;
     }
-    public Categoria(String id, String incremento, String descripcion, Set biens) {
+    public Categoria(String id, int incremento, String descripcion, Set biens) {
        this.id = id;
        this.incremento = incremento;
        this.descripcion = descripcion;
@@ -39,11 +39,11 @@ public class Categoria  implements java.io.Serializable {
     public void setId(String id) {
         this.id = id;
     }
-    public String getIncremento() {
+    public int getIncremento() {
         return this.incremento;
     }
     
-    public void setIncremento(String incremento) {
+    public void setIncremento(int incremento) {
         this.incremento = incremento;
     }
     public String getDescripcion() {

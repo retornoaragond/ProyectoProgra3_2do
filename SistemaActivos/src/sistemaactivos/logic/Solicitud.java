@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1
+// Generated 30/10/2018 04:12:49 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
