@@ -56,7 +56,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
         desktopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        salirMenu = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -76,8 +76,13 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
             .addGap(0, 231, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Salir");
-        jMenuBar1.add(jMenu1);
+        salirMenu.setText("Salir");
+        salirMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirMenuActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(salirMenu);
 
         jMenu2.setText("Dependencias");
         jMenuBar1.add(jMenu2);
@@ -110,16 +115,22 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void salirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirMenuActionPerformed
+
+controller.exit();
+        
+    }//GEN-LAST:event_salirMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu salirMenu;
     // End of variables declaration//GEN-END:variables
 
     @Override

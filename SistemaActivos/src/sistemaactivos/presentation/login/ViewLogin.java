@@ -140,6 +140,10 @@ public class ViewLogin extends javax.swing.JFrame implements java.util.Observer 
         Usuario result = new Usuario();
         result.setId(this.IDTXTField.getText());
         result.setPass(new String(this.JclaveField.getPassword()));
+        /*
+        System.out.println(IDTXTField.getText());
+        System.out.println(this.JclaveField.getPassword());
+        */        
         return result;
     }
 
