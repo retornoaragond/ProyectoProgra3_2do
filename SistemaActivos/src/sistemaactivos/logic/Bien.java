@@ -22,6 +22,15 @@ public class Bien  implements java.io.Serializable {
      private Set activos = new HashSet(0);
 
     public Bien() {
+        serial= "";
+        categoria=new Categoria();
+        solicitud=new Solicitud();
+        descripcion="";
+        marca="";
+        modelo="";
+        precioU=0;
+        cantidad=0;
+        
     }
 
 	

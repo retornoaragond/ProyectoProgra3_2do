@@ -17,6 +17,10 @@ public class Categoria  implements java.io.Serializable {
      private Set biens = new HashSet(0);
 
     public Categoria() {
+        id="";
+        incremento=0;
+        descripcion="";
+        
     }
 
 	

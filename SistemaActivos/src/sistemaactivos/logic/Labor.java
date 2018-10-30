@@ -19,6 +19,10 @@ public class Labor  implements java.io.Serializable {
      private Set usuarios = new HashSet(0);
 
     public Labor() {
+        id=0;
+        dependencia=new Dependencia();
+        funcionario=new Funcionario();
+        puesto= new Puesto();
     }
 
 	

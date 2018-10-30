@@ -14,6 +14,9 @@ public class Usuario  implements java.io.Serializable {
      private String pass;
 
     public Usuario() {
+        id="";
+        labor=new Labor();
+        pass="";
     }
 
     public Usuario(String id, Labor labor, String pass) {

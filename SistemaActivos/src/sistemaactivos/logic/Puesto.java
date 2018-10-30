@@ -16,6 +16,9 @@ public class Puesto  implements java.io.Serializable {
      private Set labors = new HashSet(0);
 
     public Puesto() {
+        codgo="";
+        puesto="";
+        
     }
 
 	
