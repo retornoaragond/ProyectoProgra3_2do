@@ -57,6 +57,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         desktopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         salirMenu = new javax.swing.JMenu();
+        logOut = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -82,6 +83,16 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
                 salirMenuActionPerformed(evt);
             }
         });
+
+        logOut.setSelected(true);
+        logOut.setText("LogOut");
+        logOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutActionPerformed(evt);
+            }
+        });
+        salirMenu.add(logOut);
+
         jMenuBar1.add(salirMenu);
 
         jMenu2.setText("Dependencias");
@@ -121,6 +132,12 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
     }//GEN-LAST:event_salirMenuActionPerformed
 
+    private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
+
+ controller.exit();
+        
+    }//GEN-LAST:event_logOutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
@@ -130,6 +147,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JCheckBoxMenuItem logOut;
     private javax.swing.JMenu salirMenu;
     // End of variables declaration//GEN-END:variables
 
