@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Funcionario" table="funcionario" catalog="sistemaactivos" optimistic-lock="version">
         <id name="id" type="string">
-            <column name="id" length="42" />
+            <column name="id" length="45" />
             <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
@@ -13,21 +13,15 @@
         </property>
         <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="funcionarioSolicitud" length="42" />
+                <column name="registrador" length="45" />
             </key>
-            <one-to-many class="si.Solicitud" />
-        </set>
-        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="funcionarioUsuario" length="42" not-null="true" />
-            </key>
-            <one-to-many class="si.Usuario" />
+            <one-to-many class="sistemaactivos.logic.Solicitud" />
         </set>
         <set name="labors" table="labor" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="FuncionarioLabor" length="42" not-null="true" />
+                <column name="funcLab" length="45" not-null="true" />
             </key>
-            <one-to-many class="si.Labor" />
+            <one-to-many class="sistemaactivos.logic.Labor" />
         </set>
     </class>
 </hibernate-mapping>

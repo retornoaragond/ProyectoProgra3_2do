@@ -295,7 +295,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     Dependencia toDependencia() {
         Dependencia result = new Dependencia();
         result.setNombre(this.NombreField.getText());
-        result.setCodigo(Integer.parseInt(this.CodigoTEXT.getText()));
+        result.setCodigo(this.CodigoTEXT.getText());
         return result;
     }
 

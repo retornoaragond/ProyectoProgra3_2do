@@ -1,20 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Activo" table="activo" catalog="sistemaactivos" optimistic-lock="version">
         <id name="codigoId" type="string">
             <column name="codigoId" length="45" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="bien" class="si.Bien" fetch="select">
-            <column name="bienActivo" length="25" not-null="true" />
+        <many-to-one name="bien" class="sistemaactivos.logic.Bien" fetch="select">
+            <column name="bienAct" length="45" not-null="true" />
         </many-to-one>
-        <many-to-one name="labor" class="si.Labor" fetch="select">
-            <column name="dependenciaActivo" />
-            <column name="FuncionarioActivo" length="42" />
-            <column name="PuestoActivo" />
+        <many-to-one name="labor" class="sistemaactivos.logic.Labor" fetch="select">
+            <column name="labAct" />
         </many-to-one>
     </class>
 </hibernate-mapping>

@@ -338,7 +338,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     public void fromActivo(Activo s) {
         CodigoTextField.setText(s.getCodigoId());
         categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
-        descripcionTextField.setText(s.getBien().getDecripcion());
+        descripcionTextField.setText(s.getBien().getDescripcion());
         dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
         ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
     }

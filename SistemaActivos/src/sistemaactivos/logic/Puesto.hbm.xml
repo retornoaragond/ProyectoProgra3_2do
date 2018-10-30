@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Puesto" table="puesto" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="codigo" type="int">
-            <column name="codigo" />
+        <id name="codgo" type="string">
+            <column name="codgo" length="45" />
             <generator class="assigned" />
         </id>
         <property name="puesto" type="string">
@@ -13,9 +13,9 @@
         </property>
         <set name="labors" table="labor" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="PuestoLabor" not-null="true" />
+                <column name="pueLab" length="45" not-null="true" />
             </key>
-            <one-to-many class="si.Labor" />
+            <one-to-many class="sistemaactivos.logic.Labor" />
         </set>
     </class>
 </hibernate-mapping>

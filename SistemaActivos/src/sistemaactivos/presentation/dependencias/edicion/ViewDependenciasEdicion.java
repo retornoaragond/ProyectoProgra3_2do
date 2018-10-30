@@ -147,7 +147,7 @@ import sistemaactivos.logic.Dependencia;
     
         Dependencia toDependencia(){
         Dependencia result = new Dependencia();
-        result.setCodigo(Integer.parseInt(this.CodigoField.getText()));
+        result.setCodigo(this.CodigoField.getText());
         result.setNombre(this.NombreTextField.getText());
         //result.setLabors(new set(this.LaborsComboBox));
         //result.setSolicituds ());

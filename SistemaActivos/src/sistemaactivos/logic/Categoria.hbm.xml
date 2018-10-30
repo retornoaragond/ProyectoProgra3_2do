@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Categoria" table="categoria" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned" />
         </id>
-        <property name="incremento" type="int">
-            <column name="incremento" not-null="true" />
+        <property name="incremento" type="string">
+            <column name="incremento" length="45" not-null="true" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="45" not-null="true" />
         </property>
         <set name="biens" table="bien" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="categoriaBien" />
+                <column name="categoria" length="45" />
             </key>
-            <one-to-many class="si.Bien" />
+            <one-to-many class="sistemaactivos.logic.Bien" />
         </set>
     </class>
 </hibernate-mapping>

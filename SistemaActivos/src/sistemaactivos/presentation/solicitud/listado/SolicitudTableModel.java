@@ -50,23 +50,23 @@ public class SolicitudTableModel extends AbstractTableModel {
         Solicitud solicitud = rows.get(row);
         switch (cols[col]) {
             case NUMSOLICITUD:
-                return solicitud.getNumSolicitud();
+                return solicitud.getNumsol();
             case DEPENDENCIA:
                 return solicitud.getDependencia();
             case FUNCIONARIO:
                 return solicitud.getFuncionario();
             case NUMCOMPROBANTE:
-                return solicitud.getNumComprobante();
+                return solicitud.getNumcomp();
             case FECHA:
                 return solicitud.getFecha();
             case TIPOADQUISICION:
-                return solicitud.getTipoAdquisicion();
+                return solicitud.getTipoadq();
             case CANTIDADBIENES:
-                return solicitud.getCantidadBienes();
+                return solicitud.getCantbien();
             case MONTOTOTAL:
-                return solicitud.getMontoTotal();
+                return solicitud.getMontotal();
             case RAZONRECHAZO:
-                return solicitud.getRazonRechazo();
+                return solicitud.getRazonR();
             case ESTADO:
                 return solicitud.getEstado();
             default:

@@ -1,5 +1,5 @@
 package sistemaactivos.logic;
-// Generated 22/10/2018 09:28:18 PM by Hibernate Tools 4.3.1
+// Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,40 +11,35 @@ import java.util.Set;
 public class Labor  implements java.io.Serializable {
 
 
-     private LaborId id;
+     private Integer id;
      private Dependencia dependencia;
      private Funcionario funcionario;
      private Puesto puesto;
      private Set activos = new HashSet(0);
+     private Set usuarios = new HashSet(0);
 
     public Labor() {
-        id=new LaborId();
-        dependencia= new Dependencia();
-        funcionario=new Funcionario();
-        puesto= new Puesto();
-        
     }
 
 	
-    public Labor(LaborId id, Dependencia dependencia, Funcionario funcionario, Puesto puesto) {
-        this.id = id;
+    public Labor(Dependencia dependencia, Funcionario funcionario, Puesto puesto) {
         this.dependencia = dependencia;
         this.funcionario = funcionario;
         this.puesto = puesto;
     }
-    public Labor(LaborId id, Dependencia dependencia, Funcionario funcionario, Puesto puesto, Set activos) {
-       this.id = id;
+    public Labor(Dependencia dependencia, Funcionario funcionario, Puesto puesto, Set activos, Set usuarios) {
        this.dependencia = dependencia;
        this.funcionario = funcionario;
        this.puesto = puesto;
        this.activos = activos;
+       this.usuarios = usuarios;
     }
    
-    public LaborId getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(LaborId id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Dependencia getDependencia() {
@@ -74,6 +69,13 @@ public class Labor  implements java.io.Serializable {
     
     public void setActivos(Set activos) {
         this.activos = activos;
+    }
+    public Set getUsuarios() {
+        return this.usuarios;
+    }
+    
+    public void setUsuarios(Set usuarios) {
+        this.usuarios = usuarios;
     }
 
 

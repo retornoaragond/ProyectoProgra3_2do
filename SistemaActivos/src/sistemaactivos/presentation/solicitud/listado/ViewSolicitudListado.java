@@ -294,12 +294,12 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_RecibidaCBActionPerformed
 
     public void fromSolicitud(Solicitud s) {
-        textFieldNumSolicitud.setText(s.getNumSolicitud().toString());
+        textFieldNumSolicitud.setText(s.getNumsol().toString());
     }
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
-        result.setNumSolicitud(Integer.getInteger(textFieldNumSolicitud.getText()));
+        result.setNumsol(Integer.getInteger(textFieldNumSolicitud.getText()));
         return result;
     }
 

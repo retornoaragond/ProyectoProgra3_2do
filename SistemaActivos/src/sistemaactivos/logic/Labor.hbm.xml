@@ -1,36 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Labor" table="labor" catalog="sistemaactivos" optimistic-lock="version">
-        <composite-id name="id" class="si.LaborId">
-            <key-property name="dependenciaLabor" type="int">
-                <column name="dependenciaLabor" />
-            </key-property>
-            <key-property name="funcionarioLabor" type="string">
-                <column name="FuncionarioLabor" length="42" />
-            </key-property>
-            <key-property name="puestoLabor" type="int">
-                <column name="PuestoLabor" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="dependencia" class="si.Dependencia" update="false" insert="false" fetch="select">
-            <column name="dependenciaLabor" not-null="true" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dependencia" class="sistemaactivos.logic.Dependencia" fetch="select">
+            <column name="depLab" length="45" not-null="true" />
         </many-to-one>
-        <many-to-one name="funcionario" class="si.Funcionario" update="false" insert="false" fetch="select">
-            <column name="FuncionarioLabor" length="42" not-null="true" />
+        <many-to-one name="funcionario" class="sistemaactivos.logic.Funcionario" fetch="select">
+            <column name="funcLab" length="45" not-null="true" />
         </many-to-one>
-        <many-to-one name="puesto" class="si.Puesto" update="false" insert="false" fetch="select">
-            <column name="PuestoLabor" not-null="true" />
+        <many-to-one name="puesto" class="sistemaactivos.logic.Puesto" fetch="select">
+            <column name="pueLab" length="45" not-null="true" />
         </many-to-one>
         <set name="activos" table="activo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="dependenciaActivo" />
-                <column name="FuncionarioActivo" length="42" />
-                <column name="PuestoActivo" />
+                <column name="labAct" />
             </key>
-            <one-to-many class="si.Activo" />
+            <one-to-many class="sistemaactivos.logic.Activo" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="labUsu" not-null="true" />
+            </key>
+            <one-to-many class="sistemaactivos.logic.Usuario" />
         </set>
     </class>
 </hibernate-mapping>

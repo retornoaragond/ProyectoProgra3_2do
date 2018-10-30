@@ -49,7 +49,7 @@ public class DaoSolicitudes {
     private Solicitud solicitud(ResultSet rs) {
         try {
             Solicitud ec = new Solicitud();
-            ec.setNumSolicitud(Integer.getInteger(rs.getString("numSolicitud")));
+            ec.setNumsol(Integer.getInteger(rs.getString("numSolicitud")));
             return ec;
         } catch (SQLException ex) {
             return null;
@@ -140,7 +140,7 @@ public class DaoSolicitudes {
             String sql = "select * from "
                     + "Bien "
                     + "where descripcion like '%%%s%%'";
-            sql = String.format(sql, filtro.getDecripcion());
+            sql = String.format(sql, filtro.getDescripcion());
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(bien(rs));

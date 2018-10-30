@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Usuario" table="usuario" catalog="sistemaactivos" optimistic-lock="version">
         <id name="id" type="string">
             <column name="id" length="45" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="funcionario" class="si.Funcionario" fetch="select">
-            <column name="funcionarioUsuario" length="42" not-null="true" />
+        <many-to-one name="labor" class="sistemaactivos.logic.Labor" fetch="select">
+            <column name="labUsu" not-null="true" />
         </many-to-one>
         <property name="pass" type="string">
             <column name="pass" length="45" not-null="true" />

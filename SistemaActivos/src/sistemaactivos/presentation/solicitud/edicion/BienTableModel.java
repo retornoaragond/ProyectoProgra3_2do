@@ -49,13 +49,13 @@ public class BienTableModel extends AbstractTableModel {
             case SERIAL:
                 return bien.getSerial();
             case DESCRIPCION:
-                return bien.getDecripcion();
+                return bien.getDescripcion();
             case MARCA:
                 return bien.getMarca();
             case MODELO:
                 return bien.getModelo();
             case PRECIOUNITARIO:
-                return bien.getPrecioUnitario();
+                return bien.getPrecioU();
             case CANTIDAD:
                 return bien.getCantidad();
             default:

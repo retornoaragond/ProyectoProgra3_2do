@@ -18,8 +18,6 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
     ControllerBien controller;
     ModelBien model;
 
-    
-    
     /**
      * Creates new form ViewBien
      */
@@ -28,7 +26,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         initComponents();
     }
 
-       public ModelBien getModel() {
+    public ModelBien getModel() {
         return model;
     }
 
@@ -40,49 +38,44 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
     public ControllerBien getController() {
         return controller;
     }
-    
+
     public void setController(ControllerBien controller) {
         this.controller = controller;
     }
-    
+
     Bien toBien() {
         Bien result = new Bien();
         result.setSerial(this.serialjTextField.getText());
         result.setMarca(this.MarcajTextField.getText());
-        result.setDecripcion(this.descripcionjTextField.getText());
+        result.setDescripcion(this.descripcionjTextField.getText());
         result.setModelo(this.ModelojTextField.getText());
-        result.setPrecioUnitario(Integer.getInteger(this.PrecioUnitariojTextField.getText()));
+        result.setPrecioU(Integer.getInteger(this.PrecioUnitariojTextField.getText()));
         result.setCantidad(Integer.getInteger(this.CantidadjTextField.getText()));
         return result;
-        
-    }
-    
-     public void limpiarErrores() {
-        this.SerialjLabel.setForeground(SistemaActivos.COLOR_OK);
-         this.DescripciónjLabel.setForeground(SistemaActivos.COLOR_OK);
-         this.MarcajLabel.setForeground(SistemaActivos.COLOR_OK);
-         this.ModelojLabel.setForeground(SistemaActivos.COLOR_OK);
-         this.PrecioUnitariojLabel.setForeground(SistemaActivos.COLOR_OK);
-        this.CantidadjLabel1.setForeground(SistemaActivos.COLOR_OK);
-        this.CantidadjLabel1.setForeground(SistemaActivos.COLOR_OK);
-         }
 
-    
-    boolean validar(){
-        boolean error= false;
-        this.CategoriajLabel.setForeground(SistemaActivos.COLOR_OK);
-        if(this.categoriajComboBox1.getSelectedIndex() == -1){
-         this.CategoriajLabel.setForeground(SistemaActivos.COLOR_ERROR);
-         error=true;
-        }
-   
-    return !error;
     }
-    
-    
-    
-    
-    
+
+    public void limpiarErrores() {
+        this.SerialjLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.DescripciónjLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.MarcajLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.ModelojLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.PrecioUnitariojLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.CantidadjLabel1.setForeground(SistemaActivos.COLOR_OK);
+        this.CantidadjLabel1.setForeground(SistemaActivos.COLOR_OK);
+    }
+
+    boolean validar() {
+        boolean error = false;
+        this.CategoriajLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.categoriajComboBox1.getSelectedIndex() == -1) {
+            this.CategoriajLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        return !error;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -276,45 +269,38 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
 
     @Override
     public void update(Observable o, Object arg) {
-       this.limpiarErrores();
+        this.limpiarErrores();
         Bien actual = model.getCurrent();
         this.fromBien(actual);
-     }
+    }
 
-   public void fromBien(Bien actual) {
-        
-       this.serialjTextField.setText(actual.getSerial().toString());
-       this.serialjTextField.setEnabled(false);
-       Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+    public void fromBien(Bien actual) {
 
-       
-         this.descripcionjTextField.setEnabled(!modify);
-        descripcionjTextField.setText(actual.getDecripcion());
+        this.serialjTextField.setText(actual.getSerial().toString());
+        this.serialjTextField.setEnabled(false);
+        Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+
+        this.descripcionjTextField.setEnabled(!modify);
+        descripcionjTextField.setText(actual.getDescripcion());
 
         this.MarcajTextField.setEnabled(!modify);
         MarcajTextField.setText(actual.getMarca());
 
         this.ModelojTextField.setEnabled(!modify);
         ModelojTextField.setText(actual.getModelo());
-        
-         this.PrecioUnitariojTextField.setEditable(!modify);
-        PrecioUnitariojTextField.setText(Double.toString(actual.getPrecioUnitario()));
 
-         this.CantidadjTextField.setEditable(!modify);
-         CantidadjTextField.setText(Integer.toString(actual.getCantidad()));
-        
-         
-         this.categoriajComboBox1.setEditable(modify);
+        this.PrecioUnitariojTextField.setEditable(!modify);
+        PrecioUnitariojTextField.setText(Double.toString(actual.getPrecioU()));
+
+        this.CantidadjTextField.setEditable(!modify);
+        CantidadjTextField.setText(Integer.toString(actual.getCantidad()));
+
+        this.categoriajComboBox1.setEditable(modify);
         //hacer metodo para cargar un arrayList de objetos categoria en lo que 
         //va a sacar las descripciones que van en los indeces del comboBox
-      
-        
-        
-        
-        
+
         procesarjButton.setVisible(modify);
         this.validate();
     }
-
 
 }

@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
@@ -33,16 +31,8 @@ public class DaoAdministracion {
     public Usuario usuarioGet(String id) throws Exception {
         String sql = "SELECT usuario.id id_user,"
                 + " pass clave,"
-                + " funcionario.id id_func,"
-                + " nombre,"
-                + " dependenciaLabor dependencia,"
-                + " PuestoLabor puesto "
-                + "FROM usuario  "
-                + "INNER JOIN Funcionario "
-                + "ON usuario.funcionarioUsuario = Funcionario.id "
-                + "INNER JOIN Labor "
-                + "ON Funcionario.id = Labor.FuncionarioLabor "
-                + "WHERE usuario.id = '%s'";
+                + " funcionarioUsuario id_func "
+                + "FROM usuario WHERE usuario.id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -55,10 +45,10 @@ public class DaoAdministracion {
     private Usuario usuario(ResultSet rs) {
         try {
             Usuario u = new Usuario();
-            u.setId(rs.getString("id"));
+            u.setId(rs.getString("id_user"));
             u.setPass(rs.getString("clave"));
-            Funcionario f = getFuncionario(rs.getString("id"));
-            u.setFuncionario(f);
+            Funcionario f = getFuncionario(rs.getString("id_func"));
+            //u.setFuncionario(f);
             return u;
         } catch (SQLException ex) {
             return null;
@@ -70,7 +60,7 @@ public class DaoAdministracion {
 
     //  <editor-fold desc="Funcionarios" defaultstate="collapsed">
     public Funcionario getFuncionario(String id) throws Exception {
-        String sql = "SELECT * FROM funcionario WHERE codigoId='%s'";
+        String sql = "SELECT * FROM funcionario WHERE id='%s';";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -85,8 +75,12 @@ public class DaoAdministracion {
             Funcionario ec = new Funcionario();
             ec.setId(rs.getString("id"));
             ec.setNombre(rs.getString("nombre"));
+            Labor l = laborGetbyFuncionario(rs.getString("id"));
+            
             return ec;
         } catch (SQLException ex) {
+            return null;
+        } catch (Exception ex) {
             return null;
         }
     }
@@ -139,7 +133,7 @@ public class DaoAdministracion {
     //</editor-fold>
 
     //  <editor-fold desc="Dependencias" defaultstate="collapsed">
-    public Dependencia dependenciaGet(Integer codigo) throws Exception {
+    public Dependencia dependenciaGet(String codigo) throws Exception {
         String sql = "SELECT * FROM dependencia WHERE codigo='%s'";
         sql = String.format(sql, codigo);
         ResultSet rs = dbb.executeQuery(sql);
@@ -153,7 +147,7 @@ public class DaoAdministracion {
     private Dependencia dependencia(ResultSet rs) {
         try {
             Dependencia d = new Dependencia();
-            d.setCodigo(Integer.getInteger(rs.getString("codigo")));
+            d.setCodigo(rs.getString("codigo"));
             d.setNombre(rs.getString("nombre"));
             return d;
         } catch (SQLException ex) {
@@ -219,7 +213,7 @@ public class DaoAdministracion {
     private Puesto puesto(ResultSet rs) {
         try {
             Puesto p = new Puesto();
-            p.setCodigo(Integer.getInteger(rs.getString("codigo")));
+            p.setCodgo(rs.getString("codigo"));
             p.setPuesto(rs.getString("puesto"));
             return p;
         } catch (SQLException ex) {
@@ -287,7 +281,7 @@ public class DaoAdministracion {
     private Labor labor(ResultSet rs) {
         try {
             Labor p = new Labor();
-            p.setDependencia(dependenciaGet(Integer.getInteger(rs.getString("dependenciaLabor"))));
+            p.setDependencia(dependenciaGet(rs.getString("dependenciaLabor")));
             p.setPuesto(puestoGet(Integer.getInteger(rs.getString("PuestoLabor"))));
             p.setFuncionario(FuncionarioGet(rs.getString("FuncionarioLabor")));
             return p;

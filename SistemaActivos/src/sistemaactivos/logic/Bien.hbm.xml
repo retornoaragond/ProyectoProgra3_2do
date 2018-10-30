@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Bien" table="bien" catalog="sistemaactivos" optimistic-lock="version">
         <id name="serial" type="string">
-            <column name="serial" length="25" />
+            <column name="serial" length="45" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="categoria" class="si.Categoria" fetch="select">
-            <column name="categoriaBien" />
+        <many-to-one name="categoria" class="sistemaactivos.logic.Categoria" fetch="select">
+            <column name="categoria" length="45" />
         </many-to-one>
-        <many-to-one name="solicitud" class="si.Solicitud" fetch="select">
-            <column name="solicitudBien" not-null="true" />
+        <many-to-one name="solicitud" class="sistemaactivos.logic.Solicitud" fetch="select">
+            <column name="solicitud" not-null="true" />
         </many-to-one>
-        <property name="decripcion" type="string">
-            <column name="decripcion" length="45" not-null="true" />
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
         </property>
         <property name="marca" type="string">
             <column name="marca" length="45" not-null="true" />
@@ -23,17 +23,17 @@
         <property name="modelo" type="string">
             <column name="modelo" length="45" not-null="true" />
         </property>
-        <property name="precioUnitario" type="double">
-            <column name="precioUnitario" precision="22" scale="0" not-null="true" />
+        <property name="precioU" type="double">
+            <column name="precioU" precision="22" scale="0" not-null="true" />
         </property>
         <property name="cantidad" type="int">
             <column name="cantidad" not-null="true" />
         </property>
         <set name="activos" table="activo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="bienActivo" length="25" not-null="true" />
+                <column name="bienAct" length="45" not-null="true" />
             </key>
-            <one-to-many class="si.Activo" />
+            <one-to-many class="sistemaactivos.logic.Activo" />
         </set>
     </class>
 </hibernate-mapping>

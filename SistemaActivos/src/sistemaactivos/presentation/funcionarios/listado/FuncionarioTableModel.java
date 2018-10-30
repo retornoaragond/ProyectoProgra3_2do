@@ -46,8 +46,6 @@ public class FuncionarioTableModel extends AbstractTableModel {
                 return funcionario.getNombre();
             case SOLICITUDES:
                 return funcionario.getSolicituds();
-            case USUARIOS:
-                return funcionario.getUsuarios();
             default:
                 return "";
         }
@@ -59,8 +57,7 @@ public class FuncionarioTableModel extends AbstractTableModel {
     public static final int ID = 0;
     public static final int NOMBRE = 1;
     public static final int SOLICITUDES = 2;
-    public static final int USUARIOS = 3;
-    public static final int LABORS = 4;
+    public static final int LABORS = 3;
     
 
     String[] colNames = new String[10];
@@ -69,7 +66,6 @@ public class FuncionarioTableModel extends AbstractTableModel {
         colNames[ID] = "numSolicitud";
         colNames[NOMBRE] = "dependencia";
         colNames[SOLICITUDES] = "funcionario";
-        colNames[USUARIOS] = "numComprobante";
         colNames[LABORS] = "fecha";
         
     }

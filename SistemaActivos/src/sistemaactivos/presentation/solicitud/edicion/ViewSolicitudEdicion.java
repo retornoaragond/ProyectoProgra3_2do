@@ -488,24 +488,25 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
-        result.setNumComprobante(Integer.getInteger(numcomprobante.getText()));
+        result.setNumcomp(numcomprobante.getText());
         result.setFecha(fecha.getDate());
-        result.setTipoAdquisicion(tipoadqui.getSelectedItem().toString());
+        result.setTipoadq(tipoadqui.getSelectedItem().toString());
         result.setBiens(new HashSet<>(model.bientable.getRows()));
-        result.setCantidadBienes(Integer.getInteger(cantbien.getText()));
-        result.setMontoTotal(Integer.getInteger(monttotal.getText()));
+        result.setCantbien(Integer.getInteger(cantbien.getText()));
+        result.setMontotal(Double.parseDouble(monttotal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
-        result.setRazonRechazo(razon.getText());
+        result.setRazonR(razon.getText());
         return result;
     }
+    
 
     Bien toBien() {
         Bien result = new Bien();
         result.setSerial(this.serial.getText());
         result.setMarca(this.marca.getText());
-        result.setDecripcion(this.descripcion.getText());
+        result.setDescripcion(this.descripcion.getText());
         result.setModelo(this.modelo.getText());
-        result.setPrecioUnitario(Integer.getInteger(this.precioUnidad.getText()));
+        result.setPrecioU(Integer.getInteger(this.precioUnidad.getText()));
         result.setCantidad(Integer.getInteger(this.cantbien.getText()));
         return result;
     }
@@ -676,13 +677,13 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
 
         this.numcomprobante.setEnabled(add);
-        numcomprobante.setText(Integer.toString(actual.getNumComprobante()));
+        numcomprobante.setText(actual.getNumcomp());
 
         this.fecha.setEnabled(add);
         fecha.setDate(actual.getFecha());
 
         this.tipoadqui.setEnabled(add);
-        switch (actual.getTipoAdquisicion()) {
+        switch (actual.getTipoadq()) {
             case "Donacion":
                 this.tipoadqui.setSelectedIndex(0);
                 break;
@@ -695,10 +696,10 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         }
 
         this.cantbienes.setEditable(false);
-        cantbienes.setText(Integer.toString(actual.getCantidadBienes()));
+        cantbienes.setText(Integer.toString(actual.getCantbien()));
 
         this.monttotal.setEditable(false);
-        monttotal.setText(Double.toString(actual.getMontoTotal()));
+        monttotal.setText(Double.toString(actual.getMontotal()));
 
         this.estadoactual.setEnabled(modify);
         switch (actual.getEstado()) {
@@ -723,7 +724,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         }
 
         this.razon.setEnabled(modify);
-        razon.setText(actual.getRazonRechazo());
+        razon.setText(actual.getRazonR());
 
         if (!add) {
             this.agregarbien.setVisible(false);

@@ -1,45 +1,45 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/10/2018 09:28:19 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2018 02:43:08 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="sistemaactivos.logic.Solicitud" table="solicitud" catalog="sistemaactivos" optimistic-lock="version">
-        <id name="numSolicitud" type="java.lang.Integer">
-            <column name="numSolicitud" />
+        <id name="numsol" type="java.lang.Integer">
+            <column name="numsol" />
             <generator class="identity" />
         </id>
-        <many-to-one name="dependencia" class="si.Dependencia" fetch="select">
-            <column name="dependenciaSolicitud" not-null="true" />
+        <many-to-one name="dependencia" class="sistemaactivos.logic.Dependencia" fetch="select">
+            <column name="Dependencia_codigo" length="45" not-null="true" />
         </many-to-one>
-        <many-to-one name="funcionario" class="si.Funcionario" fetch="select">
-            <column name="funcionarioSolicitud" length="42" />
+        <many-to-one name="funcionario" class="sistemaactivos.logic.Funcionario" fetch="select">
+            <column name="registrador" length="45" />
         </many-to-one>
-        <property name="numComprobante" type="int">
-            <column name="numComprobante" not-null="true" />
+        <property name="numcomp" type="string">
+            <column name="numcomp" length="45" not-null="true" />
         </property>
         <property name="fecha" type="date">
             <column name="fecha" length="10" not-null="true" />
         </property>
-        <property name="tipoAdquisicion" type="string">
-            <column name="tipoAdquisicion" length="45" not-null="true" />
+        <property name="cantbien" type="int">
+            <column name="cantbien" not-null="true" />
         </property>
-        <property name="cantidadBienes" type="int">
-            <column name="cantidadBienes" not-null="true" />
+        <property name="montotal" type="double">
+            <column name="montotal" precision="22" scale="0" not-null="true" />
         </property>
-        <property name="montoTotal" type="double">
-            <column name="montoTotal" precision="22" scale="0" not-null="true" />
-        </property>
-        <property name="razonRechazo" type="string">
-            <column name="razonRechazo" length="45" not-null="true" />
+        <property name="razonR" type="string">
+            <column name="razonR" length="80" not-null="true" />
         </property>
         <property name="estado" type="string">
             <column name="estado" length="45" not-null="true" />
         </property>
+        <property name="tipoadq" type="string">
+            <column name="tipoadq" length="45" not-null="true" />
+        </property>
         <set name="biens" table="bien" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="solicitudBien" not-null="true" />
+                <column name="solicitud" not-null="true" />
             </key>
-            <one-to-many class="si.Bien" />
+            <one-to-many class="sistemaactivos.logic.Bien" />
         </set>
     </class>
 </hibernate-mapping>

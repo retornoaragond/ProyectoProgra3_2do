@@ -16,7 +16,8 @@ import sistemaactivos.logic.Activo;
  * @author Estudiante
  */
 public class DaoActivos {
-      RelDatabase dbbb;
+
+    RelDatabase dbbb;
 
     public DaoActivos() {
         dbbb = new RelDatabase();
@@ -32,11 +33,7 @@ public class DaoActivos {
             throw new Exception("Activo no Existe");
         }
     }
-    
-    
-    
-    
-    
+
     private Activo activo(ResultSet rs) {
         try {
             Activo ec = new Activo();
@@ -47,7 +44,7 @@ public class DaoActivos {
         }
     }
 
-    public List<Activo> ActivoSearch(Activo filtro){
+    public List<Activo> ActivoSearch(Activo filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -58,8 +55,9 @@ public class DaoActivos {
             while (rs.next()) {
                 resultado.add(activo(rs));
             }
-        } catch (SQLException ex) {}
-          
+        } catch (SQLException ex) {
+        }
+
         return resultado;
     }
 
@@ -75,37 +73,24 @@ public class DaoActivos {
         }
         return estados;
     }
-   
-     
-    public Activo ActivoGet(String codigo) throws Exception{
-       return new Activo();    
-    }
-    
-    public void ActivoDelete(Activo a) throws Exception{
-        
+
+    public Activo ActivoGet(String codigo) throws Exception {
+        return new Activo();
     }
 
-    public void ActivoAdd(Activo a) throws Exception{
-        
+    public void ActivoDelete(Activo a) throws Exception {
+
     }
 
-    public void ActivoUpdate(Activo a) throws Exception{
-       
+    public void ActivoAdd(Activo a) throws Exception {
+
     }
-    
-    
-    
-    
-    
-    
-    public  void close(){
+
+    public void ActivoUpdate(Activo a) throws Exception {
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public void close() {
+    }
+
 }
