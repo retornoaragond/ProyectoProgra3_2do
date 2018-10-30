@@ -117,8 +117,8 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
     private void salirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirMenuActionPerformed
 
-controller.exit();
-        
+        controller.exit();
+
     }//GEN-LAST:event_salirMenuActionPerformed
 
 

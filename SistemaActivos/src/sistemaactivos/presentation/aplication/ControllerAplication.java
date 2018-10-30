@@ -53,8 +53,9 @@ public class ControllerAplication {
     }
 
     public void exit() {
-        this.hide();
+       
         SistemaActivos.LOGIN_CONTROLLER.logout();
+         System.exit(1);
     }
 
     public void reset() {
