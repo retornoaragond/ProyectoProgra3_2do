@@ -196,8 +196,8 @@ public class DaoAdministracion {
     //</editor-fold>
     
     //<editor-fold desc="Puesto" defaultstate="collapsed">
-    public Puesto puestoGet(int codigo) throws Exception {
-        String sql = "SELECT * FROM puesto WHERE codigo = '%s'";
+    public Puesto puestoGet(String codigo) throws Exception {
+        String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
         sql = String.format(sql, codigo);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -290,7 +290,7 @@ public class DaoAdministracion {
             Labor p = new Labor();
             p.setId(Integer.parseInt(rs.getString("id")));
             p.setDependencia(dependenciaGet(rs.getString("depLab")));
-            p.setPuesto(puestoGet(Integer.getInteger(rs.getString("pueLab"))));
+            p.setPuesto(puestoGet(rs.getString("pueLab")));
             p.setFuncionario(FuncionarioGet(rs.getString("funcLab")));
             return p;
         } catch (SQLException ex) {
