@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package sistemaactivos.presentation.solicitud.listado;
-
+import sistemaactivos.SistemaActivos;
 import java.awt.Point;
 import java.util.List;
 import sistemaactivos.Session;
@@ -129,4 +129,8 @@ public class ControllerSolicitudListado {
         view.setVisible(false);
     }
 
+   public void SolicitudEdicionShow(){
+   SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.show();
+   }
+    
 }

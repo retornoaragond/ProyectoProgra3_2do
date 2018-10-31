@@ -34,6 +34,10 @@ public class ControllerDependenciasListado {
         view.setController(this);
         view.setModel(model);
     }
+     
+     public void DependenciaEdicionShow(){
+     SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
+     }
     
     public void buscar(Dependencia filter) throws Exception{       
          model.setFilter(filter);
@@ -50,16 +54,19 @@ public class ControllerDependenciasListado {
     
     /*
      public void preAgregar(Point at)throws Exception{      
-      //  Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+    
+         //  Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         if ( !Arrays.asList(SistemaActivos.ROL_MANAGER).contains(principal.getRol())){
            throw new Exception(SistemaActivos.ROL_NOTAUTHORIZED);
         }
         SistemaActivos.DEPENDENCIA_CONTROLLER.reset(SistemaActivos.MODO_AGREGAR, new Dependencia());
         SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
-    }
-    */
-     
     
+    
+    SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
+         }
+    */
+   
     public void editar(int row, Point at){       
         Dependencia seleccionada = model.dependenciasTable.getRowAt(row); 
         Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);

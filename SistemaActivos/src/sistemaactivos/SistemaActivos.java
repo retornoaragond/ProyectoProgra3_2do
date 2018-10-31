@@ -85,11 +85,11 @@ public class SistemaActivos {
         DEPENDENCIA_LISTADO_CONTROLLER = new ControllerDependenciasListado(dependenciaslistadoView,dependenciaslistadoModel, domainModel, session);
         // </editor-fold>
         
-//        // <editor-fold desc="Funcionarios_Edicion" defaultstate="collapsed">
-//        ModelFuncionariosEdicion funcionariosedicionModel = new ModelFuncionariosEdicion();
-//        ViewFuncionariosEdicion funcionariosedicionView = new ViewFuncionariosEdicion(aplicationView,true);
-//        FUNCIONARIO_EDICION_CONTROLLER = new ControllerFuncionariosEdicion(funcionariosedicionView, funcionariosedicionModel, domainModel, session);
-//        // </editor-fold>
+        // <editor-fold desc="Funcionarios_Edicion" defaultstate="collapsed">
+        ModelFuncionariosEdicion funcionariosedicionModel = new ModelFuncionariosEdicion();
+        ViewFuncionariosEdicion funcionariosedicionView = new ViewFuncionariosEdicion(aplicationView,true);
+        FUNCIONARIO_EDICION_CONTROLLER = new ControllerFuncionariosEdicion(funcionariosedicionView, funcionariosedicionModel, domainModel, session);
+        // </editor-fold>
         
         // <editor-fold desc="Funcionarios_Listado" defaultstate="collapsed">
         ModelFuncionariosListado funcionarioslistadoModel = new ModelFuncionariosListado();

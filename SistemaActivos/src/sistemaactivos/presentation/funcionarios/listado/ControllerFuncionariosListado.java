@@ -33,6 +33,12 @@ public class ControllerFuncionariosListado {
         view.setController(this);
         view.setModel(model);
     }
+    
+    public void FuncionariosEdicionShow(){
+    
+        SistemaActivos.FUNCIONARIO_EDICION_CONTROLLER.show();
+    
+    }
 
     public void buscar(Funcionario filter) throws Exception {
         model.setFuncionario(filter);

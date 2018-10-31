@@ -282,11 +282,14 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        try {
+      /*  try {
             //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
+      
+     /// controller.
+     controller.SolicitudEdicionShow();
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void textFieldNumSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumSolicitudActionPerformed

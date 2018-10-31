@@ -26,6 +26,9 @@ public class ControllerActivosListado {
     ViewActivosListado view;
     ModelActivosListado model; 
     
+    public void controllerEdicionShow(){
+    SistemaActivos.ACTIVOS_EDICION_CONTROLLER.show();
+    }
     
     
     public  ControllerActivosListado(ViewActivosListado view, ModelActivosListado model, ModelLogic domainModel, Session session){
