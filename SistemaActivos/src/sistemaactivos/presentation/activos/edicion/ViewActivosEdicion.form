@@ -101,7 +101,7 @@
                   <Component id="responsableComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="15" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="GuardarButton" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="SalirButton" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -199,6 +199,9 @@
           <Image iconType="3" name="/sistemaactivos/presentation/icons/iconsalir.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
