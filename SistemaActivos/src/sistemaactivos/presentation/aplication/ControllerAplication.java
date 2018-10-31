@@ -36,7 +36,7 @@ public class ControllerAplication {
     }
 
     public void dependenciasShow() {
-        //SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.show();
+        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.show();
     }
 
     public void funcionariosShow() {
@@ -46,6 +46,9 @@ public class ControllerAplication {
     public void solicitudesShow() {
         SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.show();
     }
+    
+ 
+    
 
     public void enter() {
         this.reset();
@@ -55,7 +58,7 @@ public class ControllerAplication {
     public void exit() {
        this.hide();
         SistemaActivos.LOGIN_CONTROLLER.logout();
-        System.exit(0);
+        
     }
 
     public void reset() {

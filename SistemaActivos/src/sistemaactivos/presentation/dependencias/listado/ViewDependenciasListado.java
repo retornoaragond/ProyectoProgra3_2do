@@ -267,7 +267,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        // TODO add your handling code here:
+controller.hide();
     }//GEN-LAST:event_SalirActionPerformed
 
 

@@ -125,7 +125,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         jScrollPane2 = new javax.swing.JScrollPane();
         activosTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -267,7 +267,12 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addContainerGap())
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
+        Atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -281,7 +286,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Atras)
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -292,7 +297,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Atras)
                 .addContainerGap())
         );
 
@@ -311,8 +316,13 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         }
     }//GEN-LAST:event_buscarjButtonActionPerformed
 
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+       controller.hide();
+    }//GEN-LAST:event_AtrasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
     private javax.swing.JTextField CodigoTextField;
     private javax.swing.JLabel DependenciaLabel;
     private javax.swing.JLabel DescripcionLabel;
@@ -325,7 +335,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     private javax.swing.JLabel codigoLabel;
     private javax.swing.JTextField dependenciaTextField;
     private javax.swing.JTextField descripcionTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
