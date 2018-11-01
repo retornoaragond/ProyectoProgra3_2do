@@ -57,16 +57,16 @@ public class FuncionarioTableModel extends AbstractTableModel {
     public static final int ID = 0;
     public static final int NOMBRE = 1;
     public static final int SOLICITUDES = 2;
-    public static final int LABORS = 3;
+   // public static final int LABORS = 3;
     
 
-    String[] colNames = new String[10];
+    String[] colNames = new String[3];
     
     private void initColNames() {
         colNames[ID] = "numSolicitud";
         colNames[NOMBRE] = "dependencia";
         colNames[SOLICITUDES] = "funcionario";
-        colNames[LABORS] = "fecha";
+     //   colNames[LABORS] = "fecha";
         
     }
     
