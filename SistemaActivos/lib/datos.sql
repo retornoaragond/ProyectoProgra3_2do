@@ -110,5 +110,7 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
 -- SELECT * FROM usuario WHERE id='001';
 -- SELECT * FROM sistemaactivos.usuario;
 -- SELECT * FROM sistemaactivos.labor;
--- SELECT * FROM sistemaactivos.labor;
--- SELECT * FROM sistemaactivos.usuario;
+ SELECT * FROM sistemaactivos.labor;
+-- SELECT * FROM usuario WHERE usuario.id = 001; 
+
+SELECT * FROM sistemaactivos.dependencia WHERE nombre like "%Q%";
