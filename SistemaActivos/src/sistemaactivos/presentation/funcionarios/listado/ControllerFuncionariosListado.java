@@ -42,17 +42,17 @@ public class ControllerFuncionariosListado {
 
     public void buscar(Funcionario filter) throws Exception {
         model.setFuncionario(filter);
-        //  this.refrescarBusqueda();
+         this.refrescarBusqueda();
     }
 
-    /*
+    
    public void refrescarBusqueda() throws Exception{
-        List<Solicitud> rows = domainModel.searchPersonas(model.getSolicitud());
-        model.setSolicitud(rows);
+        List<Funcionario> rows = domainModel.searchFuncionario(model.getFuncionario());
+        model.setFuncionario(rows);
         model.commit();
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
     }
-   */
+   
      
  /*
     public void preAgregar(Point at)throws Exception{      
@@ -86,8 +86,8 @@ public class ControllerFuncionariosListado {
               //domainModel.(seleccionada);
         } catch (Exception ex) {
         }
-        //List<Funcionario> rowsMod = domainModel.searchPersonas(model.getFuncionario());
-        //model.setSolicitudes(rowsMod);
+        List<Funcionario> rowsMod = domainModel.searchFuncionario(model.getFuncionario());
+        model.setFuncionario(rowsMod);
         model.commit();
     }
 
