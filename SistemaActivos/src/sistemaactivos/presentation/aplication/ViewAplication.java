@@ -59,20 +59,20 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         jMenuBar1 = new javax.swing.JMenuBar();
         salirMenu = new javax.swing.JMenu();
         logOut = new javax.swing.JCheckBoxMenuItem();
-        DependenciasMenu = new javax.swing.JMenu();
-        Dependencias = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        Funcionarios = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        Solicitudes = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        Activos = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        AdministradorJMenuItem = new javax.swing.JMenu();
+        ListadoDeSolicitudesJMenu4 = new javax.swing.JMenuItem();
+        AgregarSolicitudjMenuItem = new javax.swing.JMenuItem();
+        SecretariaOCCBjMenu = new javax.swing.JMenu();
+        ListadoDeSolicitudesJMenu3 = new javax.swing.JMenuItem();
+        JefeDeOCCBJMenuItem = new javax.swing.JMenu();
+        ListadoDeSolicitudeSolicitudesJMenuItem2 = new javax.swing.JMenuItem();
+        ListadoDeActivosjMenuItem2 = new javax.swing.JMenuItem();
+        RegistradorjMenu = new javax.swing.JMenu();
+        ListadoDeSolicitudesJMenu1 = new javax.swing.JMenuItem();
+        ListadoDeActivosjMenuItem = new javax.swing.JMenuItem();
+        JefeDeRRHHjMenu = new javax.swing.JMenu();
+        ListadoDeFuncionariosjMenuItem = new javax.swing.JMenuItem();
+        ListadoDeDependendenciasjMenuItem = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
 
@@ -107,87 +107,87 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
         jMenuBar1.add(salirMenu);
 
-        DependenciasMenu.setText("Administrador");
+        AdministradorJMenuItem.setText("Administrador");
 
-        Dependencias.setText("Listado de Solicitudes");
-        Dependencias.addActionListener(new java.awt.event.ActionListener() {
+        ListadoDeSolicitudesJMenu4.setText("Listado de Solicitudes");
+        ListadoDeSolicitudesJMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DependenciasActionPerformed(evt);
+                ListadoDeSolicitudesJMenu4ActionPerformed(evt);
             }
         });
-        DependenciasMenu.add(Dependencias);
+        AdministradorJMenuItem.add(ListadoDeSolicitudesJMenu4);
 
-        jMenuItem3.setText("Agregar una solicitud");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        AgregarSolicitudjMenuItem.setText("Agregar una solicitud");
+        AgregarSolicitudjMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                AgregarSolicitudjMenuItemActionPerformed(evt);
             }
         });
-        DependenciasMenu.add(jMenuItem3);
+        AdministradorJMenuItem.add(AgregarSolicitudjMenuItem);
 
-        jMenuBar1.add(DependenciasMenu);
+        SecretariaOCCBjMenu.setText("Secretaria OCCB");
 
-        jMenu3.setText("Secretaria OCCB");
-
-        Funcionarios.setText("Listado de solicitudes");
-        Funcionarios.addActionListener(new java.awt.event.ActionListener() {
+        ListadoDeSolicitudesJMenu3.setText("Listado de solicitudes");
+        ListadoDeSolicitudesJMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FuncionariosActionPerformed(evt);
+                ListadoDeSolicitudesJMenu3ActionPerformed(evt);
             }
         });
-        jMenu3.add(Funcionarios);
+        SecretariaOCCBjMenu.add(ListadoDeSolicitudesJMenu3);
 
-        jMenuBar1.add(jMenu3);
+        AdministradorJMenuItem.add(SecretariaOCCBjMenu);
 
-        jMenu4.setText("Jefe de OCCB");
+        jMenuBar1.add(AdministradorJMenuItem);
 
-        Solicitudes.setText("Listado de Solicitudes");
-        Solicitudes.addActionListener(new java.awt.event.ActionListener() {
+        JefeDeOCCBJMenuItem.setText("Jefe de OCCB");
+
+        ListadoDeSolicitudeSolicitudesJMenuItem2.setText("Listado de Solicitudes");
+        ListadoDeSolicitudeSolicitudesJMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SolicitudesActionPerformed(evt);
+                ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu4.add(Solicitudes);
+        JefeDeOCCBJMenuItem.add(ListadoDeSolicitudeSolicitudesJMenuItem2);
 
-        jMenuItem1.setText("Listado de Activos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        ListadoDeActivosjMenuItem2.setText("Listado de Activos");
+        ListadoDeActivosjMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                ListadoDeActivosjMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        JefeDeOCCBJMenuItem.add(ListadoDeActivosjMenuItem2);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(JefeDeOCCBJMenuItem);
 
-        jMenu5.setText("Registrador ");
+        RegistradorjMenu.setText("Registrador ");
 
-        Activos.setText("Listado de Solicitudes");
-        Activos.addActionListener(new java.awt.event.ActionListener() {
+        ListadoDeSolicitudesJMenu1.setText("Listado de Solicitudes");
+        ListadoDeSolicitudesJMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActivosActionPerformed(evt);
+                ListadoDeSolicitudesJMenu1ActionPerformed(evt);
             }
         });
-        jMenu5.add(Activos);
+        RegistradorjMenu.add(ListadoDeSolicitudesJMenu1);
 
-        jMenuItem2.setText("Listado de Activos");
-        jMenu5.add(jMenuItem2);
+        ListadoDeActivosjMenuItem.setText("Listado de Activos");
+        RegistradorjMenu.add(ListadoDeActivosjMenuItem);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(RegistradorjMenu);
 
-        jMenu1.setText("Jefe de RRHH");
+        JefeDeRRHHjMenu.setText("Jefe de RRHH");
 
-        jMenuItem4.setText("Listado de Funcionarios");
-        jMenu1.add(jMenuItem4);
+        ListadoDeFuncionariosjMenuItem.setText("Listado de Funcionarios");
+        JefeDeRRHHjMenu.add(ListadoDeFuncionariosjMenuItem);
 
-        jMenuItem5.setText("Listado de Dependencias");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        ListadoDeDependendenciasjMenuItem.setText("Listado de Dependencias");
+        ListadoDeDependendenciasjMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                ListadoDeDependendenciasjMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        JefeDeRRHHjMenu.add(ListadoDeDependendenciasjMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(JefeDeRRHHjMenu);
 
         ayuda.setText("Ayuda");
 
@@ -229,36 +229,36 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         
     }//GEN-LAST:event_logOutActionPerformed
 
-    private void DependenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DependenciasActionPerformed
+    private void ListadoDeSolicitudesJMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu4ActionPerformed
    controller.dependenciasShow();
    
-    }//GEN-LAST:event_DependenciasActionPerformed
+    }//GEN-LAST:event_ListadoDeSolicitudesJMenu4ActionPerformed
 
-    private void FuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuncionariosActionPerformed
+    private void ListadoDeSolicitudesJMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu3ActionPerformed
     
         controller.funcionariosShow();
         
-    }//GEN-LAST:event_FuncionariosActionPerformed
+    }//GEN-LAST:event_ListadoDeSolicitudesJMenu3ActionPerformed
 
-    private void SolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitudesActionPerformed
+    private void ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
        controller.solicitudesShow();
-    }//GEN-LAST:event_SolicitudesActionPerformed
+    }//GEN-LAST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
 
-    private void ActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActivosActionPerformed
+    private void ListadoDeSolicitudesJMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu1ActionPerformed
         controller.activosShow();
-    }//GEN-LAST:event_ActivosActionPerformed
+    }//GEN-LAST:event_ListadoDeSolicitudesJMenu1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ListadoDeActivosjMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItem2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ListadoDeActivosjMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void AgregarSolicitudjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarSolicitudjMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_AgregarSolicitudjMenuItemActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void ListadoDeDependendenciasjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeDependendenciasjMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_ListadoDeDependendenciasjMenuItemActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         JOptionPane.showMessageDialog(this, "Sistema Activos\n"
@@ -271,23 +271,23 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Activos;
-    private javax.swing.JMenuItem Dependencias;
-    private javax.swing.JMenu DependenciasMenu;
-    private javax.swing.JMenuItem Funcionarios;
-    private javax.swing.JMenuItem Solicitudes;
+    private javax.swing.JMenu AdministradorJMenuItem;
+    private javax.swing.JMenuItem AgregarSolicitudjMenuItem;
+    private javax.swing.JMenu JefeDeOCCBJMenuItem;
+    private javax.swing.JMenu JefeDeRRHHjMenu;
+    private javax.swing.JMenuItem ListadoDeActivosjMenuItem;
+    private javax.swing.JMenuItem ListadoDeActivosjMenuItem2;
+    private javax.swing.JMenuItem ListadoDeDependendenciasjMenuItem;
+    private javax.swing.JMenuItem ListadoDeFuncionariosjMenuItem;
+    private javax.swing.JMenuItem ListadoDeSolicitudeSolicitudesJMenuItem2;
+    private javax.swing.JMenuItem ListadoDeSolicitudesJMenu1;
+    private javax.swing.JMenuItem ListadoDeSolicitudesJMenu3;
+    private javax.swing.JMenuItem ListadoDeSolicitudesJMenu4;
+    private javax.swing.JMenu RegistradorjMenu;
+    private javax.swing.JMenu SecretariaOCCBjMenu;
     private javax.swing.JMenu ayuda;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JCheckBoxMenuItem logOut;
     private javax.swing.JMenu salirMenu;

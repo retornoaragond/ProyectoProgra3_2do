@@ -23,103 +23,103 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="DependenciasMenu">
+        <Menu class="javax.swing.JMenu" name="AdministradorJMenuItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Dependencias">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeSolicitudesJMenu4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Solicitudes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DependenciasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeSolicitudesJMenu4ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="AgregarSolicitudjMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar una solicitud"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarSolicitudjMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Secretaria OCCB"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Funcionarios">
+            <Menu class="javax.swing.JMenu" name="SecretariaOCCBjMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de solicitudes"/>
+                <Property name="text" type="java.lang.String" value="Secretaria OCCB"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FuncionariosActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="ListadoDeSolicitudesJMenu3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listado de solicitudes"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeSolicitudesJMenu3ActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="JefeDeOCCBJMenuItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="Jefe de OCCB"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Solicitudes">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeSolicitudeSolicitudesJMenuItem2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Solicitudes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SolicitudesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeActivosjMenuItem2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Activos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeActivosjMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu5">
+        <Menu class="javax.swing.JMenu" name="RegistradorjMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrador "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Activos">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeSolicitudesJMenu1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Solicitudes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActivosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeSolicitudesJMenu1ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeActivosjMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Activos"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="JefeDeRRHHjMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Jefe de RRHH"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeFuncionariosjMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Funcionarios"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoDeDependendenciasjMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Dependencias"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeDependendenciasjMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
