@@ -467,20 +467,25 @@ controller.borrar(0);
         return model;
     }
    
+    
+    
     @Override
     public void update(java.util.Observable updatedModel,Object parametros){
        this.limpiarErrores();
        Funcionario actual = model.getCurrent();
        this.fromFuncionario(actual);
+       //SolicitudTable.setModel(dataModel);
    }
   
+    
+    
     public void fromFuncionario(Funcionario actual){
-       
        this.IDTextField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
        this.IDTextField.setText(actual.getId());
        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-        
-        this.NombreTextField.setEnabled(editable);
-        this.NombreTextField.setText(actual.getNombre());
+       this.NombreTextField.setEnabled(editable);
+       this.NombreTextField.setText(actual.getNombre());
 }
+
+
 }
