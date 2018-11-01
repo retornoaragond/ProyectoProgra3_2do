@@ -81,7 +81,7 @@ public class ControllerAplication {
    
     public void hide() {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.hide();
-       SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.hide();
+        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.hide();
         SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.hide();
         SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.hide();
         view.setVisible(false);

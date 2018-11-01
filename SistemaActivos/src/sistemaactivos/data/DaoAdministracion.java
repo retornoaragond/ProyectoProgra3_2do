@@ -169,6 +169,38 @@ public class DaoAdministracion {
         return resultado;
     }
 
+    
+     public List<Dependencia> DependenciaSearchNombre(Dependencia filtro) {
+        List<Dependencia> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM dependencia "
+                    + "WHERE nombre LIKE '%%%s%%'";
+            sql = String.format(sql, filtro.getNombre());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(dependencia(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public List<Dependencia> DependenciaSearchCodigo(Dependencia filtro) {
+        List<Dependencia> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM dependencia "
+                    + "WHERE codigo LIKE '%s%'";
+            sql = String.format(sql, filtro.getCodigo());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(dependencia(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+    
+    
     public List<Dependencia> DependenciaGetAll() {
         List<Dependencia> estados = new ArrayList<>();
         try {
@@ -182,6 +214,12 @@ public class DaoAdministracion {
         return estados;
     }
 
+    
+   
+    
+    
+    
+    
     public void DependenciaDelete(Dependencia a) throws Exception {
         
     }
