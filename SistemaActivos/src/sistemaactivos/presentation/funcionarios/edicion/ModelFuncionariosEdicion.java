@@ -5,10 +5,13 @@
  */
 package sistemaactivos.presentation.funcionarios.edicion;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ComboBoxModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Labor;
 import sistemaactivos.logic.Puesto;
 
 /**
@@ -17,9 +20,12 @@ import sistemaactivos.logic.Puesto;
  */
 public class ModelFuncionariosEdicion extends java.util.Observable {
     Funcionario current;
+    Funcionario funcionario;
     ComboBoxModel<Puesto> puestos;
     int modo;    
     ComboBoxModel<Dependencia> dependencia;
+    
+    LaborTableModel laborModel;
     
     public ComboBoxModel<Dependencia> getDependencia(){
     return dependencia;
@@ -32,8 +38,6 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     public ModelFuncionariosEdicion() {
         this.reset();
     }
-
-   
     
     public void reset(int modo, Funcionario current){
         this.setModo(modo);
@@ -42,7 +46,13 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     }
     
     public void reset(){
-        this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());     
+        this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());  
+        funcionario=new Funcionario();
+        List<Labor> rows = new ArrayList<>();
+        current=new Funcionario();
+        this.setLabores(rows);
+        this.commit();
+        
     }    
 
     public int getModo() {
@@ -71,4 +81,14 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
         setChanged();
         notifyObservers();       
     }    
+    
+     public void setLabores(List<Labor> labores) {
+        int[] cols = {LaborTableModel.ID, LaborTableModel.DEPENDENCIA, LaborTableModel.FUNCIONARIO, LaborTableModel.PUESTO, LaborTableModel.ACTIVOS};
+        this.laborModel = new LaborTableModel(cols, labores);
+    }
+     
+     public LaborTableModel getLabores(){
+     return laborModel;
+     }
+    
 }

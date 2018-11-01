@@ -67,8 +67,7 @@ public class DaoAdministracion {
             throw new Exception("Funcionario no Existe");
         }
     }
-    //prueba Diego
-
+    
     private Funcionario funcionario(ResultSet rs) {
         try {
             Funcionario ec = new Funcionario();
