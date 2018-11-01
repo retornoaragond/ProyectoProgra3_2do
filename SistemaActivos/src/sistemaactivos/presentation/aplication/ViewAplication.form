@@ -101,6 +101,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Activos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeActivosjMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -113,6 +116,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Funcionarios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeFuncionariosjMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ListadoDeDependendenciasjMenuItem">
               <Properties>

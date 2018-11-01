@@ -170,6 +170,11 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         RegistradorjMenu.add(ListadoDeSolicitudesJMenu1);
 
         ListadoDeActivosjMenuItem.setText("Listado de Activos");
+        ListadoDeActivosjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoDeActivosjMenuItemActionPerformed(evt);
+            }
+        });
         RegistradorjMenu.add(ListadoDeActivosjMenuItem);
 
         jMenuBar1.add(RegistradorjMenu);
@@ -177,6 +182,11 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         JefeDeRRHHjMenu.setText("Jefe de RRHH");
 
         ListadoDeFuncionariosjMenuItem.setText("Listado de Funcionarios");
+        ListadoDeFuncionariosjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoDeFuncionariosjMenuItemActionPerformed(evt);
+            }
+        });
         JefeDeRRHHjMenu.add(ListadoDeFuncionariosjMenuItem);
 
         ListadoDeDependendenciasjMenuItem.setText("Listado de Dependencias");
@@ -249,15 +259,15 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu1ActionPerformed
 
     private void ListadoDeActivosjMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItem2ActionPerformed
-        // TODO add your handling code here:
+      controller.activosShow();
     }//GEN-LAST:event_ListadoDeActivosjMenuItem2ActionPerformed
 
     private void AgregarSolicitudjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarSolicitudjMenuItemActionPerformed
-        // TODO add your handling code here:
+      controller.solicitudesShow();
     }//GEN-LAST:event_AgregarSolicitudjMenuItemActionPerformed
 
     private void ListadoDeDependendenciasjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeDependendenciasjMenuItemActionPerformed
-        // TODO add your handling code here:
+      controller.dependenciasShow();
     }//GEN-LAST:event_ListadoDeDependendenciasjMenuItemActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -268,6 +278,14 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
                 + "\tDiego Pinto Gómez\n"
                 + " Version 1.0", "Acerca de..", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void ListadoDeFuncionariosjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeFuncionariosjMenuItemActionPerformed
+        controller.funcionariosShow();
+    }//GEN-LAST:event_ListadoDeFuncionariosjMenuItemActionPerformed
+
+    private void ListadoDeActivosjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItemActionPerformed
+       controller.activosShow();
+    }//GEN-LAST:event_ListadoDeActivosjMenuItemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
