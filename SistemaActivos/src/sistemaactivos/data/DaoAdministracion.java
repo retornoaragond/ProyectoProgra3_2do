@@ -99,7 +99,7 @@ public class DaoAdministracion {
 
         return resultado;
     }
-
+    // Carlitos Prueba
     public List<Funcionario> FuncionarioGetAll() {
         List<Funcionario> estados = new ArrayList<>();
         try {

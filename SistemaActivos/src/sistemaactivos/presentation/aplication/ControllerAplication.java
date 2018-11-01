@@ -63,7 +63,7 @@ public class ControllerAplication {
 
     public void reset() {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.reset();
-//        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.reset();
+        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.reset();
         SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.reset();
         SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.reset();
 
@@ -78,10 +78,10 @@ public class ControllerAplication {
         view.setLocation(position);
         this.show();
     }
-
+   
     public void hide() {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.hide();
-//        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.hide();
+       SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.hide();
         SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.hide();
         SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.hide();
         view.setVisible(false);
