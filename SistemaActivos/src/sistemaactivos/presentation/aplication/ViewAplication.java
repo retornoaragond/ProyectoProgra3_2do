@@ -125,6 +125,8 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         AdministradorJMenuItem.add(AgregarSolicitudjMenuItem);
 
+        jMenuBar1.add(AdministradorJMenuItem);
+
         SecretariaOCCBjMenu.setText("Secretaria OCCB");
 
         ListadoDeSolicitudesJMenu3.setText("Listado de solicitudes");
@@ -135,9 +137,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         SecretariaOCCBjMenu.add(ListadoDeSolicitudesJMenu3);
 
-        AdministradorJMenuItem.add(SecretariaOCCBjMenu);
-
-        jMenuBar1.add(AdministradorJMenuItem);
+        jMenuBar1.add(SecretariaOCCBjMenu);
 
         JefeDeOCCBJMenuItem.setText("Jefe de OCCB");
 
