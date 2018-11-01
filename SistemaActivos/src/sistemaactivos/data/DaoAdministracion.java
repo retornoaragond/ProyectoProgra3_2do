@@ -27,6 +27,7 @@ public class DaoAdministracion {
         dbb = new RelDatabase();
     }
 
+    //PRUEBA ESTEBAN
     //  <editor-fold desc="Usuarios" defaultstate="collapsed">
     public Usuario usuarioGet(String id) throws Exception {
         String sql = "SELECT * FROM usuario WHERE usuario.id = '%s'";
