@@ -60,13 +60,19 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         logOut = new javax.swing.JCheckBoxMenuItem();
         DependenciasMenu = new javax.swing.JMenu();
         Dependencias = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         Funcionarios = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         Solicitudes = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         Activos = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        ayuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,11 +80,11 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
+            .addGap(0, 374, Short.MAX_VALUE)
         );
 
         salirMenu.setText("Salir");
@@ -99,9 +105,9 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
         jMenuBar1.add(salirMenu);
 
-        DependenciasMenu.setText("Dependencias");
+        DependenciasMenu.setText("Administrador");
 
-        Dependencias.setText("Dependencias");
+        Dependencias.setText("Listado de Solicitudes");
         Dependencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DependenciasActionPerformed(evt);
@@ -109,11 +115,19 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         DependenciasMenu.add(Dependencias);
 
+        jMenuItem3.setText("Agregar una solicitud");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        DependenciasMenu.add(jMenuItem3);
+
         jMenuBar1.add(DependenciasMenu);
 
-        jMenu3.setText("Funcionarios");
+        jMenu3.setText("Secretaria OCCB");
 
-        Funcionarios.setText("Funcionarios");
+        Funcionarios.setText("Listado de solicitudes");
         Funcionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FuncionariosActionPerformed(evt);
@@ -123,9 +137,9 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Solicitudes");
+        jMenu4.setText("Jefe de OCCB");
 
-        Solicitudes.setText("Solicitudes");
+        Solicitudes.setText("Listado de Solicitudes");
         Solicitudes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SolicitudesActionPerformed(evt);
@@ -133,11 +147,19 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         jMenu4.add(Solicitudes);
 
+        jMenuItem1.setText("Listado de Activos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Activos");
+        jMenu5.setText("Registrador ");
 
-        Activos.setText("Activos");
+        Activos.setText("Listado de Solicitudes");
         Activos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActivosActionPerformed(evt);
@@ -145,10 +167,28 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         jMenu5.add(Activos);
 
+        jMenuItem2.setText("Listado de Activos");
+        jMenu5.add(jMenuItem2);
+
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Ayuda");
-        jMenuBar1.add(jMenu6);
+        jMenu1.setText("Jefe de RRHH");
+
+        jMenuItem4.setText("Listado de Funcionarios");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Listado de Dependencias");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu1);
+
+        ayuda.setText("Ayuda");
+        jMenuBar1.add(ayuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -197,6 +237,18 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         controller.activosShow();
     }//GEN-LAST:event_ActivosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Activos;
@@ -204,12 +256,18 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     private javax.swing.JMenu DependenciasMenu;
     private javax.swing.JMenuItem Funcionarios;
     private javax.swing.JMenuItem Solicitudes;
+    private javax.swing.JMenu ayuda;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JCheckBoxMenuItem logOut;
     private javax.swing.JMenu salirMenu;
     // End of variables declaration//GEN-END:variables
