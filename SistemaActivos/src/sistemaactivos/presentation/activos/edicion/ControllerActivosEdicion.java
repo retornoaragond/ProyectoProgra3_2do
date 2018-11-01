@@ -23,7 +23,7 @@ public class ControllerActivosEdicion {
     
     
     public ControllerActivosEdicion(ViewActivosEdicion view, ModelActivosEdicion model, ModelLogic domainModel, Session session) {
-        //model.reset(domainModel.getActivos());
+        model.reset(domainModel.getActivos());
         this.domainModel= domainModel;
         this.session=session;
         this.view = view;

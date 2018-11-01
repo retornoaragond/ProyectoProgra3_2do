@@ -64,7 +64,7 @@ public class DaoActivos {
     public List<Activo> ActivosGetAll() {
         List<Activo> estados = new ArrayList<>();
         try {
-            String sql = "select * from EstadoCivil";
+            String sql = "select * from activo";
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
                 estados.add(activo(rs));

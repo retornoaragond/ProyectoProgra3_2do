@@ -70,7 +70,7 @@ public class ActivoTableModel extends AbstractTableModel {
     
        
 
-     String[] colNames = new String[10];
+     String[] colNames = new String[3];
 
     private void initColNames() {
         colNames[CODIGOID] = "codigoId";

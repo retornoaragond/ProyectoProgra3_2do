@@ -29,12 +29,12 @@ public class ModelActivosEdicion extends java.util.Observable {
     this.reset();
      }
   
-   /* 
+   
     public void reset(List<Activo> activos){      
-        setActivos(estadosCiviles);
+        setActivos(activos);
         setCurrent(new Activo());
     }
-    */
+    
     
     
     

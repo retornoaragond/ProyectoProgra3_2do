@@ -44,7 +44,7 @@ public class ControllerSolicitudEdicion {
                 break;
             case SistemaActivos.MODO_EDITAR:
                 domainModel.updateSolicitud(solicitud);
-//                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();               
+//               SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();               
                 break;
         }
     }
