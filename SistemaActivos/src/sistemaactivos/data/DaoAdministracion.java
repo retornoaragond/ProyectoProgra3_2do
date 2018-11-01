@@ -215,19 +215,24 @@ public class DaoAdministracion {
     }
 
     
-   
-    
-    
-    
-    
-    public void DependenciaDelete(Dependencia a) throws Exception {
-        
+    public void DependenciaDelete(Dependencia d) throws Exception {
+         String sql="delete from persona where id='%s'";
+        sql = String.format(sql, d.getCodigo());
+        int count=dbb.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Dependendencia no existe");
+        }
     }
 
     public void DependenciaAdd(Dependencia a) throws Exception {
-
+       String sql="insert into Dependencia (codigo, nombre) "+
+                "values('%s','%s')";
+        sql=String.format(sql,a.getCodigo(),a.getNombre());
+        int count=dbb.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Dependencia ya existe");
+          }
     }
-
     public void DependenciaUpdate(Dependencia a) throws Exception {
 
     }
