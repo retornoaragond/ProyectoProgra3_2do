@@ -7,6 +7,7 @@ package sistemaactivos.presentation.aplication;
 
 import java.util.Observable;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -73,6 +74,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,6 +190,15 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         jMenuBar1.add(jMenu1);
 
         ayuda.setText("Ayuda");
+
+        jMenuItem6.setText("Acerca de...");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        ayuda.add(jMenuItem6);
+
         jMenuBar1.add(ayuda);
 
         setJMenuBar(jMenuBar1);
@@ -249,6 +260,15 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        JOptionPane.showMessageDialog(this, "Sistema Activos\n"
+                + " Elaborado por:\n "
+                + "\tEsteban Espinoza Fallas\n"
+                + "\tCarlos Vargas Alfaro\n"
+                + "\tDiego Pinto Gómez\n"
+                + " Version 1.0", "Acerca de..", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Activos;
@@ -268,6 +288,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JCheckBoxMenuItem logOut;
     private javax.swing.JMenu salirMenu;
     // End of variables declaration//GEN-END:variables
