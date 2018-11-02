@@ -132,6 +132,13 @@ public class ModelLogic {
     }
 
     
+    public List<Dependencia> searchDependenciaCodigo(Dependencia filtro) {
+      
+          return daoAdministracion.DependenciaSearchCodigo(filtro);
+    }
+    
+    
+    
     public List<Dependencia> searchDependencia(Dependencia filtro) {
        if(filtro.getCodigo().length()==0 && filtro.getNombre().length()!=0){
           return daoAdministracion.DependenciaSearchNombre(filtro);

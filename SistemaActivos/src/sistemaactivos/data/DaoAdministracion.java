@@ -136,7 +136,7 @@ public class DaoAdministracion {
         if (rs.next()) {
             return dependencia(rs);
         } else {
-            throw new Exception("Funcionario no Existe");
+            throw new Exception("Dependencia no Existe");
         }
     }
 
@@ -187,7 +187,7 @@ public class DaoAdministracion {
         List<Dependencia> resultado = new ArrayList<>();
         try {
             String sql = "SELECT * FROM dependencia "
-                    + "WHERE codigo LIKE '%s%'";
+                      + "WHERE codigo ='%s'";
             sql = String.format(sql, filtro.getCodigo());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
