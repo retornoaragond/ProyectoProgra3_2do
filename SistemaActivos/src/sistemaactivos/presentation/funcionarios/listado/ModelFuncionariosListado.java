@@ -16,7 +16,7 @@ import sistemaactivos.logic.Funcionario;
  */
 public class ModelFuncionariosListado extends java.util.Observable{
     
-    Funcionario funcionario;
+    Funcionario filter;
     FuncionarioTableModel funcionarioTable;
     Funcionario funcionarioSeleccionada;
     
@@ -25,7 +25,7 @@ public class ModelFuncionariosListado extends java.util.Observable{
     }
 
     public void reset() {
-        funcionario = new Funcionario();
+        filter = new Funcionario();
         List<Funcionario> rows = new ArrayList<>();
         funcionarioSeleccionada = null;
         this.setFuncionario(rows);
@@ -39,15 +39,15 @@ public class ModelFuncionariosListado extends java.util.Observable{
     }
     
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Funcionario getFilter() {
+        return filter;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setFilter(Funcionario funcionario) {
+        this.filter = funcionario;
     }
 
-    public FuncionarioTableModel getFuncionarios() {
+    public FuncionarioTableModel getFuncionariosTablemodel() {
         return funcionarioTable;
     }
     

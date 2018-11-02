@@ -289,8 +289,8 @@ public void setController(ControllerFuncionariosListado controller) {
     @Override
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
-        Funcionario funcionario = model.getFuncionario();
+        Funcionario funcionario = model.getFilter();
         this.fromFuncionarios(funcionario);
-        this.FuncionarioTable.setModel(model.getFuncionarios());
+        this.FuncionarioTable.setModel(model.getFuncionariosTablemodel());
     }
 }

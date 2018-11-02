@@ -41,13 +41,13 @@ public class ControllerFuncionariosListado {
     }
 
     public void buscar(Funcionario filter) throws Exception {
-        model.setFuncionario(filter);
-         this.refrescarBusqueda();
+        model.setFilter(filter);
+        this.refrescarBusqueda();
     }
 
     
    public void refrescarBusqueda() throws Exception{
-        List<Funcionario> rows = domainModel.searchFuncionario(model.getFuncionario());
+        List<Funcionario> rows = domainModel.searchFuncionario(model.getFilter());
         model.setFuncionario(rows);
         model.commit();
         if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
@@ -64,31 +64,36 @@ public class ControllerFuncionariosListado {
         SistemaActivos.PERSONA_CONTROLLER.show(at);
     }
    */  
- /*
+ 
    public void editar(int row, Point at){       
-        Funcionario seleccionada = model.getFuncionarios().getRowAt(row); 
+        Funcionario seleccionada = model.funcionarioTable.getRowAt(row); 
         Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         int modo;
-        if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
-           modo=SistemaActivos.MODO_EDITAR;
-        }
-        else{
-            modo=SistemaActivos.MODO_CONSULTAR;            
-        }
-        SistemaActivos.Solicitud_CONTROLLER.reset(modo, seleccionada);
-        SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(at);
+        //if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
+          // modo=SistemaActivos.MODO_EDITAR;
+       // }
+        //else{
+          //  modo=SistemaActivos.MODO_CONSULTAR;            
+        //}
+        //SistemaActivos.Solicitud_CONTROLLER.reset(modo, seleccionada);
+        //SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(at);
     }
-   */                    
+                       
      
     public void borrar(int row) {
-        Funcionario seleccionada = model.getFuncionarios().getRowAt(row);
+        Funcionario seleccionada = model.getFuncionariosTablemodel().getRowAt(row);
         try {
-              //domainModel.(seleccionada);
+              domainModel.deleteFuncionario(seleccionada);
         } catch (Exception ex) {
         }
-        List<Funcionario> rowsMod = domainModel.searchFuncionario(model.getFuncionario());
+        List<Funcionario> rowsMod = domainModel.searchFuncionario(model.getFilter());
         model.setFuncionario(rowsMod);
         model.commit();
+    }
+    
+    public void searchFuncionario(int row, Point position){
+        model.setSeleccionado(model.funcionarioTable.getRowAt(row));
+        //SistemaActivos.ESTADOS_SEARCH_CONTROLLER.show(position);
     }
 
     public void reset() {
