@@ -63,6 +63,11 @@ public class ControllerDependenciasListado {
         Dependencia seleccionada = model.dependenciasTable.getRowAt(row);
         Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         int modo;
+          modo=SistemaActivos.MODO_EDITAR;
+        
+        SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, seleccionada);
+        SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show(at);
+    
         /*if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
             modo=SistemaActivos.MODO_EDITAR;
         }*/
@@ -84,6 +89,21 @@ public class ControllerDependenciasListado {
         model.setDependencia(rowsMod);
         model.commit();
     }
+    
+    
+      public void changeDependencia(Dependencia nuevaDependencia){
+        if (model.getSeleccionado()!=null){
+            model.getSeleccionado().setCodigo(nuevaDependencia.getCodigo());
+           // model.getSeleccionado().setNombre(nuevaDependencia.getNombre());
+           
+            try {
+                domainModel.updateDependencia(model.getSeleccionado());
+                this.refrescarBusqueda();                
+            } catch (Exception ex) { }
+        }
+    }
+
+    
 
     public void searchDependencia(int row, Point position) {
         model.setSeleccionado(model.dependenciasTable.getRowAt(row));

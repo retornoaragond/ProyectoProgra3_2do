@@ -169,6 +169,11 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        DependenciaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DependenciaTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(DependenciaTable);
 
         AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagregararchivo.png"))); // NOI18N
@@ -270,6 +275,19 @@ try {
     private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
       //  controller.borrar();
     }//GEN-LAST:event_EliminarButtonActionPerformed
+
+    private void DependenciaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DependenciaTableMouseClicked
+      if (evt.getClickCount() == 2) {
+        int row = this.DependenciaTable.getSelectedRow();
+        int col = this.DependenciaTable.getSelectedColumn();
+        if(col==4){
+            controller.searchDependencia(row,evt.getLocationOnScreen()); 
+        }
+        else{
+            controller.editar(row,evt.getLocationOnScreen());
+        }
+      }  
+    }//GEN-LAST:event_DependenciaTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

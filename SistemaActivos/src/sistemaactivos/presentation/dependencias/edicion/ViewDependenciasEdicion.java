@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.dependencias.edicion;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
@@ -186,13 +187,16 @@ import sistemaactivos.logic.Dependencia;
        //this.fromPersona(actual);
    }
    public void fromDependencia(Dependencia actual){
+        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
        
-       //this.CodigoField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
-       this.CodigoField.setText(String.valueOf(actual.getCodigo()));
-       //Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
         
-        //this.NombreTextField.setEnabled(editable);
+       this.CodigoField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
+       this.CodigoField.setText(String.valueOf(actual.getCodigo()));
+        
+        this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
+        Guardar.setVisible(editable);
+        this.validate();
     } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
