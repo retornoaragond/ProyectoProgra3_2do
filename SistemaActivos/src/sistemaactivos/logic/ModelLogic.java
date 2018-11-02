@@ -106,7 +106,15 @@ public class ModelLogic {
     }
 
     public List<Funcionario> searchFuncionario(Funcionario filtro) {
-        return daoAdministracion.FuncionarioSearch(filtro);
+        if (filtro.getId().length() == 0 && filtro.getNombre().length() != 0) {
+            return daoAdministracion.FuncionaroSearchNombre(filtro);
+        } else if (filtro.getId().length() != 0 && filtro.getNombre().length() == 0) {
+            return daoAdministracion.FuncionarioSearchCodigo(filtro);
+        } else if (filtro.getId().length() != 0 && filtro.getNombre().length() != 0) {
+            return daoAdministracion.FuncionarioSearch(filtro);
+        } else {
+            return daoAdministracion.FuncionarioGetAll();
+        }
     }
 
     public void deleteFuncionario(Funcionario p) throws Exception {
@@ -131,35 +139,24 @@ public class ModelLogic {
         return daoAdministracion.dependenciaGet(filter.getCodigo());
     }
 
-    
     public List<Dependencia> searchDependenciaCodigo(Dependencia filtro) {
-      
-          return daoAdministracion.DependenciaSearchCodigo(filtro);
-    }
-    
-    
-    
-    public List<Dependencia> searchDependencia(Dependencia filtro) {
-       if(filtro.getCodigo().length()==0 && filtro.getNombre().length()!=0){
-          return daoAdministracion.DependenciaSearchNombre(filtro);
-       }
-       else if(filtro.getCodigo().length()!=0 && filtro.getNombre().length()==0){
-          return daoAdministracion.DependenciaSearchCodigo(filtro);
-       }
-      
-       else  if(filtro.getCodigo().length()!=0 && filtro.getNombre().length()!=0){
-         return daoAdministracion.DependenciaSearch(filtro);
-       }
-       
-       else {
-           return daoAdministracion.DependenciaGetAll();
-        }
-        
+
+        return daoAdministracion.DependenciaSearchCodigo(filtro);
     }
 
-   
-    
-    
+    public List<Dependencia> searchDependencia(Dependencia filtro) {
+        if (filtro.getCodigo().length() == 0 && filtro.getNombre().length() != 0) {
+            return daoAdministracion.DependenciaSearchNombre(filtro);
+        } else if (filtro.getCodigo().length() != 0 && filtro.getNombre().length() == 0) {
+            return daoAdministracion.DependenciaSearchCodigo(filtro);
+        } else if (filtro.getCodigo().length() != 0 && filtro.getNombre().length() != 0) {
+            return daoAdministracion.DependenciaSearch(filtro);
+        } else {
+            return daoAdministracion.DependenciaGetAll();
+        }
+
+    }
+
     public void deleteDependencia(Dependencia p) throws Exception {
         daoAdministracion.DependenciaDelete(p);
     }

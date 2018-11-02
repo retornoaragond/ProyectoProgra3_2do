@@ -80,12 +80,43 @@ public class DaoAdministracion {
             return null;
         }
     }
-
+    
     public List<Funcionario> FuncionarioSearch(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
-            String sql ="SELECT * FROM funcionario WHERE id = '%s%'";
-            sql = String.format(sql, filtro.getId());
+            String sql ="SELECT * FROM funcionario WHERE id = '%s%'"
+                    + " AND nombre LIKE '%%%s%%' ";
+            sql = String.format(sql, filtro.getId(),filtro.getNombre());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
+    }
+    
+    public List<Funcionario> FuncionaroSearchNombre(Funcionario filtro) {
+        List<Funcionario> resultado = new ArrayList<>();
+        try {
+            String sql ="SELECT * FROM funcionario WHERE nombre LIKE '%%%s%%' ";
+            sql = String.format(sql,filtro.getNombre());
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
+    }
+
+    public List<Funcionario> FuncionarioSearchCodigo(Funcionario filtro) {
+        List<Funcionario> resultado = new ArrayList<>();
+        try {
+            String sql ="SELECT * FROM funcionario WHERE id = '%s'";
+            sql = String.format(sql, filtro.getId(),filtro.getNombre());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(funcionario(rs));
@@ -99,7 +130,7 @@ public class DaoAdministracion {
     public List<Funcionario> FuncionarioGetAll() {
         List<Funcionario> estados = new ArrayList<>();
         try {
-            String sql = "select * from EstadoCivil";
+            String sql = "select * from funcionario";
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 estados.add(funcionario(rs));

@@ -21,8 +21,8 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
      */
     ControllerFuncionariosListado controller;
     ModelFuncionariosListado model;
-    
-public void setController(ControllerFuncionariosListado controller) {
+
+    public void setController(ControllerFuncionariosListado controller) {
         this.controller = controller;
     }
 
@@ -38,7 +38,7 @@ public void setController(ControllerFuncionariosListado controller) {
     public ModelFuncionariosListado getModel() {
         return model;
     }
-    
+
     public ViewFuncionariosListado() {
         super("", false, true);
         initComponents();
@@ -58,8 +58,7 @@ public void setController(ControllerFuncionariosListado controller) {
         }
         return !error;
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,6 +68,8 @@ public void setController(ControllerFuncionariosListado controller) {
         IdentificacionText = new javax.swing.JTextField();
         Buscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        nombrejTextField = new javax.swing.JTextField();
+        labelnombre = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Agregar = new javax.swing.JButton();
@@ -93,6 +94,8 @@ public void setController(ControllerFuncionariosListado controller) {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Busqueda");
 
+        labelnombre.setText("Nombre");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,9 +104,13 @@ public void setController(ControllerFuncionariosListado controller) {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(IdentificacionLabel)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IdentificacionLabel)
+                            .addComponent(labelnombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IdentificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombrejTextField)
+                            .addComponent(IdentificacionText, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -116,13 +123,18 @@ public void setController(ControllerFuncionariosListado controller) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(IdentificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(IdentificacionLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IdentificacionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IdentificacionLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombrejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelnombre)))
                     .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -224,32 +236,27 @@ public void setController(ControllerFuncionariosListado controller) {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-       /* try {
+        /* try {
             //controller.preAgregar(this.Agregar.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }*/
-       
-       
-       controller.FuncionariosEdicionShow();
+
+        controller.FuncionariosEdicionShow();
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        if (this.validar()) {
-            try {
-                controller.buscar(this.toFuncionario());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
+        try {
+            controller.buscar(this.toFuncionario());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BuscarActionPerformed
 
@@ -258,7 +265,7 @@ public void setController(ControllerFuncionariosListado controller) {
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.hide();        
+        controller.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,8 +281,10 @@ public void setController(ControllerFuncionariosListado controller) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelnombre;
+    private javax.swing.JTextField nombrejTextField;
     // End of variables declaration//GEN-END:variables
- 
+
     public void fromFuncionarios(Funcionario funcionario) {
         this.IdentificacionText.setText(funcionario.getId().toString());
     }
@@ -283,6 +292,7 @@ public void setController(ControllerFuncionariosListado controller) {
     Funcionario toFuncionario() {
         Funcionario result = new Funcionario();
         result.setId(this.IdentificacionText.getText());
+        result.setNombre(this.nombrejTextField.getText());
         return result;
     }
 
