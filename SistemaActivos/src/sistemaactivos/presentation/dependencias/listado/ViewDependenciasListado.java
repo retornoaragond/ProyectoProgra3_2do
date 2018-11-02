@@ -273,7 +273,8 @@ try {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
-      //  controller.borrar();
+         int row = this.DependenciaTable.getSelectedRow();
+         controller.borrar(row);
     }//GEN-LAST:event_EliminarButtonActionPerformed
 
     private void DependenciaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DependenciaTableMouseClicked

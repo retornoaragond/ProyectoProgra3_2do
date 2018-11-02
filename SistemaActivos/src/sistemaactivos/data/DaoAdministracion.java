@@ -240,10 +240,10 @@ public class DaoAdministracion {
         }
         return estados;
     }
-
-    
+  
+     
     public void DependenciaDelete(Dependencia d) throws Exception {
-         String sql="delete from persona where id='%s'";
+        String sql="delete from dependencia where codigo='%s'";
         sql = String.format(sql, d.getCodigo());
         int count=dbb.executeUpdate(sql);
         if (count==0){
