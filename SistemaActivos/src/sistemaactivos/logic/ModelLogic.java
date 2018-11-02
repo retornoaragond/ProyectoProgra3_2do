@@ -131,10 +131,28 @@ public class ModelLogic {
         return daoAdministracion.dependenciaGet(filter.getCodigo());
     }
 
+    
     public List<Dependencia> searchDependencia(Dependencia filtro) {
-        return daoAdministracion.DependenciaSearch(filtro);
+       if(filtro.getCodigo().length()==0 && filtro.getNombre().length()!=0){
+          return daoAdministracion.DependenciaSearchNombre(filtro);
+       }
+       else if(filtro.getCodigo().length()!=0 && filtro.getNombre().length()==0){
+          return daoAdministracion.DependenciaSearchCodigo(filtro);
+       }
+      
+       else  if(filtro.getCodigo().length()!=0 && filtro.getNombre().length()!=0){
+         return daoAdministracion.DependenciaSearch(filtro);
+       }
+       
+       else {
+           return daoAdministracion.DependenciaGetAll();
+        }
+        
     }
 
+   
+    
+    
     public void deleteDependencia(Dependencia p) throws Exception {
         daoAdministracion.DependenciaDelete(p);
     }

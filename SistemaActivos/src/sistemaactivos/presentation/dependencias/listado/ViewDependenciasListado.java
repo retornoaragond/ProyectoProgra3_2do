@@ -257,15 +257,8 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (this.validar()) {
-            try {
-                controller.buscar(this.toDependencia());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+      controller.buscar(this.toDependencia());
+            
 
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
@@ -293,6 +286,7 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
 
     public void fromDependencia(Dependencia dependencia) {
         this.CodigoTEXT.setText(dependencia.getCodigo().toString());
+        this.NombreField.setText(dependencia.getNombre().toString());
     }
 
     Dependencia toDependencia() {
