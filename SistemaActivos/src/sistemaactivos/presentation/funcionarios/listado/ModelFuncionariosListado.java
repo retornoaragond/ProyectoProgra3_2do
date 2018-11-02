@@ -34,7 +34,7 @@ public class ModelFuncionariosListado extends java.util.Observable{
     
     public void setFuncionario(List<Funcionario> funcionarios) {
         int[] cols = {FuncionarioTableModel.ID, 
-            FuncionarioTableModel.NOMBRE, FuncionarioTableModel.SOLICITUDES};
+            FuncionarioTableModel.NOMBRE};
             this.funcionarioTable=new FuncionarioTableModel(cols, funcionarios);
     }
     
