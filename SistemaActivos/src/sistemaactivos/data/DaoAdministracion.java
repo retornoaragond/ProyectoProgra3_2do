@@ -72,9 +72,7 @@ public class DaoAdministracion {
         try {
             Funcionario ec = new Funcionario();
             ec.setId(rs.getString("id"));
-            ec.setNombre(rs.getString("nombre"));
-            Labor l = laborGetbyFuncionario(rs.getString("id"));
-            
+            ec.setNombre(rs.getString("nombre"));            
             return ec;
         } catch (SQLException ex) {
             return null;
@@ -335,7 +333,7 @@ public class DaoAdministracion {
             p.setId(Integer.parseInt(rs.getString("id")));
             p.setDependencia(dependenciaGet(rs.getString("depLab")));
             p.setPuesto(puestoGet(rs.getString("pueLab")));
-            p.setFuncionario(FuncionarioGet(rs.getString("funcLab")));
+            p.setFuncionario(getFuncionario(rs.getString("funcLab")));
             return p;
         } catch (SQLException ex) {
             return null;

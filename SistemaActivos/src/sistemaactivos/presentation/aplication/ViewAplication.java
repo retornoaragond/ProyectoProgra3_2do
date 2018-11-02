@@ -236,23 +236,23 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
 
- controller.exit();
-        
+        controller.exit();
+
     }//GEN-LAST:event_logOutActionPerformed
 
     private void ListadoDeSolicitudesJMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu4ActionPerformed
-   controller.dependenciasShow();
-   
+        controller.dependenciasShow();
+
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu4ActionPerformed
 
     private void ListadoDeSolicitudesJMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu3ActionPerformed
-    
+
         controller.funcionariosShow();
-        
+
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu3ActionPerformed
 
     private void ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
-       controller.solicitudesShow();
+        controller.solicitudesShow();
     }//GEN-LAST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
 
     private void ListadoDeSolicitudesJMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu1ActionPerformed
@@ -260,15 +260,15 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu1ActionPerformed
 
     private void ListadoDeActivosjMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItem2ActionPerformed
-      controller.activosShow();
+        controller.activosShow();
     }//GEN-LAST:event_ListadoDeActivosjMenuItem2ActionPerformed
 
     private void AgregarSolicitudjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarSolicitudjMenuItemActionPerformed
-      controller.solicitudesShow();
+        controller.solicitudesShow();
     }//GEN-LAST:event_AgregarSolicitudjMenuItemActionPerformed
 
     private void ListadoDeDependendenciasjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeDependendenciasjMenuItemActionPerformed
-      controller.dependenciasShow();
+        controller.dependenciasShow();
     }//GEN-LAST:event_ListadoDeDependendenciasjMenuItemActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -285,7 +285,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     }//GEN-LAST:event_ListadoDeFuncionariosjMenuItemActionPerformed
 
     private void ListadoDeActivosjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItemActionPerformed
-       controller.activosShow();
+        controller.activosShow();
     }//GEN-LAST:event_ListadoDeActivosjMenuItemActionPerformed
 
 
@@ -315,7 +315,8 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     @Override
     public void update(Observable o, Object arg) {
         if (model.getCurrent() != null) {
-            this.setTitle("SISTEMA ACTIVOS (" + model.getCurrent().getId() + ")");
+            this.setTitle("SISTEMA ACTIVOS (" + model.getCurrent().getLabor().getFuncionario().getNombre() + ")"
+                    + "  " + model.getCurrent().getLabor().getPuesto().getPuesto());
         } else {
             this.setTitle("SISTEMA ACTIVOS");
         }

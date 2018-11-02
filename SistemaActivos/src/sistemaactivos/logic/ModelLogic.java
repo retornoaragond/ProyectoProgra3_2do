@@ -37,14 +37,9 @@ public class ModelLogic {
 
     public Usuario getUsuario(String id, String clave) throws Exception {
         Usuario u = daoAdministracion.usuarioGet(id);
-        
-        
         if (u.getPass().equals(clave)) {
-            
             return u;
         } else {
-           
-            
             throw new Exception("Clave incorrecta");
         }
     }
@@ -101,7 +96,6 @@ public class ModelLogic {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Funcionario" defaultstate="collapsed">
     public List<Funcionario> getFuncionarios() {
         return daoAdministracion.FuncionarioGetAll();
@@ -128,7 +122,6 @@ public class ModelLogic {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Dependencia" defaultstate="collapsed">
     public List<Dependencia> getDependencias() {
         return daoAdministracion.DependenciaGetAll();
