@@ -34,7 +34,6 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     
     public void setDependencias(List<Dependencia> dependencia){
         List<String> depe;
-        
         this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
         this.commit();
     }
@@ -42,6 +41,13 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     public ComboBoxModel<Puesto> getPuestos(){
     return puestos;
     }
+    
+    public void setPuesto(List<Puesto> puesto){
+        List<String> pue;
+        this.puestos = new DefaultComboBoxModel(puesto.toArray());
+        this.commit();
+    }
+    
     
     public ModelFuncionariosEdicion() {
         this.reset();
@@ -58,6 +64,10 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     this.setCurrent(new Funcionario());
     }
 
+    public void resetP(List<Puesto> pue){
+    this.setPuesto(pue);
+    this.setCurrent(new Funcionario());
+    }
     
     public void reset(){
         this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());  
