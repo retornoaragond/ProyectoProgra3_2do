@@ -24,6 +24,7 @@ public class ControllerFuncionariosEdicion {
 
     public ControllerFuncionariosEdicion(ViewFuncionariosEdicion view, ModelFuncionariosEdicion model, ModelLogic domainModel, Session session) {
         model.reset(domainModel.getDependencias());
+        model.resetP(domainModel.getPuesto());
         this.domainModel = domainModel;
         this.session = session;
         this.view = view;

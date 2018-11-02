@@ -56,7 +56,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         Dependencia = new javax.swing.JLabel();
         DependenciaCombo = new javax.swing.JComboBox();
         PuestoLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        puestoCombo = new javax.swing.JComboBox();
         Agregar = new javax.swing.JButton();
         EliminarButon = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -230,7 +230,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(DependenciaCombo, 0, 284, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(puestoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Agregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -255,7 +255,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                             .addComponent(DependenciaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(puestoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PuestoLabel)))
                     .addComponent(Agregar)
                     .addComponent(EliminarButon))
@@ -417,7 +417,6 @@ controller.borrar(0);
     private javax.swing.JTable SolicitudTable;
     private javax.swing.JLabel contraseñaLabel;
     public javax.swing.JButton guardarFld;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -426,6 +425,7 @@ controller.borrar(0);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox puestoCombo;
     // End of variables declaration//GEN-END:variables
 
 
@@ -479,6 +479,7 @@ controller.borrar(0);
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
         this.DependenciaCombo.setModel(model.getDependencia());
+        this.puestoCombo.setModel(model.getPuestos());
     }
 
 

@@ -202,4 +202,8 @@ public class ModelLogic {
         daoAdministracion.close();
 
     }
+    
+     public List<Puesto> getPuesto() {
+        return daoAdministracion.puestoGetAll();
+    }
 }

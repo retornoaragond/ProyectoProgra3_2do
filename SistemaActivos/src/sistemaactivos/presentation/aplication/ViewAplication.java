@@ -315,7 +315,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(java.util.Observable updatedModel,Object parametros) {
         if (model.getCurrent() != null) {
             this.setTitle("SISTEMA ACTIVOS (" + model.getCurrent().getLabor().getFuncionario().getNombre() + ")"
                     + "  " + model.getCurrent().getLabor().getPuesto().getPuesto());
