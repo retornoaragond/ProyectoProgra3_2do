@@ -23,10 +23,9 @@ public class ControllerFuncionariosEdicion {
     ModelFuncionariosEdicion model;
 
     public ControllerFuncionariosEdicion(ViewFuncionariosEdicion view, ModelFuncionariosEdicion model, ModelLogic domainModel, Session session) {
-     //   model.reset(domainModel.getUsuario(id, clave));
+        model.reset(domainModel.getDependencias());
         this.domainModel = domainModel;
         this.session = session;
-
         this.view = view;
         this.model = model;
         view.setController(this);

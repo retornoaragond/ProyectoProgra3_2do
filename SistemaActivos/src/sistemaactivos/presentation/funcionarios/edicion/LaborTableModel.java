@@ -74,6 +74,7 @@ public class LaborTableModel extends AbstractTableModel{
     colNames[FUNCIONARIO]="Funcionario";
     colNames[PUESTO]="Puesto";
     colNames[ACTIVOS]="Activos";
+    
     }
             
 

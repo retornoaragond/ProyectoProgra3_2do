@@ -8,6 +8,7 @@ package sistemaactivos.presentation.funcionarios.edicion;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
@@ -30,6 +31,12 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     public ComboBoxModel<Dependencia> getDependencia(){
     return dependencia;
     }
+    
+    public void setDependencias(List<Dependencia> dependencia){
+        List<Dependencia> depe;
+        this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
+        this.commit();
+    }
 
     public ComboBoxModel<Puesto> getPuestos(){
     return puestos;
@@ -44,6 +51,12 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
         this.setCurrent(current);
         this.commit();
     }
+    
+    public void reset(List<Dependencia> depe){
+    this.setDependencias(depe);
+    this.setCurrent(new Funcionario());
+    }
+
     
     public void reset(){
         this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());  
