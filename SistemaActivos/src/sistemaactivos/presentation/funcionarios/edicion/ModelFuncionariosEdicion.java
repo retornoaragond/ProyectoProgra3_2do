@@ -14,6 +14,8 @@ import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
 import sistemaactivos.logic.Puesto;
+import sistemaactivos.logic.Solicitud;
+
 
 /**
  *
@@ -25,8 +27,12 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     ComboBoxModel<Puesto> puestos;
     int modo;    
     ComboBoxModel<Dependencia> dependencia;
-    
+    SolicitudesTableModel solitablemodel;
     LaborTableModel laborModel;
+    
+    public SolicitudesTableModel getSoliTable(){
+    return this.solitablemodel;
+    }
     
     public ComboBoxModel<Dependencia> getDependencia(){
     return dependencia;
@@ -73,8 +79,10 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
         this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());  
         funcionario=new Funcionario();
         List<Labor> rows = new ArrayList<>();
+        List<Solicitud> arows=new ArrayList<>();
         current=new Funcionario();
         this.setLabores(rows);
+        this.setSolicitudes(arows);
         this.commit();
         
     }    
@@ -113,6 +121,11 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
      
      public LaborTableModel getLabores(){
      return laborModel;
+     }
+     
+     public void setSolicitudes(List<Solicitud> soli){
+     int[] cols ={SolicitudesTableModel.NUMSOLICITUD,SolicitudesTableModel.DEPENDENCIA };
+     this.solitablemodel=new SolicitudesTableModel(cols,soli);
      }
     
 }

@@ -34,27 +34,34 @@ public class SolicitudesTableModel extends AbstractTableModel {
         return cols.length;
     }
 
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
       public String getColumnName(int col) {
         return colNames[cols[col]];
     }
       
-      public Solicitud getRowAt(int row) {
-        return rows.get(row);
-    }
+     @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Solicitud soli= rows.get(rowIndex);
+             switch (cols[columnIndex]) {
+                 case NUMSOLICITUD:
+                     return soli.getNumsol();
+                 case DEPENDENCIA:
+                     return soli.getDependencia();
+                   default:
+                     return "";
+             } 
+        }
       
-       public static final int CANTIDADBIENES = 0;
-       public static final int NUMSOLICITUD = 1;
+       public static final int NUMSOLICITUD = 0;
+       public static final int DEPENDENCIA = 1;
        
        String[] colNames = new String[2];
        
         private void initColNames() {
         colNames[NUMSOLICITUD] = "numSolicitud";
-        colNames[CANTIDADBIENES] = "cantidadBienes";
+        colNames[DEPENDENCIA] = "dependencia";
         
     }
+
+    
 }

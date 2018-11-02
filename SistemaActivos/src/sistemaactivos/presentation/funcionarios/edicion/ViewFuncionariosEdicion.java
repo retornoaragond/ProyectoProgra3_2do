@@ -468,6 +468,7 @@ controller.borrar(0);
         Funcionario actual = model.getCurrent();
         this.fromFuncionario(actual);
         this.LaborTable.setModel(model.getLabores());
+        this.SolicitudTable.setModel(model.getSoliTable());
     }
 
     public void fromFuncionario(Funcionario actual) {
@@ -476,6 +477,7 @@ controller.borrar(0);
         this.IDTextField.setText(actual.getId());
         Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
         this.LaborTable.setModel(model.getLabores());
+        this.SolicitudTable.setModel(model.getSoliTable());
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
         this.DependenciaCombo.setModel(model.getDependencia());
