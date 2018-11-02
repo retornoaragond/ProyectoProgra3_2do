@@ -268,7 +268,7 @@ try {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
-        // TODO add your handling code here:
+      //  controller.borrar();
     }//GEN-LAST:event_EliminarButtonActionPerformed
 
 
@@ -302,7 +302,7 @@ try {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(java.util.Observable updatedModel,Object parametros) {
         this.limpiarErrores();
         Dependencia dependencia = model.getFilter();
         this.fromDependencia(dependencia);
