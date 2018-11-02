@@ -8,6 +8,7 @@ package sistemaactivos.presentation.aplication;
 import java.util.Observable;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import sistemaactivos.logic.Puesto;
 
 /**
  *
@@ -319,6 +320,57 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
                     + "  " + model.getCurrent().getLabor().getPuesto().getPuesto());
         } else {
             this.setTitle("SISTEMA ACTIVOS");
+        }
+        accesibilidad(model.getCurrent().getLabor().getPuesto());
+    }
+
+    public void accesibilidad(Puesto p) {
+        switch (p.getCodgo()) {
+            case "001": {
+                this.ayuda.setEnabled(true);
+                this.AdministradorJMenuItem.setEnabled(true);
+                this.SecretariaOCCBjMenu.setEnabled(false);
+                this.JefeDeOCCBJMenuItem.setEnabled(false);
+                this.RegistradorjMenu.setEnabled(false);
+                this.JefeDeRRHHjMenu.setEnabled(false);
+            }
+            break;
+            case "002": {
+                this.ayuda.setEnabled(true);
+                this.AdministradorJMenuItem.setEnabled(false);
+                this.SecretariaOCCBjMenu.setEnabled(true);
+                this.JefeDeOCCBJMenuItem.setEnabled(false);
+                this.RegistradorjMenu.setEnabled(false);
+                this.JefeDeRRHHjMenu.setEnabled(false);
+            }
+            break;
+            case "003": {
+                this.ayuda.setEnabled(true);
+                this.AdministradorJMenuItem.setEnabled(false);
+                this.SecretariaOCCBjMenu.setEnabled(false);
+                this.JefeDeOCCBJMenuItem.setEnabled(false);
+                this.RegistradorjMenu.setEnabled(true);
+                this.JefeDeRRHHjMenu.setEnabled(false);
+            }
+            break;
+            case "004": {
+                this.ayuda.setEnabled(true);
+                this.AdministradorJMenuItem.setEnabled(false);
+                this.SecretariaOCCBjMenu.setEnabled(false);
+                this.JefeDeOCCBJMenuItem.setEnabled(true);
+                this.RegistradorjMenu.setEnabled(false);
+                this.JefeDeRRHHjMenu.setEnabled(false);
+            }
+            break;
+            case "005": {
+                this.ayuda.setEnabled(true);
+                this.AdministradorJMenuItem.setEnabled(false);
+                this.SecretariaOCCBjMenu.setEnabled(false);
+                this.JefeDeOCCBJMenuItem.setEnabled(false);
+                this.RegistradorjMenu.setEnabled(false);
+                this.JefeDeRRHHjMenu.setEnabled(true);
+            }
+            break;
         }
     }
 }
