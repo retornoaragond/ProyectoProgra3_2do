@@ -58,7 +58,7 @@ public class DaoAdministracion {
 
     //  <editor-fold desc="Funcionarios" defaultstate="collapsed">
     public Funcionario getFuncionario(String id) throws Exception {
-        String sql = "SELECT * FROM funcionario WHERE id='%s';";
+        String sql = "SELECT * FROM funcionario WHERE funcionario.id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -84,9 +84,7 @@ public class DaoAdministracion {
     public List<Funcionario> FuncionarioSearch(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
-            String sql = "select * from "
-                    + "Funcionario "
-                    + "where descripcion like '%%%s%%'";
+            String sql ="SELECT * FROM funcionario WHERE id = '%s%'";
             sql = String.format(sql, filtro.getId());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
