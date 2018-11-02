@@ -46,6 +46,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     public ViewAplication() {
         initComponents();
         this.setSize(this.getMaximumSize());
+        desktopPane.setBorder(new ImagenFondo());
     }
 
     /**
