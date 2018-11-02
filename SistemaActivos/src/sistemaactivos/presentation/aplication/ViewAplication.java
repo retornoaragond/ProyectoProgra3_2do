@@ -24,6 +24,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
     public void setModel(ModelAplication model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     public ControllerAplication getController() {

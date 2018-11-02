@@ -46,9 +46,6 @@ public class ControllerAplication {
     public void solicitudesShow() {
         SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.show();
     }
-    
- 
-    
 
     public void enter() {
         this.reset();
@@ -56,9 +53,9 @@ public class ControllerAplication {
     }
 
     public void exit() {
-       this.hide();
+        this.hide();
         SistemaActivos.LOGIN_CONTROLLER.logout();
-        
+
     }
 
     public void reset() {
@@ -78,7 +75,7 @@ public class ControllerAplication {
         view.setLocation(position);
         this.show();
     }
-   
+
     public void hide() {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.hide();
         SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.hide();

@@ -246,13 +246,13 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-/*        try {
+        /*        try {
             //controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }*/
 
-controller.DependenciaEdicionShow();
+        controller.DependenciaEdicionShow();
 
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
@@ -270,7 +270,7 @@ controller.DependenciaEdicionShow();
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-controller.hide();
+        controller.hide();
     }//GEN-LAST:event_SalirActionPerformed
 
 
