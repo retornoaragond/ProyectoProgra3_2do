@@ -37,10 +37,10 @@ public class DependenciaTableModel extends AbstractTableModel {
                 return dependencia.getCodigo();
             case NOMBRE:
                return dependencia.getNombre();
-            case LABORS:
-                return dependencia.getLabors();
-            case SOLICITUDS:
-               return dependencia.getSolicituds();
+//            case LABORS:
+//                return dependencia.getLabors();
+//            case SOLICITUDS:
+//               return dependencia.getSolicituds();
             default:
                 return "";
         }
@@ -70,16 +70,16 @@ public class DependenciaTableModel extends AbstractTableModel {
 
     public static final int CODIGO = 0;
     public static final int NOMBRE = 1;
-    public static final int LABORS = 2;
-    public static final int SOLICITUDS = 3;
+//    public static final int LABORS = 2;
+//    public static final int SOLICITUDS = 3;
 
-    String[] colNames = new String[4];
+    String[] colNames = new String[2];
 
     private void initColNames() {
         colNames[CODIGO] = "Codigo";
         colNames[NOMBRE] = "Nombre";
-        colNames[LABORS] = "Labors";
-        colNames[SOLICITUDS] = "Solicituds";
+//        colNames[LABORS] = "Labors";
+//        colNames[SOLICITUDS] = "Solicituds";
     }
 
 }

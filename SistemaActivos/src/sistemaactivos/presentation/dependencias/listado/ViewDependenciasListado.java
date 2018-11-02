@@ -179,6 +179,11 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
         });
 
         EliminarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconeliminar.png"))); // NOI18N
+        EliminarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -246,16 +251,15 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-        /*        try {
-            //controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        }*/
-
-        controller.DependenciaEdicionShow();
-
+//               try {
+//            controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+//      
+//        controller.DependenciaEdicionShow();
+//
     }//GEN-LAST:event_AgregarButtonActionPerformed
-
+    
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
       controller.buscar(this.toDependencia());
             
@@ -265,6 +269,10 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         controller.hide();
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

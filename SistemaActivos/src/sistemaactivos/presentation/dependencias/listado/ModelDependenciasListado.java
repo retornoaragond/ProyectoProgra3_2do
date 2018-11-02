@@ -37,13 +37,11 @@ public class ModelDependenciasListado  extends java.util.Observable {
    
   
   public void setDependencia(List<Dependencia> dependencias){
-        int[] cols={DependenciaTableModel.CODIGO,DependenciaTableModel.NOMBRE,DependenciaTableModel.LABORS,DependenciaTableModel.SOLICITUDS};
+        int[] cols={DependenciaTableModel.CODIGO,DependenciaTableModel.NOMBRE};
         this.dependenciasTable =new DependenciaTableModel(cols,dependencias);    
     }
     
-  
-      
-  
+    
     public Dependencia getFilter() {
         return filter;
     }
