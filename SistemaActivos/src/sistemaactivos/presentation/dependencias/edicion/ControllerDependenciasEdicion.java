@@ -8,6 +8,7 @@ package sistemaactivos.presentation.dependencias.edicion;
 import java.awt.Point;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
+import static sistemaactivos.SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.ModelLogic;
 
@@ -24,7 +25,7 @@ public class ControllerDependenciasEdicion {
 
     public ControllerDependenciasEdicion(ViewDependenciasEdicion view, ModelDependenciasEdicion model, 
             ModelLogic domainModel, Session session) {
-        //model.reset(domainModel.getEstadosCiviles());
+      // model.reset(domainModel.getDependencias());
         
         this.domainModel = domainModel;
         this.session = session;
@@ -38,14 +39,14 @@ public class ControllerDependenciasEdicion {
     public void guardar(Dependencia dependencia) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
-                //domainModel.addDependencia(dependencia);
-                //SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();                   
+                domainModel.addDependencia(dependencia);
+                SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();                   
                 model.setCurrent(new Dependencia());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-                //    domainModel.updatePersona(persona);
-                //  SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();               
+                 domainModel.updateDependencia(dependencia);
+                  SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();               
                 break;
         }
     }
@@ -54,6 +55,9 @@ public class ControllerDependenciasEdicion {
         model.reset();
     }
     
+    public void reset(int modo, Dependencia current){
+        model.reset(modo, current);
+    }  
     
     public void show() {
         view.setVisible(true);

@@ -251,19 +251,16 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-//               try {
-//            controller.preAgregar(this.CodigoTEXT.getLocationOnScreen());
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-//      
-//        controller.DependenciaEdicionShow();
-//
+try {
+            controller.preAgregar(this.AgregarButton.getLocationOnScreen());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+        }
     }//GEN-LAST:event_AgregarButtonActionPerformed
     
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
       controller.buscar(this.toDependencia());
-            
-
+           
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed

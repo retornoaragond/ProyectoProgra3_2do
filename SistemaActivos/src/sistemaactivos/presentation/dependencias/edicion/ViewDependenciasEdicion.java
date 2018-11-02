@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.dependencias.edicion;
 
+import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
 
@@ -111,14 +112,14 @@ import sistemaactivos.logic.Dependencia;
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         if(this.validar()){
             try {
-                //this.controller.guardar(this.toPersona());
-                //JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
+                this.controller.guardar(this.toDependencia());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
             } catch (Exception ex) {
-                //JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
             }
         }
         else{
-            //JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_GuardarActionPerformed
 

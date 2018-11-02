@@ -57,7 +57,7 @@ public class ControllerDependenciasListado {
     
      public void preAgregar(Point at)throws Exception{      
     
-//           Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+          Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
 //        if ( !Arrays.asList(SistemaActivos.ROL_MANAGER).contains(principal.getRol())){
 //           throw new Exception(SistemaActivos.ROL_NOTAUTHORIZED);
 //        }
@@ -65,8 +65,11 @@ public class ControllerDependenciasListado {
 //        SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
 //    
 //    
-           //SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(SistemaActivos.);
-           //SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
+       // Application.PERSONA_CONTROLLER.reset(Application.MODO_AGREGAR, new Persona());
+      //  Application.PERSONA_CONTROLLER.show(at);
+              
+           SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(SistemaActivos.MODO_AGREGAR, new Dependencia());
+           SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
          }
     
    

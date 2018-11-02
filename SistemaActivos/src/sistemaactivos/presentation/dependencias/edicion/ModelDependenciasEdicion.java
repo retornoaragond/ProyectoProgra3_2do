@@ -21,9 +21,7 @@ public class ModelDependenciasEdicion extends java.util.Observable  {
         this.reset();
     }
 
-    public void reset(){      
-       
-    }
+    
     
     public void reset(int modo, Dependencia current){
         this.setModo(modo);
@@ -31,11 +29,11 @@ public class ModelDependenciasEdicion extends java.util.Observable  {
         this.commit();
     }
     
-    /*
+    
     public void reset(){
-        //this.reset(Application.MODO_AGREGAR,new Persona());     
+     //  this.reset(SistemaActivos.MODO_AGREGAR,new Persona());     
     }    
-*/
+
     public int getModo() {
         return modo;
     }
