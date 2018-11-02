@@ -39,16 +39,18 @@ public class ControllerDependenciasListado {
      SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
      }
     
-    public void buscar(Dependencia filter) throws Exception{       
+    public void buscar(Dependencia filter) {       
          model.setFilter(filter);
         this.refrescarBusqueda();
+           
     }
     
-    public void refrescarBusqueda() throws Exception{
+   
+    public void refrescarBusqueda() {
         List<Dependencia> rows = domainModel.searchDependencia(model.getFilter());
         model.setDependencia(rows);
         model.commit();
-        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
+       
     }    
 
     
@@ -102,7 +104,7 @@ public class ControllerDependenciasListado {
     
     public void searchDependencia(int row, Point position){
         model.setSeleccionado(model.dependenciasTable.getRowAt(row));
-        //SistemaActivos.ESTADOS_SEARCH_CONTROLLER.show(position);
+        SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.show(position);// aqui hice algo 
     }
   /*  
     public void changeEstado(EstadoCivil nuevoEstado){

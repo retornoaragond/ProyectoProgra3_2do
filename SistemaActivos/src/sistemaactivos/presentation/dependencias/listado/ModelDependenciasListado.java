@@ -41,6 +41,9 @@ public class ModelDependenciasListado  extends java.util.Observable {
         this.dependenciasTable =new DependenciaTableModel(cols,dependencias);    
     }
     
+  
+      
+  
     public Dependencia getFilter() {
         return filter;
     }

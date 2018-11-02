@@ -36,11 +36,11 @@ public class DependenciaTableModel extends AbstractTableModel {
             case CODIGO:
                 return dependencia.getCodigo();
             case NOMBRE:
-                return dependencia.getNombre();
+               return dependencia.getNombre();
             case LABORS:
                 return dependencia.getLabors();
             case SOLICITUDS:
-                return dependencia.getSolicituds();
+               return dependencia.getSolicituds();
             default:
                 return "";
         }
