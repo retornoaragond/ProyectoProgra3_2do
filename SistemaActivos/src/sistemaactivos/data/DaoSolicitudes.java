@@ -5,13 +5,12 @@
  */
 package sistemaactivos.data;
 
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 
 /**
@@ -21,42 +20,46 @@ import sistemaactivos.logic.Solicitud;
 public class DaoSolicitudes {
 
     RelDatabase db;
+    DaoAdministracion da = new DaoAdministracion();
 
     public DaoSolicitudes() {
         db = new RelDatabase();
     }
-    
-    
-    
-    
-    
+
     //  <editor-fold desc="Solicitud" defaultstate="collapsed">
     public Solicitud getSolicitud(Integer numSolicitud) throws Exception {
         String sql = "select * from solicitud inner where codigoId='%s'";
         sql = String.format(sql, numSolicitud);
         ResultSet rs = db.executeQuery(sql);
         if (rs.next()) {
-          return solicitud(rs);
+            return solicitud(rs);
         } else {
             throw new Exception("Solicitud no Existe");
         }
     }
-    
-    
-    
+
     private Solicitud solicitud(ResultSet rs) {
         try {
             Solicitud ec = new Solicitud();
-            ec.setNumsol(Integer.getInteger(rs.getString("numSolicitud")));
+            ec.setNumsol(rs.getInt("numsol"));
+            ec.setNumcomp(rs.getString("numcomp"));
+            ec.setEstado(rs.getString("estado"));
+            ec.setRazonR(rs.getString("razonR"));
+            ec.setCantbien(rs.getInt("cantbien"));
+            ec.setFecha(rs.getDate("fecha"));
+            ec.setMontotal(rs.getDouble("montotal"));
+            ec.setTipoadq(rs.getString("tipoadq"));
+            ec.setDependencia(da.dependenciaGet(rs.getString("Dependencia_codigo")));
+            ec.setFuncionario(da.getFuncionario(rs.getString("registrador")));
             return ec;
         } catch (SQLException ex) {
+            return null;
+        } catch (Exception ex) {
             return null;
         }
     }
 
-  
-       
-       public List<Solicitud> SolicitudSearch(Solicitud filtro){
+    public List<Solicitud> SolicitudSearch(Solicitud filtro) {
         List<Solicitud> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -67,8 +70,25 @@ public class DaoSolicitudes {
             while (rs.next()) {
                 resultado.add(solicitud(rs));
             }
-        } catch (SQLException ex) {}
-          
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
+    }
+
+    public List<Solicitud> searchSolicitudbyFuncionario(Funcionario filtro) {
+        List<Solicitud> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from solicitud "
+                    + "where registrador = '%s'";
+            sql = String.format(sql, filtro.getId());
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(solicitud(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
         return resultado;
     }
 
@@ -84,42 +104,36 @@ public class DaoSolicitudes {
         }
         return estados;
     }
-   
-     
-    public Solicitud SolicitudGet(Integer numSolicitud) throws Exception{
-       return new Solicitud();    
-    }
-    
-    public void SolicitudDelete(Solicitud a) throws Exception{
-        
+
+    public Solicitud SolicitudGet(Integer numSolicitud) throws Exception {
+        return new Solicitud();
     }
 
-    public void SolicitudAdd(Solicitud a) throws Exception{
-        
+    public void SolicitudDelete(Solicitud a) throws Exception {
+
     }
 
-    public void SolicitudUpdate(Solicitud a) throws Exception{
-       
+    public void SolicitudAdd(Solicitud a) throws Exception {
+
+    }
+
+    public void SolicitudUpdate(Solicitud a) throws Exception {
+
     }
     //</editor-fold>
 
-    
-    
     //  <editor-fold desc="Bien" defaultstate="collapsed">
-
-      public Bien getBien(String serial) throws Exception {
+    public Bien getBien(String serial) throws Exception {
         String sql = "select * from Bien inner where serial='%s'";
         sql = String.format(sql, serial);
         ResultSet rs = db.executeQuery(sql);
         if (rs.next()) {
-          return bien(rs);
+            return bien(rs);
         } else {
             throw new Exception("Solicitud no Existe");
         }
     }
-    
-    
-    
+
     private Bien bien(ResultSet rs) {
         try {
             Bien ec = new Bien();
@@ -130,9 +144,7 @@ public class DaoSolicitudes {
         }
     }
 
-  
-       
-       public List<Bien> BienSearch(Bien filtro){
+    public List<Bien> BienSearch(Bien filtro) {
         List<Bien> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -143,8 +155,9 @@ public class DaoSolicitudes {
             while (rs.next()) {
                 resultado.add(bien(rs));
             }
-        } catch (SQLException ex) {}
-          
+        } catch (SQLException ex) {
+        }
+
         return resultado;
     }
 
@@ -160,29 +173,24 @@ public class DaoSolicitudes {
         }
         return bienes;
     }
-   
-     
-    public Bien BienGet(String serial) throws Exception{
-       return new Bien();    
-    }
-    
-    public void BienDelete(Bien a) throws Exception{
-        
+
+    public Bien BienGet(String serial) throws Exception {
+        return new Bien();
     }
 
-    public void BienAdd(Bien a) throws Exception{
-        
+    public void BienDelete(Bien a) throws Exception {
+
     }
 
-    public void BienUpdate(Bien a) throws Exception{
-       
+    public void BienAdd(Bien a) throws Exception {
+
     }
-    
-    
+
+    public void BienUpdate(Bien a) throws Exception {
+
+    }
 
     //</editor-fold>
-
-     
-   public  void close(){
+    public void close() {
     }
 }

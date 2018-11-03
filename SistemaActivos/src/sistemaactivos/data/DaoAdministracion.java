@@ -332,6 +332,7 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
+    
     //  <editor-fold desc="Labores" defaultstate="collapsed">
     public Labor laborGet(Integer id) throws Exception {
         String sql = "SELECT * FROM labor WHERE id = '%d'";

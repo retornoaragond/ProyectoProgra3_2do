@@ -6,12 +6,14 @@
 package sistemaactivos.presentation.funcionarios.edicion;
 
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
 import sistemaactivos.logic.Puesto;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -48,13 +50,13 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         IDLabel = new javax.swing.JLabel();
         NombreTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelUser = new javax.swing.JPanel();
         NombreUsuarioLabel = new javax.swing.JLabel();
         OperadorText = new javax.swing.JTextField();
         Contraseñatext = new javax.swing.JTextField();
         contraseñaLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        panelLabores = new javax.swing.JPanel();
         Laborlabel = new javax.swing.JLabel();
         Dependencia = new javax.swing.JLabel();
         DependenciaCombo = new javax.swing.JComboBox();
@@ -64,7 +66,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         EliminarButon = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         LaborTable = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        panelSolicitudes = new javax.swing.JPanel();
         SolicitudLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         SolicitudTable = new javax.swing.JTable();
@@ -127,15 +129,15 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDLabel)
-                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreLabel))
+                    .addComponent(NombreLabel)
+                    .addComponent(NombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         NombreUsuarioLabel.setText("Operador");
 
@@ -144,42 +146,42 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Usuario");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelUserLayout = new javax.swing.GroupLayout(panelUser);
+        panelUser.setLayout(panelUserLayout);
+        panelUserLayout.setHorizontalGroup(
+            panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contraseñaLabel)
                     .addComponent(NombreUsuarioLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Contraseñatext)
                     .addComponent(OperadorText))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(panelUserLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelUserLayout.setVerticalGroup(
+            panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUserLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreUsuarioLabel)
                     .addComponent(OperadorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Contraseñatext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contraseñaLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelLabores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         Laborlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Laborlabel.setText("Labor(es) que desempeña");
@@ -188,6 +190,12 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         Dependencia.setText("Dependencia");
 
         PuestoLabel.setText("Puesto");
+
+        puestoCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puestoComboActionPerformed(evt);
+            }
+        });
 
         AgregarLabor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagragarFuncionario.png"))); // NOI18N
         AgregarLabor.addActionListener(new java.awt.event.ActionListener() {
@@ -216,20 +224,20 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         ));
         jScrollPane3.setViewportView(LaborTable);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelLaboresLayout = new javax.swing.GroupLayout(panelLabores);
+        panelLabores.setLayout(panelLaboresLayout);
+        panelLaboresLayout.setHorizontalGroup(
+            panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLaboresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelLaboresLayout.createSequentialGroup()
+                        .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Dependencia)
                             .addComponent(PuestoLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(DependenciaCombo, 0, 284, Short.MAX_VALUE)
                             .addComponent(puestoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -238,24 +246,24 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                         .addComponent(EliminarButon)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(panelLaboresLayout.createSequentialGroup()
                 .addGap(171, 171, 171)
                 .addComponent(Laborlabel)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panelLaboresLayout.setVerticalGroup(
+            panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLaboresLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(Laborlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLaboresLayout.createSequentialGroup()
+                        .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Dependencia)
                             .addComponent(DependenciaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelLaboresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(puestoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PuestoLabel)))
                     .addComponent(AgregarLabor)
@@ -265,7 +273,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelSolicitudes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         SolicitudLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         SolicitudLabel.setText("Solicitudes");
@@ -283,22 +291,22 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         ));
         jScrollPane2.setViewportView(SolicitudTable);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelSolicitudesLayout = new javax.swing.GroupLayout(panelSolicitudes);
+        panelSolicitudes.setLayout(panelSolicitudesLayout);
+        panelSolicitudesLayout.setHorizontalGroup(
+            panelSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSolicitudesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(panelSolicitudesLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(SolicitudLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        panelSolicitudesLayout.setVerticalGroup(
+            panelSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSolicitudesLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(SolicitudLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -322,9 +330,9 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelLabores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelSolicitudes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -332,12 +340,12 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelLabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelSolicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Atras, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -349,7 +357,17 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarFldActionPerformed
-
+        if (this.validar()) {
+            try {
+                this.controller.guardar(this.toFuncionario());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_guardarFldActionPerformed
 
     private void GuadarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarActionPerformed
@@ -366,6 +384,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }//GEN-LAST:event_GuadarActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        controller.reset();
         this.setVisible(false);
     }//GEN-LAST:event_AtrasActionPerformed
 
@@ -382,18 +401,31 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         controller.borrar(row);
     }//GEN-LAST:event_EliminarButonActionPerformed
 
+    private void puestoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoComboActionPerformed
+        Puesto p = (Puesto) this.puestoCombo.getSelectedItem();
+        if (p.getPuesto().equals("Registrador")) {
+            this.panelSolicitudes.setVisible(true);
+        } else {
+            this.panelSolicitudes.setVisible(false);
+        }
+        if (Arrays.asList("Administrador", "Secretariado", "Registrador", "Jefe OCCB", "Jefe RRHH").contains(p.getPuesto())) {
+            this.panelUser.setVisible(true);
+        } else {
+            this.panelUser.setVisible(false);
+        }
+    }//GEN-LAST:event_puestoComboActionPerformed
+
     boolean validar() {
         boolean error = false;
-
         this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.IDLabel.getText().isEmpty()) {
+        if (this.IDTextField.getText().isEmpty()) {
             this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
 
         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
         if (this.NombreTextField.getText().isEmpty()) {
-            this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            this.NombreLabel.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
         return !error;
@@ -405,12 +437,19 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         result.setNombre(this.NombreTextField.getText());
         return result;
     }
-    
-    Labor toLAbor(){
+
+    Labor toLabor() {
         Labor result = new Labor();
-        result.setDependencia((Dependencia)this.DependenciaCombo.getSelectedItem());
-        result.setPuesto((Puesto)this.puestoCombo.getSelectedItem());
+        result.setDependencia((Dependencia) this.DependenciaCombo.getSelectedItem());
+        result.setPuesto((Puesto) this.puestoCombo.getSelectedItem());
         result.setFuncionario(model.getCurrent());
+        return result;
+    }
+    
+    Usuario toUsuario(){
+        Usuario result =new Usuario();
+        result.setId(this.OperadorText.getText());
+        result.setPass(this.Contraseñatext.getText());
         return result;
     }
 
@@ -436,26 +475,40 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         return model;
     }
 
+    @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
         Funcionario actual = model.getCurrent();
         this.fromFuncionario(actual);
         this.LaborTable.setModel(model.getLabores());
         this.SolicitudTable.setModel(model.getSoliTable());
+        this.DependenciaCombo.setSelectedIndex(-1);
+        this.puestoCombo.setSelectedIndex(-1);
     }
 
     public void fromFuncionario(Funcionario actual) {
         this.IDTextField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
         this.IDTextField.setText(actual.getId());
+
         Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+        this.panelUser.setVisible(false);
+        this.panelSolicitudes.setVisible(!(model.getModo() == SistemaActivos.MODO_AGREGAR) && isRegistrador(model.laborModel.rows));
+        this.panelLabores.setVisible(!(model.getModo() == SistemaActivos.MODO_AGREGAR));
+
         this.LaborTable.setModel(model.getLabores());
         this.SolicitudTable.setModel(model.getSoliTable());
+
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
+        
         this.DependenciaCombo.setModel(model.getDependencia());
         this.puestoCombo.setModel(model.getPuestos());
+
     }
 
+    public boolean isRegistrador(List<Labor> l) {
+        return l.stream().anyMatch((la) -> (la.getPuesto().getPuesto().equals("Registrador")));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarLabor;
@@ -481,11 +534,11 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel panelLabores;
+    private javax.swing.JPanel panelSolicitudes;
+    private javax.swing.JPanel panelUser;
     private javax.swing.JComboBox puestoCombo;
     // End of variables declaration//GEN-END:variables
 

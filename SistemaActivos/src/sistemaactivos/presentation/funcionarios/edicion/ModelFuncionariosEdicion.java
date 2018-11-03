@@ -49,7 +49,6 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     }
     
     public void setPuesto(List<Puesto> puesto){
-        List<String> pue;
         this.puestos = new DefaultComboBoxModel(puesto.toArray());
         this.commit();
     }
@@ -65,7 +64,7 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
         this.commit();
     }
     
-    public void reset(List<Dependencia> depe){
+    public void resetD(List<Dependencia> depe){
     this.setDependencias(depe);
     this.setCurrent(new Funcionario());
     }

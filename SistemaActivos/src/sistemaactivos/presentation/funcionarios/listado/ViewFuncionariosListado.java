@@ -5,7 +5,10 @@
  */
 package sistemaactivos.presentation.funcionarios.listado;
 
+import java.util.Arrays;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Funcionario;
@@ -167,6 +170,11 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        FuncionarioTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FuncionarioTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(FuncionarioTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -261,13 +269,24 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-         int row = this.FuncionarioTable.getSelectedRow();
+        int row = this.FuncionarioTable.getSelectedRow();
         controller.borrar(row);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controller.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void FuncionarioTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuncionarioTableMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                int row = this.FuncionarioTable.getSelectedRow();
+                controller.editar(row, evt.getLocationOnScreen());
+            } catch (Exception ex) {
+                Logger.getLogger(ViewFuncionariosListado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_FuncionarioTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
@@ -287,7 +306,7 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     // End of variables declaration//GEN-END:variables
 
     public void fromFuncionarios(Funcionario funcionario) {
-        this.IdentificacionText.setText(funcionario.getId().toString());
+        this.IdentificacionText.setText(funcionario.getId());
     }
 
     Funcionario toFuncionario() {
@@ -295,6 +314,7 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
         result.setId(this.IdentificacionText.getText());
         result.setNombre(this.nombrejTextField.getText());
         return result;
+
     }
 
     @Override

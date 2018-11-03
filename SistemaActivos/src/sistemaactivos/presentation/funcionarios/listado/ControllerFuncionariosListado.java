@@ -6,13 +6,11 @@
 package sistemaactivos.presentation.funcionarios.listado;
 
 import java.awt.Point;
-import java.util.Arrays;
 import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
-import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -33,11 +31,11 @@ public class ControllerFuncionariosListado {
         view.setController(this);
         view.setModel(model);
     }
-    
-    public void FuncionariosEdicionShow(){
-    
+
+    public void FuncionariosEdicionShow() {
+
         SistemaActivos.FUNCIONARIO_EDICION_CONTROLLER.show();
-    
+
     }
 
     public void buscar(Funcionario filter) throws Exception {
@@ -45,53 +43,35 @@ public class ControllerFuncionariosListado {
         this.refrescarBusqueda();
     }
 
-    
-   public void refrescarBusqueda() throws Exception{
+    public void refrescarBusqueda() throws Exception {
         List<Funcionario> rows = domainModel.searchFuncionario(model.getFilter());
         model.setFuncionario(rows);
         model.commit();
-        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
-    }
-   
-     
- /*
-    public void preAgregar(Point at)throws Exception{      
-        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
-        if ( !Arrays.asList(SistemaActivos.ROL_MANAGER).contains(principal.getRol())){
-           throw new Exception(SistemaActivos.ROL_NOTAUTHORIZED);
+        if (rows.isEmpty()) {
+            throw new Exception("Ningún dato coincide");
         }
-        SistemaActivos.PERSONA_CONTROLLER.reset(Application.MODO_AGREGAR, new Solicitud());
-        SistemaActivos.PERSONA_CONTROLLER.show(at);
     }
-   */  
- 
-   public void editar(int row, Point at){       
-        Funcionario seleccionada = model.funcionarioTable.getRowAt(row); 
-        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+
+    public void editar(int row, Point at) throws Exception {
+        model.setSeleccionado(model.funcionarioTable.getRowAt(row));
         int modo;
-        //if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
-          // modo=SistemaActivos.MODO_EDITAR;
-       // }
-        //else{
-          //  modo=SistemaActivos.MODO_CONSULTAR;            
-        //}
-        //SistemaActivos.Solicitud_CONTROLLER.reset(modo, seleccionada);
-        //SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(at);
+        modo = SistemaActivos.MODO_EDITAR;
+        SistemaActivos.FUNCIONARIO_EDICION_CONTROLLER.reset(modo, model.funcionarioSeleccionada);
+        SistemaActivos.FUNCIONARIO_EDICION_CONTROLLER.show(at);
     }
-                       
-     
+
     public void borrar(int row) {
         Funcionario seleccionada = model.getFuncionariosTablemodel().getRowAt(row);
         try {
-              domainModel.deleteFuncionario(seleccionada);
+            domainModel.deleteFuncionario(seleccionada);
         } catch (Exception ex) {
         }
         List<Funcionario> rowsMod = domainModel.searchFuncionario(model.getFilter());
         model.setFuncionario(rowsMod);
         model.commit();
     }
-    
-    public void searchFuncionario(int row, Point position){
+
+    public void searchFuncionario(int row, Point position) {
         model.setSeleccionado(model.funcionarioTable.getRowAt(row));
         SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(position);
     }

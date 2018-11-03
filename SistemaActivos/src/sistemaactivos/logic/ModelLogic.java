@@ -94,8 +94,13 @@ public class ModelLogic {
     public List<Solicitud> searchSolicitud(Solicitud filtro) {
         return daoSolicitud.SolicitudSearch(filtro);
     }
+    
+    public List<Solicitud> searchSolicitudbyFuncionario(Funcionario filtro) {
+        return daoSolicitud.searchSolicitudbyFuncionario(filtro);
+    }
 
     //</editor-fold>
+    
     //  <editor-fold desc="Funcionario" defaultstate="collapsed">
     public List<Funcionario> getFuncionarios() {
         return daoAdministracion.FuncionarioGetAll();
@@ -130,6 +135,7 @@ public class ModelLogic {
     }
 
     //</editor-fold>
+    
     //  <editor-fold desc="Dependencia" defaultstate="collapsed">
     public List<Dependencia> getDependencias() {
         return daoAdministracion.DependenciaGetAll();
@@ -196,14 +202,18 @@ public class ModelLogic {
     }
 
     //</editor-fold>
+    
     public void close() {
         daoSolicitud.close();
         daoActivos.close();
         daoAdministracion.close();
-
     }
     
-     public List<Puesto> getPuesto() {
+    public List<Puesto> getPuestos() {
         return daoAdministracion.puestoGetAll();
+    }
+    
+    public List<Labor> getLaboresbyFuncionario(String FunId)throws Exception{
+        return daoAdministracion.laborGetbyFuncionario(FunId);
     }
 }

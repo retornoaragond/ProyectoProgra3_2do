@@ -40,6 +40,10 @@ INSERT INTO puesto (codgo, puesto) VALUES ('002', 'Secretariado');
 INSERT INTO puesto (codgo, puesto) VALUES ('003', 'Registrador');
 INSERT INTO puesto (codgo, puesto) VALUES ('004', 'Jefe OCCB');
 INSERT INTO puesto (codgo, puesto) VALUES ('005', 'Jefe RRHH');
+INSERT INTO puesto (codgo, puesto) VALUES ('006', 'Profesor');
+INSERT INTO puesto (codgo, puesto) VALUES ('007', 'Miscelaneo');
+INSERT INTO puesto (codgo, puesto) VALUES ('008', 'Guardia de Seguridad');
+
 
 
 
@@ -122,7 +126,6 @@ INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicit
 -- ----------------------------  Activos -------------------------------------
 
 
-
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('1', '001', 'xyf');
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('2', '002', 'uio');
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('3', '003', 'rrr');
@@ -157,4 +160,4 @@ INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('7', '007', 'oiu');
 
 
 -- SELECT * FROM sistemaactivos.dependencia;
-SELECT * FROM dependencia WHERE codigo LIKE '%s%'
+-- SELECT * FROM dependencia WHERE codigo LIKE '%s%'

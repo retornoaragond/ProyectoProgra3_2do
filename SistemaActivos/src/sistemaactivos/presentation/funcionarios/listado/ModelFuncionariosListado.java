@@ -60,6 +60,7 @@ public class ModelFuncionariosListado extends java.util.Observable{
     }
 
    
+    @Override
     public void addObserver(Observer o) {
         super.addObserver(o);
         this.commit();

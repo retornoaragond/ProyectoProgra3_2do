@@ -24,6 +24,7 @@ public class LaborTableModel extends AbstractTableModel {
         initColNames();
     }
 
+    @Override
     public int getRowCount() {
         return rows.size();
     }
@@ -33,6 +34,7 @@ public class LaborTableModel extends AbstractTableModel {
         return cols.length;
     }
 
+    @Override
     public String getColumnName(int col) {
         return colNames[cols[col]];
     }
