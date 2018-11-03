@@ -7,8 +7,6 @@ package sistemaactivos.presentation.funcionarios.edicion;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
@@ -544,11 +542,14 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
         Funcionario actual = model.getCurrent();
+        this.DependenciaCombo.setModel(model.getDependencia());
+        this.puestoCombo.setModel(model.getPuestos());
+        this.DependenciaCombo.setSelectedIndex(0);
+        this.puestoCombo.setSelectedIndex(0);
         this.fromFuncionario(actual);
         this.LaborTable.setModel(model.getLabores());
         this.SolicitudTable.setModel(model.getSoliTable());
-        this.DependenciaCombo.setSelectedIndex(0);
-        this.puestoCombo.setSelectedIndex(0);
+        
     }
 
     public void fromFuncionario(Funcionario actual) {
@@ -566,13 +567,17 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
 
-        this.DependenciaCombo.setModel(model.getDependencia());
-        this.puestoCombo.setModel(model.getPuestos());
+        
 
     }
 
     public boolean isRegistrador(List<Labor> l) {
-        return l.stream().anyMatch((la) -> (la.getPuesto().getPuesto().equals("Registrador")));
+        for(Labor la : l){
+            if("Registrador".equals(la.getPuesto().getPuesto())){
+                return true;
+            }
+        }
+        return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

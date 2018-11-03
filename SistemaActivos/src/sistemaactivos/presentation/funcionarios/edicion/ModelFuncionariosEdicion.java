@@ -39,7 +39,6 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     }
 
     public void setDependencias(List<Dependencia> dependencia) {
-        List<String> depe;
         this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
         this.commit();
     }

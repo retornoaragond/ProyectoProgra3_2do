@@ -319,6 +319,7 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
+    
     //<editor-fold desc="Puesto" defaultstate="collapsed">
     public Puesto puestoGet(String codigo) throws Exception {
         String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
@@ -357,6 +358,7 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
+    
     //  <editor-fold desc="Labores" defaultstate="collapsed">
     public Labor laborGet(Integer id) throws Exception {
         String sql = "SELECT * FROM labor WHERE id = '%d'";
@@ -454,6 +456,7 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
+    
     public int getAutoIncremento() throws Exception {
         try {
             String sql = "SELECT LAST_INSERT_ID()";
