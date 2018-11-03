@@ -25,7 +25,6 @@ public class ControllerDependenciasEdicion {
 
     public ControllerDependenciasEdicion(ViewDependenciasEdicion view, ModelDependenciasEdicion model,
             ModelLogic domainModel, Session session) {
-        // model.reset(domainModel.getDependencias());
 
         this.domainModel = domainModel;
         this.session = session;

@@ -259,7 +259,13 @@ public class DaoAdministracion {
     }
 
     public void DependenciaUpdate(Dependencia a) throws Exception {
-
+        String sql = "update dependencia set nombre='%s'"
+                + "where codigo='%s'";
+        sql = String.format(sql, a.getNombre(), a.getCodigo());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Dependencia no existe");
+        }
     }
 
     //</editor-fold>

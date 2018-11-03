@@ -148,8 +148,6 @@ public class ViewDependenciasEdicion extends javax.swing.JDialog implements java
          Dependencia result = new Dependencia();
          result.setCodigo(this.CodigoField.getText());
          result.setNombre(this.NombreTextField.getText());
-         //result.setLabors(new set(this.LaborsComboBox));
-         //result.setSolicituds ());
          return result;
      }
 
@@ -169,13 +167,14 @@ public class ViewDependenciasEdicion extends javax.swing.JDialog implements java
 
      public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model) {
          this.model = model;
-         //model.addObserver(this);
+         model.addObserver(this);
      }
 
      public ModelDependenciasEdicion getModel() {
          return model;
      }
 
+    @Override
      public void update(java.util.Observable updatedModel, Object parametros) {
          this.limpiarErrores();
          Dependencia actual = model.getCurrent();
@@ -191,6 +190,7 @@ public class ViewDependenciasEdicion extends javax.swing.JDialog implements java
          Guardar.setVisible(editable);
          this.validate();
      }
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
     private javax.swing.JTextField CodigoField;

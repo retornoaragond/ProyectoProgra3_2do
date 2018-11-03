@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.dependencias.edicion;
 
+import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
 
 /**
@@ -14,7 +15,6 @@ import sistemaactivos.logic.Dependencia;
 public class ModelDependenciasEdicion extends java.util.Observable {
 
     Dependencia current;
-
     int modo;
 
     public ModelDependenciasEdicion() {
@@ -28,7 +28,7 @@ public class ModelDependenciasEdicion extends java.util.Observable {
     }
 
     public void reset() {
-        //  this.reset(SistemaActivos.MODO_AGREGAR,new Persona());     
+        this.reset(SistemaActivos.MODO_AGREGAR, new Dependencia());
     }
 
     public int getModo() {

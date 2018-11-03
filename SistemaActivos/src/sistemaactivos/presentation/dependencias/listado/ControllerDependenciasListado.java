@@ -60,11 +60,10 @@ public class ControllerDependenciasListado {
     }
 
     public void editar(int row, Point at) {
-        Dependencia seleccionada = model.dependenciasTable.getRowAt(row);
-        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+        model.setSeleccionado(model.dependenciasTable.getRowAt(row));
         int modo;
         modo = SistemaActivos.MODO_EDITAR;
-        SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, seleccionada);
+        SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, model.seleccionado);
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show(at);
     }
 
@@ -82,8 +81,7 @@ public class ControllerDependenciasListado {
     public void changeDependencia(Dependencia nuevaDependencia) {
         if (model.getSeleccionado() != null) {
             model.getSeleccionado().setCodigo(nuevaDependencia.getCodigo());
-            // model.getSeleccionado().setNombre(nuevaDependencia.getNombre());
-
+            model.getSeleccionado().setNombre(nuevaDependencia.getNombre());
             try {
                 domainModel.updateDependencia(model.getSeleccionado());
                 this.refrescarBusqueda();
