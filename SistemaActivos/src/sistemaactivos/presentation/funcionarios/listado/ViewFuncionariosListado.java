@@ -261,7 +261,8 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        // TODO add your handling code here:
+         int row = this.FuncionarioTable.getSelectedRow();
+        controller.borrar(row);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

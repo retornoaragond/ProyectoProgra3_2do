@@ -141,19 +141,43 @@ public class DaoAdministracion {
     }
 
     public Funcionario FuncionarioGet(String id) throws Exception {
-        return new Funcionario();
+       String sql = "SELECT * FROM funcionario WHERE id='%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = dbb.executeQuery(sql);
+        if (rs.next()) {
+            return funcionario(rs);
+        } else {
+            throw new Exception("Funcionario no Existe");
+        }
     }
 
     public void FuncionarioDelete(Funcionario a) throws Exception {
-
+       String sql="delete from funcionario where id='%s'";
+        sql = String.format(sql,a.getId());
+        int count=dbb.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Funcionario no existe");
+        }
     }
 
     public void FuncionarioAdd(Funcionario a) throws Exception {
-
+      String sql="insert into Funcionario (id, nombre,) "+
+                "values('%s','%s')";
+        sql=String.format(sql,a.getId(),a.getNombre());
+        int count=dbb.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Funcionario ya existe");
+        }
     }
 
     public void FuncionarioUpdate(Funcionario a) throws Exception {
-
+      String sql="update funcionario set nombre='%s'"+
+               "where nombre='%s'";
+       sql=String.format(sql,a.getNombre(),a.getId());
+       int count=dbb.executeUpdate(sql);
+       if (count==0){
+           throw new Exception("Funcionario no existe");
+       }
     }
     //</editor-fold>
 

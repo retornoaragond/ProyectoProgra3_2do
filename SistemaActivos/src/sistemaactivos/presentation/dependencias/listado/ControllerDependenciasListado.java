@@ -54,7 +54,7 @@ public class ControllerDependenciasListado {
     }
 
     public void preAgregar(Point at) throws Exception {
-        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+       
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(SistemaActivos.MODO_AGREGAR, new Dependencia());
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show();
     }

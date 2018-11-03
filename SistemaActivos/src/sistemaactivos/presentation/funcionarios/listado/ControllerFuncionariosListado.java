@@ -93,7 +93,7 @@ public class ControllerFuncionariosListado {
     
     public void searchFuncionario(int row, Point position){
         model.setSeleccionado(model.funcionarioTable.getRowAt(row));
-        //SistemaActivos.FUNCIONARIO_SEARCH_CONTROLLER.show(position);
+        SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.show(position);
     }
 
     public void reset() {
