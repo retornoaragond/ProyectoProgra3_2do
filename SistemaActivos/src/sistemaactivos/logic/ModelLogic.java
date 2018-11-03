@@ -43,6 +43,14 @@ public class ModelLogic {
             throw new Exception("Clave incorrecta");
         }
     }
+    
+    public void agregarUsuario(Usuario user) throws Exception{
+        daoAdministracion.addUsuario(user);
+    }
+    
+    public List<Usuario> getUsuarios(){
+        return daoAdministracion.usuariosGetAll();
+    }
 
     //<editor-fold desc="Bien" defaultstate="collapsed">
     public List<Bien> getBienes() {
@@ -215,5 +223,17 @@ public class ModelLogic {
     
     public List<Labor> getLaboresbyFuncionario(String FunId)throws Exception{
         return daoAdministracion.laborGetbyFuncionario(FunId);
+    }
+    
+    public void addLabor(Labor lab)throws Exception{
+        daoAdministracion.LaborAdd(lab);
+    }
+    
+    public Labor getLabor(int cod)throws Exception{
+        return daoAdministracion.laborGet(cod);
+    }
+    
+    public int getAutoIncremento() throws Exception{
+        return daoAdministracion.getAutoIncremento();
     }
 }

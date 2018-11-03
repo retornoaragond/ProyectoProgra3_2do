@@ -16,75 +16,73 @@ import sistemaactivos.logic.Labor;
 import sistemaactivos.logic.Puesto;
 import sistemaactivos.logic.Solicitud;
 
-
 /**
  *
  * @author ExtremeTech
  */
 public class ModelFuncionariosEdicion extends java.util.Observable {
+
     Funcionario current;
     Funcionario funcionario;
     ComboBoxModel<Puesto> puestos;
-    int modo;    
+    int modo;
     ComboBoxModel<Dependencia> dependencia;
     SolicitudesTableModel solitablemodel;
     LaborTableModel laborModel;
-    
-    public SolicitudesTableModel getSoliTable(){
-    return this.solitablemodel;
+
+    public SolicitudesTableModel getSoliTable() {
+        return this.solitablemodel;
     }
-    
-    public ComboBoxModel<Dependencia> getDependencia(){
-    return dependencia;
+
+    public ComboBoxModel<Dependencia> getDependencia() {
+        return dependencia;
     }
-    
-    public void setDependencias(List<Dependencia> dependencia){
+
+    public void setDependencias(List<Dependencia> dependencia) {
         List<String> depe;
         this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
         this.commit();
     }
 
-    public ComboBoxModel<Puesto> getPuestos(){
-    return puestos;
+    public ComboBoxModel<Puesto> getPuestos() {
+        return puestos;
     }
-    
-    public void setPuesto(List<Puesto> puesto){
+
+    public void setPuesto(List<Puesto> puesto) {
         this.puestos = new DefaultComboBoxModel(puesto.toArray());
         this.commit();
     }
-    
-    
+
     public ModelFuncionariosEdicion() {
         this.reset();
     }
-    
-    public void reset(int modo, Funcionario current){
+
+    public void reset(int modo, Funcionario current) {
         this.setModo(modo);
         this.setCurrent(current);
         this.commit();
     }
-    
-    public void resetD(List<Dependencia> depe){
-    this.setDependencias(depe);
-    this.setCurrent(new Funcionario());
+
+    public void resetD(List<Dependencia> depe) {
+        this.setDependencias(depe);
+        this.setCurrent(new Funcionario());
     }
 
-    public void resetP(List<Puesto> pue){
-    this.setPuesto(pue);
-    this.setCurrent(new Funcionario());
+    public void resetP(List<Puesto> pue) {
+        this.setPuesto(pue);
+        this.setCurrent(new Funcionario());
     }
-    
-    public void reset(){
-        this.reset(SistemaActivos.MODO_AGREGAR,new Funcionario());  
-        funcionario=new Funcionario();
+
+    public void reset() {
+        this.reset(SistemaActivos.MODO_AGREGAR, new Funcionario());
+        funcionario = new Funcionario();
         List<Labor> rows = new ArrayList<>();
-        List<Solicitud> arows=new ArrayList<>();
-        current=new Funcionario();
+        List<Solicitud> arows = new ArrayList<>();
+        current = new Funcionario();
         this.setLabores(rows);
         this.setSolicitudes(arows);
         this.commit();
-        
-    }    
+    }
 
     public int getModo() {
         return modo;
@@ -99,7 +97,7 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     }
 
     public void setCurrent(Funcionario current) {
-        this.current = current;   
+        this.current = current;
     }
 
     @Override
@@ -108,23 +106,23 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
         this.commit();
     }
 
-    public void commit(){
+    public void commit() {
         setChanged();
-        notifyObservers();       
-    }    
-    
-     public void setLabores(List<Labor> labores) {
+        notifyObservers();
+    }
+
+    public void setLabores(List<Labor> labores) {
         int[] cols = {LaborTableModel.DEPENDENCIA, LaborTableModel.PUESTO};
         this.laborModel = new LaborTableModel(cols, labores);
     }
-     
-     public LaborTableModel getLabores(){
-     return laborModel;
-     }
-     
-     public void setSolicitudes(List<Solicitud> soli){
-     int[] cols ={SolicitudesTableModel.NUMSOLICITUD,SolicitudesTableModel.DEPENDENCIA };
-     this.solitablemodel=new SolicitudesTableModel(cols,soli);
-     }
-    
+
+    public LaborTableModel getLabores() {
+        return laborModel;
+    }
+
+    public void setSolicitudes(List<Solicitud> soli) {
+        int[] cols = {SolicitudesTableModel.NUMSOLICITUD, SolicitudesTableModel.DEPENDENCIA};
+        this.solitablemodel = new SolicitudesTableModel(cols, soli);
+    }
+
 }

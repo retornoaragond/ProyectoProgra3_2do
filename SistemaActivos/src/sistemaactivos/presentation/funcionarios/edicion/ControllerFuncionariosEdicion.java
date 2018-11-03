@@ -9,11 +9,13 @@ import java.awt.Point;
 import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.logic.Puesto;
 import sistemaactivos.logic.Solicitud;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -27,14 +29,22 @@ public class ControllerFuncionariosEdicion {
     ModelFuncionariosEdicion model;
     
     public ControllerFuncionariosEdicion(ViewFuncionariosEdicion view, ModelFuncionariosEdicion model, ModelLogic domainModel, Session session) {
-        model.resetD(domainModel.getDependencias());
-        model.resetP(domainModel.getPuestos());
+        initCombosB(domainModel,model);
         this.domainModel = domainModel;
         this.session = session;
         this.view = view;
         this.model = model;
         view.setController(this);
         view.setModel(model);
+    }
+    
+    public void initCombosB(ModelLogic domainModel,ModelFuncionariosEdicion model){
+        List<Dependencia> dep = domainModel.getDependencias();
+        dep.add(0, new Dependencia());
+        List<Puesto> pue = domainModel.getPuestos();
+        pue.add(0, new Puesto());
+        model.resetD(dep);
+        model.resetP(pue);
     }
     
     public void guardar(Funcionario funcionario) throws Exception {
@@ -86,8 +96,24 @@ public class ControllerFuncionariosEdicion {
         view.setVisible(false);
     }
     
-    public void preAgregar() {
-        
+    public void agregarLabor(Labor lab) throws Exception {
+        domainModel.addLabor(lab);
+    }
+    
+    public Labor getLabor(int cod) throws Exception{
+        return domainModel.getLabor(cod);
+    }
+    
+    public void agregarUsuario(Usuario user) throws Exception{
+        domainModel.agregarUsuario(user);
+    }
+    
+    public List<Usuario> getUsuarios() throws Exception{
+       return domainModel.getUsuarios();
+    }
+    
+    public int getAutoIncremento() throws Exception{
+        return domainModel.getAutoIncremento();
     }
 
     //hacer en modelLogic un borrar labor con la id

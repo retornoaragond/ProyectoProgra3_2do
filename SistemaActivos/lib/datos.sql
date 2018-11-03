@@ -161,3 +161,4 @@ INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('7', '007', 'oiu');
 
 -- SELECT * FROM sistemaactivos.dependencia;
 -- SELECT * FROM dependencia WHERE codigo LIKE '%s%'
+-- SELECT LAST_INSERT_ID();

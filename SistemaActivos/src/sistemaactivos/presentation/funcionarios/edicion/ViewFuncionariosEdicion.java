@@ -7,6 +7,8 @@ package sistemaactivos.presentation.funcionarios.edicion;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Dependencia;
@@ -42,7 +44,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     private void initComponents() {
 
         guardarFld = new javax.swing.JButton();
-        Guadar = new javax.swing.JButton();
+        Guadarbtn = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         NombreLabel = new javax.swing.JLabel();
@@ -51,7 +53,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         NombreTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         panelUser = new javax.swing.JPanel();
-        NombreUsuarioLabel = new javax.swing.JLabel();
+        UsuarioLabel = new javax.swing.JLabel();
         OperadorText = new javax.swing.JTextField();
         Contraseñatext = new javax.swing.JTextField();
         contraseñaLabel = new javax.swing.JLabel();
@@ -79,10 +81,10 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         setTitle("Funcionarios");
 
-        Guadar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconguardar.png"))); // NOI18N
-        Guadar.addActionListener(new java.awt.event.ActionListener() {
+        Guadarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconguardar.png"))); // NOI18N
+        Guadarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuadarActionPerformed(evt);
+                GuadarbtnActionPerformed(evt);
             }
         });
 
@@ -139,7 +141,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         panelUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        NombreUsuarioLabel.setText("Operador");
+        UsuarioLabel.setText("Operador");
 
         contraseñaLabel.setText("Contraseña");
 
@@ -154,7 +156,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addContainerGap()
                 .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contraseñaLabel)
-                    .addComponent(NombreUsuarioLabel))
+                    .addComponent(UsuarioLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Contraseñatext)
@@ -172,7 +174,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreUsuarioLabel)
+                    .addComponent(UsuarioLabel)
                     .addComponent(OperadorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -320,7 +322,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Guadar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Guadarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(Atras)
                 .addGap(206, 206, 206))
@@ -349,7 +351,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Atras, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Guadar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Guadarbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -370,7 +372,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         }
     }//GEN-LAST:event_guardarFldActionPerformed
 
-    private void GuadarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarActionPerformed
+    private void GuadarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarbtnActionPerformed
         if (this.validar()) {
             try {
                 this.controller.guardar(this.toFuncionario());
@@ -381,7 +383,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         } else {
             JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_GuadarActionPerformed
+    }//GEN-LAST:event_GuadarbtnActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         controller.reset();
@@ -389,10 +391,24 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AgregarLaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLaborActionPerformed
-        try {
-            controller.preAgregar();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        if (this.validarLabor()) {
+            try {
+                Labor lab = new Labor();
+                lab.setFuncionario(model.getCurrent());
+                lab.setDependencia((Dependencia) this.DependenciaCombo.getSelectedItem());
+                lab.setPuesto((Puesto) this.puestoCombo.getSelectedItem());
+                controller.agregarLabor(lab);
+                Usuario us = new Usuario();
+                us.setId(this.OperadorText.getText());
+                us.setPass(this.Contraseñatext.getText());
+                us.setLabor(controller.getLabor(controller.getAutoIncremento()));
+                controller.agregarUsuario(us);
+                controller.reset(SistemaActivos.MODO_EDITAR, model.getCurrent());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Faltan Datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AgregarLaborActionPerformed
 
@@ -431,6 +447,53 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         return !error;
     }
 
+    boolean isUser(String id) throws Exception {
+        boolean error = false;
+        List<Usuario> users = controller.getUsuarios();
+        for (Usuario u : users) {
+            if (id.equals(u.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean validarLabor()  {
+        boolean error = false;
+        this.UsuarioLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.OperadorText.getText().isEmpty()) {
+            this.UsuarioLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        } else {
+            try {
+                if (isUser(this.OperadorText.getText())) {
+                    error = true;
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Ya existe un usario con ese Id", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        this.contraseñaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.Contraseñatext.getText().isEmpty()) {
+            this.contraseñaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.Dependencia.setForeground(SistemaActivos.COLOR_OK);
+        if (this.DependenciaCombo.getSelectedIndex() == 0) {
+            this.Dependencia.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.PuestoLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.puestoCombo.getSelectedIndex() == 0) {
+            this.PuestoLabel.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        return !error;
+    }
+
     Funcionario toFuncionario() {
         Funcionario result = new Funcionario();
         result.setId(this.IDTextField.getText());
@@ -445,9 +508,9 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         result.setFuncionario(model.getCurrent());
         return result;
     }
-    
-    Usuario toUsuario(){
-        Usuario result =new Usuario();
+
+    Usuario toUsuario() {
+        Usuario result = new Usuario();
         result.setId(this.OperadorText.getText());
         result.setPass(this.Contraseñatext.getText());
         return result;
@@ -456,6 +519,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     public void limpiarErrores() {
         this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.UsuarioLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.contraseñaLabel.setForeground(SistemaActivos.COLOR_OK);
     }
 
     public void setController(sistemaactivos.presentation.funcionarios.edicion.ControllerFuncionariosEdicion controller) {
@@ -482,8 +547,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         this.fromFuncionario(actual);
         this.LaborTable.setModel(model.getLabores());
         this.SolicitudTable.setModel(model.getSoliTable());
-        this.DependenciaCombo.setSelectedIndex(-1);
-        this.puestoCombo.setSelectedIndex(-1);
+        this.DependenciaCombo.setSelectedIndex(0);
+        this.puestoCombo.setSelectedIndex(0);
     }
 
     public void fromFuncionario(Funcionario actual) {
@@ -500,7 +565,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
-        
+
         this.DependenciaCombo.setModel(model.getDependencia());
         this.puestoCombo.setModel(model.getPuestos());
 
@@ -517,18 +582,18 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     private javax.swing.JLabel Dependencia;
     private javax.swing.JComboBox DependenciaCombo;
     private javax.swing.JToggleButton EliminarButon;
-    private javax.swing.JButton Guadar;
+    private javax.swing.JButton Guadarbtn;
     private javax.swing.JLabel IDLabel;
     private javax.swing.JTextField IDTextField;
     private javax.swing.JTable LaborTable;
     private javax.swing.JLabel Laborlabel;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JTextField NombreTextField;
-    private javax.swing.JLabel NombreUsuarioLabel;
     private javax.swing.JTextField OperadorText;
     private javax.swing.JLabel PuestoLabel;
     private javax.swing.JLabel SolicitudLabel;
     private javax.swing.JTable SolicitudTable;
+    private javax.swing.JLabel UsuarioLabel;
     private javax.swing.JLabel contraseñaLabel;
     public javax.swing.JButton guardarFld;
     private javax.swing.JLabel jLabel1;

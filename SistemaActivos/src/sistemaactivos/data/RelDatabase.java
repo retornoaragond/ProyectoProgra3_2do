@@ -41,8 +41,8 @@ public final class RelDatabase {
             String user = prop.getProperty("database_user");
             String password = prop.getProperty("database_password");
             String database = prop.getProperty("database_name");
-
-            String URL_conexion = "jdbc:mysql://" + server + ":" + port + "/" + database + "?user=" + user + "&password=" + password;
+            //autoReconnect=true&useSSL=false para que no tire el error de SSL
+            String URL_conexion = "jdbc:mysql://" + server + ":" + port + "/" + database + "?user=" + user + "&password=" + password + "&autoReconnect=true&useSSL=false";
             Class.forName(driver).newInstance();
             return DriverManager.getConnection(URL_conexion);
         } catch (Exception e) {

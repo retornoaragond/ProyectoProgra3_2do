@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
@@ -54,8 +56,32 @@ public class DaoAdministracion {
             return null;
         }
     }
-    //</editor-fold>
 
+    public void addUsuario(Usuario user) throws Exception {
+        String sql = "INSERT INTO usuario (id, pass, labUsu)"
+                + " VALUES ('%s', '%s', '%d');";
+        sql = String.format(sql, user.getId(), user.getPass(), user.getLabor().getId());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("usuario ya existe ya existe");
+        }
+    }
+    
+    public List<Usuario> usuariosGetAll(){
+        List<Usuario> users = new ArrayList<>();
+        try {
+            String sql = "select * from usuario";
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                users.add(usuario(rs));
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return users;
+    }
+
+    //</editor-fold>
     //  <editor-fold desc="Funcionarios" defaultstate="collapsed">
     public Funcionario getFuncionario(String id) throws Exception {
         String sql = "SELECT * FROM funcionario WHERE funcionario.id = '%s'";
@@ -172,7 +198,7 @@ public class DaoAdministracion {
 
     public void FuncionarioUpdate(Funcionario a) throws Exception {
         String sql = "update funcionario set nombre='%s'"
-                + "where nombre='%s'";
+                + "where id='%s'";
         sql = String.format(sql, a.getNombre(), a.getId());
         int count = dbb.executeUpdate(sql);
         if (count == 0) {
@@ -293,7 +319,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-   
     //<editor-fold desc="Puesto" defaultstate="collapsed">
     public Puesto puestoGet(String codigo) throws Exception {
         String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
@@ -332,7 +357,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Labores" defaultstate="collapsed">
     public Labor laborGet(Integer id) throws Exception {
         String sql = "SELECT * FROM labor WHERE id = '%d'";
@@ -418,7 +442,32 @@ public class DaoAdministracion {
         return labores;
     }
 
+    public void LaborAdd(Labor a) throws Exception {
+        String sql = "INSERT INTO labor (funcLab, depLab, pueLab) "
+                + "VALUES ('%s', '%s', '%s')";
+        sql = String.format(sql, a.getFuncionario().getId(),
+                a.getDependencia().getCodigo(), a.getPuesto().getCodgo());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Funcionario ya existe");
+        }
+    }
+
     //</editor-fold>
+    public int getAutoIncremento() throws Exception {
+        try {
+            String sql = "SELECT LAST_INSERT_ID()";
+            ResultSet rs = dbb.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("LAST_INSERT_ID()");
+            } else {
+                throw new Exception("Labor no Existe");
+            }
+        } catch (SQLException ex) {
+            return -1;
+        }
+    }
+
     public void close() {
     }
 
