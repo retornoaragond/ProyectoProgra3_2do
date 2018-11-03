@@ -97,20 +97,43 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
 
 -- ----------------------------  Solicitudes -------------------------------------
 INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('abc', '20181102', '1', '5000','', 'recibida', '001', 'Donacion');
-INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('def', '20181102', '3', '10000','', 'procesada', '003', 'Compra');
-UPDATE solicitud SET registrador = '009' WHERE (numsol = '1');
-DELETE FROM solicitud WHERE (numsol = '2');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('def', '20181102', '1', '10000','', 'procesada', '003', 'Compra');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('ert', '20180210', '1', '1500','', 'porVerificar', '002', 'Generado');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('asd', '20180913', '1', '450','', 'recibida', '004', 'Generado');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('jkl', '20180215', '1', '800','no claro', 'rechazada','005', 'Compra');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('vbn', '20180508', '1', '745','', 'procesada', '006', 'Compra');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('kol', '20180122', '1', '100','', 'porVerificar', '007', 'Compra');
+
 
 
 
 -- ----------------------------  Bienes -------------------------------------
 
 INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('xyf', 'sillas oficina', 'patito', 'x-23', '5000', '1', '1', '1');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('uio', 'escritorios', 'patitoplus', 'xy-40', '45000', '1', '2', '2');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('rrr', 'sillones', 'wood', 'm456', '50000', '1', '3', '3');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('ggg', 'basureros', 'acme', 'b71', '8000', '1', '4', '4');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('qjd', 'computadoras', 'hp', 'hp40', '200000', '1', '5', '5');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('mmn', 'routers', 'cisco', 'cs-333', '30000', '1', '6', '6');
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('oiu', 'mesas', 'altea', 'aa-465', '48000', '1', '7', '7');
+
 
 
 -- ----------------------------  Activos -------------------------------------
 
-INSERT INTO activo (codigoId, labAct, bienAct) VALUES ('p122', '004', 'xyz');
+
+
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('1', '001', 'xyf');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('2', '002', 'uio');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('3', '003', 'rrr');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('4', '004', 'ggg');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('5', '005', 'qjd');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('6', '006', 'mmn');
+INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('7', '007', 'oiu');
+
+
+
+
 
 
 
@@ -129,6 +152,9 @@ INSERT INTO activo (codigoId, labAct, bienAct) VALUES ('p122', '004', 'xyz');
 -- SELECT * FROM sistemaactivos.labor;
 -- SELECT * FROM sistemaactivos.labor;
 -- SELECT * FROM usuario WHERE usuario.id = 001; 
+-- UPDATE solicitud SET registrador = '009' WHERE (numsol = '1');
+-- DELETE FROM solicitud WHERE (numsol = '2');
+
 
 -- SELECT * FROM sistemaactivos.dependencia;
 SELECT * FROM dependencia WHERE codigo LIKE '%s%'

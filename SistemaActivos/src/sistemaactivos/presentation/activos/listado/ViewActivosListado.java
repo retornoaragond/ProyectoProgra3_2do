@@ -43,59 +43,70 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     }
 
     public void limpiarErrores() {
-        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.busquedaLabel.setForeground(SistemaActivos.COLOR_OK);
     }
 
     boolean validar() {
         boolean error = false;
-        boolean flag = false;
-
-        //repetitivo
-        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.codigoLabel.getText().isEmpty() && !flag) {
-            this.codigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            flag = true;
+       // boolean flag = false;
+       this.busquedaLabel.setForeground(SistemaActivos.COLOR_OK);
+       if(this.busquedaTextField.getText().isEmpty()){
+         busquedaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+       error=true;
+       }
+       if (this.opcionesBusqueda.getSelection()==null){
+            this.TipoFiltrojLabel3.setForeground(SistemaActivos.COLOR_ERROR);
+            error=true;
         }
-
-        this.categoriaLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.categoriaLabel.getText().isEmpty() && !flag) {
-            this.categoriaLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            flag = true;
-        }
-
-        this.DescripcionLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.DescripcionLabel.getText().isEmpty() && !flag) {
-            this.DescripcionLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            flag = true;
-        }
-
-        this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.DependenciaLabel.getText().isEmpty() && !flag) {
-            this.DependenciaLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            flag = true;
-        }
-
-        this.ResponsableLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.ResponsableLabel.getText().isEmpty() && !flag) {
-            this.ResponsableLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            flag = true;
-        }
-        //si almenos un espacio no esta en blanco
-        if (flag) {
-            error = true;
-        }
-        return !error;
+       
+     return !error; 
     }
+//        //repetitivo
+//        this.codigoLabel.setForeground(SistemaActivos.COLOR_OK);
+//        if (this.codigoLabel.getText().isEmpty() && !flag) {
+//            this.codigoLabel.setForeground(SistemaActivos.COLOR_ERROR);
+//            error = true;
+//        } else {
+//            flag = true;
+//        }
+//
+//        this.categoriaLabel.setForeground(SistemaActivos.COLOR_OK);
+//        if (this.categoriaLabel.getText().isEmpty() && !flag) {
+//            this.categoriaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+//            error = true;
+//        } else {
+//            flag = true;
+//        }
+//
+//        this.DescripcionLabel.setForeground(SistemaActivos.COLOR_OK);
+//        if (this.DescripcionLabel.getText().isEmpty() && !flag) {
+//            this.DescripcionLabel.setForeground(SistemaActivos.COLOR_ERROR);
+//            error = true;
+//        } else {
+//            flag = true;
+//        }
+//
+//        this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
+//        if (this.DependenciaLabel.getText().isEmpty() && !flag) {
+//            this.DependenciaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+//            error = true;
+//        } else {
+//            flag = true;
+//        }
+//
+//        this.ResponsableLabel.setForeground(SistemaActivos.COLOR_OK);
+//        if (this.ResponsableLabel.getText().isEmpty() && !flag) {
+//            this.ResponsableLabel.setForeground(SistemaActivos.COLOR_ERROR);
+//            error = true;
+//        } else {
+//            flag = true;
+//        }
+//        //si almenos un espacio no esta en blanco
+//        if (flag) {
+//            error = true;
+//        }
+//        return !error;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,19 +119,19 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        opcionesBusqueda = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        codigoLabel = new javax.swing.JLabel();
-        CodigoTextField = new javax.swing.JTextField();
-        categoriaLabel = new javax.swing.JLabel();
-        categoriaTextField = new javax.swing.JTextField();
-        DescripcionLabel = new javax.swing.JLabel();
-        descripcionTextField = new javax.swing.JTextField();
-        DependenciaLabel = new javax.swing.JLabel();
-        dependenciaTextField = new javax.swing.JTextField();
+        busquedaLabel = new javax.swing.JLabel();
+        busquedaTextField = new javax.swing.JTextField();
         buscarjButton = new javax.swing.JButton();
-        ResponsableLabel = new javax.swing.JLabel();
-        ResponsableTextField = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        CategoriajRadioButton1 = new javax.swing.JRadioButton();
+        DescripcionjRadioButton = new javax.swing.JRadioButton();
+        ResponsablejRadioButton = new javax.swing.JRadioButton();
+        DependenciajRadioButton = new javax.swing.JRadioButton();
+        CodigojRadioButton = new javax.swing.JRadioButton();
+        TipoFiltrojLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         activosTable = new javax.swing.JTable();
@@ -148,13 +159,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Busqueda");
 
-        codigoLabel.setText("Codigo");
-
-        categoriaLabel.setText("Categoria");
-
-        DescripcionLabel.setText("Descripción");
-
-        DependenciaLabel.setText("Dependencia");
+        busquedaLabel.setText("Busqueda ");
 
         buscarjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconbuscar.png"))); // NOI18N
         buscarjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -163,45 +168,84 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             }
         });
 
-        ResponsableLabel.setText("Responsable");
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
+
+        opcionesBusqueda.add(CategoriajRadioButton1);
+        CategoriajRadioButton1.setText("Categoria");
+
+        opcionesBusqueda.add(DescripcionjRadioButton);
+        DescripcionjRadioButton.setText("Descripcion");
+
+        opcionesBusqueda.add(ResponsablejRadioButton);
+        ResponsablejRadioButton.setText("Responsable");
+
+        opcionesBusqueda.add(DependenciajRadioButton);
+        DependenciajRadioButton.setText("Dependencia");
+
+        CodigojRadioButton.setText("Codigo");
+
+        TipoFiltrojLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TipoFiltrojLabel3.setText("Tipo Filtro");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(CategoriajRadioButton1)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(DependenciajRadioButton)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(DescripcionjRadioButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(ResponsablejRadioButton))
+                    .addComponent(CodigojRadioButton))
+                .addGap(25, 25, 25))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(TipoFiltrojLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(TipoFiltrojLabel3)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CategoriajRadioButton1)
+                    .addComponent(DescripcionjRadioButton)
+                    .addComponent(ResponsablejRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DependenciajRadioButton)
+                    .addComponent(CodigojRadioButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ResponsableLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ResponsableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(busquedaLabel)
+                        .addGap(25, 25, 25)
+                        .addComponent(busquedaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(buscarjButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(codigoLabel)
-                        .addGap(42, 42, 42)
-                        .addComponent(CodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DependenciaLabel)
-                    .addComponent(categoriaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(categoriaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dependenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscarjButton)
-                        .addGap(68, 68, 68))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(337, 337, 337)
+                        .addComponent(jLabel1)))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,22 +253,13 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel)
-                    .addComponent(CodigoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(categoriaLabel)
-                    .addComponent(categoriaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DescripcionLabel)
-                    .addComponent(descripcionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buscarjButton)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ResponsableLabel)
-                        .addComponent(ResponsableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(DependenciaLabel)
-                        .addComponent(dependenciaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(buscarjButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(busquedaLabel)
+                        .addComponent(busquedaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -291,7 +326,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Agregar)
@@ -306,7 +341,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -342,38 +377,38 @@ controller.controllerEdicionShow();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Atras;
-    private javax.swing.JTextField CodigoTextField;
-    private javax.swing.JLabel DependenciaLabel;
-    private javax.swing.JLabel DescripcionLabel;
-    private javax.swing.JLabel ResponsableLabel;
-    private javax.swing.JTextField ResponsableTextField;
+    private javax.swing.JRadioButton CategoriajRadioButton1;
+    private javax.swing.JRadioButton CodigojRadioButton;
+    private javax.swing.JRadioButton DependenciajRadioButton;
+    private javax.swing.JRadioButton DescripcionjRadioButton;
+    private javax.swing.JRadioButton ResponsablejRadioButton;
+    private javax.swing.JLabel TipoFiltrojLabel3;
     private javax.swing.JTable activosTable;
     private javax.swing.JButton buscarjButton;
-    private javax.swing.JLabel categoriaLabel;
-    private javax.swing.JTextField categoriaTextField;
-    private javax.swing.JLabel codigoLabel;
-    private javax.swing.JTextField dependenciaTextField;
-    private javax.swing.JTextField descripcionTextField;
+    private javax.swing.JLabel busquedaLabel;
+    private javax.swing.JTextField busquedaTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.ButtonGroup opcionesBusqueda;
     // End of variables declaration//GEN-END:variables
 
     public void fromActivo(Activo s) {
-        CodigoTextField.setText(s.getCodigoId());
-        categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
-        descripcionTextField.setText(s.getBien().getDescripcion());
-        dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
-        ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
+//        busquedaTextField.setText(s.getCodigoId());
+//        categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
+//        descripcionTextField.setText(s.getBien().getDescripcion());
+//        dependenciaTextField.setText(s.getLabor().getDependencia().getNombre());
+//        ResponsableTextField.setText(s.getLabor().getFuncionario().getNombre());
     }
 
     Activo toActivo() {
         Activo result = new Activo();
-        result.setCodigoId(codigoLabel.getText());
+        result.setCodigoId(busquedaLabel.getText());
         // result.setBiens(new HashSet<>(model.activosTable));
 
         return result;

@@ -47,9 +47,8 @@ public class DaoActivos {
     public List<Activo> ActivoSearch(Activo filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "select * from "
-                    + "EstadoCivil "
-                    + "where descripcion like '%%%s%%'";
+            String sql = "SELECT * from activo "
+                   + "where codigoId like '%s%'";
             sql = String.format(sql, filtro.getBien());
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
@@ -74,20 +73,44 @@ public class DaoActivos {
         return estados;
     }
 
-    public Activo ActivoGet(String codigo) throws Exception {
-        return new Activo();
+    public Activo ActivoGet(String codigoId) throws Exception {
+        String sql = "SELECT * FROM dependencia WHERE codigoId='%s'";
+        sql = String.format(sql, codigoId);
+        ResultSet rs = dbbb.executeQuery(sql);
+        if (rs.next()) {
+            return activo(rs);
+        } else {
+            throw new Exception("Activo no Existe");
+        }
     }
 
     public void ActivoDelete(Activo a) throws Exception {
-
+       String sql = "delete from activo where codigoId='%s'";
+        sql = String.format(sql, a.getCodigoId());
+        int count = dbbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Activo no existe");
+        }
     }
 
     public void ActivoAdd(Activo a) throws Exception {
-
+       String sql = "insert into Activo (codigoId) "
+                + "values('%s')";
+        sql = String.format(sql, a.getCodigoId());
+        int count = dbbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Activo ya existe");
+        }
     }
 
     public void ActivoUpdate(Activo a) throws Exception {
-
+              String sql = "update activo set labAct='%d',"
+                + "where codigoId='%s'";
+        sql = String.format(sql, a.getCodigoId());
+        int count = dbbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Activo no existe");
+        }  
     }
 
     public void close() {
