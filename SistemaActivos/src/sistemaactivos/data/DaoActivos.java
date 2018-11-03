@@ -60,6 +60,88 @@ public class DaoActivos {
         return resultado;
     }
 
+    ////arreglar inner jpin
+        public List<Activo> ActivoSearchCategoria(Activo filtro) {
+        List<Activo> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM activo "
+                    + "WHERE nombre LIKE '%%%s%%'";
+            sql = String.format(sql, filtro.getBien().getCategoria().getDescripcion());
+            ResultSet rs = dbbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(activo(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public List<Activo> ActivoSearchCodigo(Activo filtro) {
+        List<Activo> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM activo "
+                    + "WHERE codigoId ='%s'";
+            sql = String.format(sql, filtro.getCodigoId());
+            ResultSet rs = dbbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(activo(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+    
+    ///hacer innerjoijn
+    public List<Activo> ActivoSearchDependencia(Activo filtro) {
+        List<Activo> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM activo "
+                    + "WHERE codigo ='%s'";
+            sql = String.format(sql, filtro.getLabor().getDependencia().getNombre());
+            ResultSet rs = dbbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(activo(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+   
+    
+    
+    
+    public List<Activo> ActivoSearchDescripcion(Activo filtro) {
+        List<Activo> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * "+
+                     "from activo a inner join bien b on a.bien=b.descripcion)";
+            sql = String.format(sql, filtro.getBien().getDescripcion());
+            ResultSet rs = dbbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(activo(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+    
+   
+     public List<Activo> ActivoSearchResponsable(Activo filtro) {
+        List<Activo> resultado = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM activo "
+                    + "WHERE codigo ='%s'";
+            sql = String.format(sql, filtro.getLabor().getFuncionario().getNombre());
+            ResultSet rs = dbbb.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(activo(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+   
+    
     public List<Activo> ActivosGetAll() {
         List<Activo> estados = new ArrayList<>();
         try {

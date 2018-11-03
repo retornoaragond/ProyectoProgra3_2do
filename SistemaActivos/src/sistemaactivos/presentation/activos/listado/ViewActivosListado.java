@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.activos.listado;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Observable;
 import javax.swing.JOptionPane;
@@ -137,7 +138,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         activosTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
-        Agregar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,6 +182,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         opcionesBusqueda.add(DependenciajRadioButton);
         DependenciajRadioButton.setText("Dependencia");
 
+        opcionesBusqueda.add(CodigojRadioButton);
         CodigojRadioButton.setText("Codigo");
 
         TipoFiltrojLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -310,13 +311,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             }
         });
 
-        Agregar.setText("Agregar");
-        Agregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -329,8 +323,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Agregar)
-                .addGap(18, 18, 18)
                 .addComponent(Atras)
                 .addGap(26, 26, 26))
         );
@@ -341,10 +333,8 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(Atras)
                 .addContainerGap())
         );
 
@@ -352,30 +342,24 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarjButtonActionPerformed
-        if (this.validar()) {
-            try {
-                controller.buscar(this.toActivo());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+//        if (this.validar()) {
+//            try {
+//                String busqueda =busquedaTextField.getText();
+//                controller.buscar(busqueda);
+//            } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Debe indicar algún dato", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_buscarjButtonActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
        controller.hide();
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-controller.controllerEdicionShow();
-
-
-    }//GEN-LAST:event_AgregarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Agregar;
     private javax.swing.JButton Atras;
     private javax.swing.JRadioButton CategoriajRadioButton1;
     private javax.swing.JRadioButton CodigojRadioButton;
@@ -399,6 +383,25 @@ controller.controllerEdicionShow();
     // End of variables declaration//GEN-END:variables
 
     public void fromActivo(Activo s) {
+
+    // Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+
+        if (this.CategoriajRadioButton1.isSelected()) {
+            this.busquedaTextField.setText(s.getBien().getCategoria().getDescripcion());
+        
+        } else if (this.CodigojRadioButton.isSelected()) {
+            this.busquedaTextField.setText(s.getCodigoId());
+        
+        } else if (this.DependenciajRadioButton.isSelected()) {
+            this.busquedaTextField.setText(s.getLabor().getDependencia().getNombre());
+        
+        } else if (this.DescripcionjRadioButton.isSelected()) {
+            this.busquedaTextField.setText(s.getBien().getDescripcion());
+        
+        } else if (this.ResponsablejRadioButton.isSelected()) {
+            this.busquedaTextField.setText(s.getLabor().getFuncionario().getNombre());
+        }
+
 //        busquedaTextField.setText(s.getCodigoId());
 //        categoriaTextField.setText(s.getBien().getCategoria().getDescripcion());
 //        descripcionTextField.setText(s.getBien().getDescripcion());
@@ -407,10 +410,13 @@ controller.controllerEdicionShow();
     }
 
     Activo toActivo() {
+       
+        
+        
         Activo result = new Activo();
         result.setCodigoId(busquedaLabel.getText());
         // result.setBiens(new HashSet<>(model.activosTable));
-
+      //result.setBien(bien);
         return result;
     }
 

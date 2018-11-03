@@ -46,7 +46,14 @@ public class ControllerActivosListado {
          this.refrescarBusqueda();
     }
      
-    
+   
+//    public void buscarL(String a) throws Exception{       
+//         model.setFilter(filter);
+//         this.refrescarBusqueda();
+//    }
+   
+   
+   
    
    public void refrescarBusqueda() throws Exception{
        List<Activo> rows = domainModel.searchActivo(model.getFilter());//hacer en el modelLogic delete activo
