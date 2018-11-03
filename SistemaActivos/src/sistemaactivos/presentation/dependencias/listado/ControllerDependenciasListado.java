@@ -63,20 +63,9 @@ public class ControllerDependenciasListado {
         Dependencia seleccionada = model.dependenciasTable.getRowAt(row);
         Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         int modo;
-          modo=SistemaActivos.MODO_EDITAR;
-        
+        modo = SistemaActivos.MODO_EDITAR;
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, seleccionada);
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show(at);
-    
-        /*if ( Arrays.asList(SistemaActivos.ROL_MANAGER, SistemaActivos.ROL_SUPERVISOR).contains(principal.getRol())){
-            modo=SistemaActivos.MODO_EDITAR;
-        }*/
- /*
-        else{
-            modo=SistemaActivos.MODO_CONSULTAR;            
-        }*/
-        //SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, seleccionada);
-        //SistemaActivos.DEPENDENCIA_CONTROLLER.show(at);
     }
 
     public void borrar(int row) {
@@ -89,38 +78,24 @@ public class ControllerDependenciasListado {
         model.setDependencia(rowsMod);
         model.commit();
     }
-    
-    
-      public void changeDependencia(Dependencia nuevaDependencia){
-        if (model.getSeleccionado()!=null){
+
+    public void changeDependencia(Dependencia nuevaDependencia) {
+        if (model.getSeleccionado() != null) {
             model.getSeleccionado().setCodigo(nuevaDependencia.getCodigo());
-           // model.getSeleccionado().setNombre(nuevaDependencia.getNombre());
-           
+            // model.getSeleccionado().setNombre(nuevaDependencia.getNombre());
+
             try {
                 domainModel.updateDependencia(model.getSeleccionado());
-                this.refrescarBusqueda();                
-            } catch (Exception ex) { }
+                this.refrescarBusqueda();
+            } catch (Exception ex) {
+            }
         }
     }
-
-    
 
     public void searchDependencia(int row, Point position) {
         model.setSeleccionado(model.dependenciasTable.getRowAt(row));
         SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.show(position);// aqui hice algo 
     }
-
-    /*  
-    public void changeEstado(EstadoCivil nuevoEstado){
-        if (model.getSeleccionado()!=null){
-            model.getSeleccionado().setEstadoCivil(nuevoEstado);
-            try {
-                domainModel.updatePersona(model.getSeleccionado());
-                this.refrescarBusqueda();                
-            } catch (Exception ex) { }
-        }
-    }
-     */
 
     public void reset() {
         model.reset();

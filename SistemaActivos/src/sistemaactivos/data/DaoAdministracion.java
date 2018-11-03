@@ -67,12 +67,12 @@ public class DaoAdministracion {
             throw new Exception("Funcionario no Existe");
         }
     }
-    
+
     private Funcionario funcionario(ResultSet rs) {
         try {
             Funcionario ec = new Funcionario();
             ec.setId(rs.getString("id"));
-            ec.setNombre(rs.getString("nombre"));            
+            ec.setNombre(rs.getString("nombre"));
             return ec;
         } catch (SQLException ex) {
             return null;
@@ -80,13 +80,13 @@ public class DaoAdministracion {
             return null;
         }
     }
-    
+
     public List<Funcionario> FuncionarioSearch(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
-            String sql ="SELECT * FROM funcionario WHERE id = '%s%'"
+            String sql = "SELECT * FROM funcionario WHERE id = '%s%'"
                     + " AND nombre LIKE '%%%s%%' ";
-            sql = String.format(sql, filtro.getId(),filtro.getNombre());
+            sql = String.format(sql, filtro.getId(), filtro.getNombre());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(funcionario(rs));
@@ -96,12 +96,12 @@ public class DaoAdministracion {
 
         return resultado;
     }
-    
+
     public List<Funcionario> FuncionaroSearchNombre(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
-            String sql ="SELECT * FROM funcionario WHERE nombre LIKE '%%%s%%' ";
-            sql = String.format(sql,filtro.getNombre());
+            String sql = "SELECT * FROM funcionario WHERE nombre LIKE '%%%s%%' ";
+            sql = String.format(sql, filtro.getNombre());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(funcionario(rs));
@@ -115,8 +115,8 @@ public class DaoAdministracion {
     public List<Funcionario> FuncionarioSearchCodigo(Funcionario filtro) {
         List<Funcionario> resultado = new ArrayList<>();
         try {
-            String sql ="SELECT * FROM funcionario WHERE id = '%s'";
-            sql = String.format(sql, filtro.getId(),filtro.getNombre());
+            String sql = "SELECT * FROM funcionario WHERE id = '%s'";
+            sql = String.format(sql, filtro.getId(), filtro.getNombre());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(funcionario(rs));
@@ -126,7 +126,7 @@ public class DaoAdministracion {
 
         return resultado;
     }
-  
+
     public List<Funcionario> FuncionarioGetAll() {
         List<Funcionario> estados = new ArrayList<>();
         try {
@@ -186,7 +186,7 @@ public class DaoAdministracion {
             String sql = "SELECT * FROM dependencia "
                     + "WHERE nombre LIKE '%%%s%%'"
                     + "AND codigo = %s";
-            sql = String.format(sql, filtro.getNombre(),filtro.getCodigo());
+            sql = String.format(sql, filtro.getNombre(), filtro.getCodigo());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(dependencia(rs));
@@ -196,8 +196,7 @@ public class DaoAdministracion {
         return resultado;
     }
 
-    
-     public List<Dependencia> DependenciaSearchNombre(Dependencia filtro) {
+    public List<Dependencia> DependenciaSearchNombre(Dependencia filtro) {
         List<Dependencia> resultado = new ArrayList<>();
         try {
             String sql = "SELECT * FROM dependencia "
@@ -216,7 +215,7 @@ public class DaoAdministracion {
         List<Dependencia> resultado = new ArrayList<>();
         try {
             String sql = "SELECT * FROM dependencia "
-                      + "WHERE codigo ='%s'";
+                    + "WHERE codigo ='%s'";
             sql = String.format(sql, filtro.getCodigo());
             ResultSet rs = dbb.executeQuery(sql);
             while (rs.next()) {
@@ -226,8 +225,7 @@ public class DaoAdministracion {
         }
         return resultado;
     }
-    
-    
+
     public List<Dependencia> DependenciaGetAll() {
         List<Dependencia> estados = new ArrayList<>();
         try {
@@ -240,32 +238,31 @@ public class DaoAdministracion {
         }
         return estados;
     }
-  
-     
+
     public void DependenciaDelete(Dependencia d) throws Exception {
-        String sql="delete from dependencia where codigo='%s'";
+        String sql = "delete from dependencia where codigo='%s'";
         sql = String.format(sql, d.getCodigo());
-        int count=dbb.executeUpdate(sql);
-        if (count==0){
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
             throw new Exception("Dependendencia no existe");
         }
     }
 
     public void DependenciaAdd(Dependencia a) throws Exception {
-       String sql="insert into Dependencia (codigo, nombre) "+
-                "values('%s','%s')";
-        sql=String.format(sql,a.getCodigo(),a.getNombre());
-        int count=dbb.executeUpdate(sql);
-        if (count==0){
+        String sql = "insert into Dependencia (codigo, nombre) "
+                + "values('%s','%s')";
+        sql = String.format(sql, a.getCodigo(), a.getNombre());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
             throw new Exception("Dependencia ya existe");
-          }
+        }
     }
+
     public void DependenciaUpdate(Dependencia a) throws Exception {
 
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Puesto" defaultstate="collapsed">
     public Puesto puestoGet(String codigo) throws Exception {
         String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
@@ -304,7 +301,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Labores" defaultstate="collapsed">
     public Labor laborGet(Integer id) throws Exception {
         String sql = "SELECT * FROM labor WHERE id = '%d'";
@@ -316,6 +312,7 @@ public class DaoAdministracion {
             throw new Exception("Labor no Existe");
         }
     }
+
     public Labor laborGetbyFuncionario(String id) throws Exception {
         String sql = "SELECT * FROM labor WHERE FuncionarioLabor = '%s'";
         sql = String.format(sql, id);

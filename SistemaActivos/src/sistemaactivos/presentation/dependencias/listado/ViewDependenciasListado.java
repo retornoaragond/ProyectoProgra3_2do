@@ -256,16 +256,16 @@ public class ViewDependenciasListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-try {
+        try {
             controller.preAgregar(this.AgregarButton.getLocationOnScreen());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AgregarButtonActionPerformed
-    
+
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-      controller.buscar(this.toDependencia());
-           
+        controller.buscar(this.toDependencia());
+
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -273,21 +273,15 @@ try {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
-         int row = this.DependenciaTable.getSelectedRow();
-         controller.borrar(row);
+        int row = this.DependenciaTable.getSelectedRow();
+        controller.borrar(row);
     }//GEN-LAST:event_EliminarButtonActionPerformed
 
     private void DependenciaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DependenciaTableMouseClicked
-      if (evt.getClickCount() == 2) {
-        int row = this.DependenciaTable.getSelectedRow();
-        int col = this.DependenciaTable.getSelectedColumn();
-        if(col==4){
-            controller.searchDependencia(row,evt.getLocationOnScreen()); 
+        if (evt.getClickCount() == 2) {
+            int row = this.DependenciaTable.getSelectedRow();
+            controller.editar(row, evt.getLocationOnScreen());
         }
-        else{
-            controller.editar(row,evt.getLocationOnScreen());
-        }
-      }  
     }//GEN-LAST:event_DependenciaTableMouseClicked
 
 
@@ -321,7 +315,7 @@ try {
     }
 
     @Override
-    public void update(java.util.Observable updatedModel,Object parametros) {
+    public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
         Dependencia dependencia = model.getFilter();
         this.fromDependencia(dependencia);

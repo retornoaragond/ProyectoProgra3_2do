@@ -17,16 +17,16 @@ import sistemaactivos.logic.ModelLogic;
  * @author ExtremeTech
  */
 public class ControllerDependenciasEdicion {
-    
+
     ModelLogic domainModel;
     Session session;
     ViewDependenciasEdicion view;
     ModelDependenciasEdicion model;
 
-    public ControllerDependenciasEdicion(ViewDependenciasEdicion view, ModelDependenciasEdicion model, 
+    public ControllerDependenciasEdicion(ViewDependenciasEdicion view, ModelDependenciasEdicion model,
             ModelLogic domainModel, Session session) {
-           // model.reset(domainModel.getDependencias());
-        
+        // model.reset(domainModel.getDependencias());
+
         this.domainModel = domainModel;
         this.session = session;
 
@@ -40,25 +40,25 @@ public class ControllerDependenciasEdicion {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
                 domainModel.addDependencia(dependencia);
-                SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();                   
+                SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();
                 model.setCurrent(new Dependencia());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-                 domainModel.updateDependencia(dependencia);
-                  SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();               
+                domainModel.updateDependencia(dependencia);
+                SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();
                 break;
         }
     }
-    
+
     public void reset() {
         model.reset();
     }
-    
-    public void reset(int modo, Dependencia current){
+
+    public void reset(int modo, Dependencia current) {
         model.reset(modo, current);
-    }  
-    
+    }
+
     public void show() {
         view.setVisible(true);
     }
@@ -71,6 +71,5 @@ public class ControllerDependenciasEdicion {
     public void hide() {
         view.setVisible(false);
     }
-    
-    
+
 }

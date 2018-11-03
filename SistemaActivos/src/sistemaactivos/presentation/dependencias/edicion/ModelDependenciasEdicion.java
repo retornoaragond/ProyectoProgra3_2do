@@ -11,33 +11,30 @@ import sistemaactivos.logic.Dependencia;
  *
  * @author ExtremeTech
  */
-public class ModelDependenciasEdicion extends java.util.Observable  {
+public class ModelDependenciasEdicion extends java.util.Observable {
 
     Dependencia current;
-    
-    int modo;    
+
+    int modo;
 
     public ModelDependenciasEdicion() {
         this.reset();
     }
 
-    
-    
-    public void reset(int modo, Dependencia current){
+    public void reset(int modo, Dependencia current) {
         this.setModo(modo);
         this.setCurrent(current);
         this.commit();
     }
-    
-    
-    public void reset(){
-     //  this.reset(SistemaActivos.MODO_AGREGAR,new Persona());     
-    }    
+
+    public void reset() {
+        //  this.reset(SistemaActivos.MODO_AGREGAR,new Persona());     
+    }
 
     public int getModo() {
         return modo;
     }
-    
+
     public void setModo(int modo) {
         this.modo = modo;
     }
@@ -47,7 +44,7 @@ public class ModelDependenciasEdicion extends java.util.Observable  {
     }
 
     public void setCurrent(Dependencia current) {
-        this.current = current;   
+        this.current = current;
     }
 
     @Override
@@ -56,13 +53,8 @@ public class ModelDependenciasEdicion extends java.util.Observable  {
         this.commit();
     }
 
-    public void commit(){
+    public void commit() {
         setChanged();
-        notifyObservers();       
+        notifyObservers();
     }
-
-
-
-
-    
 }

@@ -14,12 +14,11 @@ import sistemaactivos.logic.Dependencia;
  *
  * @author ExtremeTech
  */
- public class ViewDependenciasEdicion extends javax.swing.JDialog implements java.util.Observer {
+public class ViewDependenciasEdicion extends javax.swing.JDialog implements java.util.Observer {
+
     ControllerDependenciasEdicion controller;
     ModelDependenciasEdicion model;
-    
-    
-    
+
     /**
      * Creates new form viewDependencias
      */
@@ -27,11 +26,11 @@ import sistemaactivos.logic.Dependencia;
         initComponents();
     }
 
-    
     public ViewDependenciasEdicion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,90 +110,87 @@ import sistemaactivos.logic.Dependencia;
     }// </editor-fold>//GEN-END:initComponents
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        if(this.validar()){
+        if (this.validar()) {
             try {
                 this.controller.guardar(this.toDependencia());
-                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
- this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_SalirActionPerformed
 
-    boolean validar(){
-        boolean error=false;
-        
-        this.Codigo.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.Codigo.getText().isEmpty()){
-            this.Codigo.setForeground(SistemaActivos.COLOR_ERROR);
-             error=true;
-        }
-        
-        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);        
-        if (this.NombreTextField.getText().isEmpty()){
-            this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
-        }
-        
-        
-        return !error; 
-    }
-    
-        Dependencia toDependencia(){
-        Dependencia result = new Dependencia();
-        result.setCodigo(this.CodigoField.getText());
-        result.setNombre(this.NombreTextField.getText());
-        //result.setLabors(new set(this.LaborsComboBox));
-        //result.setSolicituds ());
-        return result;
-    }
-        
-        public void limpiarErrores(){
-        this.Codigo.setForeground(SistemaActivos.COLOR_OK);
-        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
-        } 
-        
-        
-        public void setController(
-                sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion controller){
-        this.controller=controller;
-    }
+     boolean validar() {
+         boolean error = false;
 
-    public ControllerDependenciasEdicion getController() {
-        return controller;
-    }
-    
-    
-    public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model){
-        this.model=model;
-        //model.addObserver(this);
-    }
+         this.Codigo.setForeground(SistemaActivos.COLOR_OK);
+         if (this.Codigo.getText().isEmpty()) {
+             this.Codigo.setForeground(SistemaActivos.COLOR_ERROR);
+             error = true;
+         }
 
-    public ModelDependenciasEdicion getModel() {
-        return model;
-    }
-    
-    public void update(java.util.Observable updatedModel,Object parametros){
-       this.limpiarErrores();
-       //Funcionario actual = model.getCurrent();
-       //this.fromPersona(actual);
-   }
-   public void fromDependencia(Dependencia actual){
-       Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-       this.CodigoField.setEnabled(model.getModo()==SistemaActivos.MODO_AGREGAR);       
-       this.CodigoField.setText(String.valueOf(actual.getCodigo()));
-       this.NombreTextField.setEnabled(editable);
-       this.NombreTextField.setText(actual.getNombre());
-       Guardar.setVisible(editable);
-       this.validate();
-    } 
+         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+         if (this.NombreTextField.getText().isEmpty()) {
+             this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
+             error = true;
+         }
+
+         return !error;
+     }
+
+     Dependencia toDependencia() {
+         Dependencia result = new Dependencia();
+         result.setCodigo(this.CodigoField.getText());
+         result.setNombre(this.NombreTextField.getText());
+         //result.setLabors(new set(this.LaborsComboBox));
+         //result.setSolicituds ());
+         return result;
+     }
+
+     public void limpiarErrores() {
+         this.Codigo.setForeground(SistemaActivos.COLOR_OK);
+         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+     }
+
+     public void setController(
+             sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion controller) {
+         this.controller = controller;
+     }
+
+     public ControllerDependenciasEdicion getController() {
+         return controller;
+     }
+
+     public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model) {
+         this.model = model;
+         //model.addObserver(this);
+     }
+
+     public ModelDependenciasEdicion getModel() {
+         return model;
+     }
+
+     public void update(java.util.Observable updatedModel, Object parametros) {
+         this.limpiarErrores();
+         Dependencia actual = model.getCurrent();
+         this.fromDependencia(actual);
+     }
+
+     public void fromDependencia(Dependencia actual) {
+         Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+         this.CodigoField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
+         this.CodigoField.setText(String.valueOf(actual.getCodigo()));
+         this.NombreTextField.setEnabled(editable);
+         this.NombreTextField.setText(actual.getNombre());
+         Guardar.setVisible(editable);
+         this.validate();
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
     private javax.swing.JTextField CodigoField;
