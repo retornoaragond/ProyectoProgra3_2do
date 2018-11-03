@@ -6,6 +6,7 @@
 package sistemaactivos.presentation.activos.edicion;
 
 import java.util.Observable;
+import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 
@@ -55,9 +56,41 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     
    boolean validar(){
      boolean error= false;
-     this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
-     //  if(!this.dependenciaComboBox.getSelectedIndex())
-   return !error;
+      this.identificacionLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.identificacionTextField.getText().isEmpty()) {
+            this.identificacionTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.CategoriaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.categoriaTextField.getText().isEmpty()) {
+            this.categoriaTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.DescripcionLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.DescripcionTextField.getText().isEmpty()) {
+            this.DescripcionTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.CategoriaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.categoriaTextField.getText().isEmpty()) {
+            this.categoriaTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
+
+        this.DependenciaLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.dependenciaComboBox.getSelectedIndex() == -1) {
+            return !error;
+        }
+
+        this.responsableLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.responsableComboBox.getSelectedIndex() == -1) {
+            return !error;
+        }
+   
+        return !error;
    }
     
     
@@ -210,7 +243,17 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }//GEN-LAST:event_identificacionTextFieldActionPerformed
 
     private void GuardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarButtonActionPerformed
-        // TODO add your handling code here:
+        if (this.validar()) {
+            try {
+                this.controller.guardar(this.toActivo());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+          
     }//GEN-LAST:event_GuardarButtonActionPerformed
 
     private void dependenciaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciaComboBoxActionPerformed
@@ -242,6 +285,20 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
      Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
      //agregar  dependencia  y responsable desde la base de datos 
    }
+
+     
+     
+    Activo toActivo() {
+         Activo result = new Activo();
+//         result.setCodigoId(this.identificacionTextField.getText());
+//         result
+//         
+//         
+//         
+//         result.setCodigo(this.CodigoField.getText());
+//         result.setNombre(this.NombreTextField.getText());
+         return result;
+     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

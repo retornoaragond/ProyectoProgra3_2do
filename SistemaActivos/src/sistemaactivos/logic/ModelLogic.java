@@ -206,9 +206,29 @@ public class ModelLogic {
     }
 
     public List<Activo> searchActivo(Activo filtro) {
-        return daoActivos.ActivoSearch(filtro);
+       if (filtro.getBien().getCategoria().getDescripcion().length()!=0) {
+            return daoActivos.ActivoSearchCategoria(filtro);
+          }else if (filtro.getCodigoId().length() != 0) {
+            return daoActivos.ActivoSearchCodigo(filtro);
+        } else if (filtro.getLabor().getDependencia().getNombre().length()!=0) {
+            return daoActivos.ActivoSearchDependencia(filtro);
+        }else if (filtro.getBien().getDescripcion().length()!=0) {
+            return daoActivos.ActivoSearchDescripcion(filtro);
+        }else if (filtro.getLabor().getFuncionario().getNombre().length()!=0) {
+            return daoActivos.ActivoSearchDescripcion(filtro);
+         } 
+        else {
+             return daoActivos.ActivoSearch(filtro);
+         }
     }
 
+//    public List<Activo> searchActivoL(String s) {
+//     return daoActivos.ActivoSearch();
+//    
+//    }
+//    
+    
+    
     //</editor-fold>
     
     public void close() {

@@ -8,9 +8,13 @@ package sistemaactivos.presentation.activos.edicion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Dependencia;
+import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 import sistemaactivos.presentation.activos.listado.ActivoTableModel;
 
@@ -21,7 +25,9 @@ import sistemaactivos.presentation.activos.listado.ActivoTableModel;
 public class ModelActivosEdicion extends java.util.Observable {
     Activo current;
     Activo activoSeleccionado;
-    ActivoTableModel activotable;
+   ComboBoxModel<Dependencia> dependencia;
+   ComboBoxModel<Funcionario> funcionario;
+   ActivoTableModel activotable;
     int modo;
             
     
@@ -35,23 +41,54 @@ public class ModelActivosEdicion extends java.util.Observable {
         setCurrent(new Activo());
     }
     
-    
-    
-    
-    
-   public void reset(int modo,Activo current){      
+     public ComboBoxModel<Dependencia> getDependencia() {
+        return dependencia;
+    }
+
+      public void setDependencia(List<Dependencia> dependencia) {
+        this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
+        this.commit();
+    }
+     
+     
+      public ComboBoxModel<Funcionario> getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionaro(List<Funcionario> funcionario) {
+        this.funcionario = new DefaultComboBoxModel(funcionario.toArray());
+        this.commit();
+    }
+     
+    public void reset(int modo, Activo current) {
         this.setModo(modo);
         this.setCurrent(current);
+        this.commit();
+    }
+    
+    public void resetD(List<Dependencia> depe) {
+        this.setDependencia(depe);
+        this.setCurrent(new Activo());
+    }
+
+    public void resetF(List<Funcionario> fun) {
+        this.setFuncionaro(fun);
+        this.setCurrent(new Activo());
+    }
+    
+    
+    
+    
+   public void reset(){      
+         this.reset(SistemaActivos.MODO_AGREGAR, new Activo());
+        setCurrent(current);
         List<Activo>rows = new ArrayList<>();
         this.activoSeleccionado=null;
         this.setActivos(rows);
         this.commit();
         }
     
-     public void reset(){
-        this.reset(SistemaActivos.MODO_AGREGAR,new Activo());
-    }
-
+   
         public void setBientable(List<Activo> activos) {
       //  int[] cols = {ActivoTableModel.SERIAL, BienTableModel.DESCRIPCION, BienTableModel.MARCA, BienTableModel.MODELO, BienTableModel.PRECIOUNITARIO};
         //this.activoTable = new activoTableModel(activos, cols);

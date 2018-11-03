@@ -54,7 +54,7 @@ public class ControllerFuncionariosEdicion {
                 SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.refrescarBusqueda();
                 model.setCurrent(new Funcionario());
                 model.commit();
-                view.hide();
+                view.setVisible(false);
                 break;
             case SistemaActivos.MODO_EDITAR:
                 domainModel.updateFuncionario(funcionario);
