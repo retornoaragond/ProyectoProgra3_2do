@@ -14,11 +14,11 @@ import sistemaactivos.logic.Solicitud;
  * @author diego
  */
 public class SolicitudesTableModel extends AbstractTableModel {
-    
-      List<Solicitud> rows;
-      int[] cols;
-      
-      public SolicitudesTableModel(int[] cols, List<Solicitud> rows) {
+
+    List<Solicitud> rows;
+    int[] cols;
+
+    public SolicitudesTableModel(int[] cols, List<Solicitud> rows) {
         this.cols = cols;
         this.rows = rows;
         initColNames();
@@ -34,34 +34,31 @@ public class SolicitudesTableModel extends AbstractTableModel {
         return cols.length;
     }
 
-    
-      public String getColumnName(int col) {
+    public String getColumnName(int col) {
         return colNames[cols[col]];
     }
-      
-     @Override
+
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Solicitud soli= rows.get(rowIndex);
-             switch (cols[columnIndex]) {
-                 case NUMSOLICITUD:
-                     return soli.getNumsol();
-                 case DEPENDENCIA:
-                     return soli.getDependencia();
-                   default:
-                     return "";
-             } 
+        Solicitud soli = rows.get(rowIndex);
+        switch (cols[columnIndex]) {
+            case NUMSOLICITUD:
+                return soli.getNumsol();
+            case DEPENDENCIA:
+                return soli.getDependencia();
+            default:
+                return "";
         }
-      
-       public static final int NUMSOLICITUD = 0;
-       public static final int DEPENDENCIA = 1;
-       
-       String[] colNames = new String[2];
-       
-        private void initColNames() {
-        colNames[NUMSOLICITUD] = "numSolicitud";
-        colNames[DEPENDENCIA] = "dependencia";
-        
     }
 
-    
+    public static final int NUMSOLICITUD = 0;
+    public static final int DEPENDENCIA = 1;
+
+    String[] colNames = new String[2];
+
+    private void initColNames() {
+        colNames[NUMSOLICITUD] = "Numero de Solicitud";
+        colNames[DEPENDENCIA] = "Dependencia";
+    }
+
 }

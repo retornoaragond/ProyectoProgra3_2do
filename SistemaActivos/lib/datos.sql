@@ -42,6 +42,7 @@ INSERT INTO puesto (codgo, puesto) VALUES ('004', 'Jefe OCCB');
 INSERT INTO puesto (codgo, puesto) VALUES ('005', 'Jefe RRHH');
 
 
+
 -- ----------------------------  Labores -------------------------------------
 
 
@@ -58,7 +59,7 @@ INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('008', '009', '002'); -- Sec
 INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('009', '009', '003'); -- Registrador
 INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('010', '009', '003'); -- Registrador
 
-INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('011', '009', '004'); -- Administrador Jefe OCCB
+INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('011', '009', '004'); -- Jefe OCCB
 
 INSERT INTO labor (funcLab, depLab, pueLab) VALUES ('012', '008', '005'); -- Jefe RRHH
 
@@ -95,6 +96,22 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
  
 
 -- ----------------------------  Solicitudes -------------------------------------
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('abc', '20181102', '1', '5000','', 'recibida', '001', 'Donacion');
+INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq) VALUES ('def', '20181102', '3', '10000','', 'procesada', '003', 'Compra');
+UPDATE solicitud SET registrador = '009' WHERE (numsol = '1');
+DELETE FROM solicitud WHERE (numsol = '2');
+
+
+
+-- ----------------------------  Bienes -------------------------------------
+
+INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria) VALUES ('xyf', 'sillas oficina', 'patito', 'x-23', '5000', '1', '1', '1');
+
+
+-- ----------------------------  Activos -------------------------------------
+
+INSERT INTO activo (codigoId, labAct, bienAct) VALUES ('p122', '004', 'xyz');
+
 
 
 -- SELECT usuario.id id_user, pass clave, funcionario.id id_func, nombre, dependenciaLabor dependencia, PuestoLabor puesto FROM usuario  INNER JOIN Funcionario  ON usuario.funcionarioUsuario = Funcionario.id INNER JOIN Labor ON Funcionario.id = Labor.FuncionarioLabor WHERE usuario.id= '001' AND usuario.pass='001';
@@ -110,7 +127,8 @@ INSERT INTO categoria (id, incremento, descripcion) VALUES ('7', '0', 'horno mic
 -- SELECT * FROM usuario WHERE id='001';
 -- SELECT * FROM sistemaactivos.usuario;
 -- SELECT * FROM sistemaactivos.labor;
- SELECT * FROM sistemaactivos.labor;
+-- SELECT * FROM sistemaactivos.labor;
 -- SELECT * FROM usuario WHERE usuario.id = 001; 
 
-SELECT * FROM sistemaactivos.dependencia;
+-- SELECT * FROM sistemaactivos.dependencia;
+SELECT * FROM dependencia WHERE codigo LIKE '%s%'

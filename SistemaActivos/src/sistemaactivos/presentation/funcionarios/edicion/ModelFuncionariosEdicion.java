@@ -115,7 +115,7 @@ public class ModelFuncionariosEdicion extends java.util.Observable {
     }    
     
      public void setLabores(List<Labor> labores) {
-        int[] cols = {LaborTableModel.ID, LaborTableModel.DEPENDENCIA, LaborTableModel.FUNCIONARIO, LaborTableModel.PUESTO, LaborTableModel.ACTIVOS};
+        int[] cols = {LaborTableModel.DEPENDENCIA, LaborTableModel.PUESTO};
         this.laborModel = new LaborTableModel(cols, labores);
     }
      

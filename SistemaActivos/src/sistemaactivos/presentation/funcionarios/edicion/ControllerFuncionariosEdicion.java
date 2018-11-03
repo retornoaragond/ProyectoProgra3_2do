@@ -37,13 +37,13 @@ public class ControllerFuncionariosEdicion {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
                 domainModel.addFuncionario(funcionario);
-                //SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();                   
+                SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.refrescarBusqueda();
                 model.setCurrent(new Funcionario());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-                    domainModel.updateFuncionario(funcionario);
-                //  SistemaActivos.PERSONAS_CONTROLLER.refrescarBusqueda();               
+                domainModel.updateFuncionario(funcionario);
+                SistemaActivos.FUNCIONARIO_LISTADO_CONTROLLER.refrescarBusqueda();
                 break;
         }
     }
@@ -52,11 +52,10 @@ public class ControllerFuncionariosEdicion {
         model.reset();
     }
 
-    
-    public void reset(int modo, Funcionario current){
+    public void reset(int modo, Funcionario current) {
         model.reset(modo, current);
-    }    
-     
+    }
+
     public void show() {
         view.setVisible(true);
     }
@@ -69,13 +68,14 @@ public class ControllerFuncionariosEdicion {
     public void hide() {
         view.setVisible(false);
     }
-    
-    public void preAgregar(){
+
+    public void preAgregar() {
+        
     }
-    
+
     //hacer en modelLogic un borrar labor con la id
     void borrar(int row) {
-     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

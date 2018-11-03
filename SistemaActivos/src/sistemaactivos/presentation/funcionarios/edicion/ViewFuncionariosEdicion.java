@@ -5,19 +5,22 @@
  */
 package sistemaactivos.presentation.funcionarios.edicion;
 
-import java.awt.Color;
 import java.util.Arrays;
-import java.util.Set;
-import javafx.application.Application;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
+import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Labor;
+import sistemaactivos.logic.Puesto;
 
 /**
  *
  * @author ExtremeTech
  */
-public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java.util.Observer{
+public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java.util.Observer {
+
+    ControllerFuncionariosEdicion controller;
+    ModelFuncionariosEdicion model;
 
     /**
      * Creates new form viewFuncionarios
@@ -57,7 +60,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         DependenciaCombo = new javax.swing.JComboBox();
         PuestoLabel = new javax.swing.JLabel();
         puestoCombo = new javax.swing.JComboBox();
-        Agregar = new javax.swing.JButton();
+        AgregarLabor = new javax.swing.JButton();
         EliminarButon = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         LaborTable = new javax.swing.JTable();
@@ -108,13 +111,13 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                     .addComponent(NombreLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(IDTextField)
+                    .addComponent(IDTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                     .addComponent(NombreTextField))
                 .addGap(19, 19, 19))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +156,10 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Contraseñatext)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(OperadorText, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(OperadorText))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -188,10 +189,10 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         PuestoLabel.setText("Puesto");
 
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagragarFuncionario.png"))); // NOI18N
-        Agregar.addActionListener(new java.awt.event.ActionListener() {
+        AgregarLabor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconagragarFuncionario.png"))); // NOI18N
+        AgregarLabor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarActionPerformed(evt);
+                AgregarLaborActionPerformed(evt);
             }
         });
 
@@ -232,7 +233,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                             .addComponent(DependenciaCombo, 0, 284, Short.MAX_VALUE)
                             .addComponent(puestoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Agregar)
+                        .addComponent(AgregarLabor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(EliminarButon)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -257,7 +258,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(puestoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PuestoLabel)))
-                    .addComponent(Agregar)
+                    .addComponent(AgregarLabor)
                     .addComponent(EliminarButon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +322,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -348,56 +349,116 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarFldActionPerformed
-     
+
     }//GEN-LAST:event_guardarFldActionPerformed
 
     private void GuadarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuadarActionPerformed
-         if(this.validar()){
+        if (this.validar()) {
             try {
                 this.controller.guardar(this.toFuncionario());
-                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE); 
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }    
+        }
     }//GEN-LAST:event_GuadarActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-       controller.preAgregar();
-    }//GEN-LAST:event_AgregarActionPerformed
+    private void AgregarLaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLaborActionPerformed
+        try {
+            controller.preAgregar();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_AgregarLaborActionPerformed
 
     private void EliminarButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButonActionPerformed
-controller.borrar(0);
+        int row = this.LaborTable.getSelectedRow();
+        controller.borrar(row);
     }//GEN-LAST:event_EliminarButonActionPerformed
 
-    boolean validar(){
-        boolean error=false;
-        
-        this.IDLabel.setForeground(SistemaActivos.COLOR_OK); 
-        if (this.IDLabel.getText().isEmpty()){
+    boolean validar() {
+        boolean error = false;
+
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.IDLabel.getText().isEmpty()) {
             this.IDLabel.setForeground(SistemaActivos.COLOR_ERROR);
-             error=true;
+            error = true;
         }
-        
-        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);        
-        if (this.NombreTextField.getText().isEmpty()){
+
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.NombreTextField.getText().isEmpty()) {
             this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
-            error=true;
+            error = true;
         }
-        
-        return !error; 
+        return !error;
+    }
+
+    Funcionario toFuncionario() {
+        Funcionario result = new Funcionario();
+        result.setId(this.IDTextField.getText());
+        result.setNombre(this.NombreTextField.getText());
+        return result;
     }
     
+    Labor toLAbor(){
+        Labor result = new Labor();
+        result.setDependencia((Dependencia)this.DependenciaCombo.getSelectedItem());
+        result.setPuesto((Puesto)this.puestoCombo.getSelectedItem());
+        result.setFuncionario(model.getCurrent());
+        return result;
+    }
+
+    public void limpiarErrores() {
+        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+    }
+
+    public void setController(sistemaactivos.presentation.funcionarios.edicion.ControllerFuncionariosEdicion controller) {
+        this.controller = controller;
+    }
+
+    public ControllerFuncionariosEdicion getController() {
+        return controller;
+    }
+
+    public void setModel(sistemaactivos.presentation.funcionarios.edicion.ModelFuncionariosEdicion model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+
+    public ModelFuncionariosEdicion getModel() {
+        return model;
+    }
+
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        this.limpiarErrores();
+        Funcionario actual = model.getCurrent();
+        this.fromFuncionario(actual);
+        this.LaborTable.setModel(model.getLabores());
+        this.SolicitudTable.setModel(model.getSoliTable());
+    }
+
+    public void fromFuncionario(Funcionario actual) {
+        this.IDTextField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
+        this.IDTextField.setText(actual.getId());
+        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+        this.LaborTable.setModel(model.getLabores());
+        this.SolicitudTable.setModel(model.getSoliTable());
+        this.NombreTextField.setEnabled(editable);
+        this.NombreTextField.setText(actual.getNombre());
+        this.DependenciaCombo.setModel(model.getDependencia());
+        this.puestoCombo.setModel(model.getPuestos());
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Agregar;
+    private javax.swing.JButton AgregarLabor;
     private javax.swing.JButton Atras;
     private javax.swing.JTextField Contraseñatext;
     private javax.swing.JLabel Dependencia;
@@ -427,62 +488,5 @@ controller.borrar(0);
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JComboBox puestoCombo;
     // End of variables declaration//GEN-END:variables
-
-
-    Funcionario toFuncionario(){
-        Funcionario result = new Funcionario();
-        result.setId(this.IDTextField.getText());
-        result.setNombre(this.NombreTextField.getText());               
-        return result;
-    }
-    
-    public void limpiarErrores(){
-        this.IDLabel.setForeground(SistemaActivos.COLOR_OK);
-        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
-   }  
-    ControllerFuncionariosEdicion controller;
-    ModelFuncionariosEdicion model;
-    
-    public void setController(sistemaactivos.presentation.funcionarios.edicion.ControllerFuncionariosEdicion controller){
-        this.controller=controller;
-    }
-
-    public ControllerFuncionariosEdicion getController() {
-        return controller;
-    }
-    
-    
-    public void setModel(sistemaactivos.presentation.funcionarios.edicion.ModelFuncionariosEdicion model){
-        this.model=model;
-        model.addObserver(this);
-    }
-
-    public ModelFuncionariosEdicion getModel() {
-        return model;
-    }
-   
-    
-    
- public void update(java.util.Observable updatedModel, Object parametros) {
-        this.limpiarErrores();
-        Funcionario actual = model.getCurrent();
-        this.fromFuncionario(actual);
-        this.LaborTable.setModel(model.getLabores());
-        this.SolicitudTable.setModel(model.getSoliTable());
-    }
-
-    public void fromFuncionario(Funcionario actual) {
-
-        this.IDTextField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
-        this.IDTextField.setText(actual.getId());
-        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-        this.LaborTable.setModel(model.getLabores());
-        this.SolicitudTable.setModel(model.getSoliTable());
-        this.NombreTextField.setEnabled(editable);
-        this.NombreTextField.setText(actual.getNombre());
-        this.DependenciaCombo.setModel(model.getDependencia());
-        this.puestoCombo.setModel(model.getPuestos());
-    }
-
 
 }
