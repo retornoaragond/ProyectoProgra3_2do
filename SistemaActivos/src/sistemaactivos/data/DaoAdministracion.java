@@ -141,7 +141,7 @@ public class DaoAdministracion {
     }
 
     public Funcionario FuncionarioGet(String id) throws Exception {
-       String sql = "SELECT * FROM funcionario WHERE id='%s'";
+        String sql = "SELECT * FROM funcionario WHERE id='%s'";
         sql = String.format(sql, id);
         ResultSet rs = dbb.executeQuery(sql);
         if (rs.next()) {
@@ -152,32 +152,32 @@ public class DaoAdministracion {
     }
 
     public void FuncionarioDelete(Funcionario a) throws Exception {
-       String sql="delete from funcionario where id='%s'";
-        sql = String.format(sql,a.getId());
-        int count=dbb.executeUpdate(sql);
-        if (count==0){
+        String sql = "delete from funcionario where id='%s'";
+        sql = String.format(sql, a.getId());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
             throw new Exception("Funcionario no existe");
         }
     }
 
     public void FuncionarioAdd(Funcionario a) throws Exception {
-      String sql="insert into Funcionario (id, nombre,) "+
-                "values('%s','%s')";
-        sql=String.format(sql,a.getId(),a.getNombre());
-        int count=dbb.executeUpdate(sql);
-        if (count==0){
+        String sql = "INSERT INTO funcionario (id, nombre)"
+                + " VALUES ('%s', '%s');";
+        sql = String.format(sql, a.getId(), a.getNombre());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
             throw new Exception("Funcionario ya existe");
         }
     }
 
     public void FuncionarioUpdate(Funcionario a) throws Exception {
-      String sql="update funcionario set nombre='%s'"+
-               "where nombre='%s'";
-       sql=String.format(sql,a.getNombre(),a.getId());
-       int count=dbb.executeUpdate(sql);
-       if (count==0){
-           throw new Exception("Funcionario no existe");
-       }
+        String sql = "update funcionario set nombre='%s'"
+                + "where nombre='%s'";
+        sql = String.format(sql, a.getNombre(), a.getId());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Funcionario no existe");
+        }
     }
     //</editor-fold>
 
@@ -343,15 +343,19 @@ public class DaoAdministracion {
         }
     }
 
-    public Labor laborGetbyFuncionario(String id) throws Exception {
-        String sql = "SELECT * FROM labor WHERE FuncionarioLabor = '%s'";
-        sql = String.format(sql, id);
-        ResultSet rs = dbb.executeQuery(sql);
-        if (rs.next()) {
-            return labor(rs);
-        } else {
-            throw new Exception("Labor no Existe");
+    public List<Labor> laborGetbyFuncionario(String id) throws Exception {
+        List<Labor> labores = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM labor WHERE funcLab = '%s'";
+            sql = String.format(sql, id);
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                labores.add(labor(rs));
+            }
+        } catch (SQLException ex) {
+
         }
+        return labores;
     }
 
     public List<Labor> laborGetbyDependencia(int codigo) throws Exception {
