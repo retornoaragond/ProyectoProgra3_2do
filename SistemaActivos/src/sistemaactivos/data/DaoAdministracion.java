@@ -293,6 +293,7 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
+   
     //<editor-fold desc="Puesto" defaultstate="collapsed">
     public Puesto puestoGet(String codigo) throws Exception {
         String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
