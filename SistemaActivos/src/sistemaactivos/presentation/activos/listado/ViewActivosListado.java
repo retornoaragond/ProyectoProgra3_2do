@@ -138,6 +138,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         activosTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
+        agregar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,7 +254,6 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -316,6 +316,13 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             }
         });
 
+        agregar.setText("agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -326,6 +333,8 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(agregar)
+                .addGap(84, 84, 84)
                 .addComponent(Atras)
                 .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
@@ -340,9 +349,14 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Atras)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Atras))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(agregar)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -364,6 +378,10 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         controller.hide();
     }//GEN-LAST:event_AtrasActionPerformed
 
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+       controller.buscarActivo();// controller.// TODO add your handling code here:
+    }//GEN-LAST:event_agregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
@@ -374,6 +392,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     private javax.swing.JRadioButton ResponsablejRadioButton;
     private javax.swing.JLabel TipoFiltrojLabel3;
     private javax.swing.JTable activosTable;
+    private javax.swing.JButton agregar;
     private javax.swing.JButton buscarjButton;
     private javax.swing.JLabel busquedaLabel;
     private javax.swing.JTextField busquedaTextField;

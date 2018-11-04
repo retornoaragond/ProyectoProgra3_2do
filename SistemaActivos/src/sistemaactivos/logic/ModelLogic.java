@@ -118,6 +118,11 @@ public class ModelLogic {
         return daoAdministracion.FuncionarioGet(codigo.toString());
     }
 
+    public List<Funcionario> getFuncionarioSS(String id) throws Exception {
+       return daoAdministracion.GetFuncionarioS(id);
+    }
+    
+    
     public List<Funcionario> searchFuncionario(Funcionario filtro) {
         if (filtro.getId().length() == 0 && filtro.getNombre().length() != 0) {
             return daoAdministracion.FuncionaroSearchNombre(filtro);
@@ -152,6 +157,11 @@ public class ModelLogic {
         return daoAdministracion.dependenciaGet(filter.getCodigo());
     }
 
+    
+    public List<Dependencia> getDependenciaSS(String codigo) throws Exception {
+        return daoAdministracion.GetDependenciaS(codigo);
+    }
+    
     public List<Dependencia> searchDependenciaCodigo(Dependencia filtro) {
 
         return daoAdministracion.DependenciaSearchCodigo(filtro);

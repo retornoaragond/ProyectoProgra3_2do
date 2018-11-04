@@ -177,6 +177,24 @@ public class DaoAdministracion {
         }
     }
 
+    
+     public List<Funcionario> GetFuncionarioS(String id) throws Exception {
+        List<Funcionario> fun = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM funcionario WHERE id = '%s'";
+            sql = String.format(sql, id);
+            ResultSet rs = dbb.executeQuery(sql);
+             while (rs.next()) {
+                fun.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return fun;
+    }
+    
+    
+    
     public void FuncionarioDelete(Funcionario a) throws Exception {
         String sql = "delete from funcionario where id='%s'";
         sql = String.format(sql, a.getId());
@@ -219,6 +237,23 @@ public class DaoAdministracion {
         }
     }
 
+    public List<Dependencia> GetDependenciaS(String codigo) throws Exception {
+        List<Dependencia> depen = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM dependencia WHERE codigo = '%s'";
+            sql = String.format(sql, codigo);
+            ResultSet rs = dbb.executeQuery(sql);
+             while (rs.next()) {
+                depen.add(dependencia(rs));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return depen;
+    }
+    
+    
+    
     private Dependencia dependencia(ResultSet rs) {
         try {
             Dependencia d = new Dependencia();

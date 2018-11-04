@@ -63,8 +63,11 @@ public class Funcionario  implements java.io.Serializable {
         this.labors = labors;
     }
 
-
-
+   
+  @Override
+    public String toString() {
+        return this.nombre;
+    }
 
 }
 
