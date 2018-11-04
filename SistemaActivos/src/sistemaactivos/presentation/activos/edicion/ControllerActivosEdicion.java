@@ -76,9 +76,27 @@ public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
         model.reset();
     }
     
-//    public void reset(int modo, Activo current){
-//        model.reset(modo, current);
-//    }    
+ public void reset(int modo, Activo current)throws Exception{
+        List<Funcionario> f;
+        List<Dependencia> d;
+       if (!(d = domainModel.getDependenciaSS(current.getCodigoId())).isEmpty()) {
+            model.setDependencia(d);
+                   
+       }        
+  //     if (!(d = domainModel.getFuncionarioSS(current.getCodigoId())).isEmpty()) {
+//            model.set(d);
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      model.reset(modo, current);
+   }    
+      
     
     public void show(){
         view.setVisible(true);

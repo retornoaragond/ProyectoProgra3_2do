@@ -283,10 +283,15 @@ public class DaoActivos {
         }
     }
 
+    
+    //INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('1', '001', 'xyf');
+    
+    
+    
     public void ActivoAdd(Activo a) throws Exception {
-        String sql = "insert into Activo (codigoId) "
-                + "values('%s')";
-        sql = String.format(sql, a.getCodigoId());
+        String sql = "insert into activo (codigoId,labAct,bienAct)"
+                + "values('%s','%d''%s')";
+        sql = String.format(sql, a.getCodigoId(),a.getLabor().getId(),a.getBien().getSerial());
         int count = dbbb.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Activo ya existe");

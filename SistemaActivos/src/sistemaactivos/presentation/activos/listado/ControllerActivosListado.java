@@ -42,6 +42,13 @@ public class ControllerActivosListado {
         this.refrescarBusqueda();
     }
     
+    
+    public void buscarActivo(){
+     SistemaActivos.ACTIVOS_EDICION_CONTROLLER.show();
+    
+    }
+    
+    
     public void refrescarBusqueda() throws Exception {
         List<Activo> rows = domainModel.searchActivo(model.getFilter(),model.rbselect);//hacer en el modelLogic delete activo
         model.setActivos(rows);
