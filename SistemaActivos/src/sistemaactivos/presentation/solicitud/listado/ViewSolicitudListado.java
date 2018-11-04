@@ -6,8 +6,10 @@
 package sistemaactivos.presentation.solicitud.listado;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumnModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Solicitud;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -38,6 +40,45 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     public ViewSolicitudListado() {
         super("", false, true);
         initComponents();
+
+    }
+
+    @Override
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        this.limpiarErrores();
+        Solicitud soli = model.getFilter();
+        this.fromSolicitud(soli);
+        solicitudesFld.setModel(model.getSolicitudes());
+        this.tablasegunuser();
+    }
+
+    public void tablasegunuser() {
+        Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+        if (user != null) {
+            switch (user.getLabor().getPuesto().getPuesto()) {
+                case "Administrador":
+                    TableColumnModel tcm = solicitudesFld.getColumnModel();
+                    tcm.removeColumn(tcm.getColumn(SolicitudTableModel.DEPENDENCIA));
+                    tcm.removeColumn(tcm.getColumn(SolicitudTableModel.FUNCIONARIO));
+                    break;
+                case "Secretariado":
+                    TableColumnModel tcm1 = solicitudesFld.getColumnModel();
+                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.FUNCIONARIO));
+                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.FECHA));
+                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES));
+                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.MONTOTOTAL));
+                    break;
+                case "Registrador":
+                    TableColumnModel tcm2 = solicitudesFld.getColumnModel();
+                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.FUNCIONARIO));
+                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.FECHA));
+                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION));
+                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.MONTOTOTAL));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void limpiarErrores() {
@@ -207,30 +248,27 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(324, 324, 324))))))
+                        .addComponent(jLabel2)
+                        .addGap(334, 334, 334)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(14, 14, 14)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -248,19 +286,15 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Salir)))
+                        .addComponent(Salir))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(291, 291, 291)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +305,7 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Salir)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -282,14 +316,14 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-      /*  try {
+        /*  try {
             //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }*/
-      
-     /// controller.
-     controller.SolicitudEdicionShow();
+
+        /// controller.
+        controller.SolicitudEdicionShow();
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void textFieldNumSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumSolicitudActionPerformed
@@ -313,7 +347,7 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_RecibidaCBActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-    controller.hide();
+        controller.hide();
     }//GEN-LAST:event_SalirActionPerformed
 
     public void fromSolicitud(Solicitud s) {
@@ -345,12 +379,4 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     private javax.swing.JTable solicitudesFld;
     private javax.swing.JTextField textFieldNumSolicitud;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void update(java.util.Observable updatedModel, Object parametros) {
-        this.limpiarErrores();
-        Solicitud soli = model.getFilter();
-        this.fromSolicitud(soli);
-        solicitudesFld.setModel(model.getSolicitudes());
-    }
 }

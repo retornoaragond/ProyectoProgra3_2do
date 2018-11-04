@@ -33,7 +33,7 @@ public class ModelSolicitudListado extends java.util.Observable {
     }
 
     public void setSolicitudes(List<Solicitud> solicitudes) {
-        int[] cols = {SolicitudTableModel.NUMSOLICITUD, SolicitudTableModel.DEPENDENCIA, SolicitudTableModel.FUNCIONARIO, SolicitudTableModel.NUMCOMPROBANTE, SolicitudTableModel.FECHA, SolicitudTableModel.TIPOADQUISICION, SolicitudTableModel.CANTIDADBIENES, SolicitudTableModel.MONTOTOTAL, SolicitudTableModel.RAZONRECHAZO, SolicitudTableModel.ESTADO};
+        int[] cols = {SolicitudTableModel.NUMSOLICITUD, SolicitudTableModel.DEPENDENCIA, SolicitudTableModel.FUNCIONARIO, SolicitudTableModel.NUMCOMPROBANTE, SolicitudTableModel.FECHA, SolicitudTableModel.TIPOADQUISICION, SolicitudTableModel.CANTIDADBIENES, SolicitudTableModel.MONTOTOTAL, SolicitudTableModel.ESTADO};
         this.solicitudTable = new SolicitudTableModel(cols, solicitudes);
     }
 

@@ -24,28 +24,22 @@ public class SolicitudTableModel extends AbstractTableModel {
         initColNames();
     }
 
+    @Override
     public int getColumnCount() {
         return cols.length;
     }
 
+    @Override
     public String getColumnName(int col) {
         return colNames[cols[col]];
     }
 
-    /*
-    public Class<?> getColumnClass(int col){
-        switch (cols[col]){
-           // case SEXO: return Icon.class;
-           // case PASATIEMPO_CINE: return Boolean.class;
-           // case ESTADO_CIVIL: return Icon.class;
-            default: return super.getColumnClass(col);
-        }    
-    }    
-     */
+    @Override
     public int getRowCount() {
         return rows.size();
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Solicitud solicitud = rows.get(row);
         switch (cols[col]) {
@@ -65,8 +59,6 @@ public class SolicitudTableModel extends AbstractTableModel {
                 return solicitud.getCantbien();
             case MONTOTOTAL:
                 return solicitud.getMontotal();
-            case RAZONRECHAZO:
-                return solicitud.getRazonR();
             case ESTADO:
                 return solicitud.getEstado();
             default:
@@ -86,22 +78,20 @@ public class SolicitudTableModel extends AbstractTableModel {
     public static final int TIPOADQUISICION = 5;
     public static final int CANTIDADBIENES = 6;
     public static final int MONTOTOTAL = 7;
-    public static final int RAZONRECHAZO = 8;
-    public static final int ESTADO = 9;
+    public static final int ESTADO = 8;
 
-    String[] colNames = new String[10];
+    String[] colNames = new String[9];
 
     private void initColNames() {
-        colNames[NUMSOLICITUD] = "numSolicitud";
-        colNames[DEPENDENCIA] = "dependencia";
-        colNames[FUNCIONARIO] = "funcionario";
-        colNames[NUMCOMPROBANTE] = "numComprobante";
-        colNames[FECHA] = "fecha";
-        colNames[TIPOADQUISICION] = "tipoAdquisicion";
-        colNames[CANTIDADBIENES] = "cantidadBienes";
-        colNames[MONTOTOTAL] = "montoTotal";
-        colNames[RAZONRECHAZO] = "razonRechazo";
-        colNames[ESTADO] = "estado";
+        colNames[NUMSOLICITUD] = "Numero de Solicitud";
+        colNames[DEPENDENCIA] = "Dependencia";
+        colNames[FUNCIONARIO] = "Registrador";
+        colNames[NUMCOMPROBANTE] = "Numero de Comprobante";
+        colNames[FECHA] = "Fecha";
+        colNames[TIPOADQUISICION] = "Tipo de Adquisicion";
+        colNames[CANTIDADBIENES] = "Cantidad de Bienes";
+        colNames[MONTOTOTAL] = "Monto Total";
+        colNames[ESTADO] = "Estado";
     }
 
 }
