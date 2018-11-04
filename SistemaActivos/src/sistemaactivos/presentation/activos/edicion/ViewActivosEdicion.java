@@ -277,24 +277,25 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }
 
     public void fromActivo(Activo actual) {
-//     this.identificacionTextField.setEnabled(false);
-//     this.categoriaTextField.setEnabled(false);
-//     this.DescripcionTextField.setEnabled(false);
-//     Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
-//     Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
-//       Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-//        
-//      this.identificacionTextField.setEnabled(editable);
-//      this.identificacionTextField.setText(actual.getCodigoId());
+
+        this.identificacionTextField.setEnabled(false);
+        this.categoriaTextField.setEnabled(false);
+        this.DescripcionTextField.setEnabled(false);
+        Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+        Boolean consulta = model.getModo() == SistemaActivos.MODO_CONSULTAR;;
+//  
+        this.identificacionTextField.setText(actual.getCodigoId());
 //      
-//      this.categoriaTextField.setEnabled(editable);
-//      this.categoriaTextField.setText(actual.getBien().getCategoria().getDescripcion());
-//      
-//       this.DescripcionTextField.setEnabled(editable);
-//       this.DescripcionTextField.setText(actual.getBien().getDescripcion());
-//       
-//       actual.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
-//       actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
+        this.categoriaTextField.setText(actual.getBien().getCategoria().getDescripcion());
+        this.DescripcionTextField.setText(actual.getBien().getDescripcion());
+        this.dependenciaComboBox.setEnabled(modify);
+        this.dependenciaComboBox.setSelectedItem(actual.getLabor().getDependencia());
+     //   actual.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
+        this.responsableComboBox.setEnabled(modify);
+        this.responsableComboBox.setSelectedItem(actual.getLabor().getFuncionario());
+       
+                
+       // actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
 
     }
 

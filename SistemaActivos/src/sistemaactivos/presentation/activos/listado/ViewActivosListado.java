@@ -281,6 +281,11 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        activosTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                activosTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(activosTable);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -381,6 +386,13 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
        controller.buscarActivo();// controller.// TODO add your handling code here:
     }//GEN-LAST:event_agregarActionPerformed
+
+    private void activosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_activosTableMouseClicked
+        if(evt.getClickCount()==2){
+        int row= activosTable.getSelectedRow();
+        controller.editar(row, evt.getLocationOnScreen());
+        }
+    }//GEN-LAST:event_activosTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

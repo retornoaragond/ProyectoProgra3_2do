@@ -45,7 +45,6 @@ public class ControllerActivosListado {
     
     public void buscarActivo(){
      SistemaActivos.ACTIVOS_EDICION_CONTROLLER.show();
-    
     }
     
     
@@ -58,23 +57,15 @@ public class ControllerActivosListado {
         }
     }
 
-    /*
+    
    public void editar(int row, Point at){       
-        Activo seleccionada = model.getActivos().getRowAt(row); 
-        Usuario principal = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
-        int modo;
-        
-        //preguntar por el puesto que seria obtener el funcionario luego la labor y luego el nombre de la labor
-        if ( Arrays.asList(SistemaActivos.ROL_REGISTRADOR_DE_BIENES).contains(principal.getFuncionario().getLabors())){
-           modo=SistemaActivos.MODO_EDITAR;
-        }
-        else{
-            modo=SistemaActivos.MODO_CONSULTAR;            
-        }
-        SistemaActivos.ACTIVOS_EDICION_CONTROLLER.reset(modo, seleccionada);
-        SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.show(at);
+       model.setSeleccionado(model.activosTable.getRowAt(row));
+       int modo;
+       modo=SistemaActivos.MODO_EDITAR;            
+       SistemaActivos.ACTIVOS_EDICION_CONTROLLER.reset(modo, model.activoSeleccionado);
+       SistemaActivos.ACTIVOS_EDICION_CONTROLLER.show(at);
     }
-     */
+     
     public void borrar(int row) {
         Activo seleccionada = model.getActivos().getRowAt(row);
         try {

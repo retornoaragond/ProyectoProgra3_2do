@@ -21,6 +21,7 @@ public class ModelActivosListado extends java.util.Observable {
     Activo activoSeleccionado;
     int rbselect;
 
+
     public ModelActivosListado() {
         this.reset();
     }
