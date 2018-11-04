@@ -5,6 +5,7 @@
  */
 package sistemaactivos.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.data.DaoActivos;
 import sistemaactivos.data.DaoAdministracion;
@@ -43,12 +44,12 @@ public class ModelLogic {
             throw new Exception("Clave incorrecta");
         }
     }
-    
-    public void agregarUsuario(Usuario user) throws Exception{
+
+    public void agregarUsuario(Usuario user) throws Exception {
         daoAdministracion.addUsuario(user);
     }
-    
-    public List<Usuario> getUsuarios(){
+
+    public List<Usuario> getUsuarios() {
         return daoAdministracion.usuariosGetAll();
     }
 
@@ -102,13 +103,12 @@ public class ModelLogic {
     public List<Solicitud> searchSolicitud(Solicitud filtro) {
         return daoSolicitud.SolicitudSearch(filtro);
     }
-    
+
     public List<Solicitud> searchSolicitudbyFuncionario(Funcionario filtro) {
         return daoSolicitud.searchSolicitudbyFuncionario(filtro);
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Funcionario" defaultstate="collapsed">
     public List<Funcionario> getFuncionarios() {
         return daoAdministracion.FuncionarioGetAll();
@@ -143,7 +143,6 @@ public class ModelLogic {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Dependencia" defaultstate="collapsed">
     public List<Dependencia> getDependencias() {
         return daoAdministracion.DependenciaGetAll();
@@ -205,21 +204,26 @@ public class ModelLogic {
         daoActivos.ActivoUpdate(activo);
     }
 
-    public List<Activo> searchActivo(Activo filtro) {
-       if (filtro.getBien().getCategoria().getDescripcion().length()!=0) {
-            return daoActivos.ActivoSearchCategoria(filtro);
-          }else if (filtro.getCodigoId().length() != 0) {
-            return daoActivos.ActivoSearchCodigo(filtro);
-        } else if (filtro.getLabor().getDependencia().getNombre().length()!=0) {
-            return daoActivos.ActivoSearchDependencia(filtro);
-        }else if (filtro.getBien().getDescripcion().length()!=0) {
-            return daoActivos.ActivoSearchDescripcion(filtro);
-        }else if (filtro.getLabor().getFuncionario().getNombre().length()!=0) {
-            return daoActivos.ActivoSearchDescripcion(filtro);
-         } 
-        else {
-             return daoActivos.ActivoSearch(filtro);
-         }
+    public List<Activo> searchActivo(String filtro, int select) {
+        List<Activo> list = new ArrayList<>();
+        switch (select) {
+            case 0:
+                list = daoActivos.ActivoSearchCodigo(filtro);
+                break;
+            case 1:
+                list = daoActivos.ActivoSearchDescripcion(filtro);
+                break;
+            case 2:
+                list = daoActivos.ActivoSearchCategoria(filtro);
+                break;
+            case 3:
+                list = daoActivos.ActivoSearchDependencia(filtro);
+                break;
+            case 4:
+                list = daoActivos.ActivoSearchResponsable(filtro);
+                break;
+        }
+        return list;
     }
 
 //    public List<Activo> searchActivoL(String s) {
@@ -227,33 +231,30 @@ public class ModelLogic {
 //    
 //    }
 //    
-    
-    
     //</editor-fold>
-    
     public void close() {
         daoSolicitud.close();
         daoActivos.close();
         daoAdministracion.close();
     }
-    
+
     public List<Puesto> getPuestos() {
         return daoAdministracion.puestoGetAll();
     }
-    
-    public List<Labor> getLaboresbyFuncionario(String FunId)throws Exception{
+
+    public List<Labor> getLaboresbyFuncionario(String FunId) throws Exception {
         return daoAdministracion.laborGetbyFuncionario(FunId);
     }
-    
-    public void addLabor(Labor lab)throws Exception{
+
+    public void addLabor(Labor lab) throws Exception {
         daoAdministracion.LaborAdd(lab);
     }
-    
-    public Labor getLabor(int cod)throws Exception{
+
+    public Labor getLabor(int cod) throws Exception {
         return daoAdministracion.laborGet(cod);
     }
-    
-    public int getAutoIncremento() throws Exception{
+
+    public int getAutoIncremento() throws Exception {
         return daoAdministracion.getAutoIncremento();
     }
 }

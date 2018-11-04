@@ -566,9 +566,6 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
 
         this.NombreTextField.setEnabled(editable);
         this.NombreTextField.setText(actual.getNombre());
-
-        
-
     }
 
     public boolean isRegistrador(List<Labor> l) {

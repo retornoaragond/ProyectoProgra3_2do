@@ -9,49 +9,54 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import sistemaactivos.logic.Activo;
-import sistemaactivos.presentation.activos.edicion.*;
 
 /**
  *
  * @author ExtremeTech
  */
 public class ModelActivosListado extends java.util.Observable {
-  Activo filter;
-  ActivoTableModel activosTable;
-  Activo activoSeleccionado;
-    
-   
-  public ModelActivosListado() {
+
+    String filter;
+    ActivoTableModel activosTable;
+    Activo activoSeleccionado;
+    int rbselect;
+
+    public ModelActivosListado() {
         this.reset();
     }
 
-    public void reset(){ 
-        filter = new Activo();
-        List<Activo> rows = new ArrayList<>();        
-        activoSeleccionado=null;  
+    public void reset() {
+        filter = new String();
+        List<Activo> rows = new ArrayList<>();
+        activoSeleccionado = null;
+        rbselect = -1;
         this.setActivos(rows);
-        this.commit();  
+        this.commit();
     }
-    
-    
-    public void setActivos(List<Activo> activos){
-       int[] cols={ActivoTableModel.CODIGOID,ActivoTableModel.BIEN,ActivoTableModel.LABORACTIVO};
-      this.activosTable =new ActivoTableModel(cols,activos);    
+
+    public void setActivos(List<Activo> activos) {
+        int[] cols = {
+            ActivoTableModel.CODIGO,
+            ActivoTableModel.DESCRIPCION,
+            ActivoTableModel.CATEGORIA,
+            ActivoTableModel.DEPENDENCIA,
+            ActivoTableModel.RESPONSABLE
+        };
+        this.activosTable = new ActivoTableModel(cols, activos);
     }
-    
-    public Activo getFilter() {
+
+    public String getFilter() {
         return filter;
     }
-    
-    public void setFilter(Activo filter) {
+
+    public void setFilter(String filter) {
         this.filter = filter;
     }
-    
-    
+
     public ActivoTableModel getActivos() {
         return activosTable;
     }
-  
+
     public Activo getSeleccionado() {
         return activoSeleccionado;
     }
@@ -59,16 +64,24 @@ public class ModelActivosListado extends java.util.Observable {
     public void setSeleccionado(Activo seleccionado) {
         this.activoSeleccionado = seleccionado;
     }
-  
+
+    public int getRbselect() {
+        return rbselect;
+    }
+
+    public void setRbselect(int rbselect) {
+        this.rbselect = rbselect;
+    }
+
     @Override
     public void addObserver(Observer o) {
         super.addObserver(o);
-        this.commit();   
+        this.commit();
     }
 
-    public void commit(){
+    public void commit() {
         setChanged();
-        notifyObservers();       
+        notifyObservers();
     }
-  
+
 }

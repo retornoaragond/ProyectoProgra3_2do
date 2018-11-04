@@ -8,27 +8,29 @@ package sistemaactivos.presentation.activos.listado;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import sistemaactivos.logic.Activo;
-import sistemaactivos.presentation.solicitud.edicion.BienTableModel;
 
 /**
  *
  * @author CarlosAndrés
  */
 public class ActivoTableModel extends AbstractTableModel {
-    List<Activo>rows;
+
+    List<Activo> rows;
     int[] cols;
-   
-   public ActivoTableModel(int[] cols, List<Activo> rows) {
+
+    public ActivoTableModel(int[] cols, List<Activo> rows) {
         this.cols = cols;
         this.rows = rows;
         initColNames();
     }
 
+    @Override
     public int getColumnCount() {
         return cols.length;
-    } 
-    
-     public String getColumnName(int col) {
+    }
+
+    @Override
+    public String getColumnName(int col) {
         return colNames[cols[col]];
     }
 
@@ -42,17 +44,25 @@ public class ActivoTableModel extends AbstractTableModel {
         }    
     }    
      */
-  
-     public int getRowCount() {
+    @Override
+    public int getRowCount() {
         return rows.size();
     }
 
-      public Object getValueAt(int row, int col) {
+    @Override
+    public Object getValueAt(int row, int col) {
         Activo activo = rows.get(row);
         switch (cols[col]) {
-            case CODIGOID: return activo.getCodigoId();
-            case BIEN: return activo.getBien();
-            case LABORACTIVO: return activo.getLabor();
+            case CODIGO:
+                return activo.getCodigoId();
+            case DESCRIPCION:
+                return activo.getBien().getDescripcion();
+            case CATEGORIA:
+                return activo.getBien().getCategoria().getDescripcion();
+            case DEPENDENCIA:
+                return activo.getLabor().getDependencia().getNombre();
+            case RESPONSABLE:
+                return activo.getLabor().getFuncionario().getNombre();
             default:
                 return "";
         }
@@ -60,27 +70,22 @@ public class ActivoTableModel extends AbstractTableModel {
 
     public Activo getRowAt(int row) {
         return rows.get(row);
-    } 
-     
-   
-    
-    public static final int CODIGOID = 0;
-    public static final int BIEN = 1;
-    public static final int LABORACTIVO = 2;
-    
-       
+    }
 
-     String[] colNames = new String[3];
+    public static final int CODIGO = 0;
+    public static final int DESCRIPCION = 1;
+    public static final int CATEGORIA = 2;
+    public static final int DEPENDENCIA = 3;
+    public static final int RESPONSABLE = 4;
+
+    String[] colNames = new String[5];
 
     private void initColNames() {
-        colNames[CODIGOID] = "codigoId";
-        colNames[BIEN] = "bien";
-        colNames[LABORACTIVO] = "laborActivo";
-         }
-     
-     
-     
-     
-     
-    
+        colNames[CODIGO] = "Codigo";
+        colNames[DESCRIPCION] = "Descripcion";
+        colNames[CATEGORIA] = "Categoria";
+        colNames[DEPENDENCIA] = "Dependencia";
+        colNames[RESPONSABLE] = "Responsable";
+    }
+
 }

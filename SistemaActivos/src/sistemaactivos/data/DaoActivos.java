@@ -8,8 +8,15 @@ package sistemaactivos.data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import sistemaactivos.logic.Activo;
+import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Categoria;
+import sistemaactivos.logic.Dependencia;
+import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Labor;
 
 /**
  *
@@ -48,7 +55,7 @@ public class DaoActivos {
         List<Activo> resultado = new ArrayList<>();
         try {
             String sql = "SELECT * from activo "
-                   + "where codigoId like '%s%'";
+                    + "where codigoId like '%s%'";
             sql = String.format(sql, filtro.getBien());
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
@@ -61,87 +68,188 @@ public class DaoActivos {
     }
 
     ////arreglar inner jpin
-        public List<Activo> ActivoSearchCategoria(Activo filtro) {
+    public List<Activo> ActivoSearchCategoria(String filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM activo "
-                    + "WHERE nombre LIKE '%%%s%%'";
-            sql = String.format(sql, filtro.getBien().getCategoria().getDescripcion());
+            String sql = "SELECT activo.codigoId activocodigo, "
+                    + "labor.id laborid, bien.serial bienserial,"
+                    + " funcionario.id funcionarioid,"
+                    + " funcionario.nombre funcionarionombre,"
+                    + " dependencia.codigo dependenciacodigo,"
+                    + " bien.descripcion biendescripcion, "
+                    + "categoria.id categoriaid, "
+                    + "categoria.descripcion categoriadescripcion,"
+                    + " dependencia.nombre dependencianombre "
+                    + "FROM activo "
+                    + "INNER JOIN labor ON activo.labAct = labor.id "
+                    + "INNER JOIN bien ON bien.serial = activo.bienAct "
+                    + "INNER JOIN categoria ON bien.categoria = categoria.id "
+                    + "INNER JOIN dependencia ON labor.depLab = dependencia.codigo "
+                    + "INNER JOIN funcionario ON funcionario.id= labor.funcLab  "
+                    + "WHERE categoria.descripcion LIKE '%%%s%%'";
+            sql = String.format(sql, filtro);
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(activo(rs));
+                resultado.add(bigActivo(rs));
             }
         } catch (SQLException ex) {
         }
         return resultado;
     }
 
-    public List<Activo> ActivoSearchCodigo(Activo filtro) {
+    public List<Activo> ActivoSearchCodigo(String filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM activo "
-                    + "WHERE codigoId ='%s'";
-            sql = String.format(sql, filtro.getCodigoId());
+            String sql = "SELECT activo.codigoId activocodigo, "
+                    + "labor.id laborid, bien.serial bienserial,"
+                    + " funcionario.id funcionarioid,"
+                    + " funcionario.nombre funcionarionombre,"
+                    + " dependencia.codigo dependenciacodigo,"
+                    + " bien.descripcion biendescripcion, "
+                    + "categoria.id categoriaid, "
+                    + "categoria.descripcion categoriadescripcion,"
+                    + " dependencia.nombre dependencianombre "
+                    + "FROM activo "
+                    + "INNER JOIN labor ON activo.labAct = labor.id "
+                    + "INNER JOIN bien ON bien.serial = activo.bienAct "
+                    + "INNER JOIN categoria ON bien.categoria = categoria.id "
+                    + "INNER JOIN dependencia ON labor.depLab = dependencia.codigo "
+                    + "INNER JOIN funcionario ON funcionario.id= labor.funcLab  "
+                    + "WHERE activo.codigoId LIKE '%%%s%%';";
+            sql = String.format(sql, filtro);
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(activo(rs));
+                resultado.add(bigActivo(rs));
             }
         } catch (SQLException ex) {
         }
         return resultado;
     }
-    
+
     ///hacer innerjoijn
-    public List<Activo> ActivoSearchDependencia(Activo filtro) {
+    public List<Activo> ActivoSearchDependencia(String filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM activo "
-                    + "WHERE codigo ='%s'";
-            sql = String.format(sql, filtro.getLabor().getDependencia().getNombre());
+            String sql = "SELECT activo.codigoId activocodigo, "
+                    + "labor.id laborid, bien.serial bienserial,"
+                    + " funcionario.id funcionarioid,"
+                    + " funcionario.nombre funcionarionombre,"
+                    + " dependencia.codigo dependenciacodigo,"
+                    + " bien.descripcion biendescripcion, "
+                    + "categoria.id categoriaid, "
+                    + "categoria.descripcion categoriadescripcion,"
+                    + " dependencia.nombre dependencianombre "
+                    + "FROM activo "
+                    + "INNER JOIN labor ON activo.labAct = labor.id "
+                    + "INNER JOIN bien ON bien.serial = activo.bienAct "
+                    + "INNER JOIN categoria ON bien.categoria = categoria.id "
+                    + "INNER JOIN dependencia ON labor.depLab = dependencia.codigo "
+                    + "INNER JOIN funcionario ON funcionario.id= labor.funcLab  "
+                    + "WHERE dependencia.nombre LIKE '%%%s%%';";
+            sql = String.format(sql, filtro);
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(activo(rs));
+                resultado.add(bigActivo(rs));
             }
         } catch (SQLException ex) {
         }
         return resultado;
     }
-   
-    
-    
-    
-    public List<Activo> ActivoSearchDescripcion(Activo filtro) {
+
+    public List<Activo> ActivoSearchDescripcion(String filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT * "+
-                     "from activo a inner join bien b on a.bien=b.descripcion)";
-            sql = String.format(sql, filtro.getBien().getDescripcion());
+            String sql = "SELECT activo.codigoId activocodigo, "
+                    + "labor.id laborid, bien.serial bienserial,"
+                    + " funcionario.id funcionarioid,"
+                    + " funcionario.nombre funcionarionombre,"
+                    + " dependencia.codigo dependenciacodigo,"
+                    + " bien.descripcion biendescripcion, "
+                    + "categoria.id categoriaid, "
+                    + "categoria.descripcion categoriadescripcion,"
+                    + " dependencia.nombre dependencianombre "
+                    + "FROM activo "
+                    + "INNER JOIN labor ON activo.labAct = labor.id "
+                    + "INNER JOIN bien ON bien.serial = activo.bienAct "
+                    + "INNER JOIN categoria ON bien.categoria = categoria.id "
+                    + "INNER JOIN dependencia ON labor.depLab = dependencia.codigo "
+                    + "INNER JOIN funcionario ON funcionario.id= labor.funcLab  "
+                    + "WHERE bien.descripcion LIKE '%%%s%%'";
+            sql = String.format(sql, filtro);
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(activo(rs));
+                resultado.add(bigActivo(rs));
             }
         } catch (SQLException ex) {
         }
         return resultado;
     }
-    
-   
-     public List<Activo> ActivoSearchResponsable(Activo filtro) {
+
+    public List<Activo> ActivoSearchResponsable(String filtro) {
         List<Activo> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM activo "
-                    + "WHERE codigo ='%s'";
-            sql = String.format(sql, filtro.getLabor().getFuncionario().getNombre());
+            String sql = "SELECT activo.codigoId activocodigo, "
+                    + "labor.id laborid,"
+                    + " bien.serial bienserial,"
+                    + " funcionario.id funcionarioid,"
+                    + " funcionario.nombre funcionarionombre,"
+                    + " dependencia.codigo dependenciacodigo,"
+                    + " bien.descripcion biendescripcion, "
+                    + "categoria.id categoriaid, "
+                    + "categoria.descripcion categoriadescripcion,"
+                    + " dependencia.nombre dependencianombre "
+                    + "FROM activo "
+                    + "INNER JOIN labor ON activo.labAct = labor.id "
+                    + "INNER JOIN bien ON bien.serial = activo.bienAct "
+                    + "INNER JOIN categoria ON bien.categoria = categoria.id "
+                    + "INNER JOIN dependencia ON labor.depLab = dependencia.codigo "
+                    + "INNER JOIN funcionario ON funcionario.id= labor.funcLab  "
+                    + "WHERE funcionario.nombre LIKE '%%%s%%'";
+            sql = String.format(sql, filtro);
             ResultSet rs = dbbb.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(activo(rs));
+                resultado.add(bigActivo(rs));
             }
         } catch (SQLException ex) {
         }
         return resultado;
     }
-   
-    
+
+    private Activo bigActivo(ResultSet rs) {
+        try {
+            Activo ac = new Activo();
+            Categoria ca = new Categoria();
+            Bien bi = new Bien();
+            Dependencia de = new Dependencia();
+            Funcionario fu = new Funcionario();
+            Labor la = new Labor();
+            //activo
+            ac.setCodigoId(rs.getString("codigoId"));
+            ac.setBien(bi);
+            ac.setLabor(la);
+            //categoria
+            ca.setId(rs.getString("categoriaid"));
+            ca.setDescripcion(rs.getString("categoriadescripcion"));
+            //bien
+            bi.setSerial(rs.getString("bienserial"));
+            bi.setCategoria(ca);
+            bi.setDescripcion("biendescripcion");
+            //dependencia
+            de.setCodigo("dependenciacodigo");
+            de.setNombre(rs.getString("dependencianombre"));
+            //funcionario
+            fu.setId(rs.getString("funcionarioid"));
+            fu.setNombre(rs.getString("funcionarionombre"));
+            //labor
+            la.setId(rs.getInt("laborid"));
+            la.setDependencia(de);
+            la.setFuncionario(fu);
+            return ac;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
     public List<Activo> ActivosGetAll() {
         List<Activo> estados = new ArrayList<>();
         try {
@@ -167,7 +275,7 @@ public class DaoActivos {
     }
 
     public void ActivoDelete(Activo a) throws Exception {
-       String sql = "delete from activo where codigoId='%s'";
+        String sql = "delete from activo where codigoId='%s'";
         sql = String.format(sql, a.getCodigoId());
         int count = dbbb.executeUpdate(sql);
         if (count == 0) {
@@ -176,7 +284,7 @@ public class DaoActivos {
     }
 
     public void ActivoAdd(Activo a) throws Exception {
-       String sql = "insert into Activo (codigoId) "
+        String sql = "insert into Activo (codigoId) "
                 + "values('%s')";
         sql = String.format(sql, a.getCodigoId());
         int count = dbbb.executeUpdate(sql);
@@ -186,13 +294,13 @@ public class DaoActivos {
     }
 
     public void ActivoUpdate(Activo a) throws Exception {
-              String sql = "update activo set labAct='%d',"
+        String sql = "update activo set labAct='%d',"
                 + "where codigoId='%s'";
         sql = String.format(sql, a.getCodigoId());
         int count = dbbb.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Activo no existe");
-        }  
+        }
     }
 
     public void close() {
