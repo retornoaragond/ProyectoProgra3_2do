@@ -7,6 +7,8 @@ package sistemaactivos.presentation.solicitud.edicion;
 
 import java.util.HashSet;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Solicitud;
@@ -214,39 +216,35 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             .addGroup(PanelBienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lmarca)
+                    .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LprecioU, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Lserial))
                     .addComponent(Ldescripcion)
                     .addComponent(Lmodelo)
-                    .addGroup(PanelBienLayout.createSequentialGroup()
-                        .addComponent(Lcantidad)
-                        .addGap(39, 39, 39)
-                        .addComponent(cantbien, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lcantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lmarca)
-                            .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LprecioU, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Lserial)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(precioUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cantbien, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelBienLayout.createSequentialGroup()
                                 .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(precioUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelBienLayout.createSequentialGroup()
-                                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PanelBienLayout.createSequentialGroup()
-                                        .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelBienLayout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBienLayout.setVerticalGroup(
@@ -332,7 +330,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(monttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 129, Short.MAX_VALUE)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelBienesLayout.setVerticalGroup(
@@ -428,21 +426,21 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PanelRegistrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBienes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(PanelBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(salir)
-                .addGap(303, 303, 303))
+                .addGap(341, 341, 341))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,12 +473,21 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
 
-this.setVisible(false);
- 
+        this.setVisible(false);
+
     }//GEN-LAST:event_salirActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
-        //Agregar un bien 
+        if(validarBien()){
+            try {
+                controller.agregar(toBien());
+                //controller.reset(SistemaActivos.MODO_AGREGAR,model.getCurrent());
+            } catch (Exception ex) {
+                Logger.getLogger(ViewSolicitudEdicion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            
+        }
     }//GEN-LAST:event_agregarbienActionPerformed
 
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
@@ -499,7 +506,6 @@ this.setVisible(false);
         result.setRazonR(razon.getText());
         return result;
     }
-    
 
     Bien toBien() {
         Bien result = new Bien();
@@ -507,8 +513,8 @@ this.setVisible(false);
         result.setMarca(this.marca.getText());
         result.setDescripcion(this.descripcion.getText());
         result.setModelo(this.modelo.getText());
-        result.setPrecioU(Integer.getInteger(this.precioUnidad.getText()));
-        result.setCantidad(Integer.getInteger(this.cantbien.getText()));
+        result.setPrecioU(Double.parseDouble(this.precioUnidad.getText()));
+        result.setCantidad(Integer.parseInt(this.cantbien.getText()));
         return result;
     }
 
@@ -606,12 +612,6 @@ this.setVisible(false);
 
         this.Lserial.setForeground(SistemaActivos.COLOR_OK);
         if (this.serial.getText().isEmpty()) {
-            this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        }
-        try {
-            Integer.parseInt(this.serial.getText());
-        } catch (NumberFormatException e) {
             this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }

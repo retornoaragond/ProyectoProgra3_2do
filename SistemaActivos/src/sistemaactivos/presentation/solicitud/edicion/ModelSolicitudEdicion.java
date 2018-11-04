@@ -42,7 +42,9 @@ public class ModelSolicitudEdicion extends java.util.Observable {
     this.setCurrent(new Solicitud());
     }
 
-    
+    public void addBien(Bien bien){
+        this.current.getBiens().add(bien);
+    }
     
     public ModelSolicitudEdicion() {
         this.reset();

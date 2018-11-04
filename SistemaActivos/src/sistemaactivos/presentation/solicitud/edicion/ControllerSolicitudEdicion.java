@@ -6,6 +6,7 @@
 package sistemaactivos.presentation.solicitud.edicion;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
@@ -26,7 +27,7 @@ public class ControllerSolicitudEdicion {
     ModelSolicitudEdicion model;
 
     public ControllerSolicitudEdicion(ViewSolicitudEdicion view, ModelSolicitudEdicion model, ModelLogic domainModel, Session session) {
-        initComboB(domainModel,model);
+        initComboB(domainModel, model);
         this.domainModel = domainModel;
         this.session = session;
         this.view = view;
@@ -35,29 +36,32 @@ public class ControllerSolicitudEdicion {
         view.setModel(model);
     }
 
-    public void initComboB(ModelLogic domainModel,ModelSolicitudEdicion model){
-    List<Funcionario> funcio=domainModel.getFuncionarios();
-    funcio.add(0,new Funcionario());
-    model.resetCombo(funcio);
-        
+    public void initComboB(ModelLogic domainModel, ModelSolicitudEdicion model) {
+        List<Funcionario> funcio = domainModel.getFuncionarios();
+        funcio.add(0, new Funcionario());
+        model.resetCombo(funcio);
+
     }
+
     public void guardar(Solicitud solicitud) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
                 domainModel.addSolicitud(solicitud);
-//                SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();                   
+                SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.refrescarBusqueda();
                 model.setCurrent(new Solicitud());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
                 domainModel.updateSolicitud(solicitud);
-//               SistemaActivos.SOLICITUD_CONTROLLER.refrescarBusqueda();               
+                SistemaActivos.SOLICITUD_LISTADO_CONTROLLLER.refrescarBusqueda();
                 break;
         }
     }
 
     public void agregar(Bien bien) throws Exception {
-        //agregar un bien a la solicitud
+        model.addBien(bien);
+        model.setBientable(new ArrayList<>(model.current.getBiens()));
+        model.commit();
     }
 
     public void eliminar(Bien bien) throws Exception {
