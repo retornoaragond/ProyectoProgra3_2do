@@ -5,7 +5,9 @@
  */
 package sistemaactivos.presentation.solicitud.edicion;
 
+import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +20,7 @@ import sistemaactivos.logic.Solicitud;
  * @author ExtremeTech
  */
 public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.util.Observer {
-
+    
     ControllerSolicitudEdicion controller;
     ModelSolicitudEdicion model;
 
@@ -28,21 +30,22 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     public ViewSolicitudEdicion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fecha.setMaxSelectableDate(Calendar.getInstance().getTime());
     }
-
+    
     public ModelSolicitudEdicion getModel() {
         return model;
     }
-
+    
     public void setModel(ModelSolicitudEdicion model) {
         this.model = model;
         model.addObserver(this);
     }
-
+    
     public ControllerSolicitudEdicion getController() {
         return controller;
     }
-
+    
     public void setController(ControllerSolicitudEdicion controller) {
         this.controller = controller;
     }
@@ -467,25 +470,24 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         if (validar()) {
-
+            
         }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-
         this.setVisible(false);
-
     }//GEN-LAST:event_salirActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
-        if(validarBien()){
+        if (validarBien()) {
             try {
                 controller.agregar(toBien());
-                //controller.reset(SistemaActivos.MODO_AGREGAR,model.getCurrent());
+                this.limpiabien();
+                actualizacantidad_monto();
             } catch (Exception ex) {
                 Logger.getLogger(ViewSolicitudEdicion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             
         }
     }//GEN-LAST:event_agregarbienActionPerformed
@@ -493,7 +495,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
 //Eliminar un bien selecionado
     }//GEN-LAST:event_eliminarbienActionPerformed
-
+    
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
         result.setNumcomp(numcomprobante.getText());
@@ -506,7 +508,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setRazonR(razon.getText());
         return result;
     }
-
+    
     Bien toBien() {
         Bien result = new Bien();
         result.setSerial(this.serial.getText());
@@ -517,7 +519,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setCantidad(Integer.parseInt(this.cantbien.getText()));
         return result;
     }
-
+    
     public void limpiarErrores() {
         this.numcomp.setForeground(SistemaActivos.COLOR_OK);
         this.fec.setForeground(SistemaActivos.COLOR_OK);
@@ -531,7 +533,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.LprecioU.setForeground(SistemaActivos.COLOR_OK);
         this.Lserial.setForeground(SistemaActivos.COLOR_OK);
     }
-
+    
     boolean validar() {
         boolean error = false;
         this.numcomp.setForeground(SistemaActivos.COLOR_OK);
@@ -539,33 +541,34 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             this.numcomp.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.fec.setForeground(SistemaActivos.COLOR_OK);
         if (this.fecha.getDate() == null) {
             this.fec.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.tipadq.setForeground(SistemaActivos.COLOR_OK);
         if (this.tipoadquiCombo.getSelectedIndex() == 0) {
             this.tipadq.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.bient.setForeground(SistemaActivos.COLOR_OK);
         if (model.bientable.rows.isEmpty()) {
             this.bient.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.rechazo.setForeground(SistemaActivos.COLOR_OK);
-        if (this.razon.getText().isEmpty() && "Procesada".equals(estadoactual.getSelectedItem().toString())) {
+        if (this.razon.getText().isEmpty() && "Rechazada".equals(estadoactual.getSelectedItem().toString())) {
             this.rechazo.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
+        
         return !error;
     }
-
+    
     boolean validarBien() {
         boolean error = false;
         this.Lcantidad.setForeground(SistemaActivos.COLOR_OK);
@@ -579,25 +582,25 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             this.Lcantidad.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.Ldescripcion.setForeground(SistemaActivos.COLOR_OK);
         if (this.descripcion.getText().isEmpty()) {
             this.Ldescripcion.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.Lmarca.setForeground(SistemaActivos.COLOR_OK);
         if (this.marca.getText().isEmpty()) {
             this.Lmarca.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.Lmodelo.setForeground(SistemaActivos.COLOR_OK);
         if (this.modelo.getText().isEmpty()) {
             this.Lmodelo.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.LprecioU.setForeground(SistemaActivos.COLOR_OK);
         if (this.precioUnidad.getText().isEmpty()) {
             this.LprecioU.setForeground(SistemaActivos.COLOR_ERROR);
@@ -609,13 +612,42 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             this.LprecioU.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
-
+        
         this.Lserial.setForeground(SistemaActivos.COLOR_OK);
         if (this.serial.getText().isEmpty()) {
             this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
+        } else {
+            List<Bien> b = model.getBientable().getRows();
+            for (Bien bi : b) {
+                if (bi.getSerial().equals(this.serial.getText())) {
+                    this.Lserial.setForeground(SistemaActivos.COLOR_ERROR);
+                    error = true;
+                }
+            }
         }
         return !error;
+    }
+    
+    public void limpiabien() {
+        this.cantbien.setText("");
+        this.descripcion.setText("");
+        this.marca.setText("");
+        this.modelo.setText("");
+        this.precioUnidad.setText("");
+        this.serial.setText("");
+    }
+    
+    public void actualizacantidad_monto() {
+        int cantidad = 0;
+        double monto = 0.0;
+        List<Bien> b = model.getBientable().getRows();
+        for (Bien bi : b) {
+            cantidad = cantidad + bi.getCantidad();
+            monto = monto + (bi.getPrecioU() * bi.getCantidad());
+        }
+        this.cantbienes.setText(Integer.toString(cantidad));
+        this.monttotal.setText(Double.toString(monto));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -673,18 +705,19 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.registradorCombo.setModel(model.getFuncioCom());
         this.tipoadquiCombo.setSelectedItem(0);
     }
-
+    
     public void fromSolicitud(Solicitud actual) {
-
-        Boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
-        Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
-
+        
+        boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
+        boolean observe = model.getModo() == SistemaActivos.MODO_CONSULTAR;
+        boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
+        
         this.numcomprobante.setEnabled(add);
         numcomprobante.setText(actual.getNumcomp());
-
+        
         this.fecha.setEnabled(add);
         fecha.setDate(actual.getFecha());
-
+        
         this.tipoadquiCombo.setEnabled(add);
         switch (actual.getTipoadq()) {
             case "Donacion":
@@ -697,13 +730,13 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 this.tipoadquiCombo.setSelectedIndex(2);
                 break;
         }
-
+        
         this.cantbienes.setEditable(false);
         cantbienes.setText(Integer.toString(actual.getCantbien()));
-
+        
         this.monttotal.setEditable(false);
         monttotal.setText(Double.toString(actual.getMontotal()));
-
+        
         this.estadoactual.setEnabled(modify);
         switch (actual.getEstado()) {
             case "Recibida":
@@ -725,31 +758,32 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 estadoactual.setSelectedIndex(0);
                 break;
         }
-
+        
         this.razon.setEnabled(modify);
         razon.setText(actual.getRazonR());
-
+        
         if (!add) {
             this.agregarbien.setVisible(false);
         } else {
             this.agregarbien.setVisible(true);
         }
-
+        
         if (!add) {
             this.eliminarbien.setVisible(false);
         } else {
             this.eliminarbien.setVisible(true);
         }
-
+        
         this.cantbien.setEnabled(add);
         this.descripcion.setEnabled(add);
         this.marca.setEnabled(add);
         this.modelo.setEnabled(add);
         this.precioUnidad.setEnabled(add);
         this.serial.setEnabled(add);
-        this.PanelRegistrador.setVisible(modify);
+        this.PanelRegistrador.setVisible(modify || observe);
+        this.PanelEstado.setVisible(modify || observe);
         this.PanelBien.setVisible(add);
-
+        
         guardar.setVisible(add);
         this.validate();
     }
