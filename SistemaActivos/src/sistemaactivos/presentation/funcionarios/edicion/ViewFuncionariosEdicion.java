@@ -456,26 +456,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         return false;
     }
 
-    boolean validarLabor()  {
+    boolean validarLabor() {
         boolean error = false;
-        this.UsuarioLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.OperadorText.getText().isEmpty()) {
-            this.UsuarioLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        } else {
-            try {
-                if (isUser(this.OperadorText.getText())) {
-                    error = true;
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Ya existe un usario con ese Id", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        this.contraseñaLabel.setForeground(SistemaActivos.COLOR_OK);
-        if (this.Contraseñatext.getText().isEmpty()) {
-            this.contraseñaLabel.setForeground(SistemaActivos.COLOR_ERROR);
-            error = true;
-        }
 
         this.Dependencia.setForeground(SistemaActivos.COLOR_OK);
         if (this.DependenciaCombo.getSelectedIndex() == 0) {
@@ -487,6 +469,27 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         if (this.puestoCombo.getSelectedIndex() == 0) {
             this.PuestoLabel.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
+        } else {
+            if (Arrays.asList("Administrador", "Secretariado", "Registrador", "Jefe OCCB", "Jefe RRHH").contains(this.puestoCombo.getSelectedItem().toString())) {
+                this.UsuarioLabel.setForeground(SistemaActivos.COLOR_OK);
+                if (this.OperadorText.getText().isEmpty()) {
+                    this.UsuarioLabel.setForeground(SistemaActivos.COLOR_ERROR);
+                    error = true;
+                } else {
+                    try {
+                        if (isUser(this.OperadorText.getText())) {
+                            error = true;
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(this, "Ya existe un usario con ese Id", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                this.contraseñaLabel.setForeground(SistemaActivos.COLOR_OK);
+                if (this.Contraseñatext.getText().isEmpty()) {
+                    this.contraseñaLabel.setForeground(SistemaActivos.COLOR_ERROR);
+                    error = true;
+                }
+            }
         }
 
         return !error;
@@ -549,7 +552,7 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
         this.fromFuncionario(actual);
         this.LaborTable.setModel(model.getLabores());
         this.SolicitudTable.setModel(model.getSoliTable());
-        
+
     }
 
     public void fromFuncionario(Funcionario actual) {
@@ -569,8 +572,8 @@ public class ViewFuncionariosEdicion extends javax.swing.JDialog implements java
     }
 
     public boolean isRegistrador(List<Labor> l) {
-        for(Labor la : l){
-            if("Registrador".equals(la.getPuesto().getPuesto())){
+        for (Labor la : l) {
+            if ("Registrador".equals(la.getPuesto().getPuesto())) {
                 return true;
             }
         }
