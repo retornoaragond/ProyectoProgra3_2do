@@ -8,8 +8,12 @@ package sistemaactivos.presentation.solicitud.edicion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 
 /**
@@ -22,7 +26,24 @@ public class ModelSolicitudEdicion extends java.util.Observable {
     BienTableModel bientable;
     Bien bienselecionado;
     int modo;
+    ComboBoxModel<Funcionario> combo;
+    
+    public ComboBoxModel<Funcionario> getFuncioCom(){
+        return this.combo;
+    }
+    
+    public void setCombo(List<Funcionario> Tipo){
+        this.combo=new DefaultComboBoxModel(Tipo.toArray());
+        this.commit();
+    }
+    
+    public void resetCombo(List<Funcionario> TA){
+    this.setCombo(TA);
+    this.setCurrent(new Solicitud());
+    }
 
+    
+    
     public ModelSolicitudEdicion() {
         this.reset();
     }

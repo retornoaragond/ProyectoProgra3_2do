@@ -6,9 +6,11 @@
 package sistemaactivos.presentation.solicitud.edicion;
 
 import java.awt.Point;
+import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.logic.Solicitud;
 
@@ -24,16 +26,21 @@ public class ControllerSolicitudEdicion {
     ModelSolicitudEdicion model;
 
     public ControllerSolicitudEdicion(ViewSolicitudEdicion view, ModelSolicitudEdicion model, ModelLogic domainModel, Session session) {
-        //model.reset(domainModel.getBien());
+        initComboB(domainModel,model);
         this.domainModel = domainModel;
         this.session = session;
-
         this.view = view;
         this.model = model;
         view.setController(this);
         view.setModel(model);
     }
 
+    public void initComboB(ModelLogic domainModel,ModelSolicitudEdicion model){
+    List<Funcionario> funcio=domainModel.getFuncionarios();
+    funcio.add(0,new Funcionario());
+    model.resetCombo(funcio);
+        
+    }
     public void guardar(Solicitud solicitud) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:

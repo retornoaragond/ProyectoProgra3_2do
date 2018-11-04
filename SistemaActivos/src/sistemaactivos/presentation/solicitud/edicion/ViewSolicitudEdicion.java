@@ -63,7 +63,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         fecha = new com.toedter.calendar.JDateChooser();
         numcomprobante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tipoadqui = new javax.swing.JComboBox<>();
+        tipoadquiCombo = new javax.swing.JComboBox();
         PanelBien = new javax.swing.JPanel();
         Lserial = new javax.swing.JLabel();
         serial = new javax.swing.JTextField();
@@ -96,7 +96,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         estadoactual = new javax.swing.JComboBox<>();
         PanelRegistrador = new javax.swing.JPanel();
         RejistratodL = new javax.swing.JLabel();
-        registrador = new javax.swing.JComboBox<>();
+        registradorCombo = new javax.swing.JComboBox();
 
         setTitle("SOLICITUD");
 
@@ -127,7 +127,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Datos de la Solicitud");
 
-        tipoadqui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Donacion", "Compra", "Generado" }));
+        tipoadquiCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Donacion", "Compra", "Genedaro" }));
 
         javax.swing.GroupLayout PanelSolicitudLayout = new javax.swing.GroupLayout(PanelSolicitud);
         PanelSolicitud.setLayout(PanelSolicitudLayout);
@@ -148,7 +148,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addGroup(PanelSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(numcomprobante)
                     .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(tipoadqui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tipoadquiCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(104, 104, 104))
             .addGroup(PanelSolicitudLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
@@ -171,7 +171,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tipadq)
-                    .addComponent(tipoadqui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipoadquiCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -399,8 +399,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         RejistratodL.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         RejistratodL.setText("Registrador asociado");
 
-        registrador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        registrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        registradorCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout PanelRegistradorLayout = new javax.swing.GroupLayout(PanelRegistrador);
         PanelRegistrador.setLayout(PanelRegistradorLayout);
@@ -410,7 +409,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(RejistratodL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(registrador, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registradorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(182, 182, 182))
         );
         PanelRegistradorLayout.setVerticalGroup(
@@ -418,7 +417,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             .addGroup(PanelRegistradorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelRegistradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registradorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RejistratodL))
                 .addContainerGap())
         );
@@ -492,7 +491,7 @@ this.setVisible(false);
         Solicitud result = new Solicitud();
         result.setNumcomp(numcomprobante.getText());
         result.setFecha(fecha.getDate());
-        result.setTipoadq(tipoadqui.getSelectedItem().toString());
+        result.setTipoadq(tipoadquiCombo.getSelectedItem().toString());
         result.setBiens(new HashSet<>(model.bientable.getRows()));
         result.setCantbien(Integer.getInteger(cantbien.getText()));
         result.setMontotal(Double.parseDouble(monttotal.getText()));
@@ -542,7 +541,7 @@ this.setVisible(false);
         }
 
         this.tipadq.setForeground(SistemaActivos.COLOR_OK);
-        if (this.tipoadqui.getSelectedIndex() == 0) {
+        if (this.tipoadquiCombo.getSelectedIndex() == 0) {
             this.tipadq.setForeground(SistemaActivos.COLOR_ERROR);
             error = true;
         }
@@ -657,12 +656,12 @@ this.setVisible(false);
     private javax.swing.JTextField precioUnidad;
     private javax.swing.JTextArea razon;
     private javax.swing.JLabel rechazo;
-    private javax.swing.JComboBox<String> registrador;
+    private javax.swing.JComboBox registradorCombo;
     private javax.swing.JButton salir;
     private javax.swing.JTextField serial;
     private javax.swing.JTable tablabienes;
     private javax.swing.JLabel tipadq;
-    private javax.swing.JComboBox<String> tipoadqui;
+    private javax.swing.JComboBox tipoadquiCombo;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -671,6 +670,8 @@ this.setVisible(false);
         Solicitud actual = model.getCurrent();
         this.fromSolicitud(actual);
         tablabienes.setModel(model.getBientable());
+        this.registradorCombo.setModel(model.getFuncioCom());
+        this.tipoadquiCombo.setSelectedItem(0);
     }
 
     public void fromSolicitud(Solicitud actual) {
@@ -684,16 +685,16 @@ this.setVisible(false);
         this.fecha.setEnabled(add);
         fecha.setDate(actual.getFecha());
 
-        this.tipoadqui.setEnabled(add);
+        this.tipoadquiCombo.setEnabled(add);
         switch (actual.getTipoadq()) {
             case "Donacion":
-                this.tipoadqui.setSelectedIndex(0);
+                this.tipoadquiCombo.setSelectedIndex(0);
                 break;
             case "Compra":
-                this.tipoadqui.setSelectedIndex(1);
+                this.tipoadquiCombo.setSelectedIndex(1);
                 break;
             case "Generado":
-                this.tipoadqui.setSelectedIndex(2);
+                this.tipoadquiCombo.setSelectedIndex(2);
                 break;
         }
 
