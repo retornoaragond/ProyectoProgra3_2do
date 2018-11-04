@@ -224,7 +224,7 @@ public class DaoActivos {
             Funcionario fu = new Funcionario();
             Labor la = new Labor();
             //activo
-            ac.setCodigoId(rs.getString("codigoId"));
+            ac.setCodigoId(rs.getString("activocodigo"));
             ac.setBien(bi);
             ac.setLabor(la);
             //categoria
@@ -233,9 +233,9 @@ public class DaoActivos {
             //bien
             bi.setSerial(rs.getString("bienserial"));
             bi.setCategoria(ca);
-            bi.setDescripcion("biendescripcion");
+            bi.setDescripcion(rs.getString("biendescripcion"));
             //dependencia
-            de.setCodigo("dependenciacodigo");
+            de.setCodigo(rs.getString("dependenciacodigo"));
             de.setNombre(rs.getString("dependencianombre"));
             //funcionario
             fu.setId(rs.getString("funcionarioid"));
