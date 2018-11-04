@@ -6,9 +6,11 @@
 package sistemaactivos.presentation.bien;
 
 import java.awt.Point;
+import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Categoria;
 import sistemaactivos.logic.ModelLogic;
 
 /**
@@ -23,13 +25,21 @@ public class ControllerBien {
     
     
    public ControllerBien(ViewBien view, ModelBien model, ModelLogic domainModel, Session session) {
-        this.domainModel = domainModel;
+       initComboB(domainModel,model); 
+       this.domainModel = domainModel;
         this.session = session;
         this.view = view;
         this.model = model;
         view.setController(this);
         view.setModel(model);
     } 
+   
+   public void initComboB(ModelLogic domainModel,ModelBien model){
+   List<Categoria> cat = domainModel.getCategoria();
+   cat.add(0,new Categoria());
+   model.resetC(cat);
+   
+   }
     
     public void guardar(Bien bien) throws Exception {
         switch (model.getModo()) {
@@ -75,6 +85,7 @@ public class ControllerBien {
         view.setVisible(false);
     }
     
+   
     
     
   

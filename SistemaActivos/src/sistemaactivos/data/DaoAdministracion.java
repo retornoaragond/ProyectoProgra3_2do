@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sistemaactivos.logic.Categoria;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Labor;
@@ -474,4 +475,33 @@ public class DaoAdministracion {
     public void close() {
     }
 
+    
+    public List<Categoria> CategoriaALL() {
+        List<Categoria> cat = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM categoria";
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                cat.add(categoria(rs));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return cat;
+    }
+    
+    private Categoria categoria(ResultSet rs) {
+        try {
+            Categoria c = new Categoria();
+            c.setDescripcion(rs.getString("descripcion"));
+            c.setIncremento(Integer.parseInt(rs.getString("incremento")));
+            c.setId(rs.getString("id"));
+            return c;
+        } catch (SQLException ex) {
+            return null;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    
 }

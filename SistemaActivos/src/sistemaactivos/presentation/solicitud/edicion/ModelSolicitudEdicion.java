@@ -106,5 +106,5 @@ public class ModelSolicitudEdicion extends java.util.Observable {
         setChanged();
         notifyObservers();
     }
-
+ 
 }

@@ -88,5 +88,5 @@ public class BienTableModel extends AbstractTableModel {
     public void setRows(List<Bien> rows) {
         this.rows = rows;
     }
-
+    
 }

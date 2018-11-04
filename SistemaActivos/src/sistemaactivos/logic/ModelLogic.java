@@ -257,4 +257,8 @@ public class ModelLogic {
     public int getAutoIncremento() throws Exception {
         return daoAdministracion.getAutoIncremento();
     }
+    
+    public List<Categoria> getCategoria(){
+    return daoAdministracion.CategoriaALL();
+    }
 }

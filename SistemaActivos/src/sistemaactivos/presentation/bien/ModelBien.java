@@ -8,8 +8,11 @@ package sistemaactivos.presentation.bien;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Categoria;
 
 /**
  *
@@ -19,6 +22,7 @@ public class ModelBien extends java.util.Observable {
     Bien current = new Bien();
     Bien bienselecionado;
     int modo;
+    ComboBoxModel<Categoria> categorias;
 
 
 
@@ -76,6 +80,22 @@ public class ModelBien extends java.util.Observable {
         setChanged();
         notifyObservers();
     }
+    
+    public ComboBoxModel<Categoria> getCategoria(){
+        return categorias;
+    }
+    
+    public void setCategorias(List<Categoria> cat ){
+    this.categorias= new DefaultComboBoxModel(cat.toArray());
+    this.commit();
+    }
+    
+    void resetC(List<Categoria> cat){
+    this.setCategorias(cat);
+    this.setCurrent(new Bien());
+    }
 
+
+    
 
 }

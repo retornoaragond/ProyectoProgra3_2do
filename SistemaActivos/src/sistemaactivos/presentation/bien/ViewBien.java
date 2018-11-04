@@ -99,7 +99,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         PrecioUnitariojTextField = new javax.swing.JTextField();
         CantidadjLabel1 = new javax.swing.JLabel();
         CantidadjTextField = new javax.swing.JTextField();
-        categoriajComboBox1 = new javax.swing.JComboBox<>();
+        categoriajComboBox1 = new javax.swing.JComboBox();
         salirjButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -131,8 +131,6 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         PrecioUnitariojLabel.setText("Precio Unitario");
 
         CantidadjLabel1.setText("Cantidad");
-
-        categoriajComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         salirjButton.setText("salir");
         salirjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -259,7 +257,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
     private javax.swing.JLabel PrecioUnitariojLabel;
     private javax.swing.JTextField PrecioUnitariojTextField;
     private javax.swing.JLabel SerialjLabel;
-    private javax.swing.JComboBox<String> categoriajComboBox1;
+    private javax.swing.JComboBox categoriajComboBox1;
     private javax.swing.JTextField descripcionjTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton procesarjButton;
@@ -272,6 +270,8 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         this.limpiarErrores();
         Bien actual = model.getCurrent();
         this.fromBien(actual);
+        this.categoriajComboBox1.setModel(model.getCategoria());
+        this.categoriajComboBox1.setSelectedIndex(0);
     }
 
     public void fromBien(Bien actual) {
@@ -302,5 +302,7 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         procesarjButton.setVisible(modify);
         this.validate();
     }
+    
+    
 
 }
