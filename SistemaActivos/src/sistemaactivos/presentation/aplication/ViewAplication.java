@@ -64,7 +64,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         logOut = new javax.swing.JCheckBoxMenuItem();
         AdministradorJMenuItem = new javax.swing.JMenu();
         ListadoDeSolicitudesJMenu4 = new javax.swing.JMenuItem();
-        AgregarSolicitudjMenuItem = new javax.swing.JMenuItem();
+        ListadoActivosjMenuItem = new javax.swing.JMenuItem();
         SecretariaOCCBjMenu = new javax.swing.JMenu();
         ListadoDeSolicitudesJMenu3 = new javax.swing.JMenuItem();
         JefeDeOCCBJMenuItem = new javax.swing.JMenu();
@@ -120,13 +120,13 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         });
         AdministradorJMenuItem.add(ListadoDeSolicitudesJMenu4);
 
-        AgregarSolicitudjMenuItem.setText("Agregar una solicitud");
-        AgregarSolicitudjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        ListadoActivosjMenuItem.setText("Listado de Activos");
+        ListadoActivosjMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarSolicitudjMenuItemActionPerformed(evt);
+                ListadoActivosjMenuItemActionPerformed(evt);
             }
         });
-        AdministradorJMenuItem.add(AgregarSolicitudjMenuItem);
+        AdministradorJMenuItem.add(ListadoActivosjMenuItem);
 
         jMenuBar1.add(AdministradorJMenuItem);
 
@@ -237,20 +237,15 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     }//GEN-LAST:event_salirMenuActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
-
         controller.exit();
-
     }//GEN-LAST:event_logOutActionPerformed
 
     private void ListadoDeSolicitudesJMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu4ActionPerformed
-        controller.dependenciasShow();
-
+        controller.solicitudesShow();
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu4ActionPerformed
 
     private void ListadoDeSolicitudesJMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu3ActionPerformed
-
-        controller.funcionariosShow();
-
+        controller.solicitudesShow();
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu3ActionPerformed
 
     private void ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
@@ -258,16 +253,16 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
     }//GEN-LAST:event_ListadoDeSolicitudeSolicitudesJMenuItem2ActionPerformed
 
     private void ListadoDeSolicitudesJMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeSolicitudesJMenu1ActionPerformed
-        controller.activosShow();
+        controller.solicitudesShow();
     }//GEN-LAST:event_ListadoDeSolicitudesJMenu1ActionPerformed
 
     private void ListadoDeActivosjMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeActivosjMenuItem2ActionPerformed
         controller.activosShow();
     }//GEN-LAST:event_ListadoDeActivosjMenuItem2ActionPerformed
 
-    private void AgregarSolicitudjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarSolicitudjMenuItemActionPerformed
-        controller.solicitudesShow();
-    }//GEN-LAST:event_AgregarSolicitudjMenuItemActionPerformed
+    private void ListadoActivosjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoActivosjMenuItemActionPerformed
+        controller.activosShow();
+    }//GEN-LAST:event_ListadoActivosjMenuItemActionPerformed
 
     private void ListadoDeDependendenciasjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoDeDependendenciasjMenuItemActionPerformed
         controller.dependenciasShow();
@@ -293,9 +288,9 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AdministradorJMenuItem;
-    private javax.swing.JMenuItem AgregarSolicitudjMenuItem;
     private javax.swing.JMenu JefeDeOCCBJMenuItem;
     private javax.swing.JMenu JefeDeRRHHjMenu;
+    private javax.swing.JMenuItem ListadoActivosjMenuItem;
     private javax.swing.JMenuItem ListadoDeActivosjMenuItem;
     private javax.swing.JMenuItem ListadoDeActivosjMenuItem2;
     private javax.swing.JMenuItem ListadoDeDependendenciasjMenuItem;

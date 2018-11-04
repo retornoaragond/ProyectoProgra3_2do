@@ -58,22 +58,35 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
             switch (user.getLabor().getPuesto().getPuesto()) {
                 case "Administrador":
                     TableColumnModel tcm = solicitudesFld.getColumnModel();
-                    tcm.removeColumn(tcm.getColumn(SolicitudTableModel.DEPENDENCIA));
-                    tcm.removeColumn(tcm.getColumn(SolicitudTableModel.FUNCIONARIO));
+                    tcm.getColumn(SolicitudTableModel.DEPENDENCIA).setMinWidth(0);
+                    tcm.getColumn(SolicitudTableModel.DEPENDENCIA).setMaxWidth(0);
+                    tcm.getColumn(SolicitudTableModel.DEPENDENCIA).setWidth(0);
+                    tcm.getColumn(SolicitudTableModel.FUNCIONARIO).setMinWidth(0);
+                    tcm.getColumn(SolicitudTableModel.FUNCIONARIO).setMaxWidth(0);
+                    tcm.getColumn(SolicitudTableModel.FUNCIONARIO).setWidth(0);
                     break;
                 case "Secretariado":
                     TableColumnModel tcm1 = solicitudesFld.getColumnModel();
-                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.FUNCIONARIO));
-                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.FECHA));
-                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES));
-                    tcm1.removeColumn(tcm1.getColumn(SolicitudTableModel.MONTOTOTAL));
+
+                    tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setMinWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setMaxWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.FECHA).setMinWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.FECHA).setMaxWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.FECHA).setWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setMinWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setMaxWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setMinWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setMaxWidth(0);
+                    tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setWidth(0);
                     break;
                 case "Registrador":
                     TableColumnModel tcm2 = solicitudesFld.getColumnModel();
-                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.FUNCIONARIO));
-                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.FECHA));
-                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION));
-                    tcm2.removeColumn(tcm2.getColumn(SolicitudTableModel.MONTOTOTAL));
+                    tcm2.getColumn(SolicitudTableModel.FUNCIONARIO).setWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.FECHA).setWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION).setWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.MONTOTOTAL).setWidth(0);
                     break;
                 default:
                     break;

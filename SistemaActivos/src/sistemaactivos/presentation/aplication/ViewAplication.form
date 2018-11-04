@@ -36,12 +36,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoDeSolicitudesJMenu4ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="AgregarSolicitudjMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="ListadoActivosjMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar una solicitud"/>
+                <Property name="text" type="java.lang.String" value="Listado de Activos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarSolicitudjMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListadoActivosjMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
