@@ -763,8 +763,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
         this.monttotal.setEditable(false);
         monttotal.setText(Double.toString(actual.getMontotal()));
-
-        this.estadoactual.setEnabled(modify);
+        if (user != null) {
+            this.estadoactual.setEnabled(modify && !"Administrador".equals(user.getLabor().getPuesto().getPuesto()));
+        } else {
+            this.estadoactual.setEnabled(modify);
+        }
         switch (actual.getEstado()) {
             case "Recibida":
                 estadoactual.setSelectedIndex(1);
@@ -775,19 +778,16 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             case "Rechazada":
                 estadoactual.setSelectedIndex(3);
                 break;
-            case "Aceptada":
-                estadoactual.setSelectedIndex(4);
-                break;
             case "Procesada":
-                estadoactual.setSelectedIndex(5);
+                estadoactual.setSelectedIndex(4);
                 break;
             default:
                 estadoactual.setSelectedIndex(0);
                 break;
         }
-        if(user != null){
-           this.razon.setEnabled("Secretariado".equals(user.getLabor().getPuesto().getPuesto())); 
-        }else{
+        if (user != null) {
+            this.razon.setEnabled("Secretariado".equals(user.getLabor().getPuesto().getPuesto()));
+        } else {
             this.razon.setEnabled(false);
         }
         razon.setText(actual.getRazonR());
@@ -810,12 +810,18 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.modelo.setEnabled(add);
         this.precioUnidad.setEnabled(add);
         this.serial.setEnabled(add);
-        if(user != null){
-        this.PanelRegistrador.setVisible((modify || observe )&& "Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
-        this.registradorCombo.setEnabled("Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
-        this.PanelEstado.setVisible((modify || observe) && !"Administrador".equals(user.getLabor().getPuesto().getPuesto()));
+        if (user != null) {
+            this.PanelRegistrador.setVisible((modify || observe) && "Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
+            this.registradorCombo.setEnabled("Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
+            this.PanelEstado.setVisible(modify || observe);
         }
         this.PanelBien.setVisible(add);
+        if(!"".equals(actual.getFuncionario().getNombre())){
+            registradorCombo.setSelectedItem(actual.getFuncionario());
+        }else{
+            registradorCombo.setSelectedItem(" ");
+        }
+        
 
         guardar.setVisible(add || modify);
         this.validate();

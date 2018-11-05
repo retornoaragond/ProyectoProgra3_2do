@@ -8,6 +8,8 @@ package sistemaactivos.presentation.solicitud.edicion;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
@@ -37,10 +39,14 @@ public class ControllerSolicitudEdicion {
         view.setModel(model);
     }
 
-    public void initComboB(ModelLogic domainModel, ModelSolicitudEdicion model) {
-        List<Funcionario> funcio = domainModel.getFuncionarios();
-        funcio.add(0, new Funcionario());
-        model.resetCombo(funcio);
+    public void initComboB(ModelLogic domainModel, ModelSolicitudEdicion model)  {
+        try {
+            List<Funcionario> funcio = domainModel.getFuncionarios();
+            funcio.add(0, new Funcionario());
+            model.resetCombo(funcio);
+        } catch (Exception ex) {
+            Logger.getLogger(ControllerSolicitudEdicion.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

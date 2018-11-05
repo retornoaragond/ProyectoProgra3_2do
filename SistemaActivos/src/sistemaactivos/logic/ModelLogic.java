@@ -130,8 +130,8 @@ public class ModelLogic {
 
     //</editor-fold>
     //  <editor-fold desc="Funcionario" defaultstate="collapsed">
-    public List<Funcionario> getFuncionarios() {
-        return daoAdministracion.FuncionarioGetAll();
+    public List<Funcionario> getFuncionarios() throws Exception {
+        return daoAdministracion.GetFuncionariobyPuesto();
     }
 
     public Funcionario getFuncionario(Integer codigo) throws Exception {

@@ -65,8 +65,8 @@ public class DaoAdministracion {
             throw new Exception("usuario ya existe ya existe");
         }
     }
-    
-    public List<Usuario> usuariosGetAll(){
+
+    public List<Usuario> usuariosGetAll() {
         List<Usuario> users = new ArrayList<>();
         try {
             String sql = "select * from usuario";
@@ -75,7 +75,7 @@ public class DaoAdministracion {
                 users.add(usuario(rs));
             }
         } catch (SQLException ex) {
-            
+
         }
         return users;
     }
@@ -176,14 +176,13 @@ public class DaoAdministracion {
         }
     }
 
-    
-     public List<Funcionario> GetFuncionarioS(String id) throws Exception {
+    public List<Funcionario> GetFuncionarioS(String id) throws Exception {
         List<Funcionario> fun = new ArrayList<>();
         try {
             String sql = "SELECT * FROM funcionario WHERE id = '%s'";
             sql = String.format(sql, id);
             ResultSet rs = dbb.executeQuery(sql);
-             while (rs.next()) {
+            while (rs.next()) {
                 fun.add(funcionario(rs));
             }
         } catch (SQLException ex) {
@@ -192,8 +191,23 @@ public class DaoAdministracion {
         return fun;
     }
     
-    
-    
+    public List<Funcionario> GetFuncionariobyPuesto() throws Exception {
+        List<Funcionario> fun = new ArrayList<>();
+        try {
+            String sql = "select * from funcionario, labor, puesto "
+                    + "where funcionario.id = labor.funcLab "
+                    + "and puesto.codgo= labor.pueLab "
+                    + "and puesto.puesto= 'Registrador'";
+            ResultSet rs = dbb.executeQuery(sql);
+            while (rs.next()) {
+                fun.add(funcionario(rs));
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Funcionarios no encontrados");
+        }
+        return fun;
+    }
+
     public void FuncionarioDelete(Funcionario a) throws Exception {
         String sql = "delete from funcionario where id='%s'";
         sql = String.format(sql, a.getId());
@@ -242,7 +256,7 @@ public class DaoAdministracion {
             String sql = "SELECT * FROM dependencia WHERE codigo = '%s'";
             sql = String.format(sql, codigo);
             ResultSet rs = dbb.executeQuery(sql);
-             while (rs.next()) {
+            while (rs.next()) {
                 depen.add(dependencia(rs));
             }
         } catch (SQLException ex) {
@@ -250,9 +264,7 @@ public class DaoAdministracion {
         }
         return depen;
     }
-    
-    
-    
+
     private Dependencia dependencia(ResultSet rs) {
         try {
             Dependencia d = new Dependencia();
@@ -341,7 +353,7 @@ public class DaoAdministracion {
             throw new Exception("Dependencia ya existe");
         }
     }
-   
+
     public void DependenciaUpdate(Dependencia a) throws Exception {
         String sql = "update dependencia set nombre='%s'"
                 + "where codigo='%s'";
@@ -353,7 +365,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Puesto" defaultstate="collapsed">
     public Puesto puestoGet(String codigo) throws Exception {
         String sql = "SELECT * FROM puesto WHERE codgo = '%s'";
@@ -392,7 +403,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-    
     //  <editor-fold desc="Labores" defaultstate="collapsed">
     public Labor laborGet(Integer id) throws Exception {
         String sql = "SELECT * FROM labor WHERE id = '%d'";
@@ -490,7 +500,6 @@ public class DaoAdministracion {
     }
 
     //</editor-fold>
-    
     public int getAutoIncremento() throws Exception {
         try {
             String sql = "SELECT LAST_INSERT_ID()";
@@ -508,7 +517,6 @@ public class DaoAdministracion {
     public void close() {
     }
 
-    
     public List<Categoria> CategoriaALL() {
         List<Categoria> cat = new ArrayList<>();
         try {
@@ -522,7 +530,7 @@ public class DaoAdministracion {
         }
         return cat;
     }
-    
+
     private Categoria categoria(ResultSet rs) {
         try {
             Categoria c = new Categoria();
@@ -536,5 +544,5 @@ public class DaoAdministracion {
             return null;
         }
     }
-    
+
 }

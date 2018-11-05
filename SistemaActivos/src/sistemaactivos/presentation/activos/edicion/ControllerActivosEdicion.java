@@ -7,6 +7,8 @@ package sistemaactivos.presentation.activos.edicion;
 
 import java.awt.Point;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
@@ -39,12 +41,16 @@ public class ControllerActivosEdicion {
     }
 
 public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
-        List<Dependencia> dep = domainModel.getDependencias();
-        dep.add(0, new Dependencia());
-        model.resetD(dep);
-        List<Funcionario> fun = domainModel.getFuncionarios();
-        fun.add(0, new Funcionario());
-        model.resetF(fun);
+        try {
+            List<Dependencia> dep = domainModel.getDependencias();
+            dep.add(0, new Dependencia());
+            model.resetD(dep);
+            List<Funcionario> fun = domainModel.getFuncionarios();
+            fun.add(0, new Funcionario());
+            model.resetF(fun);
+        } catch (Exception ex) {
+            Logger.getLogger(ControllerActivosEdicion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
@@ -70,7 +76,7 @@ public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
         return this.domainModel.getDependencias();
     }
     
-    public List<Funcionario> getfuncionarios() {
+    public List<Funcionario> getfuncionarios() throws Exception {
         return this.domainModel.getFuncionarios();
     }
     
