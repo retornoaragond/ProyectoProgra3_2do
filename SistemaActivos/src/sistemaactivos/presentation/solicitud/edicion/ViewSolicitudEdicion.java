@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Solicitud;
@@ -469,9 +470,25 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        if (validar()) {
-            
-        }
+        Solicitud s = new Solicitud();
+        s=this.toSolicitud();
+        
+        if (this.validar()) {
+            try {
+              
+                this.controller.guardar(s);
+                s.setEstado("recibido");
+                s.setNumsol(controller.getAutoIncremento());
+              
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        
+    }                                         
+
     }//GEN-LAST:event_guardarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -493,7 +510,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }//GEN-LAST:event_agregarbienActionPerformed
 
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
-//Eliminar un bien selecionado
+      
     }//GEN-LAST:event_eliminarbienActionPerformed
     
     Solicitud toSolicitud() {

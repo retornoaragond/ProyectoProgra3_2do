@@ -74,6 +74,11 @@ public class ControllerSolicitudEdicion {
         model.reset();
     }
 
+    public int getAutoIncremento() throws Exception{
+        return domainModel.getAutoIncrementoSolicitud();
+    }
+    
+    
     public void reset(int modo, Solicitud current) {
         model.reset(modo, current);
     }

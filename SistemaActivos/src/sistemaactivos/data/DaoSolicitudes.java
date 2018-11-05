@@ -279,17 +279,40 @@ public class DaoSolicitudes {
     }
 
     public void SolicitudDelete(Solicitud a) throws Exception {
-
     }
 
     public void SolicitudAdd(Solicitud a) throws Exception {
 
-    }
+        String sql = "INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq)"
+                + " VALUES ('%s', '%Y-%m-%d', '%d', '%f','%s', '%s', '%s', '%s')";
+        sql = String.format(sql, a.getNumcomp(), a.getFecha(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
+        );
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Solicitud  ya existe");
+         }
+      }
 
+      public int getAutoIncrementoSolicitud() throws Exception {
+        try {
+            String sql = "SELECT LAST_INSERT_ID()";
+            ResultSet rs = db.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("LAST_INSERT_ID()");
+            } else {
+                throw new Exception("Solicitud no Existe");
+            }
+        } catch (SQLException ex) {
+            return -1;
+        }
+    }
+    
+    
     public void SolicitudUpdate(Solicitud a) throws Exception {
 
     }
-    //</editor-fold>
+    //</editor-fol
+
 
     //  <editor-fold desc="Bien" defaultstate="collapsed">
     public Bien getBien(String serial) throws Exception {
