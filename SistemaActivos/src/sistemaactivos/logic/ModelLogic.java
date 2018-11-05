@@ -207,7 +207,8 @@ public class ModelLogic {
     }
 
     public void addActivo(Activo activo) throws Exception {
-        daoActivos.ActivoAdd(activo);
+        //daoActivos.ActivoAdd(activo);
+        daoActivos.ActivoUpdate(activo);
     }
 
     public void updateActivo(Activo activo) throws Exception {
