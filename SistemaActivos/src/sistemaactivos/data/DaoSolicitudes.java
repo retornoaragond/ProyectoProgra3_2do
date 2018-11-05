@@ -478,9 +478,16 @@ public class DaoSolicitudes {
     }
 
     public void addBienPreservar(Bien a) throws Exception {
-      
+       String sql =" INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria)"+
+               "VALUES ('%s', '%s', '%s', '%s', '%f', '%d', '%d', '%s')";
+        sql = String.format(sql, a.getSerial(),a.getDescripcion(),a.getMarca(),a.getModelo(),a.getPrecioU(),a.getCantidad()
+        ,a.getSolicitud().getNumsol(),a.getCategoria().getId());
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Bien ya existe");
+        }
         
-      }
+    }
 
     
     

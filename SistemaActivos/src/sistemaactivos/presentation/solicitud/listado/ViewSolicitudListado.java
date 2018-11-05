@@ -303,7 +303,7 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                 .addContainerGap())
         );
 
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconsalir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
