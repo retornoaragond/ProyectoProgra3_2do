@@ -365,7 +365,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         jLabel6.setText("Estado: ");
 
         estadoactual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Recibida", "Por Verificar", "Rechazada", "Aceptada", "Procesada" }));
+        estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recibida", "PorVerificar", "Rechazada", "Procesada" }));
 
         javax.swing.GroupLayout PanelEstadoLayout = new javax.swing.GroupLayout(PanelEstado);
         PanelEstado.setLayout(PanelEstadoLayout);
@@ -434,7 +434,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                     .addComponent(PanelEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBienes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 391, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(PanelBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())

@@ -5,6 +5,8 @@
  */
 package sistemaactivos.presentation.solicitud.listado;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
 import sistemaactivos.SistemaActivos;
@@ -346,7 +348,7 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         if (this.validar()) {
             try {
-                controller.buscar(this.toSolicitud());
+                controller.buscar(this.toSolicitud(), this.filtrosSeleccionados());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -364,13 +366,36 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_SalirActionPerformed
 
     public void fromSolicitud(Solicitud s) {
-        textFieldNumSolicitud.setText(s.getNumsol().toString());
+        if (s.getNumsol() != 0) {
+            textFieldNumSolicitud.setText(Integer.toString(s.getNumsol()));
+        } else {
+            textFieldNumSolicitud.setText("");
+        }
     }
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
+        if(Integer.getInteger(textFieldNumSolicitud.getText())!=null){
         result.setNumsol(Integer.getInteger(textFieldNumSolicitud.getText()));
+        }
         return result;
+    }
+
+    public List<String> filtrosSeleccionados() {
+        List<String> l = new ArrayList<>();
+        if (this.PorVerificarCB.isSelected()) {
+            l.add("PorVerificar");
+        }
+        if (this.ProcesadaCB.isSelected()) {
+            l.add("Procesada");
+        }
+        if (this.RechazadaCB.isSelected()) {
+            l.add("Rechazada");
+        }
+        if (this.RecibidaCB.isSelected()) {
+            l.add("Recibida");
+        }
+        return l;
     }
 
 

@@ -28,7 +28,7 @@ public class DaoSolicitudes {
 
     //  <editor-fold desc="Solicitud" defaultstate="collapsed">
     public Solicitud getSolicitud(Integer numSolicitud) throws Exception {
-        String sql = "select * from solicitud inner where codigoId='%s'";
+        String sql = "SELECT * FROM solicitud where codigoId='%s'";
         sql = String.format(sql, numSolicitud);
         ResultSet rs = db.executeQuery(sql);
         if (rs.next()) {
@@ -50,7 +50,9 @@ public class DaoSolicitudes {
             ec.setMontotal(rs.getDouble("montotal"));
             ec.setTipoadq(rs.getString("tipoadq"));
             ec.setDependencia(da.dependenciaGet(rs.getString("Dependencia_codigo")));
-            ec.setFuncionario(da.getFuncionario(rs.getString("registrador")));
+            if (rs.getString("registrador") != null) {
+                ec.setFuncionario(da.getFuncionario(rs.getString("registrador")));
+            }
             return ec;
         } catch (SQLException ex) {
             return null;
@@ -59,7 +61,69 @@ public class DaoSolicitudes {
         }
     }
 
-    public List<Solicitud> SolicitudSearch(Solicitud filtro) {
+    public List<Solicitud> SolicitudSearchAdm(Solicitud filtro, List<String> l, String dep) {
+        List<Solicitud> resultado = new ArrayList<>();
+        try {
+            String sql;
+            if (filtro.getNumsol() != 0) {
+                sql = "select * from solicitud,dependencia "
+                        + "where solicitud.Dependencia_codigo = dependencia.codigo "
+                        + "AND dependencia.nombre = '%s' AND solicitud.numsol = '%s' ";
+            } else {
+                sql = "select * from solicitud,dependencia "
+                        + "where solicitud.Dependencia_codigo = dependencia.codigo "
+                        + "AND dependencia.nombre = '%s' ";
+            }
+            if (!l.isEmpty()) {
+                boolean fla = false;
+                sql = sql.concat("AND (");
+                if (l.contains("Recibida")) {
+                    sql = sql.concat(" solicitud.estado = 'Recibida' ");
+                    fla = true;
+                }
+                if (l.contains("PorVerificar")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'PorVerificar' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'PorVerificar' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Procesada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Procesada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Procesada' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Rechazada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Rechazada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Rechazada' ");
+                        fla = true;
+                    }
+                }
+                sql = sql.concat(")");
+            }
+            if (filtro.getNumsol() != 0) {
+                sql = String.format(sql, dep, filtro.getNumsol());
+            } else {
+                sql = String.format(sql, dep);
+            }
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(solicitud(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
+    }
+
+    public List<Solicitud> SolicitudSearchFunc(Solicitud filtro, List<String> l, String dep) {
+
         List<Solicitud> resultado = new ArrayList<>();
         try {
             String sql = "select * from "
@@ -92,10 +156,60 @@ public class DaoSolicitudes {
         return resultado;
     }
 
+    public List<Solicitud> SolicitudGetAllbyAdministrador(List<String> l, String dep) {
+        List<Solicitud> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from solicitud,dependencia "
+                    + "where solicitud.Dependencia_codigo = dependencia.codigo "
+                    + "AND dependencia.nombre = '%s' ";
+            if (!l.isEmpty()) {
+                boolean fla = false;
+                sql = sql.concat("AND (");
+                if (l.contains("Recibida")) {
+                    sql = sql.concat(" solicitud.estado = 'Recibida' ");
+                    fla = true;
+                }
+                if (l.contains("PorVerificar")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'PorVerificar' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'PorVerificar' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Procesada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Procesada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Procesada' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Rechazada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Rechazada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Rechazada' ");
+                        fla = true;
+                    }
+                }
+                sql = sql.concat(")");
+            }
+            sql = String.format(sql, dep);
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(solicitud(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
+    }
+
     public List<Solicitud> SolicitudGetAll() {
         List<Solicitud> estados = new ArrayList<>();
         try {
-            String sql = "select * from EstadoCivil";
+            String sql = "SELECT * FROM solicitud";
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 estados.add(solicitud(rs));
@@ -103,6 +217,61 @@ public class DaoSolicitudes {
         } catch (SQLException ex) {
         }
         return estados;
+    }
+
+    public List<Solicitud> solicitudRegistradorGetAll(Funcionario F) {
+        List<Solicitud> estados = new ArrayList<>();
+
+        return estados;
+    }
+
+    public List<Solicitud> SolicitudSearchRegis(Solicitud filtro, List<String> l, Funcionario F) {
+        List<Solicitud> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from solicitud,funcionario "
+                    + "where solicitud.registrador = funcionario.id "
+                    + "AND funcionario.nombre = '%s';";
+            if (!l.isEmpty()) {
+                boolean fla = false;
+                sql = sql.concat("AND (");
+                if (l.contains("Recibida")) {
+                    sql = sql.concat(" solicitud.estado = 'Recibida' ");
+                    fla = true;
+                }
+                if (l.contains("PorVerificar")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'PorVerificar' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'PorVerificar' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Procesada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Procesada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Procesada' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Rechazada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Rechazada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Rechazada' ");
+                    }
+                }
+                sql = sql.concat(")");
+            }
+            sql = String.format(sql, filtro.getEstado());
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(solicitud(rs));
+            }
+        } catch (SQLException ex) {
+        }
+
+        return resultado;
     }
 
     public Solicitud SolicitudGet(Integer numSolicitud) throws Exception {

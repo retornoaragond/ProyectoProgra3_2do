@@ -14,6 +14,7 @@ import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.logic.Solicitud;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -44,6 +45,7 @@ public class ControllerSolicitudEdicion {
     }
 
     public void guardar(Solicitud solicitud) throws Exception {
+        Usuario user = (Usuario)session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
                 domainModel.addSolicitud(solicitud);

@@ -100,8 +100,28 @@ public class ModelLogic {
         daoSolicitud.SolicitudUpdate(solicitud);
     }
 
-    public List<Solicitud> searchSolicitud(Solicitud filtro) {
-        return daoSolicitud.SolicitudSearch(filtro);
+    public List<Solicitud> searchSolicitud(Solicitud filtro, List<String> l, Funcionario f) {
+        if (filtro.getNumsol() != 0) {
+            return daoSolicitud.SolicitudSearchFunc(filtro, l, "OCCB");
+        } else {
+            return daoSolicitud.SolicitudGetAll();
+        }
+    }
+
+    public List<Solicitud> searchSolicitudAdministrador(Solicitud filtro, List<String> l, String dep) {
+        if (filtro.getNumsol() != 0) {
+            return daoSolicitud.SolicitudSearchAdm(filtro, l, dep);
+        } else {
+            return daoSolicitud.SolicitudGetAllbyAdministrador(l, dep);
+        }
+    }
+
+    public List<Solicitud> searchSolicitudFuncionario(Solicitud filtro, List<String> l, Funcionario fun) {
+        if (filtro.getNumsol() != 0) {
+            return daoSolicitud.SolicitudSearchRegis(filtro, l, fun);
+        } else {
+            return daoSolicitud.solicitudRegistradorGetAll(fun);
+        }
     }
 
     public List<Solicitud> searchSolicitudbyFuncionario(Funcionario filtro) {
@@ -119,10 +139,9 @@ public class ModelLogic {
     }
 
     public List<Funcionario> getFuncionarioSS(String id) throws Exception {
-       return daoAdministracion.GetFuncionarioS(id);
+        return daoAdministracion.GetFuncionarioS(id);
     }
-    
-    
+
     public List<Funcionario> searchFuncionario(Funcionario filtro) {
         if (filtro.getId().length() == 0 && filtro.getNombre().length() != 0) {
             return daoAdministracion.FuncionaroSearchNombre(filtro);
@@ -157,11 +176,10 @@ public class ModelLogic {
         return daoAdministracion.dependenciaGet(filter.getCodigo());
     }
 
-    
     public List<Dependencia> getDependenciaSS(String codigo) throws Exception {
         return daoAdministracion.GetDependenciaS(codigo);
     }
-    
+
     public List<Dependencia> searchDependenciaCodigo(Dependencia filtro) {
 
         return daoAdministracion.DependenciaSearchCodigo(filtro);
@@ -267,8 +285,8 @@ public class ModelLogic {
     public int getAutoIncremento() throws Exception {
         return daoAdministracion.getAutoIncremento();
     }
-    
-    public List<Categoria> getCategoria(){
-    return daoAdministracion.CategoriaALL();
+
+    public List<Categoria> getCategoria() {
+        return daoAdministracion.CategoriaALL();
     }
 }

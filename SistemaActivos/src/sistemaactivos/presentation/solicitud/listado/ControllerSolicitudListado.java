@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package sistemaactivos.presentation.solicitud.listado;
+
 import sistemaactivos.SistemaActivos;
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 import sistemaactivos.Session;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
 import sistemaactivos.logic.Solicitud;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -33,20 +36,38 @@ public class ControllerSolicitudListado {
         view.setModel(model);
     }
 
-    public void buscar(Solicitud filter) throws Exception {
+    public void buscar(Solicitud filter, List<String> l) throws Exception {
         model.setSolicitud(filter);
-         this.refrescarBusqueda();
+        this.refrescarBusqueda(l);
+    }
+    
+    public void refrescarBusqueda()throws Exception{
+        
+        refrescarBusqueda(view.filtrosSeleccionados());
     }
 
-    
-   public void refrescarBusqueda() throws Exception{
-        List<Solicitud> rows = domainModel.searchSolicitud(model.getFilter());
+    public void refrescarBusqueda(List<String> l) throws Exception {
+        Usuario user = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
+        List<Solicitud> rows;
+        switch (user.getLabor().getPuesto().getPuesto()) {
+            case "Administrador":
+                rows = domainModel.searchSolicitudAdministrador(model.getFilter(), l, user.getLabor().getDependencia().getNombre());
+                break;
+            case "Registrador":
+                rows = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
+                break;
+            default:
+                rows = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
+                break;
+        }
         model.setSolicitudes(rows);
         model.commit();
-        if (rows.isEmpty()) throw new Exception("Ningún dato coincide");
+        if (rows.isEmpty()) {
+            throw new Exception("Ningún dato coincide");
+        }
     }
-     
- /*
+
+    /*
     public void preAgregar(Point at)throws Exception{      
         //Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
         if ( !Arrays.asList(Application.ROL_MANAGER).contains(principal.getRol())){
@@ -72,13 +93,14 @@ public class ControllerSolicitudListado {
     }
                        
      */
-    public void borrar(int row) {
+    public void borrar(int row, List<String> l) {
+        Usuario user = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         Solicitud seleccionada = model.getSolicitudes().getRowAt(row);
         try {
             //  domainModel.deleteSolicitud(seleccionada);
         } catch (Exception ex) {
         }
-         List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter());
+        List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
         model.setSolicitudes(rowsMod);
         model.commit();
     }
@@ -129,8 +151,8 @@ public class ControllerSolicitudListado {
         view.setVisible(false);
     }
 
-   public void SolicitudEdicionShow(){
-   SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.show();
-   }
-    
+    public void SolicitudEdicionShow() {
+        SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.show();
+    }
+
 }
