@@ -120,14 +120,6 @@ public class ModelActivosEdicion extends java.util.Observable {
         this.modo = modo;
     }
     
-   
-    // creo que no se ocupa
-    /*  
-     public ComboBoxModel<EstadoCivil> getEstadosCiviles() {
-        return estadosCiviles;
-    }
-    */
-    
     // creo que no se ocupa
       public void setActivos(List<Activo> bienes) {
         List<Bien> es;

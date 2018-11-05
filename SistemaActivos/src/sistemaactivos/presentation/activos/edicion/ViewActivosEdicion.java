@@ -285,9 +285,9 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.limpiarErrores();
         Activo actual = model.getCurrent();
         this.dependenciaComboBox.setModel(model.getDependencia());
-        this.responsableComboBox.setModel(model.getFuncionario());
+        //this.responsableComboBox.setModel(model.getFuncionario());
         dependenciaComboBox.setSelectedIndex(0);
-        responsableComboBox.setSelectedIndex(0);
+       // responsableComboBox.setSelectedIndex(0);
         this.fromActivo(actual);
 
     }
@@ -297,6 +297,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.identificacionTextField.setEnabled(false);
         this.categoriaTextField.setEnabled(false);
         this.DescripcionTextField.setEnabled(false);
+        this.responsableComboBox.setEnabled(false);
         Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
         Boolean consulta = model.getModo() == SistemaActivos.MODO_CONSULTAR;;
 //  
@@ -306,12 +307,12 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.DescripcionTextField.setText(actual.getBien().getDescripcion());
         this.dependenciaComboBox.setEnabled(modify);
         this.dependenciaComboBox.setSelectedItem(actual.getLabor().getDependencia());
-     //   actual.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
-        this.responsableComboBox.setEnabled(modify);
+        actual.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
+       this.responsableComboBox.setEnabled(modify);
         this.responsableComboBox.setSelectedItem(actual.getLabor().getFuncionario());
        
                 
-       // actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
+        actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
 
     }
 

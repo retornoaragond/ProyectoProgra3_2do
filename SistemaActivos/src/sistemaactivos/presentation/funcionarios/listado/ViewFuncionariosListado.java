@@ -251,8 +251,8 @@ public class ViewFuncionariosListado extends javax.swing.JInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        /* try {
-            //controller.preAgregar(this.Agregar.getLocationOnScreen());
+         /*try {
+            controller.preAgregar(this.Agregar.getLocationOnScreen());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }*/

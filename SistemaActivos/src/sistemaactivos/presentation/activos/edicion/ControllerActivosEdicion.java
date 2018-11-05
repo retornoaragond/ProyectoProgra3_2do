@@ -7,6 +7,7 @@ package sistemaactivos.presentation.activos.edicion;
 
 import java.awt.Point;
 import java.util.List;
+import javax.swing.JOptionPane;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
@@ -54,13 +55,13 @@ public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
                  model.setCurrent(new Activo());
                   model.commit();
                  view.setVisible(false);
-                  
                 break;
+                
             case SistemaActivos.MODO_EDITAR:
                 domainModel.updateActivo(activo);
                 SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.refrescarBusqueda();               
                 break;
-        }   
+                    }   
     } 
  
     public List<Dependencia> getdependencias() {

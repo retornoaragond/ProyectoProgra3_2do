@@ -351,9 +351,9 @@ public class DaoActivos {
     
     
      public void ActivoUpdate(Activo a) throws Exception {
-    String sql = "update activo set labAct='%d'"
+    String sql = "update activo set labAct='%d',bienAct='%s'"
                + "where codigoId='%s'";
-       sql = String.format(sql,a.getLabor().getFuncionario());
+       sql = String.format(sql,a.getLabor().getId(),a.getBien().getSerial(),a.getCodigoId());
        int count = dbbb.executeUpdate(sql);
        if (count == 0) {
            throw new Exception("Activo no existe");
