@@ -138,7 +138,7 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         activosTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
-        agregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,10 +321,10 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
             }
         });
 
-        agregar.setText("agregar");
-        agregar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/barcodes_40531 (1).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -338,8 +338,8 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(agregar)
-                .addGap(84, 84, 84)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(Atras)
                 .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
@@ -354,14 +354,14 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Atras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(agregar)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 9, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
+                .addContainerGap())
         );
 
         pack();
@@ -394,6 +394,10 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
         }
     }//GEN-LAST:event_activosTableMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.codigoBarras();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
@@ -404,10 +408,10 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     private javax.swing.JRadioButton ResponsablejRadioButton;
     private javax.swing.JLabel TipoFiltrojLabel3;
     private javax.swing.JTable activosTable;
-    private javax.swing.JButton agregar;
     private javax.swing.JButton buscarjButton;
     private javax.swing.JLabel busquedaLabel;
     private javax.swing.JTextField busquedaTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
