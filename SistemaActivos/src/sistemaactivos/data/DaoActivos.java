@@ -250,6 +250,47 @@ public class DaoActivos {
         }
     }
 
+    private Activo MiddleActivo(ResultSet rs) {
+        try {
+            Activo ac = new Activo();
+            Categoria ca = new Categoria();
+            Bien bi = new Bien();
+            Dependencia de = new Dependencia();
+            Funcionario fu = new Funcionario();
+            Labor la = new Labor();
+            //activo
+            ac.setCodigoId(rs.getString("activocodigo"));
+            ac.setBien(bi);
+            ac.setLabor(la);
+            //categoria
+            ca.setId(rs.getString("categoriaid"));
+            ca.setDescripcion(rs.getString("categoriadescripcion"));
+            //bien
+            bi.setSerial(rs.getString("bienserial"));
+            bi.setCategoria(ca);
+            bi.setDescripcion(rs.getString("biendescripcion"));
+            //dependencia
+            de.setCodigo(rs.getString("dependenciacodigo"));
+            de.setNombre(rs.getString("dependencianombre"));
+            //funcionario
+            fu.setId(rs.getString("funcionarioid"));
+            fu.setNombre(rs.getString("funcionarionombre"));
+            //labor
+            if(la.getId()!=0)
+            la.setId(rs.getInt("laborid"));
+            la.setDependencia(de);
+            la.setFuncionario(fu);
+            return ac;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+       
+
+    
+    
+    
+    
     public List<Activo> ActivosGetAll() {
         List<Activo> estados = new ArrayList<>();
         try {

@@ -73,21 +73,36 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                     tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setMinWidth(0);
                     tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setMaxWidth(0);
                     tcm1.getColumn(SolicitudTableModel.FUNCIONARIO).setWidth(0);
+
                     tcm1.getColumn(SolicitudTableModel.FECHA).setMinWidth(0);
                     tcm1.getColumn(SolicitudTableModel.FECHA).setMaxWidth(0);
                     tcm1.getColumn(SolicitudTableModel.FECHA).setWidth(0);
+
                     tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setMinWidth(0);
                     tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setMaxWidth(0);
                     tcm1.getColumn(SolicitudTableModel.CANTIDADBIENES).setWidth(0);
+
                     tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setMinWidth(0);
                     tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setMaxWidth(0);
                     tcm1.getColumn(SolicitudTableModel.MONTOTOTAL).setWidth(0);
                     break;
+               
                 case "Registrador":
                     TableColumnModel tcm2 = solicitudesFld.getColumnModel();
+                    tcm2.getColumn(SolicitudTableModel.FUNCIONARIO).setMinWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.FUNCIONARIO).setMaxWidth(0);
                     tcm2.getColumn(SolicitudTableModel.FUNCIONARIO).setWidth(0);
+
+                    tcm2.getColumn(SolicitudTableModel.FECHA).setMinWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.FECHA).setMaxWidth(0);
                     tcm2.getColumn(SolicitudTableModel.FECHA).setWidth(0);
+
+                    tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION).setMinWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION).setMaxWidth(0);
                     tcm2.getColumn(SolicitudTableModel.TIPOADQUISICION).setWidth(0);
+
+                    tcm2.getColumn(SolicitudTableModel.MONTOTOTAL).setMinWidth(0);
+                    tcm2.getColumn(SolicitudTableModel.MONTOTOTAL).setMaxWidth(0);
                     tcm2.getColumn(SolicitudTableModel.MONTOTOTAL).setWidth(0);
                     break;
                 default:
