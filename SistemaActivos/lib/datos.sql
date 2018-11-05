@@ -133,12 +133,24 @@ INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('4', '004', 'ggg');
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('5', '005', 'qjd');
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('6', '006', 'mmn');
 INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('7', '007', 'oiu');
+INSERT INTO activo (`codigoId`, `bienAct`) VALUES ('8', 'oiu');
 
 
 
 
+-- SELECT activo.codigoId activocodigo, activo.labAct laborActivo, bien.serial bienserial,bien.descripcion biendescripcion,categoria.id categoriaid, categoria.descripcion categoriadescripcion   from activo inner join bien on activo.bienAct = bien.serial inner join categoria on categoria.id=bien.categoria where categoria.descripcion like '%s%' ;
 
+-- Select activo.codigoId activocodigo, activo.labAct laborActivo, activo.bienAct bienserial, IF(activo.labAct == null, 'caro','barato') from activo;
 
+-- SELECT activo.codigoId activocodigo, labor.id laborid, bien.serial bienserial, dependencia.codigo dependenciacodigo, bien.descripcion biendescripcion, categoria.id categoriaid, categoria.descripcion categoriadescripcion, dependencia.nombre dependencianombre FROM activo INNER JOIN labor ON activo.labAct = labor.id INNER JOIN bien ON bien.serial = activo.bienAct INNER JOIN categoria ON bien.categoria = categoria.id INNER JOIN dependencia ON labor.depLab = dependencia.codigo  WHERE dependencia.nombre LIKE '%e%';
+
+-- SELECT activo.codigoId activocodigo, labor.id laborid, bien.serial bienserial, funcionario.id funcionarioid, funcionario.nombre funcionarionombre, dependencia.codigo dependenciacodigo, bien.descripcion biendescripcion, categoria.id categoriaid, categoria.descripcion categoriadescripcion, dependencia.nombre dependencianombre FROM activo INNER JOIN labor ON activo.labAct = labor.id INNER JOIN bien ON bien.serial = activo.bienAct INNER JOIN categoria ON bien.categoria = categoria.id INNER JOIN dependencia ON labor.depLab = dependencia.codigo INNER JOIN funcionario ON funcionario.id= labor.funcLab  WHERE funcionario.nombre LIKE '%e%';
+
+-- SELECT activo.codigoId activocodigo, labor.id laborid, bien.serial bienserial, funcionario.id funcionarioid, funcionario.nombre funcionarionombre, dependencia.codigo dependenciacodigo, bien.descripcion biendescripcion, categoria.id categoriaid, categoria.descripcion categoriadescripcion, dependencia.nombre dependencianombre FROM activo INNER JOIN labor ON activo.labAct = labor.id INNER JOIN bien ON bien.serial = activo.bienAct INNER JOIN categoria ON bien.categoria = categoria.id INNER JOIN dependencia ON labor.depLab = dependencia.codigo INNER JOIN funcionario ON funcionario.id= labor.funcLab  WHERE activo.codigoId LIKE '%1%';
+
+-- SELECT activo.codigoId activocodigo, labor.id laborid, bien.serial bienserial, funcionario.id funcionarioid, funcionario.nombre funcionarionombre, dependencia.codigo dependenciacodigo, bien.descripcion biendescripcion, categoria.id categoriaid, categoria.descripcion categoriadescripcion, dependencia.nombre dependencianombre FROM activo INNER JOIN labor ON activo.labAct = labor.id INNER JOIN bien ON bien.serial = activo.bienAct INNER JOIN categoria ON bien.categoria = categoria.id INNER JOIN dependencia ON labor.depLab = dependencia.codigo INNER JOIN funcionario ON funcionario.id= labor.funcLab  WHERE categoria.descripcion LIKE '%e%';
+
+-- SELECT activo.codigoId activocodigo, labor.id laborid, bien.serial bienserial, funcionario.id funcionarioid, funcionario.nombre funcionarionombre, dependencia.codigo dependenciacodigo, bien.descripcion biendescripcion, categoria.id categoriaid, categoria.descripcion categoriadescripcion, dependencia.nombre dependencianombre FROM activo INNER JOIN labor ON activo.labAct = labor.id INNER JOIN bien ON bien.serial = activo.bienAct INNER JOIN categoria ON bien.categoria = categoria.id INNER JOIN dependencia ON labor.depLab = dependencia.codigo INNER JOIN funcionario ON funcionario.id= labor.funcLab  WHERE bien.descripcion LIKE '%e%';
 
 -- SELECT usuario.id id_user, pass clave, funcionario.id id_func, nombre, dependenciaLabor dependencia, PuestoLabor puesto FROM usuario  INNER JOIN Funcionario  ON usuario.funcionarioUsuario = Funcionario.id INNER JOIN Labor ON Funcionario.id = Labor.FuncionarioLabor WHERE usuario.id= '001' AND usuario.pass='001';
 
@@ -162,3 +174,4 @@ INSERT INTO activo (`codigoId`, `labAct`, `bienAct`) VALUES ('7', '007', 'oiu');
 -- SELECT * FROM sistemaactivos.dependencia;
 -- SELECT * FROM dependencia WHERE codigo LIKE '%s%'
 -- SELECT LAST_INSERT_ID();
+-- UPDATE `sistemaactivos`.`solicitud` SET `registrador` = '010' WHERE (`numsol` = '9');

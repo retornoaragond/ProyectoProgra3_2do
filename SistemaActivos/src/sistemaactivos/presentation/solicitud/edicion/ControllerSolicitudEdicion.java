@@ -67,9 +67,8 @@ public class ControllerSolicitudEdicion {
     }
 
     
-     public void preservarBien(Bien b){
-       //domainModel.addBien(b);
-     
+     public void preservarBien(Bien b) throws Exception{
+       domainModel.addBienPreservar(b);
      }
     
     

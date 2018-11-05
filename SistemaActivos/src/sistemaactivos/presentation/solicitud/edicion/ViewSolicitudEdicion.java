@@ -478,9 +478,8 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             try {
                 Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
                 s.setDependencia(user.getLabor().getDependencia());
-                s.setEstado("recibido");
-                model.setCurrent(s);
-                this.controller.guardar(model.getCurrent());
+                s.setEstado("Recibida");
+                this.controller.guardar(s);
                 s.setNumsol(controller.getAutoIncremento());
                 model.setCurrent(s);
                 List<Bien> lb = new ArrayList<>(s.getBiens());

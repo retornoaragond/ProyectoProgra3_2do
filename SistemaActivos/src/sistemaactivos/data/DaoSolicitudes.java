@@ -135,8 +135,8 @@ public class DaoSolicitudes {
             if (!l.isEmpty()) {
                 boolean fla = false;
                 if (filtro.getNumsol() != 0) {
-                sql = sql.concat("AND (");
-                }else{
+                    sql = sql.concat("AND (");
+                } else {
                     sql = sql.concat("where ");
                 }
                 if (l.contains("Recibida")) {
@@ -167,12 +167,12 @@ public class DaoSolicitudes {
                     }
                 }
                 if (filtro.getNumsol() != 0) {
-                sql = sql.concat(" )");
+                    sql = sql.concat(" )");
                 }
             }
             if (filtro.getNumsol() != 0) {
-                sql = String.format(sql,  filtro.getNumsol());
-            } 
+                sql = String.format(sql, filtro.getNumsol());
+            }
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(solicitud(rs));
@@ -384,15 +384,15 @@ public class DaoSolicitudes {
 
         String sql = "INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq)"
                 + " VALUES ('%s', '%d-%d-%d', '%d', '%f','%s', '%s', '%s', '%s')";
-        sql = String.format(sql, a.getNumcomp(), a.getFecha().getYear(),a.getFecha().getMonth(),a.getFecha().getDay(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
+        sql = String.format(sql, a.getNumcomp(), a.getFecha().getYear() + 1900, a.getFecha().getMonth() + 1, a.getFecha().getDate(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
         );
         int count = db.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Solicitud  ya existe");
-         }
-      }
+        }
+    }
 
-      public int getAutoIncrementoSolicitud() throws Exception {
+    public int getAutoIncrementoSolicitud() throws Exception {
         try {
             String sql = "SELECT LAST_INSERT_ID()";
             ResultSet rs = db.executeQuery(sql);
@@ -405,13 +405,11 @@ public class DaoSolicitudes {
             return -1;
         }
     }
-    
-    
+
     public void SolicitudUpdate(Solicitud a) throws Exception {
 
     }
     //</editor-fol
-
 
     //  <editor-fold desc="Bien" defaultstate="collapsed">
     public Bien getBien(String serial) throws Exception {
@@ -478,20 +476,17 @@ public class DaoSolicitudes {
     }
 
     public void addBienPreservar(Bien a) throws Exception {
-       String sql =" INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria)"+
-               "VALUES ('%s', '%s', '%s', '%s', '%f', '%d', '%d', '%s')";
-        sql = String.format(sql, a.getSerial(),a.getDescripcion(),a.getMarca(),a.getModelo(),a.getPrecioU(),a.getCantidad()
-        ,a.getSolicitud().getNumsol(),a.getCategoria().getId());
+        String sql = " INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud)"
+                + "VALUES ('%s', '%s', '%s', '%s', '%f', '%d', '%d')";
+        sql = String.format(sql, a.getSerial(), a.getDescripcion(), a.getMarca(), a.getModelo(), a.getPrecioU(), a.getCantidad(),
+                 a.getSolicitud().getNumsol());
         int count = db.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Bien ya existe");
         }
-        
+
     }
 
-    
-    
-    
     public void BienUpdate(Bien a) throws Exception {
 
     }
