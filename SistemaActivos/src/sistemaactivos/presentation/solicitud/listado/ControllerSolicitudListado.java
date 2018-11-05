@@ -42,7 +42,6 @@ public class ControllerSolicitudListado {
     }
     
     public void refrescarBusqueda()throws Exception{
-        
         refrescarBusqueda(view.filtrosSeleccionados());
     }
 
@@ -54,10 +53,10 @@ public class ControllerSolicitudListado {
                 rows = domainModel.searchSolicitudAdministrador(model.getFilter(), l, user.getLabor().getDependencia().getNombre());
                 break;
             case "Registrador":
-                rows = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
+                rows = domainModel.searchSolicitudFuncionario(model.getFilter(), l, user.getLabor().getFuncionario());
                 break;
             default:
-                rows = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
+                rows = domainModel.searchSolicitud(model.getFilter(), l);
                 break;
         }
         model.setSolicitudes(rows);
@@ -100,7 +99,7 @@ public class ControllerSolicitudListado {
             //  domainModel.deleteSolicitud(seleccionada);
         } catch (Exception ex) {
         }
-        List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter(), l, user.getLabor().getFuncionario());
+        List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter(), l);
         model.setSolicitudes(rowsMod);
         model.commit();
     }
