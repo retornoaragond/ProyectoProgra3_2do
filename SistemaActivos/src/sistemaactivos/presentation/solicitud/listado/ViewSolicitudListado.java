@@ -390,8 +390,8 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
-        if(Integer.getInteger(textFieldNumSolicitud.getText())!=null){
-        result.setNumsol(Integer.getInteger(textFieldNumSolicitud.getText()));
+        if(!textFieldNumSolicitud.getText().isEmpty()){
+        result.setNumsol(Integer.parseInt(textFieldNumSolicitud.getText()));
         }
         return result;
     }

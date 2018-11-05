@@ -68,7 +68,7 @@ public class DaoSolicitudes {
             if (filtro.getNumsol() != 0) {
                 sql = "select * from solicitud,dependencia "
                         + "where solicitud.Dependencia_codigo = dependencia.codigo "
-                        + "AND dependencia.nombre = '%s' AND solicitud.numsol = '%s' ";
+                        + "AND dependencia.nombre = '%s' AND solicitud.numsol = '%d' ";
             } else {
                 sql = "select * from solicitud,dependencia "
                         + "where solicitud.Dependencia_codigo = dependencia.codigo "
@@ -122,14 +122,57 @@ public class DaoSolicitudes {
         return resultado;
     }
 
-    public List<Solicitud> SolicitudSearchFunc(Solicitud filtro, List<String> l, String dep) {
-
+    public List<Solicitud> SolicitudSearchFunc(Solicitud filtro, List<String> l) {
         List<Solicitud> resultado = new ArrayList<>();
         try {
-            String sql = "select * from "
-                    + "EstadoCivil "
-                    + "where descripcion like '%%%s%%'";
-            sql = String.format(sql, filtro.getEstado());
+            String sql;
+            if (filtro.getNumsol() != 0) {
+                sql = "select * from solicitud"
+                        + " WHERE solicitud.numsol = '%d'";
+            } else {
+                sql = "select * from solicitud ";
+            }
+            if (!l.isEmpty()) {
+                boolean fla = false;
+                if (filtro.getNumsol() != 0) {
+                sql = sql.concat("AND (");
+                }else{
+                    sql = sql.concat("where ");
+                }
+                if (l.contains("Recibida")) {
+                    sql = sql.concat(" solicitud.estado = 'Recibida' ");
+                    fla = true;
+                }
+                if (l.contains("PorVerificar")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'PorVerificar' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'PorVerificar' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Procesada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Procesada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Procesada' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Rechazada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Rechazada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Rechazada' ");
+                    }
+                }
+                if (filtro.getNumsol() != 0) {
+                sql = sql.concat(" )");
+                }
+            }
+            if (filtro.getNumsol() != 0) {
+                sql = String.format(sql,  filtro.getNumsol());
+            } 
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(solicitud(rs));
@@ -138,6 +181,7 @@ public class DaoSolicitudes {
         }
 
         return resultado;
+
     }
 
     public List<Solicitud> searchSolicitudbyFuncionario(Funcionario filtro) {
@@ -219,18 +263,69 @@ public class DaoSolicitudes {
         return estados;
     }
 
-    public List<Solicitud> solicitudRegistradorGetAll(Funcionario F) {
-        List<Solicitud> estados = new ArrayList<>();
+    public List<Solicitud> solicitudRegistradorGetAll(List<String> l, Funcionario F) {
+        List<Solicitud> resultado = new ArrayList<>();
+        try {
+            String sql = "select * from solicitud,funcionario "
+                    + "where solicitud.registrador = funcionario.id "
+                    + "AND funcionario.nombre = '%s'";
+            if (!l.isEmpty()) {
+                boolean fla = false;
+                sql = sql.concat("AND (");
+                if (l.contains("Recibida")) {
+                    sql = sql.concat(" solicitud.estado = 'Recibida' ");
+                    fla = true;
+                }
+                if (l.contains("PorVerificar")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'PorVerificar' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'PorVerificar' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Procesada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Procesada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Procesada' ");
+                        fla = true;
+                    }
+                }
+                if (l.contains("Rechazada")) {
+                    if (fla) {
+                        sql = sql.concat(" OR solicitud.estado = 'Rechazada' ");
+                    } else {
+                        sql = sql.concat(" solicitud.estado = 'Rechazada' ");
+                        fla = true;
+                    }
+                }
+                sql = sql.concat(")");
+            }
+            sql = String.format(sql, F.getNombre());
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(solicitud(rs));
+            }
+        } catch (SQLException ex) {
+        }
 
-        return estados;
+        return resultado;
     }
 
     public List<Solicitud> SolicitudSearchRegis(Solicitud filtro, List<String> l, Funcionario F) {
         List<Solicitud> resultado = new ArrayList<>();
         try {
-            String sql = "select * from solicitud,funcionario "
-                    + "where solicitud.registrador = funcionario.id "
-                    + "AND funcionario.nombre = '%s';";
+            String sql;
+            if (filtro.getNumsol() != 0) {
+                sql = "select * from solicitud,funcionario "
+                        + "where solicitud.registrador = funcionario.id "
+                        + "AND funcionario.nombre = '%s' AND solicitud.numsol = '%d'";
+            } else {
+                sql = "select * from solicitud,funcionario "
+                        + "where solicitud.registrador = funcionario.id "
+                        + "AND funcionario.nombre = '%s'  ";
+            }
             if (!l.isEmpty()) {
                 boolean fla = false;
                 sql = sql.concat("AND (");
@@ -263,7 +358,11 @@ public class DaoSolicitudes {
                 }
                 sql = sql.concat(")");
             }
-            sql = String.format(sql, filtro.getEstado());
+            if (filtro.getNumsol() != 0) {
+                sql = String.format(sql, F.getNombre(), filtro.getNumsol());
+            } else {
+                sql = String.format(sql, F.getNombre());
+            }
             ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
                 resultado.add(solicitud(rs));

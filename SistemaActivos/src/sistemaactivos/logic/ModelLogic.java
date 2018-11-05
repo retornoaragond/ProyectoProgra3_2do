@@ -100,12 +100,8 @@ public class ModelLogic {
         daoSolicitud.SolicitudUpdate(solicitud);
     }
 
-    public List<Solicitud> searchSolicitud(Solicitud filtro, List<String> l, Funcionario f) {
-        if (filtro.getNumsol() != 0) {
-            return daoSolicitud.SolicitudSearchFunc(filtro, l, "OCCB");
-        } else {
-            return daoSolicitud.SolicitudGetAll();
-        }
+    public List<Solicitud> searchSolicitud(Solicitud filtro, List<String> l) {
+        return daoSolicitud.SolicitudSearchFunc(filtro, l);
     }
 
     public List<Solicitud> searchSolicitudAdministrador(Solicitud filtro, List<String> l, String dep) {
@@ -120,7 +116,7 @@ public class ModelLogic {
         if (filtro.getNumsol() != 0) {
             return daoSolicitud.SolicitudSearchRegis(filtro, l, fun);
         } else {
-            return daoSolicitud.solicitudRegistradorGetAll(fun);
+            return daoSolicitud.solicitudRegistradorGetAll(l, fun);
         }
     }
 
