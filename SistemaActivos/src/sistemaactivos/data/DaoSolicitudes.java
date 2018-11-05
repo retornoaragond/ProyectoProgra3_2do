@@ -383,8 +383,8 @@ public class DaoSolicitudes {
     public void SolicitudAdd(Solicitud a) throws Exception {
 
         String sql = "INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq)"
-                + " VALUES ('%s', '%Y-%m-%d', '%d', '%f','%s', '%s', '%s', '%s')";
-        sql = String.format(sql, a.getNumcomp(), a.getFecha(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
+                + " VALUES ('%s', '%d-%d-%d', '%d', '%f','%s', '%s', '%s', '%s')";
+        sql = String.format(sql, a.getNumcomp(), a.getFecha().getYear(),a.getFecha().getMonth(),a.getFecha().getDay(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
         );
         int count = db.executeUpdate(sql);
         if (count == 0) {

@@ -472,20 +472,21 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-//        Solicitud s = new Solicitud();
-//        s = this.toSolicitud();
+        Solicitud s = this.toSolicitud();
 
         if (this.validar()) {
             try {
                 Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
-                toSolicitud().setDependencia(user.getLabor().getDependencia());
-                toSolicitud().setEstado("recibido");
-                this.controller.guardar(toSolicitud());
-                toSolicitud().setNumsol(controller.getAutoIncremento());
-                List<Bien> lb = new ArrayList<>(toSolicitud().getBiens());
+                s.setDependencia(user.getLabor().getDependencia());
+                s.setEstado("recibido");
+                model.setCurrent(s);
+                this.controller.guardar(model.getCurrent());
+                s.setNumsol(controller.getAutoIncremento());
+                model.setCurrent(s);
+                List<Bien> lb = new ArrayList<>(s.getBiens());
                 for (Bien b : lb) {
-                b.setSolicitud(toSolicitud());
-                controller.preservarBien(b);
+                    b.setSolicitud(s);
+                    controller.preservarBien(b);
                 }
                 JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
@@ -493,7 +494,6 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             }
         } else {
             JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-
         }
 
     }//GEN-LAST:event_guardarActionPerformed
@@ -505,6 +505,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
         if (validarBien()) {
             try {
+                model.setCurrent(toSolicitud());
                 controller.agregar(toBien());
                 this.limpiabien();
 
@@ -523,12 +524,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
-        
         result.setNumcomp(numcomprobante.getText());
         result.setFecha(fecha.getDate());
         result.setTipoadq(tipoadquiCombo.getSelectedItem().toString());
         result.setBiens(new HashSet<>(model.bientable.getRows()));
-        result.setCantbien(Integer.getInteger(cantbien.getText()));
+        result.setCantbien(Integer.parseInt(cantbienes.getText()));
         result.setMontotal(Double.parseDouble(monttotal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
         result.setRazonR(razon.getText());
@@ -747,13 +747,13 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.tipoadquiCombo.setEnabled(add);
         switch (actual.getTipoadq()) {
             case "Donacion":
-                this.tipoadquiCombo.setSelectedIndex(0);
-                break;
-            case "Compra":
                 this.tipoadquiCombo.setSelectedIndex(1);
                 break;
-            case "Generado":
+            case "Compra":
                 this.tipoadquiCombo.setSelectedIndex(2);
+                break;
+            case "Generado":
+                this.tipoadquiCombo.setSelectedIndex(3);
                 break;
         }
 
