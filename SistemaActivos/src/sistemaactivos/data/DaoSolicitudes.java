@@ -378,17 +378,40 @@ public class DaoSolicitudes {
     }
 
     public void SolicitudDelete(Solicitud a) throws Exception {
-
     }
 
     public void SolicitudAdd(Solicitud a) throws Exception {
 
-    }
+        String sql = "INSERT INTO solicitud (numcomp, fecha, cantbien, montotal, razonR, estado, Dependencia_codigo, tipoadq)"
+                + " VALUES ('%s', '%Y-%m-%d', '%d', '%f','%s', '%s', '%s', '%s')";
+        sql = String.format(sql, a.getNumcomp(), a.getFecha(), a.getCantbien(), a.getMontotal(), a.getRazonR(), a.getEstado(), a.getDependencia().getCodigo(), a.getTipoadq()
+        );
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Solicitud  ya existe");
+         }
+      }
 
+      public int getAutoIncrementoSolicitud() throws Exception {
+        try {
+            String sql = "SELECT LAST_INSERT_ID()";
+            ResultSet rs = db.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("LAST_INSERT_ID()");
+            } else {
+                throw new Exception("Solicitud no Existe");
+            }
+        } catch (SQLException ex) {
+            return -1;
+        }
+    }
+    
+    
     public void SolicitudUpdate(Solicitud a) throws Exception {
 
     }
-    //</editor-fold>
+    //</editor-fol
+
 
     //  <editor-fold desc="Bien" defaultstate="collapsed">
     public Bien getBien(String serial) throws Exception {
@@ -454,6 +477,21 @@ public class DaoSolicitudes {
 
     }
 
+    public void addBienPreservar(Bien a) throws Exception {
+       String sql =" INSERT INTO bien (serial, descripcion, marca, modelo, precioU, cantidad, solicitud, categoria)"+
+               "VALUES ('%s', '%s', '%s', '%s', '%f', '%d', '%d', '%s')";
+        sql = String.format(sql, a.getSerial(),a.getDescripcion(),a.getMarca(),a.getModelo(),a.getPrecioU(),a.getCantidad()
+        ,a.getSolicitud().getNumsol(),a.getCategoria().getId());
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Bien ya existe");
+        }
+        
+    }
+
+    
+    
+    
     public void BienUpdate(Bien a) throws Exception {
 
     }

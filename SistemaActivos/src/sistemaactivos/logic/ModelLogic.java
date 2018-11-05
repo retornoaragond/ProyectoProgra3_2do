@@ -74,6 +74,12 @@ public class ModelLogic {
         daoSolicitud.BienAdd(bien);
     }
 
+    public void addBienPreservar(Bien bien) throws Exception {
+        daoSolicitud.addBienPreservar(bien);
+    }
+
+    
+    
     public void updateBien(Bien bien) throws Exception {
         daoSolicitud.BienUpdate(bien);
     }
@@ -283,6 +289,11 @@ public class ModelLogic {
         return daoAdministracion.getAutoIncremento();
     }
 
+    public int getAutoIncrementoSolicitud() throws Exception {
+        return daoSolicitud.getAutoIncrementoSolicitud();
+    }
+  
+    
     public List<Categoria> getCategoria() {
         return daoAdministracion.CategoriaALL();
     }

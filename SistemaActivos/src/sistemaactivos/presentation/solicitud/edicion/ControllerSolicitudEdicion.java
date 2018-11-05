@@ -66,6 +66,13 @@ public class ControllerSolicitudEdicion {
         model.commit();
     }
 
+    
+     public void preservarBien(Bien b){
+       //domainModel.addBien(b);
+     
+     }
+    
+    
     public void eliminar(Bien bien) throws Exception {
         //eliminar un bien de la solicitud
     }
@@ -74,6 +81,11 @@ public class ControllerSolicitudEdicion {
         model.reset();
     }
 
+    public int getAutoIncremento() throws Exception{
+        return domainModel.getAutoIncrementoSolicitud();
+    }
+    
+    
     public void reset(int modo, Solicitud current) {
         model.reset(modo, current);
     }

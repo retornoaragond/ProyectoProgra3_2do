@@ -339,17 +339,45 @@ public class DaoActivos {
         }
     }
 
-    public void ActivoUpdate(Activo a) throws Exception {
-        String sql = "update activo set labAct='%d',"
-                + "where codigoId='%s'";
-        sql = String.format(sql, a.getCodigoId());
-        int count = dbbb.executeUpdate(sql);
-        if (count == 0) {
-            throw new Exception("Activo no existe");
-        }
-    }
-
-    public void close() {
+//    public void ActivoUpdate(Activo a) throws Exception {
+//        String sql = "update activo set labAct='%d',"
+//                + "where codigoId='%s'";
+//        sql = String.format(sql, a.getCodigoId());
+//        int count = dbbb.executeUpdate(sql);
+//        if (count == 0) {
+//            throw new Exception("Activo no existe");
+//        }
+//    }
+    
+    
+     public void ActivoUpdate(Activo a) throws Exception {
+    String sql = "update activo set labAct='%d'"
+               + "where codigoId='%s'";
+       sql = String.format(sql,a.getLabor().getFuncionario());
+       int count = dbbb.executeUpdate(sql);
+       if (count == 0) {
+           throw new Exception("Activo no existe");
+       }
+       }
+    
+//      public void PersonaUpdate(Persona p) throws Exception{
+//        String sql="update persona set nombre='%s',sexo='%s',estadoCivil='%s',"+
+//                "pasatiempoMusica=%b,pasatiempoCine=%b,pasatiempoDeporte=%b,"+
+//                "pasatiempoVideoJuegos=%b,pasatiempoCocina=%b,pasatiempoOtro=%b,"+
+//                "pasatiempoOtroTexto='%s' "+
+//                "where id='%s'";
+//        sql=String.format(sql,p.getNombre(),p.getSexo(),p.getEstadoCivil().getCodigo(),
+//                p.isPasatiempoMusica(),p.isPasatiempoCine(),p.isPasatiempoDeporte(),p.isPasatiempoVideoJuegos(),
+//                p.isPasatiempoCocina(),p.isPasatiempoOtro(),p.getPasatiempoOtroTexto(),p.getId());
+//        
+//        int count=db.executeUpdate(sql);
+//        if (count==0){
+//            throw new Exception("Persona no existe");
+//        }
+//     
+     
+     
+     public void close() {
     }
 
 }
