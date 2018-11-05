@@ -295,4 +295,5 @@ public class ModelLogic {
     public List<Categoria> getCategoria() {
         return daoAdministracion.CategoriaALL();
     }
+    
 }

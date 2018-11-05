@@ -15,6 +15,7 @@ import sistemaactivos.logic.Activo;
 import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Puesto;
 import sistemaactivos.logic.Solicitud;
 import sistemaactivos.presentation.activos.listado.ActivoTableModel;
 
@@ -27,6 +28,7 @@ public class ModelActivosEdicion extends java.util.Observable {
     Activo activoSeleccionado;
    ComboBoxModel<Dependencia> dependencia;
    ComboBoxModel<Funcionario> funcionario;
+   ComboBoxModel<Puesto> pue;
    ActivoTableModel activotable;
     int modo;
             
@@ -34,16 +36,24 @@ public class ModelActivosEdicion extends java.util.Observable {
     public ModelActivosEdicion(){
     this.reset();
      }
-  
-   
+
     public void reset(List<Activo> activos){      
         setActivos(activos);
         setCurrent(new Activo());
     }
     
+    public ComboBoxModel<Puesto> getPuesot(){
+        return pue;
+    }
+    
      public ComboBoxModel<Dependencia> getDependencia() {
         return dependencia;
     }
+     
+      public void setPuesto(List<Puesto> puesto){
+      this.pue= new DefaultComboBoxModel(puesto.toArray());
+      this.commit();
+      }
 
       public void setDependencia(List<Dependencia> dependencia) {
         this.dependencia = new DefaultComboBoxModel(dependencia.toArray());
@@ -76,7 +86,10 @@ public class ModelActivosEdicion extends java.util.Observable {
         this.setCurrent(new Activo());
     }
     
-    
+    public void resetP(List<Puesto> puesto){
+        this.setPuesto(puesto);
+        this.setCurrent(new Activo());
+    }
     
     
    public void reset(){      
