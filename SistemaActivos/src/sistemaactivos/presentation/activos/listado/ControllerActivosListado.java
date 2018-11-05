@@ -103,10 +103,7 @@ public class ControllerActivosListado {
         view.setVisible(false);
     }
 
-
-    public void codigoBarras() {
-
-        
+public void CodigoB(){        
         
         //FALTA AGREGAR UN FOR CON LOS BIENES
     
