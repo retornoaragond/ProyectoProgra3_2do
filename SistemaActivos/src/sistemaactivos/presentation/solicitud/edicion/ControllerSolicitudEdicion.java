@@ -66,6 +66,13 @@ public class ControllerSolicitudEdicion {
         model.commit();
     }
 
+    
+     public void preservarBien(Bien b){
+       //domainModel.addBien(b);
+     
+     }
+    
+    
     public void eliminar(Bien bien) throws Exception {
         //eliminar un bien de la solicitud
     }

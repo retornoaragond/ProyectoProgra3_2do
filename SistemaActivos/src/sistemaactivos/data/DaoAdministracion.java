@@ -343,7 +343,7 @@ public class DaoAdministracion {
             throw new Exception("Dependencia ya existe");
         }
     }
-
+   
     public void DependenciaUpdate(Dependencia a) throws Exception {
         String sql = "update dependencia set nombre='%s'"
                 + "where codigo='%s'";

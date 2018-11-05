@@ -477,6 +477,14 @@ public class DaoSolicitudes {
 
     }
 
+    public void addBienPreservar(Bien a) throws Exception {
+      
+        
+      }
+
+    
+    
+    
     public void BienUpdate(Bien a) throws Exception {
 
     }

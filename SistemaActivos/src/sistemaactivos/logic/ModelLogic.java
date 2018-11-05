@@ -74,6 +74,12 @@ public class ModelLogic {
         daoSolicitud.BienAdd(bien);
     }
 
+    public void addBienPreservar(Bien bien) throws Exception {
+        daoSolicitud.addBienPreservar(bien);
+    }
+
+    
+    
     public void updateBien(Bien bien) throws Exception {
         daoSolicitud.BienUpdate(bien);
     }

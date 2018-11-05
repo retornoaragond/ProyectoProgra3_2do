@@ -5,6 +5,7 @@
  */
 package sistemaactivos.presentation.solicitud.edicion;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -478,8 +479,14 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
               
                 this.controller.guardar(s);
                 s.setEstado("recibido");
+                
                 s.setNumsol(controller.getAutoIncremento());
-              
+                
+                List<Bien> lb=new ArrayList<>(s.getBiens());
+                for(Bien b : lb){
+                  b.setSolicitud(s);
+                 // controller.
+                }
                 JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -500,6 +507,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             try {
                 controller.agregar(toBien());
                 this.limpiabien();
+                
                 actualizacantidad_monto();
             } catch (Exception ex) {
                 Logger.getLogger(ViewSolicitudEdicion.class.getName()).log(Level.SEVERE, null, ex);
@@ -512,6 +520,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
       
     }//GEN-LAST:event_eliminarbienActionPerformed
+    
     
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
