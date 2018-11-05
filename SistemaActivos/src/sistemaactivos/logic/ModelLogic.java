@@ -54,8 +54,8 @@ public class ModelLogic {
     }
 
     //<editor-fold desc="Bien" defaultstate="collapsed">
-    public List<Bien> getBienes() {
-        return daoSolicitud.BienGetAll();
+    public List<Bien> getBienes(Solicitud s) {
+        return daoSolicitud.getbienes(s);
     }
 
     public Bien getBien(String serial) throws Exception {
