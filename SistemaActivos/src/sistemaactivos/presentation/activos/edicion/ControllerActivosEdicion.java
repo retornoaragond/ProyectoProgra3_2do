@@ -28,7 +28,7 @@ public class ControllerActivosEdicion {
     
     
     public ControllerActivosEdicion(ViewActivosEdicion view, ModelActivosEdicion model, ModelLogic domainModel, Session session) {
-         initCombosB(domainModel,model);
+        initCombosB(domainModel,model);
         model.reset(domainModel.getActivos());
         this.domainModel= domainModel;
         this.session=session;
@@ -41,11 +41,13 @@ public class ControllerActivosEdicion {
 public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
         List<Dependencia> dep = domainModel.getDependencias();
         dep.add(0, new Dependencia());
+        model.resetD(dep);
         List<Funcionario> fun = domainModel.getFuncionarios();
         fun.add(0, new Funcionario());
-        model.resetD(dep);
         model.resetF(fun);
     }
+
+
     
     public void guardar(Activo activo) throws Exception{  
         switch(model.getModo()){
@@ -95,6 +97,11 @@ public void initCombosB(ModelLogic domainModel,ModelActivosEdicion model){
         view.setVisible(false);
     }
     
+   public void getSeleccionadaDependencia(String depe)throws Exception{
+       List<Funcionario> fun = domainModel.getFuncionarioSS(depe);
+        fun.add(0, new Funcionario());
+        model.resetF(fun);
+   }
     
     
 }

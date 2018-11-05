@@ -269,7 +269,15 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }//GEN-LAST:event_GuardarButtonActionPerformed
 
     private void dependenciaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciaComboBoxActionPerformed
-        // TODO add your handling code here:
+       Dependencia aux=(Dependencia)this.dependenciaComboBox.getSelectedItem();
+       try {
+           controller.getSeleccionadaDependencia(aux.getCodigo());
+           this.responsableComboBox.setEditable(true);
+       }
+       catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+       
     }//GEN-LAST:event_dependenciaComboBoxActionPerformed
 
     private void responsableComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responsableComboBoxActionPerformed
@@ -284,11 +292,13 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
         Activo actual = model.getCurrent();
-        this.dependenciaComboBox.setModel(model.getDependencia());
-        //this.responsableComboBox.setModel(model.getFuncionario());
+       this.fromActivo(actual); 
+       this.dependenciaComboBox.setModel(model.getDependencia());
         dependenciaComboBox.setSelectedIndex(0);
-       // responsableComboBox.setSelectedIndex(0);
-        this.fromActivo(actual);
+        if(responsableComboBox.isEditable()==true){
+         this.responsableComboBox.setModel(model.getFuncionario());
+         responsableComboBox.setSelectedIndex(0);
+        }
 
     }
 
@@ -297,7 +307,6 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.identificacionTextField.setEnabled(false);
         this.categoriaTextField.setEnabled(false);
         this.DescripcionTextField.setEnabled(false);
-        this.responsableComboBox.setEnabled(false);
         Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
         Boolean consulta = model.getModo() == SistemaActivos.MODO_CONSULTAR;;
 //  
@@ -312,7 +321,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.responsableComboBox.setSelectedItem(actual.getLabor().getFuncionario());
        
                 
-        actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
+//        actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
 
     }
 

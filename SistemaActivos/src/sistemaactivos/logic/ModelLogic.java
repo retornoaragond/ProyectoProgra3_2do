@@ -139,6 +139,7 @@ public class ModelLogic {
     }
 
     public List<Funcionario> getFuncionarioSS(String id) throws Exception {
+      
         return daoAdministracion.GetFuncionarioS(id);
     }
 
