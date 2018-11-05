@@ -5,12 +5,21 @@
  */
 package sistemaactivos.presentation.activos.listado;
 
-import java.awt.Point;
-import java.util.List;
-import sistemaactivos.Session;
-import sistemaactivos.SistemaActivos;
-import sistemaactivos.logic.Activo;
-import sistemaactivos.logic.ModelLogic;
+ import java.awt.Point;
+ import java.util.List;
+ import sistemaactivos.Session;
+ import sistemaactivos.SistemaActivos;
+ import sistemaactivos.logic.Activo;
+ import sistemaactivos.logic.ModelLogic;
+ 
+
+   import java.io.File;
+   import java.io.FileOutputStream;
+  import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeException;
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.BarcodeImageHandler;
+
 
 /**
  *
@@ -94,4 +103,37 @@ public class ControllerActivosListado {
         view.setVisible(false);
     }
 
+public void CodigoB(){        
+        
+        //FALTA AGREGAR UN FOR CON LOS BIENES
+    
+    Barcode barcode = null;
+    String strCode = "123581321";///   se toma el valor del bien
+    try {
+        barcode = BarcodeFactory.createCode39(strCode, true);
+    } catch (BarcodeException e) {
+    }
+    barcode.setDrawingText(true);
+    barcode.setBarWidth(2);
+       barcode.setBarHeight(60);
+  
+    try {
+    String strFileName= "C:\\DATA\\BarCode_"+strCode+".PNG";
+            File file = new File(strFileName);
+            FileOutputStream fos = new FileOutputStream(file);
+             BarcodeImageHandler.writePNG(barcode, fos);//formato de ejemplo PNG
+             System.out.println("Archivo creado: "+strFileName);
+    } catch (Exception ex) {
+     System.out.println("Error: "+ ex.getMessage());
+    }
+    }
+
 }
+
+    
+
+
+
+
+
+
