@@ -233,25 +233,25 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(precioUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cantbien, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(serial, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelBienLayout.createSequentialGroup()
-                                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(agregarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelBienLayout.createSequentialGroup()
                                 .addGap(33, 33, 33)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelBienLayout.createSequentialGroup()
+                                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(precioUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(eliminarbien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         PanelBienLayout.setVerticalGroup(
             PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,19 +263,19 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                     .addComponent(Lserial)
                     .addComponent(serial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelBienLayout.createSequentialGroup()
-                                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Lmarca)
-                                    .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Ldescripcion)
-                                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(agregarbien))
+                            .addComponent(Lmarca)
+                            .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Ldescripcion)
+                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(agregarbien))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelBienLayout.createSequentialGroup()
                         .addGroup(PanelBienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Lmodelo))
@@ -368,7 +368,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         jLabel6.setText("Estado: ");
 
         estadoactual.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recibida", "PorVerificar", "Rechazada", "Procesada" }));
+        estadoactual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Recibida", "PorVerificar", "Rechazada", "Procesada" }));
 
         javax.swing.GroupLayout PanelEstadoLayout = new javax.swing.GroupLayout(PanelEstado);
         PanelEstado.setLayout(PanelEstadoLayout);
@@ -437,9 +437,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                     .addComponent(PanelEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBienes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 391, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PanelBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(PanelSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PanelBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -494,7 +496,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         } else {
             JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-
+        this.setVisible(false);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -732,7 +734,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }
 
     public void fromSolicitud(Solicitud actual) {
-
+        Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         boolean add = model.getModo() == SistemaActivos.MODO_AGREGAR;
         boolean observe = model.getModo() == SistemaActivos.MODO_CONSULTAR;
         boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
@@ -783,8 +785,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 estadoactual.setSelectedIndex(0);
                 break;
         }
-
-        this.razon.setEnabled(modify);
+        if(user != null){
+           this.razon.setEnabled("Secretariado".equals(user.getLabor().getPuesto().getPuesto())); 
+        }else{
+            this.razon.setEnabled(false);
+        }
         razon.setText(actual.getRazonR());
 
         if (!add) {
@@ -805,11 +810,14 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.modelo.setEnabled(add);
         this.precioUnidad.setEnabled(add);
         this.serial.setEnabled(add);
-        this.PanelRegistrador.setVisible(modify || observe);
-        this.PanelEstado.setVisible(modify || observe);
+        if(user != null){
+        this.PanelRegistrador.setVisible((modify || observe )&& "Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
+        this.registradorCombo.setEnabled("Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto()));
+        this.PanelEstado.setVisible((modify || observe) && !"Administrador".equals(user.getLabor().getPuesto().getPuesto()));
+        }
         this.PanelBien.setVisible(add);
 
-        guardar.setVisible(add);
+        guardar.setVisible(add || modify);
         this.validate();
     }
 }

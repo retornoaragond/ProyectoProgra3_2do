@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Categoria;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 
@@ -427,8 +430,18 @@ public class DaoSolicitudes {
         try {
             Bien ec = new Bien();
             ec.setSerial(rs.getString("serial"));
+            ec.setCantidad(rs.getInt("cantidad"));
+            ec.setDescripcion(rs.getString("descripcion"));
+            ec.setModelo(rs.getString("modelo"));
+            ec.setMarca(rs.getString("marca"));
+            ec.setPrecioU(rs.getDouble("precioU"));
+            if(rs.getString("categoria")!=null){
+                ec.setCategoria(getcategoria(rs.getString("categoria")));
+            }
             return ec;
         } catch (SQLException ex) {
+            return null;
+        } catch (Exception ex) {
             return null;
         }
     }
@@ -448,6 +461,20 @@ public class DaoSolicitudes {
         }
 
         return resultado;
+    }
+    
+    public List<Bien> getbienes(Solicitud s){
+       List<Bien> bienes = new ArrayList<>();
+       try {
+            String sql = "select * from bien WHERE bien.solicitud = '%d'";
+            sql = String.format(sql, s.getNumsol());
+            ResultSet rs = db.executeQuery(sql);
+            while (rs.next()) {
+                bienes.add(bien(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return bienes;
     }
 
     public List<Bien> BienGetAll() {
@@ -492,6 +519,33 @@ public class DaoSolicitudes {
     }
 
     //</editor-fold>
+    
+    //  <editor-fold desc="Categoria" defaultstate="collapsed">
+    public Categoria getcategoria(String s) throws Exception{
+       String sql = "SELECT * FROM categoria where categoria.id = '%s';";
+        sql = String.format(sql, s);
+        ResultSet rs = db.executeQuery(sql);
+        if (rs.next()) {
+            return categoria(rs);
+        } else {
+            throw new Exception("Solicitud no Existe");
+        } 
+        
+    }
+    
+    private Categoria categoria(ResultSet rs){
+        try {
+            Categoria ca = new Categoria();
+            ca.setId(rs.getString("id"));
+            ca.setIncremento(rs.getInt("incremento"));
+            ca.setDescripcion(rs.getString("descripcion"));
+            return ca;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+    //</editor-fold>
+    
     public void close() {
     }
 }

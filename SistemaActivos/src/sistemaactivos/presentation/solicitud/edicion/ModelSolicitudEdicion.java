@@ -53,7 +53,12 @@ public class ModelSolicitudEdicion extends java.util.Observable {
     public void reset(int modo, Solicitud current) {
         this.setModo(modo);
         this.setCurrent(current);
-        List<Bien> rows = new ArrayList<>();
+        List<Bien> rows;
+        if(current.equals(new Solicitud())){
+             rows = new ArrayList<>();
+        }else{
+             rows = new ArrayList<>(current.getBiens());
+        }
         this.bienselecionado = null;
         this.setBientable(rows);
         this.commit();

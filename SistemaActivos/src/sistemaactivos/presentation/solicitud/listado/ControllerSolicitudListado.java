@@ -7,9 +7,10 @@ package sistemaactivos.presentation.solicitud.listado;
 
 import sistemaactivos.SistemaActivos;
 import java.awt.Point;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import sistemaactivos.Session;
+import sistemaactivos.logic.Bien;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.ModelLogic;
@@ -40,8 +41,8 @@ public class ControllerSolicitudListado {
         model.setSolicitud(filter);
         this.refrescarBusqueda(l);
     }
-    
-    public void refrescarBusqueda()throws Exception{
+
+    public void refrescarBusqueda() throws Exception {
         refrescarBusqueda(view.filtrosSeleccionados());
     }
 
@@ -66,32 +67,16 @@ public class ControllerSolicitudListado {
         }
     }
 
-    /*
-    public void preAgregar(Point at)throws Exception{      
-        //Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
-        if ( !Arrays.asList(Application.ROL_MANAGER).contains(principal.getRol())){
-           throw new Exception(Application.ROL_NOTAUTHORIZED);
-        }
-        Application.PERSONA_CONTROLLER.reset(Application.MODO_AGREGAR, new Solicitud());
-        Application.PERSONA_CONTROLLER.show(at);
-    }
-     */
- /*
-   public void editar(int row, Point at){       
-        Solicitud seleccionada = model.getSolicitudes().getRowAt(row); 
-        Usuario principal = (Usuario) session.getAttribute(Application.USER_ATTRIBUTE);
+    public void editar(int row, Point at) {
+        Solicitud seleccionada = model.getSolicitudes().getRowAt(row);
+        List<Bien> bienesS = domainModel.getBienes(seleccionada);
+        seleccionada.setBiens(new HashSet<>(bienesS));
         int modo;
-        if ( Arrays.asList(Application.ROL_MANAGER, Application.ROL_SUPERVISOR).contains(principal.getRol())){
-           modo=Application.MODO_EDITAR;
-        }
-        else{
-            modo=Application.MODO_CONSULTAR;            
-        }
-        Application.Solicitud_CONTROLLER.reset(modo, seleccionada);
-        Application.Solicitud_CONTROLLER.show(at);
+        modo = SistemaActivos.MODO_EDITAR;
+        SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.reset(modo, seleccionada);
+        SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.show(at);
     }
-                       
-     */
+
     public void borrar(int row, List<String> l) {
         Usuario user = (Usuario) session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         Solicitud seleccionada = model.getSolicitudes().getRowAt(row);
@@ -102,11 +87,6 @@ public class ControllerSolicitudListado {
         List<Solicitud> rowsMod = domainModel.searchSolicitud(model.getFilter(), l);
         model.setSolicitudes(rowsMod);
         model.commit();
-    }
-
-    public void searchEstado(int row, Point position) {
-        model.setSeleccionado(model.getSolicitudes().getRowAt(row));
-        // Application.ESTADOS_SEARCH_CONTROLLER.show(position);
     }
 
     public void changeFuncionario(Funcionario nuevoFuncionario) {

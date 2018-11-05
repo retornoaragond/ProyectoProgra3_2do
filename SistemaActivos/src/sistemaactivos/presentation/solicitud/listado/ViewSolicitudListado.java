@@ -158,12 +158,6 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
 
         etiquetaNumerodeSolicitud.setText("Numero de Solicitud ");
 
-        textFieldNumSolicitud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNumSolicitudActionPerformed(evt);
-            }
-        });
-
         buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemaactivos/presentation/icons/iconbuscar.png"))); // NOI18N
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +259,11 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        solicitudesFld.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                solicitudesFldMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(solicitudesFld);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -348,19 +347,8 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        /*  try {
-            //   controller.preAgregar(this.agregarFld.getLocationOnScreen());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        }*/
-
-        /// controller.
         controller.SolicitudEdicionShow();
     }//GEN-LAST:event_AgregarActionPerformed
-
-    private void textFieldNumSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumSolicitudActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldNumSolicitudActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         if (this.validar()) {
@@ -381,6 +369,17 @@ public class ViewSolicitudListado extends javax.swing.JInternalFrame implements 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         controller.hide();
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void solicitudesFldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_solicitudesFldMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                int row = this.solicitudesFld.getSelectedRow();
+                controller.editar(row, evt.getLocationOnScreen());
+            } catch (Exception ex) {
+                
+            }
+        }
+    }//GEN-LAST:event_solicitudesFldMouseClicked
 
     public void fromSolicitud(Solicitud s) {
         if (s.getNumsol() != 0) {
