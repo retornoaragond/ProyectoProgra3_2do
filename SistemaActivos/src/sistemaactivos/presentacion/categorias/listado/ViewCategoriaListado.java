@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaactivos.presentation.categorias.listado;
+package sistemaactivos.presentacion.categorias.listado;
 
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Categoria;
@@ -70,8 +70,9 @@ public class ViewCategoriaListado extends javax.swing.JInternalFrame implements 
     public void update(java.util.Observable updatedModel, Object parametros) {
         this.limpiarErrores();
         Categoria cate = model.getFilter();
-        //this.fromDependencia(categoria);
-        ///this.DependenciaTable.setModel(model.getDependenciaTablemodel());
+        this.fromCategoria(cate);
+       
+       //this.TableCategorias.setModel(model.getCategoriaTablemodel());
     }
     
     @SuppressWarnings("unchecked")
@@ -180,6 +181,11 @@ public class ViewCategoriaListado extends javax.swing.JInternalFrame implements 
         jScrollPane2.setViewportView(TableCategorias);
 
         Atras.setText("Atras");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
 
         Eliminar.setText("Eliminar");
 
@@ -242,6 +248,10 @@ public class ViewCategoriaListado extends javax.swing.JInternalFrame implements 
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+       controller.hide();
+    }//GEN-LAST:event_AtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

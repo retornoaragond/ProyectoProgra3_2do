@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaactivos.presentation.categorias.listado;
+package sistemaactivos.presentacion.categorias.listado;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import sistemaactivos.logic.Categoria;
+import sistemaactivos.presentation.dependencias.listado.DependenciaTableModel;
 
 /**
  *
@@ -17,7 +18,7 @@ import sistemaactivos.logic.Categoria;
 public class ModelCategoriaListado extends java.util.Observable{
     
     Categoria filter; 
-    //CategoriaTableModel dependenciasTable;
+    CategoriaTableModel CategoriaTable;
     Categoria seleccionado;
     
     public ModelCategoriaListado(){
@@ -28,16 +29,17 @@ public class ModelCategoriaListado extends java.util.Observable{
         filter = new Categoria();
         List<Categoria> rows = new ArrayList<>();        
         seleccionado=null;  
+        
         this.setDependencia(rows);
-        //this.commit();  
+        this.commit();  
     }
    
   
   public void setDependencia(List<Categoria> catego){
-       /* int[] cols={CategoriaTableModel.CODIGO,DependenciaTableModel.NOMBRE};
-        this.dependenciasTable =new DependenciaTableModel(cols,dependencias);    
+        int[] cols={CategoriaTableModel.ID,DependenciaTableModel.CODIGO};
+        this.CategoriaTable =new CategoriaTableModel(cols,catego);    
          this.commit();
-*/  
+  
 }
   
   public Categoria getFilter() {
@@ -47,11 +49,11 @@ public class ModelCategoriaListado extends java.util.Observable{
     public void setFilter(Categoria filter) {
         this.filter = filter;
     }
-    /*
+    
      public CategoriaTableModel getCategoriaTablemodel() {
-        return categoriaTable;
+        return CategoriaTable;
     }
- */
+ 
     public Categoria getSeleccionado() {
         return seleccionado;
     }

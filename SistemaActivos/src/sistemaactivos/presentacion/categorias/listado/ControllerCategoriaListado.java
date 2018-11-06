@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaactivos.presentation.categorias.listado;
+package sistemaactivos.presentacion.categorias.listado;
 
 import java.awt.Point;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ControllerCategoriaListado {
     }
 
     public void CategoriasEdicionShow() {
-//        SistemaActivos.CATEGORIA_EDICION_CONTROLLER.show();
+        SistemaActivos.CATEGORIA_LISTADO_CONTROLLER.show();
     }
 
     public void buscar(Categoria filter) {
@@ -42,34 +42,34 @@ public class ControllerCategoriaListado {
     }
     
     public void refrescarBusqueda() {
-//        List<Categoria> rows = domainModel.searchCategoria(model.getFilter());
-//        model.setDependencia(rows);
+        List<Categoria> rows = domainModel.getCategoria();
+        model.setDependencia(rows);
         model.commit();
 
     }
 
     public void preAgregar(Point at) throws Exception {
        
-//        SistemaActivos.CATEGORIA_EDICION_CONTROLLER.reset(SistemaActivos.MODO_AGREGAR, new Categoria());
-///        SistemaActivos.CATEGORIA_EDICION_CONTROLLER.show();
+        SistemaActivos.CATEGORIA_LISTADO_CONTROLLER.reset();
+        SistemaActivos.CATEGORIA_LISTADO_CONTROLLER.show();
     }
 
     public void editar(int row, Point at) {
-//        model.setSeleccionado(model.categoriaTable.getRowAt(row));
+        model.setSeleccionado(model.CategoriaTable.getRowAt(row));
         int modo;
         modo = SistemaActivos.MODO_EDITAR;
-//        SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.reset(modo, model.seleccionado);
+        SistemaActivos.CATEGORIA_LISTADO_CONTROLLER.reset();
         SistemaActivos.DEPENDENCIA_EDICION_CONTROLLER.show(at);
     }
     
     public void borrar(int row) {
-//        Categoria seleccionada = model.categoriaTable.getRowAt(row);
+        Categoria seleccionada = model.CategoriaTable.getRowAt(row);
         try {
-//            domainModel.deleteDependencia(seleccionada);
+            //domainModel.deleteDependencia(seleccionada);
         } catch (Exception ex) {
         }
-//        List<Categoria> rowsMod = domainModel.searchDependencia(model.getFilter());
-//        model.setDependencia(rowsMod);
+        //List<Categoria> rowsMod = domainModel.searchDependencia(model.getFilter());
+        //model.setDependencia(rowsMod);
         model.commit();
     }
 
@@ -78,15 +78,15 @@ public class ControllerCategoriaListado {
             model.getSeleccionado().setId(nuevaCategoria.getId());
             model.getSeleccionado().setDescripcion(nuevaCategoria.getDescripcion());
             try {
-                //domainModel.uupdateDependencia(model.getSeleccionado());
+                //domainModel.uupdateCategoria(model.getSeleccionado());
                 this.refrescarBusqueda();
             } catch (Exception ex) {
             }
         }
     }
     
-     public void searchDependencia(int row, Point position) {
-//        model.setSeleccionado(model.categoriaTable.getRowAt(row));
+     public void searchCategoria(int row, Point position) {
+        model.setSeleccionado(model.CategoriaTable.getRowAt(row));
         SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.show(position);// aqui hice algo 
     }
 
@@ -106,5 +106,6 @@ public class ControllerCategoriaListado {
     public void hide() {
         view.setVisible(false);
     }
+   
     
 }

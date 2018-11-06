@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaactivos.presentation.categorias.listado;
+package sistemaactivos.presentacion.categorias.listado;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -16,7 +16,7 @@ import sistemaactivos.logic.Categoria;
 public class CategoriaTableModel extends AbstractTableModel {
 
      List<Categoria> rows;
-    int[] cols;
+     int[] cols;
 
     public CategoriaTableModel(int[] cols, List<Categoria> rows) {
         this.cols = cols;

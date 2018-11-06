@@ -9,6 +9,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import sistemaactivos.logic.ModelLogic;
+import sistemaactivos.presentacion.categorias.listado.ControllerCategoriaListado;
+import sistemaactivos.presentacion.categorias.listado.ModelCategoriaListado;
+import sistemaactivos.presentacion.categorias.listado.ViewCategoriaListado;
 import sistemaactivos.presentation.activos.edicion.ControllerActivosEdicion;
 import sistemaactivos.presentation.activos.edicion.ModelActivosEdicion;
 import sistemaactivos.presentation.activos.edicion.ViewActivosEdicion;
@@ -42,9 +45,7 @@ import sistemaactivos.presentation.solicitud.edicion.ViewSolicitudEdicion;
 import sistemaactivos.presentation.solicitud.listado.ControllerSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ModelSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ViewSolicitudListado;
-import sistemaactivos.presentation.categorias.listado.ControllerCategoriaListado;
-import sistemaactivos.presentation.categorias.listado.ModelCategoriaListado;
-import sistemaactivos.presentation.categorias.listado.ViewCategoriaListado;
+
 
 /**
  *
