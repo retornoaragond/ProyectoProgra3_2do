@@ -42,6 +42,9 @@ import sistemaactivos.presentation.solicitud.edicion.ViewSolicitudEdicion;
 import sistemaactivos.presentation.solicitud.listado.ControllerSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ModelSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ViewSolicitudListado;
+import sistemaasctivos.presentacion.categorias.listado.ControllerCategoriaListado;
+import sistemaasctivos.presentacion.categorias.listado.ModelCategoriaListado;
+import sistemaasctivos.presentacion.categorias.listado.ViewCategoriaListado;
 
 /**
  *
@@ -127,12 +130,20 @@ public class SistemaActivos {
         LOGIN_CONTROLLER = logincontroller;
         loginView.setVisible(true);
         // </editor-fold>
+        
+        // <editor-fold desc="Categoria_Listado" defaultstate="collapsed">
+        ModelCategoriaListado mocatlis = new ModelCategoriaListado();
+        ViewCategoriaListado vicatlis = new ViewCategoriaListado();
+        aplicationView.addInternalFrame(vicatlis);
+        CATEGORIA_LISTADO_CONTROLLER = new ControllerCategoriaListado(vicatlis,mocatlis,domainModel,session);
+        // </editor-fold>
     }
 
     // <editor-fold desc="Atributos" defaultstate="collapsed">
     public static Border BORDER_ERROR = BorderFactory.createLineBorder(Color.red);
     public static Border BORDER_NOBORDER = BorderFactory.createLineBorder(Color.red);
 
+    public static ControllerCategoriaListado CATEGORIA_LISTADO_CONTROLLER;    
     public static ControllerActivosEdicion ACTIVOS_EDICION_CONTROLLER;
     public static ControllerActivosListado ACTIVOS_LISTADO_CONTROLLER;
     public static ControllerAplication APLICATION_CONTROLLER;

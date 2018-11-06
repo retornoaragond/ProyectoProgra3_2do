@@ -73,6 +73,7 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         RegistradorjMenu = new javax.swing.JMenu();
         ListadoDeSolicitudesJMenu1 = new javax.swing.JMenuItem();
         ListadoDeActivosjMenuItem = new javax.swing.JMenuItem();
+        ListCate = new javax.swing.JMenuItem();
         JefeDeRRHHjMenu = new javax.swing.JMenu();
         ListadoDeFuncionariosjMenuItem = new javax.swing.JMenuItem();
         ListadoDeDependendenciasjMenuItem = new javax.swing.JMenuItem();
@@ -85,11 +86,11 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 501, Short.MAX_VALUE)
+            .addGap(0, 559, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 251, Short.MAX_VALUE)
         );
 
         salirMenu.setText("Salir");
@@ -179,6 +180,14 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
             }
         });
         RegistradorjMenu.add(ListadoDeActivosjMenuItem);
+
+        ListCate.setText("Listado de Categorias");
+        ListCate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListCateActionPerformed(evt);
+            }
+        });
+        RegistradorjMenu.add(ListCate);
 
         jMenuBar1.add(RegistradorjMenu);
 
@@ -285,11 +294,16 @@ public class ViewAplication extends javax.swing.JFrame implements java.util.Obse
         controller.activosShow();
     }//GEN-LAST:event_ListadoDeActivosjMenuItemActionPerformed
 
+    private void ListCateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListCateActionPerformed
+        controller.categoriaShow();
+    }//GEN-LAST:event_ListCateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AdministradorJMenuItem;
     private javax.swing.JMenu JefeDeOCCBJMenuItem;
     private javax.swing.JMenu JefeDeRRHHjMenu;
+    private javax.swing.JMenuItem ListCate;
     private javax.swing.JMenuItem ListadoActivosjMenuItem;
     private javax.swing.JMenuItem ListadoDeActivosjMenuItem;
     private javax.swing.JMenuItem ListadoDeActivosjMenuItem2;

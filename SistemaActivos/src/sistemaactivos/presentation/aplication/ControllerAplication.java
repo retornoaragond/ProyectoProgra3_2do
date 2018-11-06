@@ -31,6 +31,10 @@ public class ControllerAplication {
         view.setModel(model);
     }
 
+    public void categoriaShow(){
+        SistemaActivos.CATEGORIA_LISTADO_CONTROLLER.show();
+    }
+    
     public void activosShow() {
         SistemaActivos.ACTIVOS_LISTADO_CONTROLLER.show();
     }

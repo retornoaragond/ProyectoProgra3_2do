@@ -315,8 +315,8 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.fromActivo(actual); 
         this.dependenciaComboBox.setModel(model.getDependencia());
         dependenciaComboBox.setSelectedIndex(0);
-        this.PuestoCombo.setModel(model.getPuesot());
-        PuestoCombo.setSelectedIndex(0);
+//        this.PuestoCombo.setModel(model.getPuesot());
+//        PuestoCombo.setSelectedIndex(0);
         if(responsableComboBox.isEnabled()==true){
         this.responsableComboBox.setModel(model.getFuncionario());
         responsableComboBox.setSelectedIndex(0);
