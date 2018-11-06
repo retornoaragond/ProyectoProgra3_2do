@@ -113,7 +113,7 @@ public class ControllerSolicitudEdicion {
         model.setBienselecionado(model.bientable.getRowAt(row));
         int modo;
         modo = SistemaActivos.MODO_EDITAR;
-        SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.reset(modo, model.getCurrent());
-        SistemaActivos.SOLICITUD_EDICION_CONTROLLLER.show(at);
+        SistemaActivos.BIEN_CONTROLLER.reset(modo, model.getBienselecionado());
+        SistemaActivos.BIEN_CONTROLLER.show(at);
     }
 }

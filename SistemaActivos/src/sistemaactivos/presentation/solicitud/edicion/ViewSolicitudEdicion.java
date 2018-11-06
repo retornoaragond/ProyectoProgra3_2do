@@ -537,7 +537,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }//GEN-LAST:event_eliminarbienActionPerformed
 
     private void tablabienesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablabienesMouseClicked
-              if(evt.getClickCount()==2){
+        if(evt.getClickCount()==2){
         int row= this.tablabienes.getSelectedRow();
         controller.editar(row, evt.getLocationOnScreen());
         }
