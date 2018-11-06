@@ -546,13 +546,10 @@ public class DaoAdministracion {
     }
     
     
-    
-    //daoAdministracion.categoriaAdd(categoria);
-   //    daoAdministracion.categoriaUpdate(categoria);
    
     
      public void categoriaAdd(Categoria a) throws Exception {
-        String sql = "insert into Categoria (codigo, nombre) "
+        String sql = "insert into Categoria (id, descripcion) "
                 + "values('%s','%s')";
     //    sql = String.format(sql, a.getCodigo(), a.getNombre());
         int count = dbb.executeUpdate(sql);
@@ -562,8 +559,8 @@ public class DaoAdministracion {
     }
 
     public void categoriaUpdate(Categoria a) throws Exception {
-        String sql = "update dependencia set nombre='%s'"
-                + "where codigo='%s'";
+        String sql = "update dependencia set descripcion='%s'"
+                + "where id='%s'";
      //   sql = String.format(sql, a.getNombre(), a.getCodigo());
         int count = dbb.executeUpdate(sql);
         if (count == 0) {
