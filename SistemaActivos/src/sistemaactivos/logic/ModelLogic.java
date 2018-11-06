@@ -103,6 +103,10 @@ public class ModelLogic {
     public void updateSolicitud(Solicitud solicitud) throws Exception {
         daoSolicitud.SolicitudUpdate(solicitud);
     }
+    
+    public void updateSolicitud2(Solicitud solicitud) throws Exception {
+        daoSolicitud.SolicitudUpdate2(solicitud);
+    }
 
     public List<Solicitud> searchSolicitud(Solicitud filtro, List<String> l) {
         return daoSolicitud.SolicitudSearchFunc(filtro, l);

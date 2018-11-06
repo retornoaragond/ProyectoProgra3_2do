@@ -480,11 +480,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        
+
         Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         Solicitud s = this.toSolicitud();
         if (this.validar()) {
- 
+
             try {
                 if (model.modo == SistemaActivos.MODO_AGREGAR) {
                     s.setDependencia(user.getLabor().getDependencia());
@@ -498,7 +498,17 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                         controller.preservarBien(b);
                     }
                 } else {
-                   this.controller.guardar(s); 
+                    Funcionario aux = new Funcionario();
+                    if (!aux.equals((Funcionario) registradorCombo.getSelectedItem())) {
+                        model.getCurrent().setFuncionario((Funcionario) registradorCombo.getSelectedItem());
+                    }
+
+                    if ("Jefe OCCB".equals(user.getLabor().getPuesto().getPuesto())) {
+                        model.getCurrent().setEstado(estadoactual.getSelectedItem().toString());
+                        this.controller.guardar(model.getCurrent());
+                    } else {
+                        this.controller.editar(model.getCurrent());
+                    }
                 }
                 controller.hide();
                 controller.reset();
@@ -556,10 +566,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setMontotal(Double.parseDouble(monttotal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
         result.setRazonR(razon.getText());
-        if (registradorCombo.getSelectedItem().equals(new Funcionario())) {
+        Funcionario aux = new Funcionario();
+        if (!aux.equals((Funcionario) registradorCombo.getSelectedItem())) {
             result.setFuncionario((Funcionario) registradorCombo.getSelectedItem());
         }
-        
+
         return result;
     }
 

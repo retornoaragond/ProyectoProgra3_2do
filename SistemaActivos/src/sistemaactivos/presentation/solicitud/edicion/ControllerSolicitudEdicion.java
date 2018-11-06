@@ -65,6 +65,10 @@ public class ControllerSolicitudEdicion {
                 break;
         }
     }
+    
+    public void editar(Solicitud solicitud) throws Exception {
+        domainModel.updateSolicitud2(solicitud);
+    }
 
     public void agregar(Bien bien) throws Exception {
         model.addBien(bien);

@@ -410,8 +410,17 @@ public class DaoSolicitudes {
     }
 
     public void SolicitudUpdate(Solicitud s) throws Exception {
-        String sql = "UPDATE solicitud SET estado = '%s', registrador = '%s' WHERE numsol = '%d'";
+        String sql = "UPDATE solicitud SET solicitud.estado = '%s', solicitud.registrador = '%s' WHERE solicitud.numsol = '%d'";
         sql = String.format(sql,s.getEstado(),s.getFuncionario().getId(),s.getNumsol());
+        int count = db.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Solicitud  ya existe");
+        }
+    }
+    
+    public void SolicitudUpdate2(Solicitud s) throws Exception {
+        String sql = "UPDATE solicitud SET solicitud.estado = '%s' WHERE solicitud.numsol = '%d'";
+        sql = String.format(sql,s.getEstado(),s.getNumsol());
         int count = db.executeUpdate(sql);
         if (count == 0) {
             throw new Exception("Solicitud  ya existe");
