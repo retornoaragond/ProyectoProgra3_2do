@@ -12,6 +12,7 @@ import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Activo;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.Funcionario;
+import sistemaactivos.logic.Puesto;
 
 /**
  *
@@ -116,8 +117,8 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         identificacionLabel = new javax.swing.JLabel();
         GuardarButton = new javax.swing.JButton();
         SalirButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        PuestoLabel = new javax.swing.JLabel();
+        PuestoCombo = new javax.swing.JComboBox();
 
         setTitle("ACTIVO");
 
@@ -163,9 +164,13 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
             }
         });
 
-        jLabel2.setText("jLabel2");
+        PuestoLabel.setText("Puesto");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PuestoCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PuestoComboActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,11 +204,11 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
                                         .addComponent(responsableLabel)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(18, 18, 18)
-                                            .addComponent(jLabel2)))
+                                            .addComponent(PuestoLabel)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(responsableComboBox, 0, 243, Short.MAX_VALUE)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(PuestoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addComponent(CategoriaLabel)
                             .addComponent(DescripcionLabel)
                             .addGroup(layout.createSequentialGroup()
@@ -238,8 +243,8 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
                     .addComponent(responsableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PuestoLabel)
+                    .addComponent(PuestoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,10 +274,11 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }//GEN-LAST:event_GuardarButtonActionPerformed
 
     private void dependenciaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciaComboBoxActionPerformed
-       Dependencia aux=(Dependencia)this.dependenciaComboBox.getSelectedItem();
+       
+        Dependencia aux=(Dependencia)this.dependenciaComboBox.getSelectedItem();
        try {
-           controller.getSeleccionadaDependencia(aux.getCodigo());
-           this.responsableComboBox.setEditable(true);
+           controller.getSeleccionadaDependencia(((Dependencia)this.dependenciaComboBox.getSelectedItem()).getCodigo());
+           this.responsableComboBox.setEnabled(true);
        }
        catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -281,25 +287,40 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }//GEN-LAST:event_dependenciaComboBoxActionPerformed
 
     private void responsableComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responsableComboBoxActionPerformed
-        // TODO add your handling code here:
+    /* Funcionario aux=(Funcionario) this.responsableComboBox.getSelectedItem();
+       try {
+           controller.getSeleccionadaDependencia(((Funcionario)this.dependenciaComboBox.getSelectedItem()).getId());
+           this.responsableComboBox.setEnabled(true);
+       }
+       catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+      */  
+        
+          
     }//GEN-LAST:event_responsableComboBoxActionPerformed
 
     private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_SalirButtonActionPerformed
 
+    private void PuestoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuestoComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PuestoComboActionPerformed
+
     @Override
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
         Activo actual = model.getCurrent();
-       this.fromActivo(actual); 
-       this.dependenciaComboBox.setModel(model.getDependencia());
+        this.fromActivo(actual); 
+        this.dependenciaComboBox.setModel(model.getDependencia());
         dependenciaComboBox.setSelectedIndex(0);
-        if(responsableComboBox.isEditable()==true){
-         this.responsableComboBox.setModel(model.getFuncionario());
-         responsableComboBox.setSelectedIndex(0);
+//        this.PuestoCombo.setModel(model.getPuesot());
+//        PuestoCombo.setSelectedIndex(0);
+        if(responsableComboBox.isEnabled()==true){
+        this.responsableComboBox.setModel(model.getFuncionario());
+        responsableComboBox.setSelectedIndex(0);
         }
-
     }
 
     public void fromActivo(Activo actual) {
@@ -316,12 +337,14 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.DescripcionTextField.setText(actual.getBien().getDescripcion());
         this.dependenciaComboBox.setEnabled(modify);
         this.dependenciaComboBox.setSelectedItem(actual.getLabor().getDependencia());
-        actual.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
-       this.responsableComboBox.setEnabled(modify);
+        actual.getLabor().setDependencia((Dependencia) 
+        this.dependenciaComboBox.getSelectedItem());
+        this.responsableComboBox.setEnabled(modify);
         this.responsableComboBox.setSelectedItem(actual.getLabor().getFuncionario());
-       
-                
-//        actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
+        this.PuestoCombo.setEnabled(modify);
+        this.PuestoCombo.setSelectedItem(actual.getLabor().getPuesto());
+        this.PuestoCombo.getSelectedItem();
+   //     actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
 
     }
 
@@ -333,6 +356,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
 
         result.getLabor().setDependencia((Dependencia) this.dependenciaComboBox.getSelectedItem());
         result.getLabor().setFuncionario((Funcionario) this.responsableComboBox.getSelectedItem());
+        result.getLabor().setPuesto((Puesto) this.PuestoCombo.getSelectedItem());
 
         return result;
     }
@@ -344,14 +368,14 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     private javax.swing.JLabel DescripcionLabel;
     private javax.swing.JTextField DescripcionTextField;
     private javax.swing.JButton GuardarButton;
+    private javax.swing.JComboBox PuestoCombo;
+    private javax.swing.JLabel PuestoLabel;
     private javax.swing.JButton SalirButton;
     private javax.swing.JTextField categoriaTextField;
     private javax.swing.JComboBox dependenciaComboBox;
     private javax.swing.JLabel identificacionLabel;
     private javax.swing.JTextField identificacionTextField;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JComboBox responsableComboBox;
     private javax.swing.JLabel responsableLabel;
     // End of variables declaration//GEN-END:variables

@@ -7,6 +7,7 @@ package sistemaactivos.presentation.solicitud.edicion;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,5 +107,13 @@ public class ControllerSolicitudEdicion {
 
     public void hide() {
         view.setVisible(false);
+    }
+    
+     public void editar(int row, Point at) {
+        model.setBienselecionado(model.bientable.getRowAt(row));
+        int modo;
+        modo = SistemaActivos.MODO_EDITAR;
+        SistemaActivos.BIEN_CONTROLLER.reset(modo, model.getBienselecionado());
+        SistemaActivos.BIEN_CONTROLLER.show(at);
     }
 }

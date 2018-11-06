@@ -18,6 +18,9 @@ import sistemaactivos.presentation.activos.listado.ViewActivosListado;
 import sistemaactivos.presentation.aplication.ControllerAplication;
 import sistemaactivos.presentation.aplication.ModelAplication;
 import sistemaactivos.presentation.aplication.ViewAplication;
+import sistemaactivos.presentation.bien.ControllerBien;
+import sistemaactivos.presentation.bien.ModelBien;
+import sistemaactivos.presentation.bien.ViewBien;
 import sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion;
 import sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion;
 import sistemaactivos.presentation.dependencias.edicion.ViewDependenciasEdicion;
@@ -110,6 +113,12 @@ public class SistemaActivos {
         aplicationView.addInternalFrame(solicitudlistadoView);
         SOLICITUD_LISTADO_CONTROLLLER = new ControllerSolicitudListado(solicitudlistadoView, solicitudlistadoModel, domainModel, session);
         // </editor-fold>
+        
+        // <editor-fold desc="Bien" defaultstate="collapsed">
+        ModelBien bienmodel = new ModelBien();
+        ViewBien bienView = new ViewBien(aplicationView, true);
+        BIEN_CONTROLLER = new ControllerBien(bienView, bienmodel, domainModel, session);
+        // </editor-fold>
 
         // <editor-fold desc="Login" defaultstate="collapsed">
         ModelLogin loginModel = new ModelLogin();
@@ -134,6 +143,7 @@ public class SistemaActivos {
     public static ControllerLogin LOGIN_CONTROLLER;
     public static ControllerSolicitudEdicion SOLICITUD_EDICION_CONTROLLLER;
     public static ControllerSolicitudListado SOLICITUD_LISTADO_CONTROLLLER;
+    public static ControllerBien BIEN_CONTROLLER;
 
     public static final String USER_ATTRIBUTE = "User";
 

@@ -8,6 +8,8 @@ package sistemaactivos.presentation.bien;
 import java.util.Observable;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Categoria;
+import sistemaactivos.logic.Usuario;
 
 /**
  *
@@ -113,12 +115,6 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         });
 
         SerialjLabel.setText("Serial");
-
-        serialjTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                serialjTextFieldActionPerformed(evt);
-            }
-        });
 
         CategoriajLabel.setText("Categoria");
 
@@ -232,16 +228,13 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void serialjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serialjTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_serialjTextFieldActionPerformed
-
     private void procesarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarjButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_procesarjButtonActionPerformed
 
     private void salirjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirjButtonActionPerformed
-        // TODO add your handling code here:
+        controller.hide();
+        controller.reset();
     }//GEN-LAST:event_salirjButtonActionPerformed
 
 
@@ -269,12 +262,14 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
         Bien actual = model.getCurrent();
-        this.fromBien(actual);
         this.categoriajComboBox1.setModel(model.getCategoria());
+        this.fromBien(actual);
         this.categoriajComboBox1.setSelectedIndex(0);
     }
 
     public void fromBien(Bien actual) {
+
+        Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
 
         this.serialjTextField.setText(actual.getSerial().toString());
         this.serialjTextField.setEnabled(false);
@@ -295,14 +290,25 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
         this.CantidadjTextField.setEditable(!modify);
         CantidadjTextField.setText(Integer.toString(actual.getCantidad()));
 
-        this.categoriajComboBox1.setEditable(modify);
-        //hacer metodo para cargar un arrayList de objetos categoria en lo que 
-        //va a sacar las descripciones que van en los indeces del comboBox
-
-        procesarjButton.setVisible(modify);
+        this.categoriajComboBox1.setEnabled(modify && "Registrador".equals(user.getLabor().getPuesto().getPuesto()));
+        if (!"".equals(actual.getCategoria().getDescripcion())) {
+            categoriajComboBox1.setSelectedIndex(combospace(actual.getCategoria()));
+        } else {
+            categoriajComboBox1.setSelectedIndex(0);
+        }
+        procesarjButton.setVisible(modify && "Registrador".equals(user.getLabor().getPuesto().getPuesto()));
         this.validate();
     }
-    
-    
+
+    public int combospace(Categoria cat) {
+        int num = categoriajComboBox1.getItemCount();
+        for (int i = 0; i < num; i++) {
+            Categoria item = (Categoria) categoriajComboBox1.getItemAt(i);
+            if (item.getDescripcion().equals(cat.getDescripcion())) {
+                return i;
+            }
+        }
+        return 0;
+    }
 
 }
