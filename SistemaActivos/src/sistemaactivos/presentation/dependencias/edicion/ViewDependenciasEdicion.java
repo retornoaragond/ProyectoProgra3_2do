@@ -126,71 +126,71 @@ public class ViewDependenciasEdicion extends javax.swing.JDialog implements java
         this.setVisible(false);
     }//GEN-LAST:event_SalirActionPerformed
 
-     boolean validar() {
-         boolean error = false;
+    boolean validar() {
+        boolean error = false;
 
-         this.Codigo.setForeground(SistemaActivos.COLOR_OK);
-         if (this.Codigo.getText().isEmpty()) {
-             this.Codigo.setForeground(SistemaActivos.COLOR_ERROR);
-             error = true;
-         }
+        this.Codigo.setForeground(SistemaActivos.COLOR_OK);
+        if (this.Codigo.getText().isEmpty()) {
+            this.Codigo.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
 
-         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
-         if (this.NombreTextField.getText().isEmpty()) {
-             this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
-             error = true;
-         }
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+        if (this.NombreTextField.getText().isEmpty()) {
+            this.NombreTextField.setForeground(SistemaActivos.COLOR_ERROR);
+            error = true;
+        }
 
-         return !error;
-     }
+        return !error;
+    }
 
-     Dependencia toDependencia() {
-         Dependencia result = new Dependencia();
-         result.setCodigo(this.CodigoField.getText());
-         result.setNombre(this.NombreTextField.getText());
-         return result;
-     }
+    Dependencia toDependencia() {
+        Dependencia result = new Dependencia();
+        result.setCodigo(this.CodigoField.getText());
+        result.setNombre(this.NombreTextField.getText());
+        return result;
+    }
 
-     public void limpiarErrores() {
-         this.Codigo.setForeground(SistemaActivos.COLOR_OK);
-         this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
-     }
+    public void limpiarErrores() {
+        this.Codigo.setForeground(SistemaActivos.COLOR_OK);
+        this.NombreLabel.setForeground(SistemaActivos.COLOR_OK);
+    }
 
-     public void setController(
-             sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion controller) {
-         this.controller = controller;
-     }
+    public void setController(
+            sistemaactivos.presentation.dependencias.edicion.ControllerDependenciasEdicion controller) {
+        this.controller = controller;
+    }
 
-     public ControllerDependenciasEdicion getController() {
-         return controller;
-     }
+    public ControllerDependenciasEdicion getController() {
+        return controller;
+    }
 
-     public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model) {
-         this.model = model;
-         model.addObserver(this);
-     }
+    public void setModel(sistemaactivos.presentation.dependencias.edicion.ModelDependenciasEdicion model) {
+        this.model = model;
+        model.addObserver(this);
+    }
 
-     public ModelDependenciasEdicion getModel() {
-         return model;
-     }
+    public ModelDependenciasEdicion getModel() {
+        return model;
+    }
 
     @Override
-     public void update(java.util.Observable updatedModel, Object parametros) {
-         this.limpiarErrores();
-         Dependencia actual = model.getCurrent();
-         this.fromDependencia(actual);
-     }
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        this.limpiarErrores();
+        Dependencia actual = model.getCurrent();
+        this.fromDependencia(actual);
+    }
 
-     public void fromDependencia(Dependencia actual) {
-         Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
-         this.CodigoField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
-         this.CodigoField.setText(String.valueOf(actual.getCodigo()));
-         this.NombreTextField.setEnabled(editable);
-         this.NombreTextField.setText(actual.getNombre());
-         Guardar.setVisible(editable);
-         this.validate();
-     }
-     
+    public void fromDependencia(Dependencia actual) {
+        Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
+        this.CodigoField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
+        this.CodigoField.setText(String.valueOf(actual.getCodigo()));
+        this.NombreTextField.setEnabled(editable);
+        this.NombreTextField.setText(actual.getNombre());
+        Guardar.setVisible(editable);
+        this.validate();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
     private javax.swing.JTextField CodigoField;

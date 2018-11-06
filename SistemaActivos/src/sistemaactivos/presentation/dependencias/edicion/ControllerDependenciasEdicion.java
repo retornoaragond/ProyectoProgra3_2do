@@ -8,7 +8,6 @@ package sistemaactivos.presentation.dependencias.edicion;
 import java.awt.Point;
 import sistemaactivos.Session;
 import sistemaactivos.SistemaActivos;
-import static sistemaactivos.SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER;
 import sistemaactivos.logic.Dependencia;
 import sistemaactivos.logic.ModelLogic;
 

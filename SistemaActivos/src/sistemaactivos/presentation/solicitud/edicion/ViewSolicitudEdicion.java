@@ -480,12 +480,13 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        
+        Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         Solicitud s = this.toSolicitud();
-
         if (this.validar()) {
+ 
             try {
-                Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
-                if (this.model.modo == SistemaActivos.MODO_AGREGAR) {
+                if (model.modo == SistemaActivos.MODO_AGREGAR) {
                     s.setDependencia(user.getLabor().getDependencia());
                     s.setEstado("Recibida");
                     this.controller.guardar(s);
@@ -496,11 +497,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                         b.setSolicitud(s);
                         controller.preservarBien(b);
                     }
-                    controller.hide();
-                    controller.reset();
                 } else {
-
+                   this.controller.guardar(s); 
                 }
+                controller.hide();
+                controller.reset();
                 JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -537,9 +538,9 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }//GEN-LAST:event_eliminarbienActionPerformed
 
     private void tablabienesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablabienesMouseClicked
-        if(evt.getClickCount()==2){
-        int row= this.tablabienes.getSelectedRow();
-        controller.editar(row, evt.getLocationOnScreen());
+        if (evt.getClickCount() == 2) {
+            int row = this.tablabienes.getSelectedRow();
+            controller.editar(row, evt.getLocationOnScreen());
         }
     }//GEN-LAST:event_tablabienesMouseClicked
 
@@ -548,13 +549,17 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setNumcomp(numcomprobante.getText());
         result.setFecha(fecha.getDate());
         result.setTipoadq(tipoadquiCombo.getSelectedItem().toString());
-        
+
         result.setBiens(new HashSet<>(model.bientable.getRows()));
-        
+
         result.setCantbien(Integer.parseInt(cantbienes.getText()));
         result.setMontotal(Double.parseDouble(monttotal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
         result.setRazonR(razon.getText());
+        if (registradorCombo.getSelectedItem().equals(new Funcionario())) {
+            result.setFuncionario((Funcionario) registradorCombo.getSelectedItem());
+        }
+        
         return result;
     }
 
@@ -754,7 +759,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.fromSolicitud(actual);
         this.tipoadquiCombo.setSelectedItem(0);
         this.registradorCombo.setSelectedItem(0);
-        
+
     }
 
     public void fromSolicitud(Solicitud actual) {
@@ -845,7 +850,7 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         this.PanelBien.setVisible(add);
         if (!"".equals(actual.getFuncionario().getNombre())) {
             registradorCombo.setSelectedIndex(combospace(actual.getFuncionario()));
-        }else{
+        } else {
             registradorCombo.setSelectedIndex(0);
         }
 
@@ -856,8 +861,8 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     public int combospace(Funcionario fun) {
         int num = registradorCombo.getItemCount();
         for (int i = 0; i < num; i++) {
-            Funcionario item = (Funcionario)registradorCombo.getItemAt(i);
-            if(item.getNombre().equals(fun.getNombre())){
+            Funcionario item = (Funcionario) registradorCombo.getItemAt(i);
+            if (item.getNombre().equals(fun.getNombre())) {
                 return i;
             }
         }

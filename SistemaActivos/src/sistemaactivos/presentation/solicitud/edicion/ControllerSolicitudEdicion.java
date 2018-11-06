@@ -40,7 +40,7 @@ public class ControllerSolicitudEdicion {
         view.setModel(model);
     }
 
-    public void initComboB(ModelLogic domainModel, ModelSolicitudEdicion model)  {
+    public void initComboB(ModelLogic domainModel, ModelSolicitudEdicion model) {
         try {
             List<Funcionario> funcio = domainModel.getFuncionarios();
             funcio.add(0, new Funcionario());
@@ -52,7 +52,6 @@ public class ControllerSolicitudEdicion {
     }
 
     public void guardar(Solicitud solicitud) throws Exception {
-        Usuario user = (Usuario)session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
                 domainModel.addSolicitud(solicitud);
@@ -73,12 +72,10 @@ public class ControllerSolicitudEdicion {
         model.commit();
     }
 
-    
-     public void preservarBien(Bien b) throws Exception{
-       domainModel.addBienPreservar(b);
-     }
-    
-    
+    public void preservarBien(Bien b) throws Exception {
+        domainModel.addBienPreservar(b);
+    }
+
     public void eliminar(Bien bien) throws Exception {
         //eliminar un bien de la solicitud
     }
@@ -87,11 +84,10 @@ public class ControllerSolicitudEdicion {
         model.reset();
     }
 
-    public int getAutoIncremento() throws Exception{
+    public int getAutoIncremento() throws Exception {
         return domainModel.getAutoIncrementoSolicitud();
     }
-    
-    
+
     public void reset(int modo, Solicitud current) {
         model.reset(modo, current);
     }
@@ -108,8 +104,8 @@ public class ControllerSolicitudEdicion {
     public void hide() {
         view.setVisible(false);
     }
-    
-     public void editar(int row, Point at) {
+
+    public void editar(int row, Point at) {
         model.setBienselecionado(model.bientable.getRowAt(row));
         int modo;
         modo = SistemaActivos.MODO_EDITAR;

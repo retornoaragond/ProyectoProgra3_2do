@@ -271,17 +271,17 @@ public class ViewBien extends javax.swing.JDialog implements java.util.Observer 
 
         Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
 
-        this.serialjTextField.setText(actual.getSerial().toString());
-        this.serialjTextField.setEnabled(false);
+        this.serialjTextField.setText(actual.getSerial());
+        this.serialjTextField.setEditable(false);
         Boolean modify = model.getModo() == SistemaActivos.MODO_EDITAR;
 
-        this.descripcionjTextField.setEnabled(!modify);
+        this.descripcionjTextField.setEditable(!modify);
         descripcionjTextField.setText(actual.getDescripcion());
 
-        this.MarcajTextField.setEnabled(!modify);
+        this.MarcajTextField.setEditable(!modify);
         MarcajTextField.setText(actual.getMarca());
 
-        this.ModelojTextField.setEnabled(!modify);
+        this.ModelojTextField.setEditable(!modify);
         ModelojTextField.setText(actual.getModelo());
 
         this.PrecioUnitariojTextField.setEditable(!modify);
