@@ -42,9 +42,9 @@ import sistemaactivos.presentation.solicitud.edicion.ViewSolicitudEdicion;
 import sistemaactivos.presentation.solicitud.listado.ControllerSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ModelSolicitudListado;
 import sistemaactivos.presentation.solicitud.listado.ViewSolicitudListado;
-import sistemaasctivos.presentacion.categorias.listado.ControllerCategoriaListado;
-import sistemaasctivos.presentacion.categorias.listado.ModelCategoriaListado;
-import sistemaasctivos.presentacion.categorias.listado.ViewCategoriaListado;
+import sistemaactivos.presentation.categorias.listado.ControllerCategoriaListado;
+import sistemaactivos.presentation.categorias.listado.ModelCategoriaListado;
+import sistemaactivos.presentation.categorias.listado.ViewCategoriaListado;
 
 /**
  *

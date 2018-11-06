@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaasctivos.presentacion.categorias.listado;
+package sistemaactivos.presentation.categorias.listado;
 
 import java.util.ArrayList;
 import java.util.List;
