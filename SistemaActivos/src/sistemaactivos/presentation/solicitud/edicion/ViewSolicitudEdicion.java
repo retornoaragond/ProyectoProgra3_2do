@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Bien;
+import sistemaactivos.logic.Funcionario;
 import sistemaactivos.logic.Solicitud;
 import sistemaactivos.logic.Usuario;
 
@@ -479,15 +480,21 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         if (this.validar()) {
             try {
                 Usuario user = (Usuario) controller.session.getAttribute(SistemaActivos.USER_ATTRIBUTE);
-                s.setDependencia(user.getLabor().getDependencia());
-                s.setEstado("Recibida");
-                this.controller.guardar(s);
-                s.setNumsol(controller.getAutoIncremento());
-                model.setCurrent(s);
-                List<Bien> lb = new ArrayList<>(s.getBiens());
-                for (Bien b : lb) {
-                    b.setSolicitud(s);
-                    controller.preservarBien(b);
+                if (this.model.modo == SistemaActivos.MODO_AGREGAR) {
+                    s.setDependencia(user.getLabor().getDependencia());
+                    s.setEstado("Recibida");
+                    this.controller.guardar(s);
+                    s.setNumsol(controller.getAutoIncremento());
+                    model.setCurrent(s);
+                    List<Bien> lb = new ArrayList<>(s.getBiens());
+                    for (Bien b : lb) {
+                        b.setSolicitud(s);
+                        controller.preservarBien(b);
+                    }
+                    controller.hide();
+                    controller.reset();
+                } else {
+
                 }
                 JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
@@ -500,7 +507,8 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     }//GEN-LAST:event_guardarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        this.setVisible(false);
+        controller.hide();
+        controller.reset();
     }//GEN-LAST:event_salirActionPerformed
 
     private void agregarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbienActionPerformed
@@ -727,10 +735,12 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     public void update(Observable o, Object arg) {
         this.limpiarErrores();
         Solicitud actual = model.getCurrent();
-        this.fromSolicitud(actual);
         tablabienes.setModel(model.getBientable());
         this.registradorCombo.setModel(model.getFuncioCom());
+        this.fromSolicitud(actual);
         this.tipoadquiCombo.setSelectedItem(0);
+        this.registradorCombo.setSelectedItem(0);
+        
     }
 
     public void fromSolicitud(Solicitud actual) {
@@ -755,6 +765,9 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 break;
             case "Generado":
                 this.tipoadquiCombo.setSelectedIndex(3);
+                break;
+            default:
+                this.tipoadquiCombo.setSelectedIndex(0);
                 break;
         }
 
@@ -816,14 +829,24 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
             this.PanelEstado.setVisible(modify || observe);
         }
         this.PanelBien.setVisible(add);
-        if(!"".equals(actual.getFuncionario().getNombre())){
-            registradorCombo.setSelectedItem(actual.getFuncionario());
+        if (!"".equals(actual.getFuncionario().getNombre())) {
+            registradorCombo.setSelectedIndex(combospace(actual.getFuncionario()));
         }else{
-            registradorCombo.setSelectedItem(" ");
+            registradorCombo.setSelectedIndex(0);
         }
-        
 
         guardar.setVisible(add || modify);
         this.validate();
+    }
+
+    public int combospace(Funcionario fun) {
+        int num = registradorCombo.getItemCount();
+        for (int i = 0; i < num; i++) {
+            Funcionario item = (Funcionario)registradorCombo.getItemAt(i);
+            if(item.getNombre().equals(fun.getNombre())){
+                return i;
+            }
+        }
+        return 0;
     }
 }
