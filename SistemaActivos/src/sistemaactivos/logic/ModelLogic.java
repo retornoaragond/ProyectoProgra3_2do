@@ -296,4 +296,13 @@ public class ModelLogic {
         return daoAdministracion.CategoriaALL();
     }
     
+    public void addcategoria(Categoria categoria) throws Exception {
+        daoAdministracion.categoriaAdd(categoria);
+    }
+
+    public void updatecategoria(Categoria categoria) throws Exception {
+        daoAdministracion.categoriaUpdate(categoria);
+    }
+    
+    
 }

@@ -544,5 +544,35 @@ public class DaoAdministracion {
             return null;
         }
     }
+    
+    
+    
+    //daoAdministracion.categoriaAdd(categoria);
+   //    daoAdministracion.categoriaUpdate(categoria);
+   
+    
+     public void categoriaAdd(Categoria a) throws Exception {
+        String sql = "insert into Dependencia (codigo, nombre) "
+                + "values('%s','%s')";
+    //    sql = String.format(sql, a.getCodigo(), a.getNombre());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Dependencia ya existe");
+        }
+    }
+
+    public void categoriaUpdate(Categoria a) throws Exception {
+        String sql = "update dependencia set nombre='%s'"
+                + "where codigo='%s'";
+     //   sql = String.format(sql, a.getNombre(), a.getCodigo());
+        int count = dbb.executeUpdate(sql);
+        if (count == 0) {
+            throw new Exception("Dependencia no existe");
+        }
+    }
+
+    
+    
+    
 
 }
