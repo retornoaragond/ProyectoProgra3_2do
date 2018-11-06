@@ -29,20 +29,20 @@ public class ControllerCategoriaEdicion {
 
         this.view = view;
         this.model = model;
-        // view.setController(this);
-         //view.setModel(model);
+         view.setController(this);
+         view.setModel(model);
     }
 
     public void guardar(Categoria categoria) throws Exception {
         switch (model.getModo()) {
             case SistemaActivos.MODO_AGREGAR:
-                //domainModel.addCategoria(categoria);
+                domainModel.addcategoria(categoria);
                 SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();
                 model.setCurrent(new Categoria());
                 model.commit();
                 break;
             case SistemaActivos.MODO_EDITAR:
-                //domainModel.updateCategoria(categoria);
+                domainModel.updatecategoria(categoria);
                 SistemaActivos.DEPENDENCIA_LISTADO_CONTROLLER.refrescarBusqueda();
                 break;
         }

@@ -395,7 +395,14 @@ public class ViewActivosListado extends javax.swing.JInternalFrame implements ja
     }//GEN-LAST:event_activosTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
         controller.CodigoB();
+          JOptionPane.showMessageDialog(this, "Codigos de barras generados", "OK", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+  
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

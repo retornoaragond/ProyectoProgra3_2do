@@ -552,12 +552,12 @@ public class DaoAdministracion {
    
     
      public void categoriaAdd(Categoria a) throws Exception {
-        String sql = "insert into Dependencia (codigo, nombre) "
+        String sql = "insert into Categoria (codigo, nombre) "
                 + "values('%s','%s')";
     //    sql = String.format(sql, a.getCodigo(), a.getNombre());
         int count = dbb.executeUpdate(sql);
         if (count == 0) {
-            throw new Exception("Dependencia ya existe");
+            throw new Exception("Categoria ya existe");
         }
     }
 
@@ -567,7 +567,7 @@ public class DaoAdministracion {
      //   sql = String.format(sql, a.getNombre(), a.getCodigo());
         int count = dbb.executeUpdate(sql);
         if (count == 0) {
-            throw new Exception("Dependencia no existe");
+            throw new Exception("Categoria no existe");
         }
     }
 

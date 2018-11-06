@@ -7,6 +7,7 @@ package sistemaactivos.presentation.categorias.edicion;
 
 import java.util.Arrays;
 import java.util.Observable;
+import javax.swing.JOptionPane;
 import sistemaactivos.SistemaActivos;
 import sistemaactivos.logic.Categoria;
 
@@ -31,6 +32,39 @@ public class ViewCategoriaEdicion extends javax.swing.JDialog implements java.ut
     }
 
     
+             public void setController(
+             sistemaactivos.presentation.categorias.edicion.ControllerCategoriaEdicion controller) {
+         this.controller = controller;
+     }
+
+     public ControllerCategoriaEdicion getController() {
+         return controller;
+     }
+
+     public void setModel(sistemaactivos.presentation.categorias.edicion.ModelCategoriaEdicion model) {
+         this.model = model;
+         model.addObserver(this);
+     }
+
+     public ModelCategoriaEdicion getModel() {
+         return model;
+     }
+
+        Categoria toCategoria() {
+         Categoria result = new Categoria();
+         result.setId(this.codigojTextField.getText());
+         result.setDescripcion(this.descripcionjTextField.getText());
+         return result;
+     }
+
+        
+        
+        
+        
+        
+        
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,11 +142,20 @@ public class ViewCategoriaEdicion extends javax.swing.JDialog implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarjButtonActionPerformed
-        // TODO add your handling code here:
+        if (this.validar()) {
+            try {
+                this.controller.guardar(this.toCategoria());
+                JOptionPane.showMessageDialog(this, "Datos registrados", "OK", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Error en datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } // TODO add your handling code here:
     }//GEN-LAST:event_agregarjButtonActionPerformed
 
     private void salirjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirjButtonActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_salirjButtonActionPerformed
 
 
@@ -127,22 +170,47 @@ public class ViewCategoriaEdicion extends javax.swing.JDialog implements java.ut
 
     @Override
     public void update(Observable o, Object arg) {
-       // this.limpiarErrores();
+        this.limpiarErrores();
          Categoria actual = model.getCurrent();
-        // this.fromCategoria(actual);
+         this.fromCategoria(actual);
      }
 
-     public void fromDependencia(Categoria actual) {
+     
+      boolean validar() {
+         boolean error = false;
+
+         this.CodigojLabel.setForeground(SistemaActivos.COLOR_OK);
+         if (this.codigojTextField.getText().isEmpty()) {
+             this.CodigojLabel.setForeground(SistemaActivos.COLOR_ERROR);
+             error = true;
+         }
+
+         this.DescripcionjLabel.setForeground(SistemaActivos.COLOR_OK);
+         if (this.descripcionjTextField.getText().isEmpty()) {
+             this.descripcionjTextField.setForeground(SistemaActivos.COLOR_ERROR);
+             error = true;
+         }
+
+         return !error;
+     }
+
+    
+    
+    
+    public void fromCategoria(Categoria actual) {
          Boolean editable = Arrays.asList(SistemaActivos.MODO_AGREGAR, SistemaActivos.MODO_EDITAR).contains(model.getModo());
          this.codigojTextField.setEnabled(model.getModo() == SistemaActivos.MODO_AGREGAR);
          this.codigojTextField.setText(String.valueOf(actual.getId()));
-         this.CodigojLabel.setEnabled(editable);
+         this.descripcionjTextField.setEnabled(editable);
          this.descripcionjTextField.setText(actual.getDescripcion());
          agregarjButton.setVisible(editable);
          this.validate();
      }
 
-
+public void limpiarErrores() {
+        this.CodigojLabel.setForeground(SistemaActivos.COLOR_OK);
+         this.DescripcionjLabel.setForeground(SistemaActivos.COLOR_OK);
+     }
 
 
 

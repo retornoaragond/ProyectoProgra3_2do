@@ -150,9 +150,7 @@ public class ControllerActivosListado {
 
         for (Activo activo : listaAct) {
 
-        //FALTA AGREGAR UN FOR CON LOS BIENES
             Barcode barcode = null;
-            //  String strCode = "123581321";///   se toma el valor del bien
             String strCode = activo.getCodigoId();///   se toma el valor del bien
 
             try { 
@@ -167,7 +165,7 @@ public class ControllerActivosListado {
                 String strFileName = "C:\\Users\\CarlosAndrés\\Documents\\NetBeansProjects\\ProyectoProgra3_2do\\SistemaActivos\\codigos"+strCode +".PNG";
                 File file = new File(strFileName);
                 FileOutputStream fos = new FileOutputStream(file);
-                BarcodeImageHandler.writePNG(barcode, fos);//formato de ejemplo PNG
+                BarcodeImageHandler.writePNG(barcode, fos);
                 System.out.println("Archivo creado: " + strFileName);
             } catch (Exception ex) {
                 System.out.println("Error: " + ex.getMessage());
