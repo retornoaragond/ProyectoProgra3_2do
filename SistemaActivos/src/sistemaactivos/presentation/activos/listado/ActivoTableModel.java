@@ -72,6 +72,11 @@ public class ActivoTableModel extends AbstractTableModel {
         return rows.get(row);
     }
 
+    public List<Activo> getRows() {
+        return rows;
+    }
+    
+    
     public static final int CODIGO = 0;
     public static final int DESCRIPCION = 1;
     public static final int CATEGORIA = 2;

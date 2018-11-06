@@ -5,6 +5,13 @@
  */
 package sistemaactivos.presentation.activos.listado;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.Barcode128;
+import com.itextpdf.text.pdf.Barcode39;
+import com.itextpdf.text.pdf.PdfWriter;
  import java.awt.Point;
  import java.util.List;
  import sistemaactivos.Session;
@@ -14,7 +21,11 @@ package sistemaactivos.presentation.activos.listado;
  
 
    import java.io.File;
+import java.io.FileNotFoundException;
    import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
   import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
 import net.sourceforge.barbecue.BarcodeFactory;
@@ -103,37 +114,69 @@ public class ControllerActivosListado {
         view.setVisible(false);
     }
 
-public void CodigoB(){        
-        
-        //FALTA AGREGAR UN FOR CON LOS BIENES
-    
-    Barcode barcode = null;
-    String strCode = "123581321";///   se toma el valor del bien
-    try {
-        barcode = BarcodeFactory.createCode39(strCode, true);
-    } catch (BarcodeException e) {
-    }
-    barcode.setDrawingText(true);
-    barcode.setBarWidth(2);
-       barcode.setBarHeight(60);
-  
-    try {
-    String strFileName= "C:\\DATA\\BarCode_"+strCode+".PNG";
-            File file = new File(strFileName);
-            FileOutputStream fos = new FileOutputStream(file);
-             BarcodeImageHandler.writePNG(barcode, fos);//formato de ejemplo PNG
-             System.out.println("Archivo creado: "+strFileName);
-    } catch (Exception ex) {
-     System.out.println("Error: "+ ex.getMessage());
-    }
-    }
+// public void CodigoB() {
+//
+//        List<Activo> listaAct = new ArrayList<>();
+//        listaAct = model.activosTable.getRows();
+//
+//        for (Activo activo : listaAct) {
+//
+//            try {
+//               Document doc=new Document();
+//               PdfWriter pdf=PdfWriter.getInstance(doc, new FileOutputStream("codigo.pdf"));
+//               doc.open();
+//               
+//               Barcode128 code= new Barcode128();
+//               String strCode = activo.getCodigoId().toString();///   se toma el valor del bien
+//
+//               code.setCode(strCode);
+//               Image img= code.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
+//               
+//               doc.add(img);
+//               doc.close();
+//               
+//                } catch (FileNotFoundException ex) {
+//                    Logger.getLogger(ControllerActivosListado.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (DocumentException ex) {
+//                    Logger.getLogger(ControllerActivosListado.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//               }
+//          }
+//    
+       public void CodigoB() {
 
+        List<Activo> listaAct = new ArrayList<>();
+        listaAct = model.activosTable.getRows();
+
+        for (Activo activo : listaAct) {
+
+        //FALTA AGREGAR UN FOR CON LOS BIENES
+            Barcode barcode = null;
+            //  String strCode = "123581321";///   se toma el valor del bien
+            String strCode = activo.getCodigoId();///   se toma el valor del bien
+
+            try { 
+                barcode = BarcodeFactory.createCode128(strCode);
+            } catch (BarcodeException e) {
+            }
+            barcode.setDrawingText(true);
+            barcode.setBarWidth(2);
+            barcode.setBarHeight(60);
+
+            try {
+                String strFileName = "C:\\Users\\CarlosAndrés\\Documents\\NetBeansProjects\\ProyectoProgra3_2do\\SistemaActivos\\codigos"+strCode +".PNG";
+                File file = new File(strFileName);
+                FileOutputStream fos = new FileOutputStream(file);
+                BarcodeImageHandler.writePNG(barcode, fos);//formato de ejemplo PNG
+                System.out.println("Archivo creado: " + strFileName);
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        }
+    }
 }
 
+
     
-
-
-
-
 
 

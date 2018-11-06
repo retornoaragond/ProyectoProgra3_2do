@@ -528,7 +528,9 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
         result.setNumcomp(numcomprobante.getText());
         result.setFecha(fecha.getDate());
         result.setTipoadq(tipoadquiCombo.getSelectedItem().toString());
+        
         result.setBiens(new HashSet<>(model.bientable.getRows()));
+        
         result.setCantbien(Integer.parseInt(cantbienes.getText()));
         result.setMontotal(Double.parseDouble(monttotal.getText()));
         result.setEstado(estadoactual.getSelectedItem().toString());
