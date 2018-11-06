@@ -274,7 +274,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
     }//GEN-LAST:event_GuardarButtonActionPerformed
 
     private void dependenciaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dependenciaComboBoxActionPerformed
-       /*
+       
         Dependencia aux=(Dependencia)this.dependenciaComboBox.getSelectedItem();
        try {
            controller.getSeleccionadaDependencia(((Dependencia)this.dependenciaComboBox.getSelectedItem()).getCodigo());
@@ -283,20 +283,20 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
        catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-       */
+       
     }//GEN-LAST:event_dependenciaComboBoxActionPerformed
 
     private void responsableComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responsableComboBoxActionPerformed
-     /*Funcionario aux=(Funcionario) this.responsableComboBox.getSelectedItem();
+    /* Funcionario aux=(Funcionario) this.responsableComboBox.getSelectedItem();
        try {
-           controller.getSeleccionadaDependencia(((Dependencia)this.dependenciaComboBox.getSelectedItem()).getCodigo());
+           controller.getSeleccionadaDependencia(((Funcionario)this.dependenciaComboBox.getSelectedItem()).getId());
            this.responsableComboBox.setEnabled(true);
        }
        catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+      */  
         
-       */ 
           
     }//GEN-LAST:event_responsableComboBoxActionPerformed
 
@@ -315,8 +315,8 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.fromActivo(actual); 
         this.dependenciaComboBox.setModel(model.getDependencia());
         dependenciaComboBox.setSelectedIndex(0);
-        this.PuestoCombo.setModel(model.getPuesot());
-        PuestoCombo.setSelectedIndex(0);
+//        this.PuestoCombo.setModel(model.getPuesot());
+//        PuestoCombo.setSelectedIndex(0);
         if(responsableComboBox.isEnabled()==true){
         this.responsableComboBox.setModel(model.getFuncionario());
         responsableComboBox.setSelectedIndex(0);
@@ -344,7 +344,7 @@ public class ViewActivosEdicion extends javax.swing.JDialog implements java.util
         this.PuestoCombo.setEnabled(modify);
         this.PuestoCombo.setSelectedItem(actual.getLabor().getPuesto());
         this.PuestoCombo.getSelectedItem();
-//        actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
+   //     actual.getLabor().getFuncionario().setNombre((String) this.responsableComboBox.getSelectedItem());
 
     }
 
