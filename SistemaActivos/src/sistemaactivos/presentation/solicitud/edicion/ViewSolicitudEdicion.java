@@ -308,6 +308,11 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablabienes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablabienesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablabienes);
 
         jLabel4.setText("Cantidad total de Bienes");
@@ -530,6 +535,13 @@ public class ViewSolicitudEdicion extends javax.swing.JDialog implements java.ut
     private void eliminarbienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbienActionPerformed
 
     }//GEN-LAST:event_eliminarbienActionPerformed
+
+    private void tablabienesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablabienesMouseClicked
+              if(evt.getClickCount()==2){
+        int row= this.tablabienes.getSelectedRow();
+        controller.editar(row, evt.getLocationOnScreen());
+        }
+    }//GEN-LAST:event_tablabienesMouseClicked
 
     Solicitud toSolicitud() {
         Solicitud result = new Solicitud();
